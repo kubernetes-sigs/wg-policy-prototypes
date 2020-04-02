@@ -11,6 +11,22 @@ You can reach the maintainers of this project at:
 - [Slack](https://kubernetes.slack.com/messages/wg-policy)
 - [Mailing List](https://groups.google.com/forum/#!forum/kubernetes-wg-policy)
 
-### Code of conduct
+## Join this repo
+
+File a request at https://github.com/kubernetes/org to be added to @kubernetes-sigs, using the Template.
+
+Once you've been a member, when you are ready to become a reviewer of other people's code, file a PR on our OWNERS file and an approver will need to approve you.
+
+Once you've been a reviewer, you can request to become an approver by filling a PR on our OWNERS file and another approver will need to approve you.
+
+## Code of conduct
 
 Participation in the Kubernetes community is governed by the [Kubernetes Code of Conduct](code-of-conduct.md).
+
+## Projects
+
+* [Policy Violation CRD](policy-violation-crd/README.md)
+
+## Additional Information
+
+* [Policy WG Community Page](https://github.com/kubernetes/community/tree/master/wg-policy)
