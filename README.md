@@ -2,7 +2,7 @@
 
 A place for policy work group related proposals and prototypes.
 
-:warning:  :triangular_flag_on_post: **Warning: Code and other artifacts in this repository are prototypes and proposals, work-in-progress, not endorsed by the any Kubernetes SIG, and not for production use.**
+:warning: **Warning: Code and other artifacts in this repository are prototypes and proposals, work-in-progress, not endorsed by any Kubernetes SIG, and not recommended for production use.**
 
 ## Community, discussion, contribution, and support
 
