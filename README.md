@@ -27,6 +27,7 @@ Participation in the Kubernetes community is governed by the [Kubernetes Code of
 
 ## Projects
 
+* [Gaurdian](guardian/README.md)
 * [Policy Violation CRD](policy-violation-crd/README.md)
 
 ## Additional Information
