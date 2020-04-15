@@ -19,7 +19,7 @@ File a request at https://github.com/kubernetes/org to be added to @kubernetes-s
 
 Once you've been a member, when you are ready to become a reviewer of other people's code, file a PR on our OWNERS file and an approver will need to approve you.
 
-Once you've been a reviewer, you can request to become an approver by filling a PR on our OWNERS file and another approver will need to approve you.
+Once you've been a reviewer, you can request to become an approver by filing a PR on our OWNERS file and another approver will need to approve you.
 
 ## Code of conduct
 
