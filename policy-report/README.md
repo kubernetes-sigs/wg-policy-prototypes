@@ -15,7 +15,7 @@ kubectl create -f https://github.com/kubernetes-sigs/wg-policy-prototypes/raw/ma
 Create a sample policy report resource:
 
 ```console
-kubectl create -f https://github.com/kubernetes-sigs/wg-policy-prototypes/raw/master/policy-report/samples/sample-cis-k8s-report.yaml
+kubectl create -f https://github.com/kubernetes-sigs/wg-policy-prototypes/raw/master/policy-report/samples/sample-cis-k8s.yaml
 ```
 
 View policy report resources:
