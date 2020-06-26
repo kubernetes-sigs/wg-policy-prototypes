@@ -24,7 +24,6 @@ import (
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
 // NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
 
-// ClusterPolicyReport is the Schema for the clusterpolicyreports API
 // +kubebuilder:object:root=true
 // +kubebuilder:printcolumn:name="Kind",type=string,JSONPath=`.scope.kind`,priority=1
 // +kubebuilder:printcolumn:name="Name",type=string,JSONPath=`.scope.name`,priority=1
@@ -34,6 +33,8 @@ import (
 // +kubebuilder:printcolumn:name="Error",type=integer,JSONPath=`.summary.error`
 // +kubebuilder:printcolumn:name="Skip",type=integer,JSONPath=`.summary.skip`
 // +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
+
+// ClusterPolicyReport is the Schema for the clusterpolicyreports API
 type ClusterPolicyReport struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`

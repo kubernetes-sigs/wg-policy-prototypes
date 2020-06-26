@@ -36,7 +36,7 @@ type PolicyReportSummary struct {
 // +kubebuilder:validation:Enum=Pass;Fail;Warn;Error;Skip
 type PolicyStatus string
 
-// PolicyReportSummary provides the result for an individual policy or rule
+// PolicyReportResult provides the result for an individual policy or rule
 type PolicyReportResult struct {
 
 	// Policy is the name of the policy
@@ -63,7 +63,6 @@ type PolicyReportResult struct {
 	Data map[string]string `json:"data,omitempty"`
 }
 
-// PolicyReport is the Schema for the policyreports API
 // +kubebuilder:object:root=true
 // +kubebuilder:printcolumn:name="Kind",type=string,JSONPath=`.scope.kind`,priority=1
 // +kubebuilder:printcolumn:name="Name",type=string,JSONPath=`.scope.name`,priority=1
@@ -73,6 +72,8 @@ type PolicyReportResult struct {
 // +kubebuilder:printcolumn:name="Error",type=integer,JSONPath=`.summary.error`
 // +kubebuilder:printcolumn:name="Skip",type=integer,JSONPath=`.summary.skip`
 // +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
+
+// PolicyReport is the Schema for the policyreports API
 type PolicyReport struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`

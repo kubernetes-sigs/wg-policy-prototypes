@@ -62,7 +62,7 @@ spec:
         results:
           description: PolicyReportResult provides result details
           items:
-            description: PolicyReportSummary provides the result for an individual
+            description: PolicyReportResult provides the result for an individual
               policy or rule
             properties:
               data:
