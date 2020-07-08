@@ -50,6 +50,11 @@ type PolicyReportResult struct {
 	// +optional
 	Resource *corev1.ObjectReference `json:"resource,omitempty"`
 
+	// ResourceSelector is an optional selector for multiple resources (e.g. Pods).
+	// Either one of, or none of, but not both of, Resource or ResourceSelector should be specified.
+	// +optional
+	ResourceSelector *metav1.LabelSelector `json:"resourceSelector,omitempty"`
+
 	// Message is a short user friendly description of the policy rule
 	Message string `json:"message,omitempty"`
 
