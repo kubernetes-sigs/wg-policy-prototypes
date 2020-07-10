@@ -1,0 +1,39 @@
+apiVersion: policy.kubernetes.io/v1alpha1
+kind: PolicyReport
+metadata:
+  name: sample-fedramp-compliance-operator
+  labels:
+    policy.kubernetes.io/engine: openshift-compliance-operator
+  annotations:
+    name: FedRAMP Moderate Benchmarks
+    category: OCP4 CoreOS
+    file: ssg-ocp4-ds.xml
+    version: v1.5.1 - 02-14-2020
+summary:
+  pass: 8
+  fail: 1
+  warn: 1
+  error: 0
+  skip: 0
+results:
+  - policy: xccdf_org.ssgproject.content_rule_audit_rules_etc_group_open
+    message: |-
+      Record Events that Modify User/Group Information via open syscall - /etc/group
+      Creation of groups through direct edition of /etc/group could be an indicator of malicious activity on a system.
+      Auditing these events could serve as evidence of potential system compromise.
+    status: Fail
+    scored: true
+    severity: medium
+    data:
+      suite: fedramp-moderate
+      scan: workers-scan
+  - policy: xccdf_org.ssgproject.content_rule_sshd_limit_user_access
+    message: |-
+      Limit Users' SSH Access
+      Specifying which accounts are allowed SSH access into the system reduces the
+      possibility of unauthorized access to the system.
+    status: Warn
+    scored: false
+    data:
+      suite: fedramp-moderate
+      scan: workers-scan
