@@ -42,3 +42,8 @@ CONTROLLER_GEN=$(GOBIN)/controller-gen
 else
 CONTROLLER_GEN=$(shell which controller-gen)
 endif
+
+# generate will create api docs
+generate:
+	gen-crd-api-reference-docs -api-dir ./api/v1alpha1 -config docs/config.json -template-dir docs/template -out-file docs/index.html
+

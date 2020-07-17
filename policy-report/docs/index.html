@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<title>PolicyReport API Reference</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<a class="navbar-brand" href="#"> API Reference</a>
+<ul class="navbar-nav">
+<li class="nav-item">
+<a class="nav-link" href="#">Policy Report</a>
+</li>
+</ul>
+</nav>
+<div class="container">
+<h1 id="policy.kubernetes.io/v1alpha1">policy.kubernetes.io/v1alpha1</h1>
+<p>
+Package v1alpha1 contains API Schema definitions for the policy v1alpha1 API group
+</p>
+<h2>Resource Types</h2>
+<ul></ul>
+<h3 id="policy.kubernetes.io/v1alpha1.ClusterPolicyReport">ClusterPolicyReport
+</h3>
+<p>
+ClusterPolicyReport is the Schema for the clusterpolicyreports API
+</p>
+<table class="table table-striped">
+<thead class="thead-dark">
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>metadata</code></br>
+<em>
+Kubernetes meta/v1.ObjectMeta
+</em>
+</td>
+<td>
+Refer to the Kubernetes API documentation for the fields of the
+<code>metadata</code> field.
+</td>
+</tr>
+<tr>
+<td>
+<code>scope</code></br>
+<em>
+Kubernetes core/v1.ObjectReference
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+Scope is an optional reference to the report scope (e.g. a Deployment, Namespace, or Node)
+</td>
+</tr>
+<tr>
+<td>
+<code>summary</code></br>
+<em>
+<a href="#policy.kubernetes.io/v1alpha1.PolicyReportSummary">
+PolicyReportSummary
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+PolicyReportSummary provides a summary of results
+</td>
+</tr>
+<tr>
+<td>
+<code>results</code></br>
+<em>
+<a href="#policy.kubernetes.io/v1alpha1.*github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult">
+[]*github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+PolicyReportResult provides result details
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="policy.kubernetes.io/v1alpha1.PolicyReport">PolicyReport
+</h3>
+<p>
+PolicyReport is the Schema for the policyreports API
+</p>
+<table class="table table-striped">
+<thead class="thead-dark">
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>metadata</code></br>
+<em>
+Kubernetes meta/v1.ObjectMeta
+</em>
+</td>
+<td>
+Refer to the Kubernetes API documentation for the fields of the
+<code>metadata</code> field.
+</td>
+</tr>
+<tr>
+<td>
+<code>scope</code></br>
+<em>
+Kubernetes core/v1.ObjectReference
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+Scope is an optional reference to the report scope (e.g. a Deployment, Namespace, or Node)
+</td>
+</tr>
+<tr>
+<td>
+<code>summary</code></br>
+<em>
+<a href="#policy.kubernetes.io/v1alpha1.PolicyReportSummary">
+PolicyReportSummary
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+PolicyReportSummary provides a summary of results
+</td>
+</tr>
+<tr>
+<td>
+<code>results</code></br>
+<em>
+<a href="#policy.kubernetes.io/v1alpha1.*github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult">
+[]*github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+PolicyReportResult provides result details
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="policy.kubernetes.io/v1alpha1.PolicyReportResult">PolicyReportResult
+</h3>
+<p>
+PolicyReportResult provides the result for an individual policy or rule
+</p>
+<table class="table table-striped">
+<thead class="thead-dark">
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>policy</code></br>
+<em>
+string
+</em>
+</td>
+<td>
+Policy is the name of the policy
+</td>
+</tr>
+<tr>
+<td>
+<code>rule</code></br>
+<em>
+string
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+Rule is the name of the policy rule
+</td>
+</tr>
+<tr>
+<td>
+<code>resource</code></br>
+<em>
+Kubernetes core/v1.ObjectReference
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+Resource is an optional reference to the resource check bu the policy rule
+</td>
+</tr>
+<tr>
+<td>
+<code>message</code></br>
+<em>
+string
+</em>
+</td>
+<td>
+Message is a short user friendly description of the policy rule
+</td>
+</tr>
+<tr>
+<td>
+<code>status</code></br>
+<em>
+<a href="#policy.kubernetes.io/v1alpha1.PolicyStatus">
+PolicyStatus
+</a>
+</em>
+</td>
+<td>
+Status indicates the result of the policy rule check
+</td>
+</tr>
+<tr>
+<td>
+<code>scored</code></br>
+<em>
+bool
+</em>
+</td>
+<td>
+Scored indicates if this policy rule is scored
+</td>
+</tr>
+<tr>
+<td>
+<code>data</code></br>
+<em>
+map[string]string
+</em>
+</td>
+<td>
+Data provides additional information for the policy rule
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="policy.kubernetes.io/v1alpha1.PolicyReportSummary">PolicyReportSummary
+</h3>
+<p>
+(<em>Appears on:</em>
+<a href="#policy.kubernetes.io/v1alpha1.ClusterPolicyReport">ClusterPolicyReport</a>, 
+<a href="#policy.kubernetes.io/v1alpha1.PolicyReport">PolicyReport</a>)
+</p>
+<p>
+PolicyReportSummary provides a status count summary
+</p>
+<table class="table table-striped">
+<thead class="thead-dark">
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>pass</code></br>
+<em>
+int
+</em>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<code>fail</code></br>
+<em>
+int
+</em>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<code>warn</code></br>
+<em>
+int
+</em>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<code>error</code></br>
+<em>
+int
+</em>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<code>skip</code></br>
+<em>
+int
+</em>
+</td>
+<td>
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="policy.kubernetes.io/v1alpha1.PolicyStatus">PolicyStatus
+(<code>string</code> alias)</p></h3>
+<p>
+(<em>Appears on:</em>
+<a href="#policy.kubernetes.io/v1alpha1.PolicyReportResult">PolicyReportResult</a>)
+</p>
+<p>
+</p>
+<hr/>
+<p><em>
+Generated with <code>gen-crd-api-reference-docs</code>.
+</em></p>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
