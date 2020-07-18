@@ -45,5 +45,7 @@ endif
 
 # generate will create api docs
 generate:
-	go run github.com/ahmetb/gen-crd-api-reference-docs -api-dir ./api/v1alpha1 -config docs/config.json -template-dir docs/template -out-file docs/index.html
+	gen-crd-api-reference-docs -api-dir ./api/v1alpha1 -config docs/config.json -template-dir docs/template -out-file docs/index.html
+	# TODO - Currently gen-crd-api-reference-docs doesn't support kubebuilder for generating docs. https://github.com/ahmetb/gen-crd-api-reference-docs/issues/15
+	# go run github.com/ahmetb/gen-crd-api-reference-docs -api-dir ./api/v1alpha1 -config docs/config.json -template-dir docs/template -out-file docs/index.html
 

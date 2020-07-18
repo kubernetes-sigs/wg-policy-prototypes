@@ -37,3 +37,13 @@ The Policy Report CRDs definitions are in the `api` folder and defined as Golang
 To update, edit the Golang definitions and then run `make` to generate the Kubernetes OpenAPI schema for the CRDs.
 
 Definitions are provided for both cluster-wide and namespaced policy report resources. 
+
+NOTE : For generating CRD documentation please follow the steps
+
+```bash
+$ git clone git@github.com:M00nF1sh/gen-crd-api-reference-docs.git
+$ cd gen-crd-api-reference-docs 
+$ go build
+$ mv gen-crd-api-reference-docs /usr/local/bin/
+$ make generate
+```

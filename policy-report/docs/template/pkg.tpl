@@ -17,7 +17,7 @@
     <a class="navbar-brand" href="#"> API Reference</a>
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" href="#">PolicyReport</a>
+            <a class="nav-link" href="#PolicyReport">PolicyReport</a>
         </li>
     </ul>
 </nav>
