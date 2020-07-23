@@ -4,6 +4,8 @@ This is a proposal for a Policy Report Custom Resource Definition (CRD) that can
 
 See the [proposal](https://docs.google.com/document/d/1nICYLkYS1RE3gJzuHOfHeAC25QIkFZfgymFjgOzMDVw/edit#) for background and details.
 
+[Policy Report CRD API Reference](https://htmlpreview.github.io/?https://github.com/kubernetes-sigs/wg-policy-prototypes/blob/master/policy-report/docs/index.html)
+
 ## Installing
 
 Add the CRDs to your cluster:
