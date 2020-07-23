@@ -41,7 +41,7 @@ Definitions are provided for both cluster-wide and namespaced policy report reso
 NOTE : For generating CRD documentation please follow the steps
 
 ```bash
-$ git clone git@github.com:M00nF1sh/gen-crd-api-reference-docs.git
+$ git clone https://github.com/M00nF1sh/gen-crd-api-reference-docs.git
 $ cd gen-crd-api-reference-docs 
 $ go build
 $ mv gen-crd-api-reference-docs /usr/local/bin/
