@@ -26,17 +26,34 @@ import (
 
 // PolicyReportSummary provides a status count summary
 type PolicyReportSummary struct {
-	Pass  int `json:"pass"`
-	Fail  int `json:"fail"`
-	Warn  int `json:"warn"`
+
+	// Pass provides the count of policies whose requirements were met
+	Pass int `json:"pass"`
+
+	// Fail provides the count of policies whose requirements were not met
+	Fail int `json:"fail"`
+
+	// Warn provides the count of unscored policies whose requirements were not met
+	Warn int `json:"warn"`
+
+	// Error provides the count of policies that could not be evaluated
 	Error int `json:"error"`
-	Skip  int `json:"skip"`
+
+	// Skip indicates the count of policies that were not selected for evaluation
+	Skip int `json:"skip"`
 }
 
+// PolicyStatus has one of the following values:
+//   - Pass: indicates that the policy requirements are met
+//   - Fail: indicates that the policy requirements are not met
+//   - Warn: indicates that the policy requirements and not met, and the policy is not scored
+//   - Error: indicates that the policy could not be evaluated
+//   - Skip: indicates that the policy was not selected based on user inputs or applicability
+//
 // +kubebuilder:validation:Enum=Pass;Fail;Warn;Error;Skip
 type PolicyStatus string
 
-// PolicyReportResult provides the result for an individual policy or rule
+// PolicyReportResult provides the result for an individual policy
 type PolicyReportResult struct {
 
 	// Policy is the name of the policy
@@ -46,12 +63,14 @@ type PolicyReportResult struct {
 	// +optional
 	Rule string `json:"rule,omitempty"`
 
-	// Resource is an optional reference to the resource check bu the policy rule
+	// Resource is an optional reference to the resource checked by the policy
 	// +optional
 	Resource *corev1.ObjectReference `json:"resource,omitempty"`
 
-	// ResourceSelector is an optional selector for multiple resources (e.g. Pods).
-	// Either one of, or none of, but not both of, Resource or ResourceSelector should be specified.
+	// ResourceSelector is an optional selector for policy results that apply to multiple resources.
+	// For example, a policy result may apply to all pods that match a label.
+	// Either a Resource or a ResourceSelector can be specified. If neither are provided, the
+	// result is assumed to be for the policy report scope.
 	// +optional
 	ResourceSelector *metav1.LabelSelector `json:"resourceSelector,omitempty"`
 
