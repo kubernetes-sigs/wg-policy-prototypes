@@ -48,7 +48,7 @@ type PolicyReportResult struct {
 
 	// Resource is an optional reference to the resource check bu the policy rule
 	// +optional
-	Resource *corev1.ObjectReference `json:"resource,omitempty"`
+	Resource []*ResourceDefination `json:"resource,omitempty"`
 
 	// Message is a short user friendly description of the policy rule
 	Message string `json:"message,omitempty"`
@@ -61,6 +61,15 @@ type PolicyReportResult struct {
 
 	// Data provides additional information for the policy rule
 	Data map[string]string `json:"data,omitempty"`
+}
+
+// ResourceDefination provides the list of resource for an individual policy and rule
+type ResourceDefination struct {
+	// GroupVersionKind provides resource kind and group
+	GroupVersionKind *metav1.GroupVersionKind `json:"groupVersionKind"`
+
+	// ResourceList provides resource list of specific groupversion and groupkind
+	ResourceList []*corev1.ObjectReference `json:"kind"`
 }
 
 // +kubebuilder:object:root=true
