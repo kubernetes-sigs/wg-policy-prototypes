@@ -221,11 +221,9 @@ Rule is the name of the policy rule
 </tr>
 <tr>
 <td>
-<code>resource</code></br>
+<code>resources</code></br>
 <em>
-<a href="#policy.kubernetes.io/v1alpha1.*github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/api/v1alpha1.ResourceDefination">
-[]*github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/api/v1alpha1.ResourceDefination
-</a>
+[]*k8s.io/api/core/v1.ObjectReference
 </em>
 </td>
 <td>
@@ -385,43 +383,6 @@ PolicyStatus has one of the following values:
 - Error: indicates that the policy could not be evaluated
 - Skip: indicates that the policy was not selected based on user inputs or applicability
 </p>
-<h3 id="policy.kubernetes.io/v1alpha1.ResourceDefination">ResourceDefination
-</h3>
-<p>
-ResourceDefination provides the list of resource for an individual policy and rule
-</p>
-<table class="table table-striped">
-<thead class="thead-dark">
-<tr>
-<th>Field</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<code>groupVersionKind</code></br>
-<em>
-Kubernetes meta/v1.GroupVersionKind
-</em>
-</td>
-<td>
-GroupVersionKind provides resource kind and group
-</td>
-</tr>
-<tr>
-<td>
-<code>resourceList</code></br>
-<em>
-[]*k8s.io/api/core/v1.ObjectReference
-</em>
-</td>
-<td>
-ResourceList provides resource list of specific groupversion and groupkind
-</td>
-</tr>
-</tbody>
-</table>
 <hr/>
 <p><em>
 Generated with <code>gen-crd-api-reference-docs</code>.
