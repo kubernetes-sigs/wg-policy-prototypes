@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<title>Policy API Reference</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<a class="navbar-brand" href="#"> API Reference</a>
+<ul class="navbar-nav">
+<li class="nav-item">
+<a class="nav-link" href="#PolicyReport">PolicyReport</a>
+</li>
+</ul>
+</nav>
+<div class="container">
+<h1 id="policy.kubernetes.io/v1alpha1">policy.kubernetes.io/v1alpha1</h1>
+<p>
+Package v1alpha1 contains API Schema definitions for the policy v1alpha1 API group
+</p>
+<h2>Resource Types</h2>
+<ul></ul>
+<h3 id="policy.kubernetes.io/v1alpha1.ClusterPolicyReport">ClusterPolicyReport
+</h3>
+<p>
+ClusterPolicyReport is the Schema for the clusterpolicyreports API
+</p>
+<table class="table table-striped">
+<thead class="thead-dark">
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>metadata</code></br>
+<em>
+Kubernetes meta/v1.ObjectMeta
+</em>
+</td>
+<td>
+Refer to the Kubernetes API documentation for the fields of the
+<code>metadata</code> field.
+</td>
+</tr>
+<tr>
+<td>
+<code>scope</code></br>
+<em>
+Kubernetes core/v1.ObjectReference
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+Scope is an optional reference to the policy report scope. For example. the report
+may be for all resources in a namespace, a for a node, or cluster-wide.
+</td>
+</tr>
+<tr>
+<td>
+<code>scopeSelector</code></br>
+<em>
+Kubernetes meta/v1.LabelSelector
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+ScopeSelector is an optional selector for multiple scopes (e.g. Pods).
+Either one of, or none of, but not both of, Scope or ScopeSelector should be specified.
+</td>
+</tr>
+<tr>
+<td>
+<code>summary</code></br>
+<em>
+<a href="#policy.kubernetes.io/v1alpha1.PolicyReportSummary">
+PolicyReportSummary
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+PolicyReportSummary provides a summary of results
+</td>
+</tr>
+<tr>
+<td>
+<code>results</code></br>
+<em>
+<a href="#policy.kubernetes.io/v1alpha1.*github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult">
+[]*github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+PolicyReportResult provides result details
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="policy.kubernetes.io/v1alpha1.PolicyReport">PolicyReport
+</h3>
+<p>
+PolicyReport is the Schema for the policyreports API
+</p>
+<table class="table table-striped">
+<thead class="thead-dark">
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>metadata</code></br>
+<em>
+Kubernetes meta/v1.ObjectMeta
+</em>
+</td>
+<td>
+Refer to the Kubernetes API documentation for the fields of the
+<code>metadata</code> field.
+</td>
+</tr>
+<tr>
+<td>
+<code>scope</code></br>
+<em>
+Kubernetes core/v1.ObjectReference
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+Scope is an optional reference to the report scope (e.g. a Deployment, Namespace, or Node)
+</td>
+</tr>
+<tr>
+<td>
+<code>scopeSelector</code></br>
+<em>
+Kubernetes meta/v1.LabelSelector
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+ScopeSelector is an optional selector for multiple scopes (e.g. Pods).
+Either one of, or none of, but not both of, Scope or ScopeSelector should be specified.
+</td>
+</tr>
+<tr>
+<td>
+<code>summary</code></br>
+<em>
+<a href="#policy.kubernetes.io/v1alpha1.PolicyReportSummary">
+PolicyReportSummary
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+PolicyReportSummary provides a summary of results
+</td>
+</tr>
+<tr>
+<td>
+<code>results</code></br>
+<em>
+<a href="#policy.kubernetes.io/v1alpha1.*github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult">
+[]*github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+PolicyReportResult provides result details
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="policy.kubernetes.io/v1alpha1.PolicyReportResult">PolicyReportResult
+</h3>
+<p>
+PolicyReportResult provides the result for an individual policy
+</p>
+<table class="table table-striped">
+<thead class="thead-dark">
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>policy</code></br>
+<em>
+string
+</em>
+</td>
+<td>
+Policy is the name of the policy
+</td>
+</tr>
+<tr>
+<td>
+<code>rule</code></br>
+<em>
+string
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+Rule is the name of the policy rule
+</td>
+</tr>
+<tr>
+<td>
+<code>resource</code></br>
+<em>
+<a href="#policy.kubernetes.io/v1alpha1.*github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/api/v1alpha1.ResourceDefination">
+[]*github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/api/v1alpha1.ResourceDefination
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+Resources is an optional reference to the resource checked by the policy and rule
+</td>
+</tr>
+<tr>
+<td>
+<code>resourceSelector</code></br>
+<em>
+Kubernetes meta/v1.LabelSelector
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+ResourceSelector is an optional selector for policy results that apply to multiple resources.
+For example, a policy result may apply to all pods that match a label.
+Either a Resource or a ResourceSelector can be specified. If neither are provided, the
+result is assumed to be for the policy report scope.
+</td>
+</tr>
+<tr>
+<td>
+<code>message</code></br>
+<em>
+string
+</em>
+</td>
+<td>
+Message is a short user friendly description of the policy rule
+</td>
+</tr>
+<tr>
+<td>
+<code>status</code></br>
+<em>
+<a href="#policy.kubernetes.io/v1alpha1.PolicyStatus">
+PolicyStatus
+</a>
+</em>
+</td>
+<td>
+Status indicates the result of the policy rule check
+</td>
+</tr>
+<tr>
+<td>
+<code>scored</code></br>
+<em>
+bool
+</em>
+</td>
+<td>
+Scored indicates if this policy rule is scored
+</td>
+</tr>
+<tr>
+<td>
+<code>data</code></br>
+<em>
+map[string]string
+</em>
+</td>
+<td>
+Data provides additional information for the policy rule
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="policy.kubernetes.io/v1alpha1.PolicyReportSummary">PolicyReportSummary
+</h3>
+<p>
+(<em>Appears on:</em>
+<a href="#policy.kubernetes.io/v1alpha1.ClusterPolicyReport">ClusterPolicyReport</a>, 
+<a href="#policy.kubernetes.io/v1alpha1.PolicyReport">PolicyReport</a>)
+</p>
+<p>
+PolicyReportSummary provides a status count summary
+</p>
+<table class="table table-striped">
+<thead class="thead-dark">
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>pass</code></br>
+<em>
+int
+</em>
+</td>
+<td>
+Pass provides the count of policies whose requirements were met
+</td>
+</tr>
+<tr>
+<td>
+<code>fail</code></br>
+<em>
+int
+</em>
+</td>
+<td>
+Fail provides the count of policies whose requirements were not met
+</td>
+</tr>
+<tr>
+<td>
+<code>warn</code></br>
+<em>
+int
+</em>
+</td>
+<td>
+Warn provides the count of unscored policies whose requirements were not met
+</td>
+</tr>
+<tr>
+<td>
+<code>error</code></br>
+<em>
+int
+</em>
+</td>
+<td>
+Error provides the count of policies that could not be evaluated
+</td>
+</tr>
+<tr>
+<td>
+<code>skip</code></br>
+<em>
+int
+</em>
+</td>
+<td>
+Skip indicates the count of policies that were not selected for evaluation
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="policy.kubernetes.io/v1alpha1.PolicyStatus">PolicyStatus
+(<code>string</code> alias)</p></h3>
+<p>
+(<em>Appears on:</em>
+<a href="#policy.kubernetes.io/v1alpha1.PolicyReportResult">PolicyReportResult</a>)
+</p>
+<p>
+PolicyStatus has one of the following values:
+- Pass: indicates that the policy requirements are met
+- Fail: indicates that the policy requirements are not met
+- Warn: indicates that the policy requirements and not met, and the policy is not scored
+- Error: indicates that the policy could not be evaluated
+- Skip: indicates that the policy was not selected based on user inputs or applicability
+</p>
+<h3 id="policy.kubernetes.io/v1alpha1.ResourceDefination">ResourceDefination
+</h3>
+<p>
+ResourceDefination provides the list of resource for an individual policy and rule
+</p>
+<table class="table table-striped">
+<thead class="thead-dark">
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>groupVersionKind</code></br>
+<em>
+Kubernetes meta/v1.GroupVersionKind
+</em>
+</td>
+<td>
+GroupVersionKind provides resource kind and group
+</td>
+</tr>
+<tr>
+<td>
+<code>kind</code></br>
+<em>
+[]*k8s.io/api/core/v1.ObjectReference
+</em>
+</td>
+<td>
+ResourceList provides resource list of specific groupversion and groupkind
+</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<p><em>
+Generated with <code>gen-crd-api-reference-docs</code>.
+</em></p>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

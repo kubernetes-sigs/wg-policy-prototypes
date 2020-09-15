@@ -39,9 +39,15 @@ type ClusterPolicyReport struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	// Scope is an optional reference to the report scope (e.g. a Deployment, Namespace, or Node)
+	// Scope is an optional reference to the policy report scope. For example. the report
+	// may be for all resources in a namespace, a for a node, or cluster-wide.
 	// +optional
 	Scope *corev1.ObjectReference `json:"scope,omitempty"`
+
+	// ScopeSelector is an optional selector for multiple scopes (e.g. Pods).
+	// Either one of, or none of, but not both of, Scope or ScopeSelector should be specified.
+	// +optional
+	ScopeSelector *metav1.LabelSelector `json:"scopeSelector,omitempty"`
 
 	// PolicyReportSummary provides a summary of results
 	// +optional

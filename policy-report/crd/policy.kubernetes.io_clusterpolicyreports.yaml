@@ -64,7 +64,7 @@ spec:
           description: PolicyReportResult provides result details
           items:
             description: PolicyReportResult provides the result for an individual
-              policy or rule
+              policy
             properties:
               data:
                 additionalProperties:
@@ -79,8 +79,8 @@ spec:
                 description: Policy is the name of the policy
                 type: string
               resource:
-                description: Resource is an optional reference to the resource check
-                  bu the policy rule
+                description: Resource is an optional reference to the resource checked
+                  by the policy
                 items:
                   description: ResourceDefination provides the list of resource for
                     an individual policy and rule
@@ -171,6 +171,54 @@ spec:
                   - kind
                   type: object
                 type: array
+              resourceSelector:
+                description: ResourceSelector is an optional selector for policy results
+                  that apply to multiple resources. For example, a policy result may
+                  apply to all pods that match a label. Either a Resource or a ResourceSelector
+                  can be specified. If neither are provided, the result is assumed
+                  to be for the policy report scope.
+                properties:
+                  matchExpressions:
+                    description: matchExpressions is a list of label selector requirements.
+                      The requirements are ANDed.
+                    items:
+                      description: A label selector requirement is a selector that
+                        contains values, a key, and an operator that relates the key
+                        and values.
+                      properties:
+                        key:
+                          description: key is the label key that the selector applies
+                            to.
+                          type: string
+                        operator:
+                          description: operator represents a key's relationship to
+                            a set of values. Valid operators are In, NotIn, Exists
+                            and DoesNotExist.
+                          type: string
+                        values:
+                          description: values is an array of string values. If the
+                            operator is In or NotIn, the values array must be non-empty.
+                            If the operator is Exists or DoesNotExist, the values
+                            array must be empty. This array is replaced during a strategic
+                            merge patch.
+                          items:
+                            type: string
+                          type: array
+                      required:
+                      - key
+                      - operator
+                      type: object
+                    type: array
+                  matchLabels:
+                    additionalProperties:
+                      type: string
+                    description: matchLabels is a map of {key,value} pairs. A single
+                      {key,value} in the matchLabels map is equivalent to an element
+                      of matchExpressions, whose key field is "key", the operator
+                      is "In", and the values array contains only "value". The requirements
+                      are ANDed.
+                    type: object
+                type: object
               rule:
                 description: Rule is the name of the policy rule
                 type: string
@@ -191,8 +239,9 @@ spec:
             type: object
           type: array
         scope:
-          description: Scope is an optional reference to the report scope (e.g. a
-            Deployment, Namespace, or Node)
+          description: Scope is an optional reference to the policy report scope.
+            For example. the report may be for all resources in a namespace, a for
+            a node, or cluster-wide.
           properties:
             apiVersion:
               description: API version of the referent.
@@ -226,18 +275,69 @@ spec:
               description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
               type: string
           type: object
+        scopeSelector:
+          description: ScopeSelector is an optional selector for multiple scopes (e.g.
+            Pods). Either one of, or none of, but not both of, Scope or ScopeSelector
+            should be specified.
+          properties:
+            matchExpressions:
+              description: matchExpressions is a list of label selector requirements.
+                The requirements are ANDed.
+              items:
+                description: A label selector requirement is a selector that contains
+                  values, a key, and an operator that relates the key and values.
+                properties:
+                  key:
+                    description: key is the label key that the selector applies to.
+                    type: string
+                  operator:
+                    description: operator represents a key's relationship to a set
+                      of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+                    type: string
+                  values:
+                    description: values is an array of string values. If the operator
+                      is In or NotIn, the values array must be non-empty. If the operator
+                      is Exists or DoesNotExist, the values array must be empty. This
+                      array is replaced during a strategic merge patch.
+                    items:
+                      type: string
+                    type: array
+                required:
+                - key
+                - operator
+                type: object
+              type: array
+            matchLabels:
+              additionalProperties:
+                type: string
+              description: matchLabels is a map of {key,value} pairs. A single {key,value}
+                in the matchLabels map is equivalent to an element of matchExpressions,
+                whose key field is "key", the operator is "In", and the values array
+                contains only "value". The requirements are ANDed.
+              type: object
+          type: object
         summary:
           description: PolicyReportSummary provides a summary of results
           properties:
             error:
+              description: Error provides the count of policies that could not be
+                evaluated
               type: integer
             fail:
+              description: Fail provides the count of policies whose requirements
+                were not met
               type: integer
             pass:
+              description: Pass provides the count of policies whose requirements
+                were met
               type: integer
             skip:
+              description: Skip indicates the count of policies that were not selected
+                for evaluation
               type: integer
             warn:
+              description: Warn provides the count of unscored policies whose requirements
+                were not met
               type: integer
           required:
           - error

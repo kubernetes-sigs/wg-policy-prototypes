@@ -4,6 +4,8 @@ This is a proposal for a Policy Report Custom Resource Definition (CRD) that can
 
 See the [proposal](https://docs.google.com/document/d/1nICYLkYS1RE3gJzuHOfHeAC25QIkFZfgymFjgOzMDVw/edit#) for background and details.
 
+[Policy Report CRD API Reference](https://htmlpreview.github.io/?https://github.com/kubernetes-sigs/wg-policy-prototypes/blob/master/policy-report/docs/index.html)
+
 ## Installing
 
 Add the CRDs to your cluster:
@@ -37,3 +39,13 @@ The Policy Report CRDs definitions are in the `api` folder and defined as Golang
 To update, edit the Golang definitions and then run `make` to generate the Kubernetes OpenAPI schema for the CRDs.
 
 Definitions are provided for both cluster-wide and namespaced policy report resources. 
+
+NOTE : For generating CRD documentation please follow the steps
+
+```bash
+$ git clone https://github.com/M00nF1sh/gen-crd-api-reference-docs.git
+$ cd gen-crd-api-reference-docs 
+$ go build
+$ mv gen-crd-api-reference-docs /usr/local/bin/
+$ make generate
+```
