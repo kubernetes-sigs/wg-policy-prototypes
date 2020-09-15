@@ -67,6 +67,7 @@ type PolicyReportResult struct {
 	// +optional
 	Resource *corev1.ObjectReference `json:"resource,omitempty"`
 
+
 	// ResourceSelector is an optional selector for policy results that apply to multiple resources.
 	// For example, a policy result may apply to all pods that match a label.
 	// Either a Resource or a ResourceSelector can be specified. If neither are provided, the
@@ -105,6 +106,11 @@ type PolicyReport struct {
 	// Scope is an optional reference to the report scope (e.g. a Deployment, Namespace, or Node)
 	// +optional
 	Scope *corev1.ObjectReference `json:"scope,omitempty"`
+
+	// ScopeSelector is an optional selector for multiple scopes (e.g. Pods).
+	// Either one of, or none of, but not both of, Scope or ScopeSelector should be specified.
+	// +optional
+	ScopeSelector *metav1.LabelSelector `json:"scopeSelector,omitempty"`
 
 	// PolicyReportSummary provides a summary of results
 	// +optional
