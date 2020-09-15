@@ -94,7 +94,7 @@ type ResourceDefination struct {
 	GroupVersionKind *metav1.GroupVersionKind `json:"groupVersionKind"`
 
 	// ResourceList provides resource list of specific groupversion and groupkind
-	ResourceList []*corev1.ObjectReference `json:"kind"`
+	ResourceList []*corev1.ObjectReference `json:"resourceList"`
 }
 
 // +kubebuilder:object:root=true

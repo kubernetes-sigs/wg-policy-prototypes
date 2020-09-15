@@ -79,8 +79,8 @@ spec:
                 description: Policy is the name of the policy
                 type: string
               resource:
-                description: Resource is an optional reference to the resource checked
-                  by the policy
+                description: Resources is an optional reference to the resource checked
+                  by the policy and rule
                 items:
                   description: ResourceDefination provides the list of resource for
                     an individual policy and rule
@@ -99,7 +99,7 @@ spec:
                       - kind
                       - version
                       type: object
-                    kind:
+                    resourceList:
                       description: ResourceList provides resource list of specific
                         groupversion and groupkind
                       items:
@@ -168,7 +168,7 @@ spec:
                       type: array
                   required:
                   - groupVersionKind
-                  - kind
+                  - resourceList
                   type: object
                 type: array
               resourceSelector:
