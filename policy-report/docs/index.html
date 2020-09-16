@@ -56,7 +56,21 @@ Kubernetes core/v1.ObjectReference
 </td>
 <td>
 <em>(Optional)</em>
-Scope is an optional reference to the report scope (e.g. a Deployment, Namespace, or Node)
+Scope is an optional reference to the policy report scope. For example. the report
+may be for all resources in a namespace, a for a node, or cluster-wide.
+</td>
+</tr>
+<tr>
+<td>
+<code>scopeSelector</code></br>
+<em>
+Kubernetes meta/v1.LabelSelector
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+ScopeSelector is an optional selector for multiple scopes (e.g. Pods).
+Either one of, or none of, but not both of, Scope or ScopeSelector should be specified.
 </td>
 </tr>
 <tr>
@@ -128,6 +142,19 @@ Scope is an optional reference to the report scope (e.g. a Deployment, Namespace
 </tr>
 <tr>
 <td>
+<code>scopeSelector</code></br>
+<em>
+Kubernetes meta/v1.LabelSelector
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+ScopeSelector is an optional selector for multiple scopes (e.g. Pods).
+Either one of, or none of, but not both of, Scope or ScopeSelector should be specified.
+</td>
+</tr>
+<tr>
+<td>
 <code>summary</code></br>
 <em>
 <a href="#policy.kubernetes.io/v1alpha1.PolicyReportSummary">
@@ -159,7 +186,7 @@ PolicyReportResult provides result details
 <h3 id="policy.kubernetes.io/v1alpha1.PolicyReportResult">PolicyReportResult
 </h3>
 <p>
-PolicyReportResult provides the result for an individual policy or rule
+PolicyReportResult provides the result for an individual policy
 </p>
 <table class="table table-striped">
 <thead class="thead-dark">
@@ -194,14 +221,29 @@ Rule is the name of the policy rule
 </tr>
 <tr>
 <td>
-<code>resource</code></br>
+<code>resources</code></br>
 <em>
-Kubernetes core/v1.ObjectReference
+[]*k8s.io/api/core/v1.ObjectReference
 </em>
 </td>
 <td>
 <em>(Optional)</em>
-Resource is an optional reference to the resource check bu the policy rule
+Resources is an optional reference to the resource checked by the policy and rule
+</td>
+</tr>
+<tr>
+<td>
+<code>resourceSelector</code></br>
+<em>
+Kubernetes meta/v1.LabelSelector
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+ResourceSelector is an optional selector for policy results that apply to multiple resources.
+For example, a policy result may apply to all pods that match a label.
+Either a Resource or a ResourceSelector can be specified. If neither are provided, the
+result is assumed to be for the policy report scope.
 </td>
 </tr>
 <tr>
@@ -278,6 +320,7 @@ int
 </em>
 </td>
 <td>
+Pass provides the count of policies whose requirements were met
 </td>
 </tr>
 <tr>
@@ -288,6 +331,7 @@ int
 </em>
 </td>
 <td>
+Fail provides the count of policies whose requirements were not met
 </td>
 </tr>
 <tr>
@@ -298,6 +342,7 @@ int
 </em>
 </td>
 <td>
+Warn provides the count of unscored policies whose requirements were not met
 </td>
 </tr>
 <tr>
@@ -308,6 +353,7 @@ int
 </em>
 </td>
 <td>
+Error provides the count of policies that could not be evaluated
 </td>
 </tr>
 <tr>
@@ -318,6 +364,7 @@ int
 </em>
 </td>
 <td>
+Skip indicates the count of policies that were not selected for evaluation
 </td>
 </tr>
 </tbody>
@@ -329,6 +376,12 @@ int
 <a href="#policy.kubernetes.io/v1alpha1.PolicyReportResult">PolicyReportResult</a>)
 </p>
 <p>
+PolicyStatus has one of the following values:
+- Pass: indicates that the policy requirements are met
+- Fail: indicates that the policy requirements are not met
+- Warn: indicates that the policy requirements and not met, and the policy is not scored
+- Error: indicates that the policy could not be evaluated
+- Skip: indicates that the policy was not selected based on user inputs or applicability
 </p>
 <hr/>
 <p><em>

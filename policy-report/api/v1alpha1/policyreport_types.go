@@ -63,9 +63,9 @@ type PolicyReportResult struct {
 	// +optional
 	Rule string `json:"rule,omitempty"`
 
-	// Resource is an optional reference to the resource checked by the policy
+	// Resources is an optional reference to the resource checked by the policy and rule
 	// +optional
-	Resource *corev1.ObjectReference `json:"resource,omitempty"`
+	Resources []*corev1.ObjectReference `json:"resources,omitempty"`
 
 
 	// ResourceSelector is an optional selector for policy results that apply to multiple resources.
