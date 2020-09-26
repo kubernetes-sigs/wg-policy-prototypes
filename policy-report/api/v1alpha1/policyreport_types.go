@@ -65,8 +65,23 @@ type PolicyReportResult struct {
 
 	// Resources is an optional reference to the resource checked by the policy and rule
 	// +optional
-	Resources []*corev1.ObjectReference `json:"resources,omitempty"`
+	Resources []*ResourceStatus `json:"resources,omitempty"`
 
+	// Message is a short user friendly description of the policy rule
+	Message string `json:"message,omitempty"`
+
+	// Scored indicates if this policy rule is scored
+	Scored bool `json:"scored,omitempty"`
+
+	// Data provides additional information for the policy rule
+	Data map[string]string `json:"data,omitempty"`
+}
+
+// ResourceStatus provides the resource status
+type ResourceStatus struct {
+
+	// Resource is an optional reference to the resource check bu the policy rule
+	Resource *corev1.ObjectReference `json:"resource,omitempty"`
 
 	// ResourceSelector is an optional selector for policy results that apply to multiple resources.
 	// For example, a policy result may apply to all pods that match a label.
@@ -75,17 +90,9 @@ type PolicyReportResult struct {
 	// +optional
 	ResourceSelector *metav1.LabelSelector `json:"resourceSelector,omitempty"`
 
-	// Message is a short user friendly description of the policy rule
-	Message string `json:"message,omitempty"`
 
 	// Status indicates the result of the policy rule check
 	Status PolicyStatus `json:"status,omitempty"`
-
-	// Scored indicates if this policy rule is scored
-	Scored bool `json:"scored,omitempty"`
-
-	// Data provides additional information for the policy rule
-	Data map[string]string `json:"data,omitempty"`
 }
 
 // +kubebuilder:object:root=true

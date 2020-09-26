@@ -223,27 +223,14 @@ Rule is the name of the policy rule
 <td>
 <code>resources</code></br>
 <em>
-[]*k8s.io/api/core/v1.ObjectReference
+<a href="#policy.kubernetes.io/v1alpha1.*github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/api/v1alpha1.ResourceStatus">
+[]*github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/api/v1alpha1.ResourceStatus
+</a>
 </em>
 </td>
 <td>
 <em>(Optional)</em>
 Resources is an optional reference to the resource checked by the policy and rule
-</td>
-</tr>
-<tr>
-<td>
-<code>resourceSelector</code></br>
-<em>
-Kubernetes meta/v1.LabelSelector
-</em>
-</td>
-<td>
-<em>(Optional)</em>
-ResourceSelector is an optional selector for policy results that apply to multiple resources.
-For example, a policy result may apply to all pods that match a label.
-Either a Resource or a ResourceSelector can be specified. If neither are provided, the
-result is assumed to be for the policy report scope.
 </td>
 </tr>
 <tr>
@@ -255,19 +242,6 @@ string
 </td>
 <td>
 Message is a short user friendly description of the policy rule
-</td>
-</tr>
-<tr>
-<td>
-<code>status</code></br>
-<em>
-<a href="#policy.kubernetes.io/v1alpha1.PolicyStatus">
-PolicyStatus
-</a>
-</em>
-</td>
-<td>
-Status indicates the result of the policy rule check
 </td>
 </tr>
 <tr>
@@ -373,7 +347,7 @@ Skip indicates the count of policies that were not selected for evaluation
 (<code>string</code> alias)</p></h3>
 <p>
 (<em>Appears on:</em>
-<a href="#policy.kubernetes.io/v1alpha1.PolicyReportResult">PolicyReportResult</a>)
+<a href="#policy.kubernetes.io/v1alpha1.ResourceStatus">ResourceStatus</a>)
 </p>
 <p>
 PolicyStatus has one of the following values:
@@ -383,6 +357,60 @@ PolicyStatus has one of the following values:
 - Error: indicates that the policy could not be evaluated
 - Skip: indicates that the policy was not selected based on user inputs or applicability
 </p>
+<h3 id="policy.kubernetes.io/v1alpha1.ResourceStatus">ResourceStatus
+</h3>
+<p>
+ResourceStatus provides the resource status
+</p>
+<table class="table table-striped">
+<thead class="thead-dark">
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>resource</code></br>
+<em>
+Kubernetes core/v1.ObjectReference
+</em>
+</td>
+<td>
+Resource is an optional reference to the resource check bu the policy rule
+</td>
+</tr>
+<tr>
+<td>
+<code>resourceSelector</code></br>
+<em>
+Kubernetes meta/v1.LabelSelector
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+ResourceSelector is an optional selector for policy results that apply to multiple resources.
+For example, a policy result may apply to all pods that match a label.
+Either a Resource or a ResourceSelector can be specified. If neither are provided, the
+result is assumed to be for the policy report scope.
+</td>
+</tr>
+<tr>
+<td>
+<code>status</code></br>
+<em>
+<a href="#policy.kubernetes.io/v1alpha1.PolicyStatus">
+PolicyStatus
+</a>
+</em>
+</td>
+<td>
+Status indicates the result of the policy rule check
+</td>
+</tr>
+</tbody>
+</table>
 <hr/>
 <p><em>
 Generated with <code>gen-crd-api-reference-docs</code>.
