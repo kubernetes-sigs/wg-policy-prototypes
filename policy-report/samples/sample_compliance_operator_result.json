@@ -1,0 +1,1473 @@
+{
+  "results_group" : {
+    "uuid" : "9ac70d0e-3acd-434e-bc89-237babc8215c",
+    "title" : "Results for Regulation NIST_SP-800-53_rev4_catalog.json.",
+    "description" : "Results for Regulation NIST_SP-800-53_rev4_catalog.json.",
+    "properties" : [
+      {
+        "name" : "requirement-set",
+        "value" : "NIST_SP-800-53_rev4_catalog.json"
+      }
+    ],
+    "start" : "2020-08-03T01:51:20+00:00",
+    "end" : "2020-08-03T02:26:31+00:00",
+    "findings" : [
+      {
+        "uuid" : "15a6ee75-f073-4bb9-87c9-4b022e57373b",
+        "title" : "Finding for the control NIST_SP-800-53_rev4_catalog.json and AC-3",
+        "description" : "Finding for the control NIST_SP-800-53_rev4_catalog.json and AC-3 collected from OCP4 and RHEL 7 with complete implementation",
+        "collected" : "2020-08-03T02:26:26+00:00",
+        "objective-status" : {
+          "description" : "Posture for the control NIST_SP-800-53_rev4_catalog.json and AC-3",
+          "control-id" : "AC-3",
+          "title" : "Posture for the control NIST_SP-800-53_rev4_catalog.json and AC-3",
+          "implementation-status" : {
+            "STRVALUE" : "COMPLETE",
+            "system" : "https://www.nist.gov"
+          },
+          "result" : {
+            "STRVALUE" : "FAIL",
+            "system" : "https://www.nist.gov"
+          }
+        },
+        "properties" : [
+          {
+            "ns" : "XCCDF",
+            "class" : "id",
+            "name" : "rule",
+            "value" : "xccdf_org.ssgproject.content_rule_file_permissions_worker_ca"
+          },
+          {
+            "ns" : "XCCDF",
+            "class" : "id",
+            "name" : "rule",
+            "value" : "xccdf_org.ssgproject.content_rule_etcd_peer_client_cert_auth"
+          },
+          {
+            "ns" : "XCCDF",
+            "class" : "id",
+            "name" : "rule",
+            "value" : "xccdf_org.ssgproject.content_rule_sshd_limit_user_access"
+          },
+          {
+            "ns" : "XCCDF",
+            "class" : "id",
+            "name" : "rule",
+            "value" : "xccdf_org.ssgproject.content_rule_disable_host_auth"
+          }
+        ],
+        "observations" : [
+          {
+            "uuid" : "fb09019e-64af-4963-aca6-ae5cd41d763d",
+            "description" : "xccdf_org.ssgproject.content_rule_sshd_limit_user_access",
+            "title" : "xccdf_org.ssgproject.content_rule_sshd_limit_user_access",
+            "annotations" : [
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-organization",
+                "value" : "Department of Commerce"
+              },
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-remark",
+                "value" : "Test run by Bob"
+              }
+            ],
+            "properties" : [
+              {
+                "ns" : "XCCDF",
+                "class" : "id",
+                "name" : "id",
+                "value" : "xccdf_org.example_testresult-test5"
+              },
+              {
+                "ns" : "XCCDF",
+                "class" : "timestamp",
+                "name" : "time",
+                "value" : "2020-08-03T02:26:31+00:00"
+              }
+            ],
+            "evidence-group" : [
+              {
+                "description" : "Evidence location.",
+                "href" : "https://github.ibm.com/degenaro/evidence-locker",
+                "properties" : [
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "id",
+                    "name" : "rule",
+                    "value" : "xccdf_org.ssgproject.content_rule_sshd_limit_user_access"
+                  },
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "result",
+                    "name" : "result",
+                    "value" : "NOTCHECKED"
+                  }
+                ]
+              }
+            ],
+            "subject-references" : [
+              {
+                "uuid-ref" : "89cfe7a7-ce6b-4699-aa7b-2f5739c72001",
+                "type" : "component",
+                "title" : "RedHat Enterprise Linux 7.8"
+              },
+              {
+                "uuid-ref" : "46aADFAC-A1fd-4Cf0-a6aA-d1AfAb3e0d4e",
+                "type" : "inventory-item",
+                "title" : "VM",
+                "props" : [
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "target",
+                    "value" : "kube-br7qsa3d0vceu2so1a90-roksopensca-default-00000338.iks.ibm"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-name",
+                    "value" : "ROKS-OpenSCAP-1"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-type",
+                    "value" : "openshift"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "location",
+                    "name" : "cluster-region",
+                    "value" : "us-south"
+                  }
+                ]
+              }
+            ],
+            "observation-methods" : [
+              "TEST-AUTOMATED"
+            ]
+          },
+          {
+            "uuid" : "1211aba3-53db-4bda-a893-456225f05d36",
+            "description" : "xccdf_org.ssgproject.content_rule_sshd_limit_user_access",
+            "title" : "xccdf_org.ssgproject.content_rule_sshd_limit_user_access",
+            "annotations" : [
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-organization",
+                "value" : "Department of Commerce"
+              },
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-remark",
+                "value" : "Test run by Bob"
+              }
+            ],
+            "properties" : [
+              {
+                "ns" : "XCCDF",
+                "class" : "id",
+                "name" : "id",
+                "value" : "xccdf_org.example_testresult-test5"
+              },
+              {
+                "ns" : "XCCDF",
+                "class" : "timestamp",
+                "name" : "time",
+                "value" : "2020-08-03T02:26:31+00:00"
+              }
+            ],
+            "evidence-group" : [
+              {
+                "description" : "Evidence location.",
+                "href" : "https://github.ibm.com/degenaro/evidence-locker",
+                "properties" : [
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "id",
+                    "name" : "rule",
+                    "value" : "xccdf_org.ssgproject.content_rule_sshd_limit_user_access"
+                  },
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "result",
+                    "name" : "result",
+                    "value" : "NOTCHECKED"
+                  }
+                ]
+              }
+            ],
+            "subject-references" : [
+              {
+                "uuid-ref" : "89cfe7a7-ce6b-4699-aa7b-2f5739c72001",
+                "type" : "component",
+                "title" : "RedHat Enterprise Linux 7.8"
+              },
+              {
+                "uuid-ref" : "46aADFAC-A1fd-4Cf0-a6aA-d1AfAb3e0d4f",
+                "type" : "inventory-item",
+                "title" : "VM",
+                "props" : [
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "target",
+                    "value" : "kube-br7qsa3d0vceu2so1a90-roksopensca-default-000001fe.iks.ibm"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-name",
+                    "value" : "ROKS-OpenSCAP-1"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-type",
+                    "value" : "openshift"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "location",
+                    "name" : "cluster-region",
+                    "value" : "us-south"
+                  }
+                ]
+              }
+            ],
+            "observation-methods" : [
+              "TEST-AUTOMATED"
+            ]
+          },
+          {
+            "uuid" : "24ac0aee-783f-404e-8705-24696e122beb",
+            "description" : "xccdf_org.ssgproject.content_rule_sshd_limit_user_access",
+            "title" : "xccdf_org.ssgproject.content_rule_sshd_limit_user_access",
+            "annotations" : [
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-organization",
+                "value" : "Department of Commerce"
+              },
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-remark",
+                "value" : "Test run by Bob"
+              }
+            ],
+            "properties" : [
+              {
+                "ns" : "XCCDF",
+                "class" : "id",
+                "name" : "id",
+                "value" : "xccdf_org.example_testresult-test5"
+              },
+              {
+                "ns" : "XCCDF",
+                "class" : "timestamp",
+                "name" : "time",
+                "value" : "2020-08-03T02:26:31+00:00"
+              }
+            ],
+            "evidence-group" : [
+              {
+                "description" : "Evidence location.",
+                "href" : "https://github.ibm.com/degenaro/evidence-locker",
+                "properties" : [
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "id",
+                    "name" : "rule",
+                    "value" : "xccdf_org.ssgproject.content_rule_sshd_limit_user_access"
+                  },
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "result",
+                    "name" : "result",
+                    "value" : "NOTCHECKED"
+                  }
+                ]
+              }
+            ],
+            "subject-references" : [
+              {
+                "uuid-ref" : "89cfe7a7-ce6b-4699-aa7b-2f5739c72001",
+                "type" : "component",
+                "title" : "RedHat Enterprise Linux 7.8"
+              },
+              {
+                "uuid-ref" : "46aADFAC-A1fd-4Cf0-a6aA-d1AfAb3e0d3e",
+                "type" : "inventory-item",
+                "title" : "VM",
+                "props" : [
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "target",
+                    "value" : "kube-br7qsa3d0vceu2so1a90-roksopensca-default-0000026b.iks.ibm"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-name",
+                    "value" : "ROKS-OpenSCAP-1"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-type",
+                    "value" : "openshift"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "location",
+                    "name" : "cluster-region",
+                    "value" : "us-south"
+                  }
+                ]
+              }
+            ],
+            "observation-methods" : [
+              "TEST-AUTOMATED"
+            ]
+          },
+          {
+            "uuid" : "b3848d89-dc88-487b-9a29-c36cb0a52733",
+            "description" : "xccdf_org.ssgproject.content_rule_disable_host_auth",
+            "title" : "xccdf_org.ssgproject.content_rule_disable_host_auth",
+            "annotations" : [
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-organization",
+                "value" : "Department of Commerce"
+              },
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-remark",
+                "value" : "Test run by Bob"
+              }
+            ],
+            "properties" : [
+              {
+                "ns" : "XCCDF",
+                "class" : "id",
+                "name" : "id",
+                "value" : "xccdf_org.example_testresult-test5"
+              },
+              {
+                "ns" : "XCCDF",
+                "class" : "timestamp",
+                "name" : "time",
+                "value" : "2020-08-03T02:26:31+00:00"
+              }
+            ],
+            "evidence-group" : [
+              {
+                "description" : "Evidence location.",
+                "href" : "https://github.ibm.com/degenaro/evidence-locker",
+                "properties" : [
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "id",
+                    "name" : "rule",
+                    "value" : "xccdf_org.ssgproject.content_rule_disable_host_auth"
+                  },
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "result",
+                    "name" : "result",
+                    "value" : "PASS"
+                  }
+                ]
+              }
+            ],
+            "subject-references" : [
+              {
+                "uuid-ref" : "89cfe7a7-ce6b-4699-aa7b-2f5739c72001",
+                "type" : "component",
+                "title" : "RedHat Enterprise Linux 7.8"
+              },
+              {
+                "uuid-ref" : "46aADFAC-A1fd-4Cf0-a6aA-d1AfAb3e0d4e",
+                "type" : "inventory-item",
+                "title" : "VM",
+                "props" : [
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "target",
+                    "value" : "kube-br7qsa3d0vceu2so1a90-roksopensca-default-00000338.iks.ibm"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-name",
+                    "value" : "ROKS-OpenSCAP-1"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-type",
+                    "value" : "openshift"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "location",
+                    "name" : "cluster-region",
+                    "value" : "us-south"
+                  }
+                ]
+              }
+            ],
+            "observation-methods" : [
+              "TEST-AUTOMATED"
+            ]
+          },
+          {
+            "uuid" : "bbeaaf1b-0602-4061-a228-83f04e3f3e23",
+            "description" : "xccdf_org.ssgproject.content_rule_disable_host_auth",
+            "title" : "xccdf_org.ssgproject.content_rule_disable_host_auth",
+            "annotations" : [
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-organization",
+                "value" : "Department of Commerce"
+              },
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-remark",
+                "value" : "Test run by Bob"
+              }
+            ],
+            "properties" : [
+              {
+                "ns" : "XCCDF",
+                "class" : "id",
+                "name" : "id",
+                "value" : "xccdf_org.example_testresult-test5"
+              },
+              {
+                "ns" : "XCCDF",
+                "class" : "timestamp",
+                "name" : "time",
+                "value" : "2020-08-03T02:26:31+00:00"
+              }
+            ],
+            "evidence-group" : [
+              {
+                "description" : "Evidence location.",
+                "href" : "https://github.ibm.com/degenaro/evidence-locker",
+                "properties" : [
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "id",
+                    "name" : "rule",
+                    "value" : "xccdf_org.ssgproject.content_rule_disable_host_auth"
+                  },
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "result",
+                    "name" : "result",
+                    "value" : "PASS"
+                  }
+                ]
+              }
+            ],
+            "subject-references" : [
+              {
+                "uuid-ref" : "89cfe7a7-ce6b-4699-aa7b-2f5739c72001",
+                "type" : "component",
+                "title" : "RedHat Enterprise Linux 7.8"
+              },
+              {
+                "uuid-ref" : "46aADFAC-A1fd-4Cf0-a6aA-d1AfAb3e0d4f",
+                "type" : "inventory-item",
+                "title" : "VM",
+                "props" : [
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "target",
+                    "value" : "kube-br7qsa3d0vceu2so1a90-roksopensca-default-000001fe.iks.ibm"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-name",
+                    "value" : "ROKS-OpenSCAP-1"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-type",
+                    "value" : "openshift"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "location",
+                    "name" : "cluster-region",
+                    "value" : "us-south"
+                  }
+                ]
+              }
+            ],
+            "observation-methods" : [
+              "TEST-AUTOMATED"
+            ]
+          },
+          {
+            "uuid" : "05950d14-c39c-4654-9aa1-446295cd8956",
+            "description" : "xccdf_org.ssgproject.content_rule_disable_host_auth",
+            "title" : "xccdf_org.ssgproject.content_rule_disable_host_auth",
+            "annotations" : [
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-organization",
+                "value" : "Department of Commerce"
+              },
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-remark",
+                "value" : "Test run by Bob"
+              }
+            ],
+            "properties" : [
+              {
+                "ns" : "XCCDF",
+                "class" : "id",
+                "name" : "id",
+                "value" : "xccdf_org.example_testresult-test5"
+              },
+              {
+                "ns" : "XCCDF",
+                "class" : "timestamp",
+                "name" : "time",
+                "value" : "2020-08-03T02:26:31+00:00"
+              }
+            ],
+            "evidence-group" : [
+              {
+                "description" : "Evidence location.",
+                "href" : "https://github.ibm.com/degenaro/evidence-locker",
+                "properties" : [
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "id",
+                    "name" : "rule",
+                    "value" : "xccdf_org.ssgproject.content_rule_disable_host_auth"
+                  },
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "result",
+                    "name" : "result",
+                    "value" : "PASS"
+                  }
+                ]
+              }
+            ],
+            "subject-references" : [
+              {
+                "uuid-ref" : "89cfe7a7-ce6b-4699-aa7b-2f5739c72001",
+                "type" : "component",
+                "title" : "RedHat Enterprise Linux 7.8"
+              },
+              {
+                "uuid-ref" : "46aADFAC-A1fd-4Cf0-a6aA-d1AfAb3e0d3e",
+                "type" : "inventory-item",
+                "title" : "VM",
+                "props" : [
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "target",
+                    "value" : "kube-br7qsa3d0vceu2so1a90-roksopensca-default-0000026b.iks.ibm"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-name",
+                    "value" : "ROKS-OpenSCAP-1"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-type",
+                    "value" : "openshift"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "location",
+                    "name" : "cluster-region",
+                    "value" : "us-south"
+                  }
+                ]
+              }
+            ],
+            "observation-methods" : [
+              "TEST-AUTOMATED"
+            ]
+          },
+          {
+            "uuid" : "9879b06a-c09e-4feb-a54a-1b7bcf61befe",
+            "description" : "xccdf_org.ssgproject.content_rule_file_permissions_worker_ca",
+            "title" : "xccdf_org.ssgproject.content_rule_file_permissions_worker_ca",
+            "annotations" : [
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-organization",
+                "value" : "Department of Commerce"
+              },
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-remark",
+                "value" : "Test run by Bob"
+              }
+            ],
+            "properties" : [
+              {
+                "ns" : "XCCDF",
+                "class" : "id",
+                "name" : "id",
+                "value" : "xccdf_org.example_testresult-test4"
+              },
+              {
+                "ns" : "XCCDF",
+                "class" : "timestamp",
+                "name" : "time",
+                "value" : "2020-08-03T02:26:31+00:00"
+              }
+            ],
+            "evidence-group" : [
+              {
+                "description" : "Evidence location.",
+                "href" : "https://github.ibm.com/degenaro/evidence-locker",
+                "properties" : [
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "id",
+                    "name" : "rule",
+                    "value" : "xccdf_org.ssgproject.content_rule_file_permissions_worker_ca"
+                  },
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "result",
+                    "name" : "result",
+                    "value" : "FAIL"
+                  }
+                ]
+              }
+            ],
+            "subject-references" : [
+              {
+                "uuid-ref" : "56666738-0f9a-4e38-9aac-c0fad00a5821",
+                "type" : "component",
+                "title" : "Red Hat OpenShift Kubernetes"
+              },
+              {
+                "uuid-ref" : "46aADFAC-A1fd-4Cf0-a6aA-d1AfAb3e0d3e",
+                "type" : "inventory-item",
+                "title" : "worker-node",
+                "props" : [
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "target",
+                    "value" : "kube-br7qsa3d0vceu2so1a90-roksopensca-default-0000026b.iks.ibm"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-name",
+                    "value" : "ROKS-OpenSCAP-1"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-type",
+                    "value" : "openshift"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "location",
+                    "name" : "cluster-region",
+                    "value" : "us-south"
+                  }
+                ]
+              }
+            ],
+            "observation-methods" : [
+              "TEST-AUTOMATED"
+            ]
+          },
+          {
+            "uuid" : "0bb48bca-1551-4579-b2c3-f57f9a3e6780",
+            "description" : "xccdf_org.ssgproject.content_rule_file_permissions_worker_ca",
+            "title" : "xccdf_org.ssgproject.content_rule_file_permissions_worker_ca",
+            "annotations" : [
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-organization",
+                "value" : "Department of Commerce"
+              },
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-remark",
+                "value" : "Test run by Bob"
+              }
+            ],
+            "properties" : [
+              {
+                "ns" : "XCCDF",
+                "class" : "id",
+                "name" : "id",
+                "value" : "xccdf_org.example_testresult-test4"
+              },
+              {
+                "ns" : "XCCDF",
+                "class" : "timestamp",
+                "name" : "time",
+                "value" : "2020-08-03T02:26:31+00:00"
+              }
+            ],
+            "evidence-group" : [
+              {
+                "description" : "Evidence location.",
+                "href" : "https://github.ibm.com/degenaro/evidence-locker",
+                "properties" : [
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "id",
+                    "name" : "rule",
+                    "value" : "xccdf_org.ssgproject.content_rule_file_permissions_worker_ca"
+                  },
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "result",
+                    "name" : "result",
+                    "value" : "FAIL"
+                  }
+                ]
+              }
+            ],
+            "subject-references" : [
+              {
+                "uuid-ref" : "56666738-0f9a-4e38-9aac-c0fad00a5821",
+                "type" : "component",
+                "title" : "Red Hat OpenShift Kubernetes"
+              },
+              {
+                "uuid-ref" : "46aADFAC-A1fd-4Cf0-a6aA-d1AfAb3e0d4f",
+                "type" : "inventory-item",
+                "title" : "worker-node",
+                "props" : [
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "target",
+                    "value" : "kube-br7qsa3d0vceu2so1a90-roksopensca-default-000001fe.iks.ibm"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-name",
+                    "value" : "ROKS-OpenSCAP-1"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-type",
+                    "value" : "openshift"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "location",
+                    "name" : "cluster-region",
+                    "value" : "us-south"
+                  }
+                ]
+              }
+            ],
+            "observation-methods" : [
+              "TEST-AUTOMATED"
+            ]
+          },
+          {
+            "uuid" : "3ec9a94c-7c72-4d62-8952-f30a0d9f8e3a",
+            "description" : "xccdf_org.ssgproject.content_rule_file_permissions_worker_ca",
+            "title" : "xccdf_org.ssgproject.content_rule_file_permissions_worker_ca",
+            "annotations" : [
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-organization",
+                "value" : "Department of Commerce"
+              },
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-remark",
+                "value" : "Test run by Bob"
+              }
+            ],
+            "properties_copy" : [
+              {
+                "ns" : "XCCDF",
+                "class" : "id",
+                "name" : "id",
+                "value" : "xccdf_org.example_testresult-test4"
+              },
+              {
+                "ns" : "XCCDF",
+                "class" : "timestamp",
+                "name" : "time",
+                "value" : "2020-08-03T02:26:31+00:00"
+              }
+            ],
+            "evidence-group" : [
+              {
+                "description" : "Evidence location.",
+                "href" : "https://github.ibm.com/degenaro/evidence-locker",
+                "properties" : [
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "id",
+                    "name" : "rule",
+                    "value" : "xccdf_org.ssgproject.content_rule_file_permissions_worker_ca"
+                  },
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "result",
+                    "name" : "result",
+                    "value" : "FAIL"
+                  }
+                ]
+              }
+            ],
+            "subject-references" : [
+              {
+                "uuid-ref" : "56666738-0f9a-4e38-9aac-c0fad00a5821",
+                "type" : "component",
+                "title" : "Red Hat OpenShift Kubernetes"
+              },
+              {
+                "uuid-ref" : "46aADFAC-A1fd-4Cf0-a6aA-d1AfAb3e0d4e",
+                "type" : "inventory-item",
+                "title" : "worker-node",
+                "props" : [
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "target",
+                    "value" : "kube-br7qsa3d0vceu2so1a90-roksopensca-default-00000338.iks.ibm"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-name",
+                    "value" : "ROKS-OpenSCAP-1"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-type",
+                    "value" : "openshift"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "location",
+                    "name" : "cluster-region",
+                    "value" : "us-south"
+                  }
+                ]
+              }
+            ],
+            "observation-methods" : [
+              "TEST-AUTOMATED"
+            ]
+          },
+          {
+            "uuid" : "f65b169b-87f1-42e1-b5c8-580788c6a6e0",
+            "description" : "xccdf_org.ssgproject.content_rule_etcd_peer_client_cert_auth",
+            "title" : "xccdf_org.ssgproject.content_rule_etcd_peer_client_cert_auth",
+            "annotations" : [
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-organization",
+                "value" : "Department of Commerce"
+              },
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-remark",
+                "value" : "Test run by Bob"
+              }
+            ],
+            "properties" : [
+              {
+                "ns" : "XCCDF",
+                "class" : "id",
+                "name" : "id",
+                "value" : "xccdf_org.example_testresult-test5"
+              },
+              {
+                "ns" : "XCCDF",
+                "class" : "timestamp",
+                "name" : "time",
+                "value" : "2020-08-03T02:26:31+00:00"
+              }
+            ],
+            "evidence-group" : [
+              {
+                "description" : "Evidence location.",
+                "href" : "https://github.ibm.com/degenaro/evidence-locker",
+                "properties" : [
+                  {
+                    "ns" : "XCCDF",
+                    "class0" : "id",
+                    "name" : "rule",
+                    "value" : "xccdf_org.ssgproject.content_rule_etcd_peer_client_cert_auth"
+                  },
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "result",
+                    "name" : "result",
+                    "value" : "FAIL"
+                  }
+                ]
+              }
+            ],
+            "subject-references" : [
+              {
+                "uuid-ref" : "56666738-0f9a-4e38-9aac-c0fad00a5821",
+                "type" : "component",
+                "title" : "Red Hat OpenShift Kubernetes"
+              },
+              {
+                "uuid-ref" : "46aADFAC-A1fd-4Cf0-a6aA-d1AfAb3e0d3e",
+                "type" : "inventory-item",
+                "title" : "worker-node",
+                "props" : [
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "target",
+                    "value" : "kube-br7qsa3d0vceu2so1a90-roksopensca-default-0000026b.iks.ibm"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-name",
+                    "value" : "ROKS-OpenSCAP-1"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-type",
+                    "value" : "openshift"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "location",
+                    "name" : "cluster-region",
+                    "value" : "us-south"
+                  }
+                ]
+              }
+            ],
+            "observation-methods" : [
+              "TEST-AUTOMATED"
+            ]
+          },
+          {
+            "uuid" : "b9200556-e317-44f3-b178-c645efc99adb",
+            "description" : "xccdf_org.ssgproject.content_rule_etcd_peer_client_cert_auth",
+            "title" : "xccdf_org.ssgproject.content_rule_etcd_peer_client_cert_auth",
+            "annotations" : [
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-organization",
+                "value" : "Department of Commerce"
+              },
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-remark",
+                "value" : "Test run by Bob"
+              }
+            ],
+            "properties" : [
+              {
+                "ns" : "XCCDF",
+                "class" : "id",
+                "name" : "id",
+                "value" : "xccdf_org.example_testresult-test4"
+              },
+              {
+                "ns" : "XCCDF",
+                "class" : "timestamp",
+                "name" : "time",
+                "value" : "2020-08-03T02:26:31+00:00"
+              }
+            ],
+            "evidence-group" : [
+              {
+                "description" : "Evidence location.",
+                "href" : "https://github.ibm.com/degenaro/evidence-locker",
+                "properties" : [
+                  {
+                    "ns" : "XCCDF",
+                    "class0" : "id",
+                    "name" : "rule",
+                    "value" : "xccdf_org.ssgproject.content_rule_etcd_peer_client_cert_auth"
+                  },
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "result",
+                    "name" : "result",
+                    "value" : "FAIL"
+                  }
+                ]
+              }
+            ],
+            "subject-references" : [
+              {
+                "uuid-ref" : "56666738-0f9a-4e38-9aac-c0fad00a5821",
+                "type" : "component",
+                "title" : "Red Hat OpenShift Kubernetes"
+              },
+              {
+                "uuid-ref" : "46aADFAC-A1fd-4Cf0-a6aA-d1AfAb3e0d4f",
+                "type" : "inventory-item",
+                "title" : "worker-node",
+                "props" : [
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "target",
+                    "value" : "kube-br7qsa3d0vceu2so1a90-roksopensca-default-000001fe.iks.ibm"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-name",
+                    "value" : "ROKS-OpenSCAP-1"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-type",
+                    "value" : "openshift"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "location",
+                    "name" : "cluster-region",
+                    "value" : "us-south"
+                  }
+                ]
+              }
+            ],
+            "observation-methods" : [
+              "TEST-AUTOMATED"
+            ]
+          },
+          {
+            "uuid" : "06bd1862-2fb6-40df-b7f0-8eac33da2ee0",
+            "description" : "xccdf_org.ssgproject.content_rule_etcd_peer_client_cert_auth",
+            "title" : "xccdf_org.ssgproject.content_rule_etcd_peer_client_cert_auth",
+            "annotations" : [
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-organization",
+                "value" : "Department of Commerce"
+              },
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-remark",
+                "value" : "Test run by Bob"
+              }
+            ],
+            "properties" : [
+              {
+                "ns" : "XCCDF",
+                "class" : "id",
+                "name" : "id",
+                "value" : "xccdf_org.example_testresult-test5"
+              },
+              {
+                "ns" : "XCCDF",
+                "class" : "timestamp",
+                "name" : "time",
+                "value" : "2020-08-03T02:26:31+00:00"
+              }
+            ],
+            "evidence-group" : [
+              {
+                "description" : "Evidence location.",
+                "href" : "https://github.ibm.com/degenaro/evidence-locker",
+                "properties" : [
+                  {
+                    "ns" : "XCCDF",
+                    "class0" : "id",
+                    "name" : "rule",
+                    "value" : "xccdf_org.ssgproject.content_rule_etcd_peer_client_cert_auth"
+                  },
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "result",
+                    "name" : "result",
+                    "value" : "FAIL"
+                  }
+                ]
+              }
+            ],
+            "subject-references" : [
+              {
+                "uuid-ref" : "56666738-0f9a-4e38-9aac-c0fad00a5821",
+                "type" : "component",
+                "title" : "Red Hat OpenShift Kubernetes"
+              },
+              {
+                "uuid-ref" : "46aADFAC-A1fd-4Cf0-a6aA-d1AfAb3e0d4e",
+                "type" : "inventory-item",
+                "title" : "worker-node",
+                "props" : [
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "target",
+                    "value" : "kube-br7qsa3d0vceu2so1a90-roksopensca-default-00000338.iks.ibm"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-name",
+                    "value" : "ROKS-OpenSCAP-1"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-type",
+                    "value" : "openshift"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "location",
+                    "name" : "cluster-region",
+                    "value" : "us-south"
+                  }
+                ]
+              }
+            ],
+            "observation-methods" : [
+              "TEST-AUTOMATED"
+            ]
+          }
+        ]
+      },
+      {
+        "uuid" : "4016577b-6bed-4da4-8846-dfa768bf98e9",
+        "title" : "Finding for the control NIST_SP-800-53_rev4_catalog.json and AU-3",
+        "description" : "Finding for the control NIST_SP-800-53_rev4_catalog.json and AU-3 collected from RHEL  7 with partial implementation",
+        "collected" : "2020-08-03T01:51:20+00:00",
+        "objective-status" : {
+          "description" : "Posture for the control NIST_SP-800-53_rev4_catalog.json and AU-3",
+          "control-id" : "AU-3",
+          "title" : "Posture for the control NIST_SP-800-53_rev4_catalog.json and AU-3",
+          "implementation-status" : {
+            "STRVALUE" : "PARTIAL",
+            "system" : "https://www.nist.gov"
+          },
+          "result" : {
+            "STRVALUE" : "PARTIAL-PASS",
+            "system" : "https://www.nist.gov"
+          }
+        },
+        "properties" : [
+          {
+            "ns" : "XCCDF",
+            "class" : "id",
+            "name" : "XCCDF_rule",
+            "value" : "xccdf_org.ssgproject.content_rule_service_auditd_enabled"
+          }
+        ],
+        "observations" : [
+          {
+            "uuid" : "fb77534b-6fc5-43eb-948e-7801b7b43807",
+            "description" : "xccdf_org.ssgproject.content_rule_service_auditd_enabled",
+            "title" : "xccdf_org.ssgproject.content_rule_service_auditd_enabled",
+            "annotations" : [
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-organization",
+                "value" : "Department of Commerce"
+              },
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-remark",
+                "value" : "Test run by Bob"
+              }
+            ],
+            "properties" : [
+              {
+                "ns" : "XCCDF",
+                "class" : "timestamp",
+                "name" : "time",
+                "value" : "2020-08-03T02:26:31+00:00"
+              },
+              {
+                "ns" : "XCCDF",
+                "class" : "id",
+                "name" : "id",
+                "value" : "xccdf_org.example_testresult-test5"
+              }
+            ],
+            "evidence-group" : [
+              {
+                "description" : "Evidence location.",
+                "href" : "https://github.ibm.com/degenaro/evidence-locker",
+                "properties" : [
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "id",
+                    "name" : "XCCDF_rule",
+                    "value" : "xccdf_org.ssgproject.content_rule_service_auditd_enabled"
+                  },
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "result",
+                    "name" : "result",
+                    "value" : "PASS"
+                  }
+                ]
+              }
+            ],
+            "subject-references" : [
+              {
+                "uuid-ref" : "89cfe7a7-ce6b-4699-aa7b-2f5739c72001",
+                "type" : "component",
+                "title" : "RedHat Enterprise Linux 7.8"
+              },
+              {
+                "uuid-ref" : "46aADFAC-A1fd-4Cf0-a6aA-d1AfAb3e0d3e",
+                "type" : "inventory-item",
+                "title" : "VM",
+                "props" : [
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "target",
+                    "value" : "kube-br7qsa3d0vceu2so1a90-roksopensca-default-0000026b.iks.ibm"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-name",
+                    "value" : "ROKS-OpenSCAP-1"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-type",
+                    "value" : "openshift"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "location",
+                    "name" : "cluster-region",
+                    "value" : "us-south"
+                  }
+                ]
+              }
+            ],
+            "observation-methods" : [
+              "TEST-AUTOMATED"
+            ]
+          },
+          {
+            "uuid" : "839ea6a6-5322-4f35-8bbd-1b7173adfaa1",
+            "description" : "xccdf_org.ssgproject.content_rule_service_auditd_enabled",
+            "title" : "xccdf_org.ssgproject.content_rule_service_auditd_enabled",
+            "annotations" : [
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-organization",
+                "value" : "Department of Commerce"
+              },
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-remark",
+                "value" : "Test run by Bob"
+              }
+            ],
+            "properties" : [
+              {
+                "ns" : "XCCDF",
+                "class" : "timestamp",
+                "name" : "time",
+                "value" : "2020-08-03T02:26:31+00:00"
+              },
+              {
+                "ns" : "XCCDF",
+                "class" : "id",
+                "name" : "id",
+                "value" : "xccdf_org.example_testresult-test5"
+              }
+            ],
+            "evidence-group" : [
+              {
+                "description" : "Evidence location.",
+                "href" : "https://github.ibm.com/degenaro/evidence-locker",
+                "properties" : [
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "id",
+                    "name" : "XCCDF_rule",
+                    "value" : "xccdf_org.ssgproject.content_rule_service_auditd_enabled"
+                  },
+                  {
+                    "ns" : "XCCDF",
+                    "name" : "result",
+                    "value" : "xccdf_org.ssgproject.content_rule_service_auditd_enabled",
+                    "class" : "PASS"
+                  }
+                ]
+              }
+            ],
+            "subject-references" : [
+              {
+                "uuid-ref" : "89cfe7a7-ce6b-4699-aa7b-2f5739c72001",
+                "type" : "component",
+                "title" : "RedHat Enterprise Linux 7.8"
+              },
+              {
+                "uuid-ref" : "46aADFAC-A1fd-4Cf0-a6aA-d1AfAb3e0d4f",
+                "type" : "inventory-item",
+                "title" : "VM",
+                "props" : [
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "target",
+                    "value" : "kube-br7qsa3d0vceu2so1a90-roksopensca-default-000001fe.iks.ibm"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-name",
+                    "value" : "ROKS-OpenSCAP-1"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-type",
+                    "value" : "openshift"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "location",
+                    "name" : "cluster-region",
+                    "value" : "us-south"
+                  }
+                ]
+              }
+            ],
+            "observation-methods" : [
+              "TEST-AUTOMATED"
+            ]
+          },
+          {
+            "uuid" : "622464c9-44da-4d10-a3ee-99b500c3932e",
+            "description" : "xccdf_org.ssgproject.content_rule_service_auditd_enabled",
+            "title" : "xccdf_org.ssgproject.content_rule_service_auditd_enabled",
+            "annotations" : [
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-organization",
+                "value" : "Department of Commerce"
+              },
+              {
+                "ns" : "XCCDF",
+                "name" : "TestResult-remark",
+                "value" : "Test run by Bob"
+              }
+            ],
+            "properties" : [
+              {
+                "ns" : "XCCDF",
+                "class" : "timestamp",
+                "name" : "time",
+                "value" : "2020-08-03T02:26:31+00:00"
+              },
+              {
+                "ns" : "XCCDF",
+                "class" : "id",
+                "name" : "id",
+                "value" : "xccdf_org.example_testresult-test5"
+              }
+            ],
+            "evidence-group" : [
+              {
+                "description" : "Evidence location.",
+                "href" : "https://github.ibm.com/degenaro/evidence-locker",
+                "properties" : [
+                  {
+                    "ns" : "XCCDF",
+                    "class" : "id",
+                    "name" : "XCCDF_rule",
+                    "value" : "xccdf_org.ssgproject.content_rule_service_auditd_enabled"
+                  },
+                  {
+                    "ns" : "XCCDF",
+                    "name" : "result",
+                    "value" : "resullt",
+                    "class" : "PASS"
+                  }
+                ]
+              }
+            ],
+            "subject-references" : [
+              {
+                "uuid-ref" : "89cfe7a7-ce6b-4699-aa7b-2f5739c72001",
+                "type" : "component",
+                "title" : "RedHat Enterprise Linux 7.8"
+              },
+              {
+                "uuid-ref" : "46aADFAC-A1fd-4Cf0-a6aA-d1AfAb3e0d4e",
+                "type" : "inventory-item",
+                "title" : "VM",
+                "props" : [
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "target",
+                    "value" : "kube-br7qsa3d0vceu2so1a90-roksopensca-default-00000338.iks.ibm"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-name",
+                    "value" : "ROKS-OpenSCAP-1"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "id",
+                    "name" : "cluster-type",
+                    "value" : "openshift"
+                  },
+                  {
+                    "ns" : "IBM",
+                    "class" : "location",
+                    "name" : "cluster-region",
+                    "value" : "us-south"
+                  }
+                ]
+              }
+            ],
+            "observation-methods" : [
+              "TEST-AUTOMATED"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
