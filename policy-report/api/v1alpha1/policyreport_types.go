@@ -82,6 +82,13 @@ type ResourceStatus struct {
 	// Resource is an optional reference to the resource check bu the policy rule
 	Resource *corev1.ObjectReference `json:"resource,omitempty"`
 
+	// ResourceSelector is an optional selector for policy results that apply to multiple resources.
+	// For example, a policy result may apply to all pods that match a label.
+	// Either a Resource or a ResourceSelector can be specified. If neither are provided, the
+	// result is assumed to be for the policy report scope.
+	// +optional
+	ResourceSelector *metav1.LabelSelector `json:"resourceSelector,omitempty"`
+
 	// Status indicates the result of the policy rule check
 	Status PolicyStatus `json:"status,omitempty"`
 }

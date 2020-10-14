@@ -18,23 +18,15 @@ summary:
 results:
   - policy: api-server:anonymous-auth
     message: ensure that --anonymous-auth argument is set to false
-    status: Warn
+    resources:
+      - status: Warn
+        resource:
+          kind: Pod
+          Namespace: default
+          Name: test
     scored: true
     data:
       category: API Server
       index:  1.2.1
-  - policy: api-server:basic-auth-file
-    message: ensure that --basic-auth-file argument is not set
-    status: Fail
-    scored: true
-    data:
-      category: API Server
-      index:  1.2.2
-  - policy: api-server:token-auth-file
-    message: ensure that --token-auth-file argument is not set
-    status: Warn
-    scored: false
-    data:
-      category: API Server
-      index:  1.2.2
+
 
