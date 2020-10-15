@@ -91,8 +91,8 @@ PolicyReportSummary provides a summary of results
 <td>
 <code>results</code></br>
 <em>
-<a href="#policy.kubernetes.io/v1alpha1.*github.com/realshuting/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult">
-[]*github.com/realshuting/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult
+<a href="#policy.kubernetes.io/v1alpha1.*sigs.k8s.io/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult">
+[]*sigs.k8s.io/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult
 </a>
 </em>
 </td>
@@ -171,8 +171,8 @@ PolicyReportSummary provides a summary of results
 <td>
 <code>results</code></br>
 <em>
-<a href="#policy.kubernetes.io/v1alpha1.*github.com/realshuting/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult">
-[]*github.com/realshuting/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult
+<a href="#policy.kubernetes.io/v1alpha1.*sigs.k8s.io/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult">
+[]*sigs.k8s.io/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult
 </a>
 </em>
 </td>
@@ -292,32 +292,6 @@ map[string]string
 Data provides additional information for the policy rule
 </td>
 </tr>
-<tr>
-<td>
-<code>category</code></br>
-<em>
-string
-</em>
-</td>
-<td>
-<em>(Optional)</em>
-Category indicates policy category
-</td>
-</tr>
-<tr>
-<td>
-<code>severity</code></br>
-<em>
-<a href="#policy.kubernetes.io/v1alpha1.PolicySeverity">
-PolicySeverity
-</a>
-</em>
-</td>
-<td>
-<em>(Optional)</em>
-Severity indicates policy severity
-</td>
-</tr>
 </tbody>
 </table>
 <h3 id="policy.kubernetes.io/v1alpha1.PolicyReportSummary">PolicyReportSummary
@@ -395,18 +369,6 @@ Skip indicates the count of policies that were not selected for evaluation
 </tr>
 </tbody>
 </table>
-<h3 id="policy.kubernetes.io/v1alpha1.PolicySeverity">PolicySeverity
-(<code>string</code> alias)</p></h3>
-<p>
-(<em>Appears on:</em>
-<a href="#policy.kubernetes.io/v1alpha1.PolicyReportResult">PolicyReportResult</a>)
-</p>
-<p>
-PolicySeverity has one of the following values:
-- High
-- Low
-- Medium
-</p>
 <h3 id="policy.kubernetes.io/v1alpha1.PolicyStatus">PolicyStatus
 (<code>string</code> alias)</p></h3>
 <p>

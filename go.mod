@@ -1,4 +1,4 @@
-module github.com/realshuting/wg-policy-prototypes
+module sigs.k8s.io/wg-policy-prototypes
 
 go 1.15
 
