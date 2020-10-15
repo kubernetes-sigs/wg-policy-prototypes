@@ -53,6 +53,13 @@ type PolicyReportSummary struct {
 // +kubebuilder:validation:Enum=Pass;Fail;Warn;Error;Skip
 type PolicyStatus string
 
+// PolicySeverity has one of the following values:
+//   - High
+//   - Low
+//   - Medium
+// +kubebuilder:validation:Enum=High;Low;Medium
+type PolicySeverity string
+
 // PolicyReportResult provides the result for an individual policy
 type PolicyReportResult struct {
 
@@ -66,7 +73,6 @@ type PolicyReportResult struct {
 	// Resources is an optional reference to the resource checked by the policy and rule
 	// +optional
 	Resources []*corev1.ObjectReference `json:"resources,omitempty"`
-
 
 	// ResourceSelector is an optional selector for policy results that apply to multiple resources.
 	// For example, a policy result may apply to all pods that match a label.
@@ -86,6 +92,14 @@ type PolicyReportResult struct {
 
 	// Data provides additional information for the policy rule
 	Data map[string]string `json:"data,omitempty"`
+
+	// Category indicates policy category
+	// +optional
+	Category string `json:"category,omitempty"`
+
+	// Severity indicates policy severity
+	// +optional
+	Severity PolicySeverity `json:"severity,omitempty"`
 }
 
 // +kubebuilder:object:root=true
