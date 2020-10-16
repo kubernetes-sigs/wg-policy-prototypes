@@ -8,11 +8,12 @@ else
 GOBIN=$(shell go env GOBIN)
 endif
 
-all: build fmt vet manifests
+all: manifests build fmt vet
 
 # Generate manifests e.g. CRD, RBAC etc.
 manifests: controller-gen
 	$(CONTROLLER_GEN) $(CRD_OPTIONS) paths="./..." output:dir=crd
+	$(CONTROLLER_GEN) object paths=./api/v1alpha1/
 
 # Run go build against code
 build:
