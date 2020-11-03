@@ -24,6 +24,7 @@ import (
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
 // NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
 
+// +genclient:nonNamespaced
 // +kubebuilder:object:root=true
 // +kubebuilder:printcolumn:name="Kind",type=string,JSONPath=`.scope.kind`,priority=1
 // +kubebuilder:printcolumn:name="Name",type=string,JSONPath=`.scope.name`,priority=1
@@ -44,8 +45,7 @@ type ClusterPolicyReport struct {
 	// +optional
 	Scope *corev1.ObjectReference `json:"scope,omitempty"`
 
-	// ScopeSelector is an optional selector for multiple scopes (e.g. Pods).
-	// Either one of, or none of, but not both of, Scope or ScopeSelector should be specified.
+	// Scope is an optional reference to the report scope (e.g. a Deployment, Namespace, or Node)
 	// +optional
 	ScopeSelector *metav1.LabelSelector `json:"scopeSelector,omitempty"`
 
