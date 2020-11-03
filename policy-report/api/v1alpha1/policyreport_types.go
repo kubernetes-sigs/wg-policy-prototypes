@@ -28,29 +28,34 @@ import (
 type PolicyReportSummary struct {
 
 	// Pass provides the count of policies whose requirements were met
+	// +optional
 	Pass int `json:"pass"`
 
 	// Fail provides the count of policies whose requirements were not met
+	// +optional
 	Fail int `json:"fail"`
 
 	// Warn provides the count of unscored policies whose requirements were not met
+	// +optional
 	Warn int `json:"warn"`
 
 	// Error provides the count of policies that could not be evaluated
+	// +optional
 	Error int `json:"error"`
 
 	// Skip indicates the count of policies that were not selected for evaluation
+	// +optional
 	Skip int `json:"skip"`
 }
 
 // PolicyStatus has one of the following values:
-//   - Pass: indicates that the policy requirements are met
-//   - Fail: indicates that the policy requirements are not met
-//   - Warn: indicates that the policy requirements and not met, and the policy is not scored
-//   - Error: indicates that the policy could not be evaluated
-//   - Skip: indicates that the policy was not selected based on user inputs or applicability
+//   - pass: indicates that the policy requirements are met
+//   - fail: indicates that the policy requirements are not met
+//   - warn: indicates that the policy requirements and not met, and the policy is not scored
+//   - error: indicates that the policy could not be evaluated
+//   - skip: indicates that the policy was not selected based on user inputs or applicability
 //
-// +kubebuilder:validation:Enum=Pass;Fail;Warn;Error;Skip
+// +kubebuilder:validation:Enum=pass;fail;warn;error;skip
 type PolicyStatus string
 
 // PolicySeverity has one of the following values:
@@ -111,6 +116,7 @@ type PolicyReportResult struct {
 // +kubebuilder:printcolumn:name="Error",type=integer,JSONPath=`.summary.error`
 // +kubebuilder:printcolumn:name="Skip",type=integer,JSONPath=`.summary.skip`
 // +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
+// +kubebuilder:resource:shortName=polr
 
 // PolicyReport is the Schema for the policyreports API
 type PolicyReport struct {
