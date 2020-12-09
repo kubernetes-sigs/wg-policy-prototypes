@@ -40,6 +40,8 @@ spec:
     kind: PolicyReport
     listKind: PolicyReportList
     plural: policyreports
+    shortNames:
+    - polr
     singular: policyreport
   scope: Namespaced
   subresources: {}
@@ -201,18 +203,18 @@ spec:
               severity:
                 description: Severity indicates policy severity
                 enum:
-                - High
-                - Low
-                - Medium
+                - high
+                - low
+                - medium
                 type: string
               status:
                 description: Status indicates the result of the policy rule check
                 enum:
-                - Pass
-                - Fail
-                - Warn
-                - Error
-                - Skip
+                - pass
+                - fail
+                - warn
+                - error
+                - skip
                 type: string
             required:
             - policy
@@ -318,12 +320,6 @@ spec:
               description: Warn provides the count of unscored policies whose requirements
                 were not met
               type: integer
-          required:
-          - error
-          - fail
-          - pass
-          - skip
-          - warn
           type: object
       type: object
   version: v1alpha1

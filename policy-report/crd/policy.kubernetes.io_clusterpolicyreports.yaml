@@ -202,18 +202,18 @@ spec:
               severity:
                 description: Severity indicates policy severity
                 enum:
-                - High
-                - Low
-                - Medium
+                - high
+                - low
+                - medium
                 type: string
               status:
                 description: Status indicates the result of the policy rule check
                 enum:
-                - Pass
-                - Fail
-                - Warn
-                - Error
-                - Skip
+                - pass
+                - fail
+                - warn
+                - error
+                - skip
                 type: string
             required:
             - policy
@@ -257,9 +257,8 @@ spec:
               type: string
           type: object
         scopeSelector:
-          description: ScopeSelector is an optional selector for multiple scopes (e.g.
-            Pods). Either one of, or none of, but not both of, Scope or ScopeSelector
-            should be specified.
+          description: Scope is an optional reference to the report scope (e.g. a
+            Deployment, Namespace, or Node)
           properties:
             matchExpressions:
               description: matchExpressions is a list of label selector requirements.
@@ -320,12 +319,6 @@ spec:
               description: Warn provides the count of unscored policies whose requirements
                 were not met
               type: integer
-          required:
-          - error
-          - fail
-          - pass
-          - skip
-          - warn
           type: object
       type: object
   version: v1alpha1
