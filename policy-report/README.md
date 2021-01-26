@@ -11,7 +11,7 @@ See the [proposal](https://docs.google.com/document/d/1nICYLkYS1RE3gJzuHOfHeAC25
 Add the CRDs to your cluster:
 
 ```console
-kubectl create -f https://github.com/kubernetes-sigs/wg-policy-prototypes/raw/master/policy-report/crd/policy.kubernetes.io_policyreports.yaml
+kubectl create -f https://github.com/kubernetes-sigs/wg-policy-prototypes/raw/master/policy-report/crd/wgpolicyk8s.io_policyreports.yaml
 ```
 
 Create a sample policy report resource:
