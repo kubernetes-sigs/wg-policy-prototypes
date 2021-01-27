@@ -1,9 +1,9 @@
-apiVersion: policy.kubernetes.io/v1alpha1
+apiVersion: wgpolicyk8s.io/v1alpha1
 kind: PolicyReport
 metadata:
   name: sample-cis-bench-api-server
   labels:
-    policy.kubernetes.io/engine: kube-cis
+    wgpolicyk8s.io/engine: kube-cis
   annotations:
     name: CIS Kubernetes Benchmarks
     category: API Server
@@ -18,23 +18,22 @@ summary:
 results:
   - policy: api-server:anonymous-auth
     message: ensure that --anonymous-auth argument is set to false
-    status: Warn
+    status: warn
     scored: true
     data:
       category: API Server
-      index:  1.2.1
+      index: 1.2.1
   - policy: api-server:basic-auth-file
     message: ensure that --basic-auth-file argument is not set
-    status: Fail
+    status: fail
     scored: true
     data:
       category: API Server
-      index:  1.2.2
+      index: 1.2.2
   - policy: api-server:token-auth-file
     message: ensure that --token-auth-file argument is not set
-    status: Warn
+    status: warn
     scored: false
     data:
       category: API Server
-      index:  1.2.2
-
+      index: 1.2.2
