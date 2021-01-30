@@ -102,6 +102,13 @@ type PolicyReportResult struct {
 	// Severity indicates policy severity
 	// +optional
 	Severity PolicySeverity `json:"severity,omitempty"`
+
+	// Rationale indicates principle or reason for the policy rule
+	// +optional
+	Rationale string `json:"rationale,omitempty"`
+
+	// Remediation indicates correction or resolution for the policy rule
+	Remediation string `json:"remediation,omitempty"`
 }
 
 // +genclient
