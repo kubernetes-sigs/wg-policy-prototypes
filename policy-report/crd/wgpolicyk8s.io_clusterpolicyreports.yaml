@@ -76,6 +76,9 @@ spec:
                   type: string
                 description: Data provides additional information for the policy rule
                 type: object
+              lastSeen:
+                description: LastSeen indicates the last time check was ran
+                type: string
               message:
                 description: Message is a short user friendly description of the policy
                   rule

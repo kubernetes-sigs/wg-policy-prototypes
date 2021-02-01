@@ -102,6 +102,10 @@ type PolicyReportResult struct {
 	// Severity indicates policy severity
 	// +optional
 	Severity PolicySeverity `json:"severity,omitempty"`
+
+	// LastSeen indicates the last time check was ran
+	// +optional
+	LastSeen string `json:"lastSeen,omitempty"`
 }
 
 // +genclient
