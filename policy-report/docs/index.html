@@ -111,8 +111,8 @@ PolicyReportSummary provides a summary of results
 <td>
 <code>results</code></br>
 <em>
-<a href="#wgpolicyk8s.io/v1alpha1.*github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult">
-[]*github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult
+<a href="#wgpolicyk8s.io/v1alpha1.*./api/v1alpha1.PolicyReportResult">
+[]*./api/v1alpha1.PolicyReportResult
 </a>
 </em>
 </td>
@@ -208,8 +208,8 @@ PolicyReportSummary provides a summary of results
 <td>
 <code>results</code></br>
 <em>
-<a href="#wgpolicyk8s.io/v1alpha1.*github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult">
-[]*github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult
+<a href="#wgpolicyk8s.io/v1alpha1.*./api/v1alpha1.PolicyReportResult">
+[]*./api/v1alpha1.PolicyReportResult
 </a>
 </em>
 </td>
@@ -220,6 +220,18 @@ PolicyReportResult provides result details
 </tr>
 </tbody>
 </table>
+<h3 id="wgpolicyk8s.io/v1alpha1.PolicyImpact">PolicyImpact
+(<code>string</code> alias)</p></h3>
+<p>
+(<em>Appears on:</em>
+<a href="#wgpolicyk8s.io/v1alpha1.PolicyReportResult">PolicyReportResult</a>)
+</p>
+<p>
+PolicyImpact has one of the following values:
+- high
+- low
+- medium
+</p>
 <h3 id="wgpolicyk8s.io/v1alpha1.PolicyReportResult">PolicyReportResult
 </h3>
 <p>
@@ -265,7 +277,7 @@ Rule is the name of the policy rule
 </td>
 <td>
 <em>(Optional)</em>
-Resources is an optional reference to the resource checked by the policy and rule
+Subjects is an optional reference to the checked Kubernetes resources
 </td>
 </tr>
 <tr>
@@ -277,9 +289,9 @@ Kubernetes meta/v1.LabelSelector
 </td>
 <td>
 <em>(Optional)</em>
-ResourceSelector is an optional selector for policy results that apply to multiple resources.
+SubjectSelector is an optional label selector for checked Kubernetes resources.
 For example, a policy result may apply to all pods that match a label.
-Either a Resource or a ResourceSelector can be specified. If neither are provided, the
+Either a Subject or a SubjectSelector can be specified. If neither are provided, the
 result is assumed to be for the policy report scope.
 </td>
 </tr>
@@ -291,20 +303,20 @@ string
 </em>
 </td>
 <td>
-Message is a short user friendly description of the policy rule
+Description is a short user friendly description of the policy rule
 </td>
 </tr>
 <tr>
 <td>
-<code>status</code></br>
+<code>result</code></br>
 <em>
-<a href="#wgpolicyk8s.io/v1alpha1.PolicyStatus">
-PolicyStatus
+<a href="#wgpolicyk8s.io/v1alpha1.PolicyResult">
+PolicyResult
 </a>
 </em>
 </td>
 <td>
-Status indicates the result of the policy rule check
+Result indicates the result of the policy rule check
 </td>
 </tr>
 <tr>
@@ -343,6 +355,20 @@ Category indicates policy category
 </tr>
 <tr>
 <td>
+<code>impact</code></br>
+<em>
+<a href="#wgpolicyk8s.io/v1alpha1.PolicyImpact">
+PolicyImpact
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+Impact indicates policy criticality (pre-assessment)
+</td>
+</tr>
+<tr>
+<td>
 <code>severity</code></br>
 <em>
 <a href="#wgpolicyk8s.io/v1alpha1.PolicySeverity">
@@ -352,7 +378,21 @@ PolicySeverity
 </td>
 <td>
 <em>(Optional)</em>
-Severity indicates policy severity
+Severity indicates policy check result criticality (post-assessment)
+</td>
+</tr>
+<tr>
+<td>
+<code>status</code></br>
+<em>
+<a href="#wgpolicyk8s.io/v1alpha1.PolicyStatus">
+PolicyStatus
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+Status indicates the policy implementation readiness
 </td>
 </tr>
 </tbody>
@@ -437,6 +477,21 @@ Skip indicates the count of policies that were not selected for evaluation
 </tr>
 </tbody>
 </table>
+<h3 id="wgpolicyk8s.io/v1alpha1.PolicyResult">PolicyResult
+(<code>string</code> alias)</p></h3>
+<p>
+(<em>Appears on:</em>
+<a href="#wgpolicyk8s.io/v1alpha1.PolicyReportResult">PolicyReportResult</a>)
+</p>
+<p>
+PolicyResult has one of the following values:
+- pass: the policy requirements are met
+- partial-pass: the policy requirements are met but requires manual assessment
+- fail: the policy requirements are not met
+- warn: the policy requirements and not met and the policy is not scored
+- error: the policy could not be evaluated
+- skip: the policy was not selected based on user inputs or applicability
+</p>
 <h3 id="wgpolicyk8s.io/v1alpha1.PolicySeverity">PolicySeverity
 (<code>string</code> alias)</p></h3>
 <p>
@@ -457,11 +512,9 @@ PolicySeverity has one of the following values:
 </p>
 <p>
 PolicyStatus has one of the following values:
-- pass: indicates that the policy requirements are met
-- fail: indicates that the policy requirements are not met
-- warn: indicates that the policy requirements and not met, and the policy is not scored
-- error: indicates that the policy could not be evaluated
-- skip: indicates that the policy was not selected based on user inputs or applicability
+- completed: indicates that the policy requirements are implemented
+- partial: indicates that the policy requirements are partially implemented
+- planned: indicates that the policy requirements are not implemented
 </p>
 <hr/>
 <p><em>
