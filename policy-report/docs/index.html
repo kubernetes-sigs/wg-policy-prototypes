@@ -16,17 +16,17 @@
 </ul>
 </nav>
 <div class="container">
-<h1 id="policy.kubernetes.io/v1alpha1">policy.kubernetes.io/v1alpha1</h1>
+<h1 id="wgpolicyk8s.io/v1alpha1">wgpolicyk8s.io/v1alpha1</h1>
 <p>
 Package v1alpha1 contains API Schema definitions for the policy v1alpha1 API group
 </p>
 <h2>Resource Types</h2>
 <ul><li>
-<a href="#policy.kubernetes.io/v1alpha1.ClusterPolicyReport">ClusterPolicyReport</a>
+<a href="#wgpolicyk8s.io/v1alpha1.ClusterPolicyReport">ClusterPolicyReport</a>
 </li><li>
-<a href="#policy.kubernetes.io/v1alpha1.PolicyReport">PolicyReport</a>
+<a href="#wgpolicyk8s.io/v1alpha1.PolicyReport">PolicyReport</a>
 </li></ul>
-<h3 id="policy.kubernetes.io/v1alpha1.ClusterPolicyReport">ClusterPolicyReport
+<h3 id="wgpolicyk8s.io/v1alpha1.ClusterPolicyReport">ClusterPolicyReport
 </h3>
 <p>
 ClusterPolicyReport is the Schema for the clusterpolicyreports API
@@ -45,7 +45,7 @@ ClusterPolicyReport is the Schema for the clusterpolicyreports API
 string</td>
 <td>
 <code>
-policy.kubernetes.io/v1alpha1
+wgpolicyk8s.io/v1alpha1
 </code>
 </td>
 </tr>
@@ -77,8 +77,7 @@ Kubernetes core/v1.ObjectReference
 </td>
 <td>
 <em>(Optional)</em>
-Scope is an optional reference to the policy report scope. For example. the report
-may be for all resources in a namespace, a for a node, or cluster-wide.
+Scope is an optional reference to the report scope (e.g. a Deployment, Namespace, or Node)
 </td>
 </tr>
 <tr>
@@ -90,14 +89,15 @@ Kubernetes meta/v1.LabelSelector
 </td>
 <td>
 <em>(Optional)</em>
-Scope is an optional reference to the report scope (e.g. a Deployment, Namespace, or Node)
+ScopeSelector is an optional selector for multiple scopes (e.g. Pods).
+Either one of, or none of, but not both of, Scope or ScopeSelector should be specified.
 </td>
 </tr>
 <tr>
 <td>
 <code>summary</code></br>
 <em>
-<a href="#policy.kubernetes.io/v1alpha1.PolicyReportSummary">
+<a href="#wgpolicyk8s.io/v1alpha1.PolicyReportSummary">
 PolicyReportSummary
 </a>
 </em>
@@ -111,7 +111,7 @@ PolicyReportSummary provides a summary of results
 <td>
 <code>results</code></br>
 <em>
-<a href="#policy.kubernetes.io/v1alpha1.*./api/v1alpha1.PolicyReportResult">
+<a href="#wgpolicyk8s.io/v1alpha1.*./api/v1alpha1.PolicyReportResult">
 []*./api/v1alpha1.PolicyReportResult
 </a>
 </em>
@@ -123,7 +123,7 @@ PolicyReportResult provides result details
 </tr>
 </tbody>
 </table>
-<h3 id="policy.kubernetes.io/v1alpha1.PolicyReport">PolicyReport
+<h3 id="wgpolicyk8s.io/v1alpha1.PolicyReport">PolicyReport
 </h3>
 <p>
 PolicyReport is the Schema for the policyreports API
@@ -142,7 +142,7 @@ PolicyReport is the Schema for the policyreports API
 string</td>
 <td>
 <code>
-policy.kubernetes.io/v1alpha1
+wgpolicyk8s.io/v1alpha1
 </code>
 </td>
 </tr>
@@ -194,7 +194,7 @@ Either one of, or none of, but not both of, Scope or ScopeSelector should be spe
 <td>
 <code>summary</code></br>
 <em>
-<a href="#policy.kubernetes.io/v1alpha1.PolicyReportSummary">
+<a href="#wgpolicyk8s.io/v1alpha1.PolicyReportSummary">
 PolicyReportSummary
 </a>
 </em>
@@ -208,7 +208,7 @@ PolicyReportSummary provides a summary of results
 <td>
 <code>results</code></br>
 <em>
-<a href="#policy.kubernetes.io/v1alpha1.*./api/v1alpha1.PolicyReportResult">
+<a href="#wgpolicyk8s.io/v1alpha1.*./api/v1alpha1.PolicyReportResult">
 []*./api/v1alpha1.PolicyReportResult
 </a>
 </em>
@@ -220,11 +220,11 @@ PolicyReportResult provides result details
 </tr>
 </tbody>
 </table>
-<h3 id="policy.kubernetes.io/v1alpha1.PolicyImpact">PolicyImpact
+<h3 id="wgpolicyk8s.io/v1alpha1.PolicyImpact">PolicyImpact
 (<code>string</code> alias)</p></h3>
 <p>
 (<em>Appears on:</em>
-<a href="#policy.kubernetes.io/v1alpha1.PolicyReportResult">PolicyReportResult</a>)
+<a href="#wgpolicyk8s.io/v1alpha1.PolicyReportResult">PolicyReportResult</a>)
 </p>
 <p>
 PolicyImpact has one of the following values:
@@ -232,7 +232,7 @@ PolicyImpact has one of the following values:
 - low
 - medium
 </p>
-<h3 id="policy.kubernetes.io/v1alpha1.PolicyReportResult">PolicyReportResult
+<h3 id="wgpolicyk8s.io/v1alpha1.PolicyReportResult">PolicyReportResult
 </h3>
 <p>
 PolicyReportResult provides the result for an individual policy
@@ -310,7 +310,7 @@ Description is a short user friendly description of the policy rule
 <td>
 <code>result</code></br>
 <em>
-<a href="#policy.kubernetes.io/v1alpha1.PolicyResult">
+<a href="#wgpolicyk8s.io/v1alpha1.PolicyResult">
 PolicyResult
 </a>
 </em>
@@ -357,7 +357,7 @@ Category indicates policy category
 <td>
 <code>impact</code></br>
 <em>
-<a href="#policy.kubernetes.io/v1alpha1.PolicyImpact">
+<a href="#wgpolicyk8s.io/v1alpha1.PolicyImpact">
 PolicyImpact
 </a>
 </em>
@@ -371,7 +371,7 @@ Impact indicates policy criticality (pre-assessment)
 <td>
 <code>severity</code></br>
 <em>
-<a href="#policy.kubernetes.io/v1alpha1.PolicySeverity">
+<a href="#wgpolicyk8s.io/v1alpha1.PolicySeverity">
 PolicySeverity
 </a>
 </em>
@@ -385,7 +385,7 @@ Severity indicates policy check result criticality (post-assessment)
 <td>
 <code>status</code></br>
 <em>
-<a href="#policy.kubernetes.io/v1alpha1.PolicyStatus">
+<a href="#wgpolicyk8s.io/v1alpha1.PolicyStatus">
 PolicyStatus
 </a>
 </em>
@@ -397,12 +397,12 @@ Status indicates the policy implementation readiness
 </tr>
 </tbody>
 </table>
-<h3 id="policy.kubernetes.io/v1alpha1.PolicyReportSummary">PolicyReportSummary
+<h3 id="wgpolicyk8s.io/v1alpha1.PolicyReportSummary">PolicyReportSummary
 </h3>
 <p>
 (<em>Appears on:</em>
-<a href="#policy.kubernetes.io/v1alpha1.ClusterPolicyReport">ClusterPolicyReport</a>, 
-<a href="#policy.kubernetes.io/v1alpha1.PolicyReport">PolicyReport</a>)
+<a href="#wgpolicyk8s.io/v1alpha1.ClusterPolicyReport">ClusterPolicyReport</a>, 
+<a href="#wgpolicyk8s.io/v1alpha1.PolicyReport">PolicyReport</a>)
 </p>
 <p>
 PolicyReportSummary provides a status count summary
@@ -477,11 +477,11 @@ Skip indicates the count of policies that were not selected for evaluation
 </tr>
 </tbody>
 </table>
-<h3 id="policy.kubernetes.io/v1alpha1.PolicyResult">PolicyResult
+<h3 id="wgpolicyk8s.io/v1alpha1.PolicyResult">PolicyResult
 (<code>string</code> alias)</p></h3>
 <p>
 (<em>Appears on:</em>
-<a href="#policy.kubernetes.io/v1alpha1.PolicyReportResult">PolicyReportResult</a>)
+<a href="#wgpolicyk8s.io/v1alpha1.PolicyReportResult">PolicyReportResult</a>)
 </p>
 <p>
 PolicyResult has one of the following values:
@@ -492,11 +492,11 @@ PolicyResult has one of the following values:
 - error: the policy could not be evaluated
 - skip: the policy was not selected based on user inputs or applicability
 </p>
-<h3 id="policy.kubernetes.io/v1alpha1.PolicySeverity">PolicySeverity
+<h3 id="wgpolicyk8s.io/v1alpha1.PolicySeverity">PolicySeverity
 (<code>string</code> alias)</p></h3>
 <p>
 (<em>Appears on:</em>
-<a href="#policy.kubernetes.io/v1alpha1.PolicyReportResult">PolicyReportResult</a>)
+<a href="#wgpolicyk8s.io/v1alpha1.PolicyReportResult">PolicyReportResult</a>)
 </p>
 <p>
 PolicySeverity has one of the following values:
@@ -504,11 +504,11 @@ PolicySeverity has one of the following values:
 - low
 - medium
 </p>
-<h3 id="policy.kubernetes.io/v1alpha1.PolicyStatus">PolicyStatus
+<h3 id="wgpolicyk8s.io/v1alpha1.PolicyStatus">PolicyStatus
 (<code>string</code> alias)</p></h3>
 <p>
 (<em>Appears on:</em>
-<a href="#policy.kubernetes.io/v1alpha1.PolicyReportResult">PolicyReportResult</a>)
+<a href="#wgpolicyk8s.io/v1alpha1.PolicyReportResult">PolicyReportResult</a>)
 </p>
 <p>
 PolicyStatus has one of the following values:

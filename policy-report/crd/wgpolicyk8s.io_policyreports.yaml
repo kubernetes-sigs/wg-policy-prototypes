@@ -6,7 +6,7 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.2.5
   creationTimestamp: null
-  name: clusterpolicyreports.policy.kubernetes.io
+  name: policyreports.wgpolicyk8s.io
 spec:
   additionalPrinterColumns:
   - JSONPath: .scope.kind
@@ -35,18 +35,19 @@ spec:
   - JSONPath: .metadata.creationTimestamp
     name: Age
     type: date
-  group: policy.kubernetes.io
+  group: wgpolicyk8s.io
   names:
-    kind: ClusterPolicyReport
-    listKind: ClusterPolicyReportList
-    plural: clusterpolicyreports
-    singular: clusterpolicyreport
+    kind: PolicyReport
+    listKind: PolicyReportList
+    plural: policyreports
+    shortNames:
+    - polr
+    singular: policyreport
   scope: Namespaced
   subresources: {}
   validation:
     openAPIV3Schema:
-      description: ClusterPolicyReport is the Schema for the clusterpolicyreports
-        API
+      description: PolicyReport is the Schema for the policyreports API
       properties:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
@@ -234,9 +235,8 @@ spec:
             type: object
           type: array
         scope:
-          description: Scope is an optional reference to the policy report scope.
-            For example. the report may be for all resources in a namespace, a for
-            a node, or cluster-wide.
+          description: Scope is an optional reference to the report scope (e.g. a
+            Deployment, Namespace, or Node)
           properties:
             apiVersion:
               description: API version of the referent.
@@ -271,8 +271,9 @@ spec:
               type: string
           type: object
         scopeSelector:
-          description: Scope is an optional reference to the report scope (e.g. a
-            Deployment, Namespace, or Node)
+          description: ScopeSelector is an optional selector for multiple scopes (e.g.
+            Pods). Either one of, or none of, but not both of, Scope or ScopeSelector
+            should be specified.
           properties:
             matchExpressions:
               description: matchExpressions is a list of label selector requirements.
