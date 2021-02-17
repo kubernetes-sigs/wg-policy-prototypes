@@ -74,17 +74,24 @@ spec:
                   type: string
                 description: Data provides additional information for the policy rule
                 type: object
+              impact:
+                description: Impact indicates policy criticality (pre-assessment)
+                enum:
+                - high
+                - low
+                - medium
+                type: string
               message:
-                description: Message is a short user friendly description of the policy
-                  rule
+                description: Description is a short user friendly description of the
+                  policy rule
                 type: string
               policy:
                 description: Policy is the name of the policy
                 type: string
               resourceSelector:
-                description: ResourceSelector is an optional selector for policy results
-                  that apply to multiple resources. For example, a policy result may
-                  apply to all pods that match a label. Either a Resource or a ResourceSelector
+                description: SubjectSelector is an optional label selector for checked
+                  Kubernetes resources. For example, a policy result may apply to
+                  all pods that match a label. Either a Subject or a SubjectSelector
                   can be specified. If neither are provided, the result is assumed
                   to be for the policy report scope.
                 properties:
@@ -130,8 +137,8 @@ spec:
                     type: object
                 type: object
               resources:
-                description: Resources is an optional reference to the resource checked
-                  by the policy and rule
+                description: Subjects is an optional reference to the checked Kubernetes
+                  resources
                 items:
                   description: 'ObjectReference contains enough information to let
                     you inspect or modify the referred object. --- New uses of this
@@ -193,6 +200,15 @@ spec:
                       type: string
                   type: object
                 type: array
+              result:
+                description: Result indicates the result of the policy rule check
+                enum:
+                - pass
+                - fail
+                - warn
+                - error
+                - skip
+                type: string
               rule:
                 description: Rule is the name of the policy rule
                 type: string
@@ -200,20 +216,18 @@ spec:
                 description: Scored indicates if this policy rule is scored
                 type: boolean
               severity:
-                description: Severity indicates policy severity
+                description: Severity indicates policy check result criticality (post-assessment)
                 enum:
                 - high
                 - low
                 - medium
                 type: string
               status:
-                description: Status indicates the result of the policy rule check
+                description: Status indicates the policy implementation readiness
                 enum:
-                - pass
-                - fail
-                - warn
-                - error
-                - skip
+                - completed
+                - partial
+                - planned
                 type: string
             required:
             - policy

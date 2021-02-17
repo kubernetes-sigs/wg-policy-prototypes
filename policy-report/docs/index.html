@@ -21,7 +21,11 @@
 Package v1alpha1 contains API Schema definitions for the policy v1alpha1 API group
 </p>
 <h2>Resource Types</h2>
-<ul></ul>
+<ul><li>
+<a href="#policy.kubernetes.io/v1alpha1.ClusterPolicyReport">ClusterPolicyReport</a>
+</li><li>
+<a href="#policy.kubernetes.io/v1alpha1.PolicyReport">PolicyReport</a>
+</li></ul>
 <h3 id="policy.kubernetes.io/v1alpha1.ClusterPolicyReport">ClusterPolicyReport
 </h3>
 <p>
@@ -35,6 +39,23 @@ ClusterPolicyReport is the Schema for the clusterpolicyreports API
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<code>apiVersion</code></br>
+string</td>
+<td>
+<code>
+policy.kubernetes.io/v1alpha1
+</code>
+</td>
+</tr>
+<tr>
+<td>
+<code>kind</code></br>
+string
+</td>
+<td><code>ClusterPolicyReport</code></td>
+</tr>
 <tr>
 <td>
 <code>metadata</code></br>
@@ -69,8 +90,7 @@ Kubernetes meta/v1.LabelSelector
 </td>
 <td>
 <em>(Optional)</em>
-ScopeSelector is an optional selector for multiple scopes (e.g. Pods).
-Either one of, or none of, but not both of, Scope or ScopeSelector should be specified.
+Scope is an optional reference to the report scope (e.g. a Deployment, Namespace, or Node)
 </td>
 </tr>
 <tr>
@@ -91,8 +111,8 @@ PolicyReportSummary provides a summary of results
 <td>
 <code>results</code></br>
 <em>
-<a href="#policy.kubernetes.io/v1alpha1.*sigs.k8s.io/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult">
-[]*sigs.k8s.io/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult
+<a href="#policy.kubernetes.io/v1alpha1.*./api/v1alpha1.PolicyReportResult">
+[]*./api/v1alpha1.PolicyReportResult
 </a>
 </em>
 </td>
@@ -116,6 +136,23 @@ PolicyReport is the Schema for the policyreports API
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<code>apiVersion</code></br>
+string</td>
+<td>
+<code>
+policy.kubernetes.io/v1alpha1
+</code>
+</td>
+</tr>
+<tr>
+<td>
+<code>kind</code></br>
+string
+</td>
+<td><code>PolicyReport</code></td>
+</tr>
 <tr>
 <td>
 <code>metadata</code></br>
@@ -171,8 +208,8 @@ PolicyReportSummary provides a summary of results
 <td>
 <code>results</code></br>
 <em>
-<a href="#policy.kubernetes.io/v1alpha1.*sigs.k8s.io/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult">
-[]*sigs.k8s.io/wg-policy-prototypes/policy-report/api/v1alpha1.PolicyReportResult
+<a href="#policy.kubernetes.io/v1alpha1.*./api/v1alpha1.PolicyReportResult">
+[]*./api/v1alpha1.PolicyReportResult
 </a>
 </em>
 </td>
@@ -183,6 +220,18 @@ PolicyReportResult provides result details
 </tr>
 </tbody>
 </table>
+<h3 id="policy.kubernetes.io/v1alpha1.PolicyImpact">PolicyImpact
+(<code>string</code> alias)</p></h3>
+<p>
+(<em>Appears on:</em>
+<a href="#policy.kubernetes.io/v1alpha1.PolicyReportResult">PolicyReportResult</a>)
+</p>
+<p>
+PolicyImpact has one of the following values:
+- high
+- low
+- medium
+</p>
 <h3 id="policy.kubernetes.io/v1alpha1.PolicyReportResult">PolicyReportResult
 </h3>
 <p>
@@ -228,7 +277,7 @@ Rule is the name of the policy rule
 </td>
 <td>
 <em>(Optional)</em>
-Resources is an optional reference to the resource checked by the policy and rule
+Subjects is an optional reference to the checked Kubernetes resources
 </td>
 </tr>
 <tr>
@@ -240,9 +289,9 @@ Kubernetes meta/v1.LabelSelector
 </td>
 <td>
 <em>(Optional)</em>
-ResourceSelector is an optional selector for policy results that apply to multiple resources.
+SubjectSelector is an optional label selector for checked Kubernetes resources.
 For example, a policy result may apply to all pods that match a label.
-Either a Resource or a ResourceSelector can be specified. If neither are provided, the
+Either a Subject or a SubjectSelector can be specified. If neither are provided, the
 result is assumed to be for the policy report scope.
 </td>
 </tr>
@@ -254,20 +303,20 @@ string
 </em>
 </td>
 <td>
-Message is a short user friendly description of the policy rule
+Description is a short user friendly description of the policy rule
 </td>
 </tr>
 <tr>
 <td>
-<code>status</code></br>
+<code>result</code></br>
 <em>
-<a href="#policy.kubernetes.io/v1alpha1.PolicyStatus">
-PolicyStatus
+<a href="#policy.kubernetes.io/v1alpha1.PolicyResult">
+PolicyResult
 </a>
 </em>
 </td>
 <td>
-Status indicates the result of the policy rule check
+Result indicates the result of the policy rule check
 </td>
 </tr>
 <tr>
@@ -290,6 +339,60 @@ map[string]string
 </td>
 <td>
 Data provides additional information for the policy rule
+</td>
+</tr>
+<tr>
+<td>
+<code>category</code></br>
+<em>
+string
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+Category indicates policy category
+</td>
+</tr>
+<tr>
+<td>
+<code>impact</code></br>
+<em>
+<a href="#policy.kubernetes.io/v1alpha1.PolicyImpact">
+PolicyImpact
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+Impact indicates policy criticality (pre-assessment)
+</td>
+</tr>
+<tr>
+<td>
+<code>severity</code></br>
+<em>
+<a href="#policy.kubernetes.io/v1alpha1.PolicySeverity">
+PolicySeverity
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+Severity indicates policy check result criticality (post-assessment)
+</td>
+</tr>
+<tr>
+<td>
+<code>status</code></br>
+<em>
+<a href="#policy.kubernetes.io/v1alpha1.PolicyStatus">
+PolicyStatus
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+Status indicates the policy implementation readiness
 </td>
 </tr>
 </tbody>
@@ -320,6 +423,7 @@ int
 </em>
 </td>
 <td>
+<em>(Optional)</em>
 Pass provides the count of policies whose requirements were met
 </td>
 </tr>
@@ -331,6 +435,7 @@ int
 </em>
 </td>
 <td>
+<em>(Optional)</em>
 Fail provides the count of policies whose requirements were not met
 </td>
 </tr>
@@ -342,6 +447,7 @@ int
 </em>
 </td>
 <td>
+<em>(Optional)</em>
 Warn provides the count of unscored policies whose requirements were not met
 </td>
 </tr>
@@ -353,6 +459,7 @@ int
 </em>
 </td>
 <td>
+<em>(Optional)</em>
 Error provides the count of policies that could not be evaluated
 </td>
 </tr>
@@ -364,11 +471,39 @@ int
 </em>
 </td>
 <td>
+<em>(Optional)</em>
 Skip indicates the count of policies that were not selected for evaluation
 </td>
 </tr>
 </tbody>
 </table>
+<h3 id="policy.kubernetes.io/v1alpha1.PolicyResult">PolicyResult
+(<code>string</code> alias)</p></h3>
+<p>
+(<em>Appears on:</em>
+<a href="#policy.kubernetes.io/v1alpha1.PolicyReportResult">PolicyReportResult</a>)
+</p>
+<p>
+PolicyResult has one of the following values:
+- pass: the policy requirements are met
+- partial-pass: the policy requirements are met but requires manual assessment
+- fail: the policy requirements are not met
+- warn: the policy requirements and not met and the policy is not scored
+- error: the policy could not be evaluated
+- skip: the policy was not selected based on user inputs or applicability
+</p>
+<h3 id="policy.kubernetes.io/v1alpha1.PolicySeverity">PolicySeverity
+(<code>string</code> alias)</p></h3>
+<p>
+(<em>Appears on:</em>
+<a href="#policy.kubernetes.io/v1alpha1.PolicyReportResult">PolicyReportResult</a>)
+</p>
+<p>
+PolicySeverity has one of the following values:
+- high
+- low
+- medium
+</p>
 <h3 id="policy.kubernetes.io/v1alpha1.PolicyStatus">PolicyStatus
 (<code>string</code> alias)</p></h3>
 <p>
@@ -377,11 +512,9 @@ Skip indicates the count of policies that were not selected for evaluation
 </p>
 <p>
 PolicyStatus has one of the following values:
-- Pass: indicates that the policy requirements are met
-- Fail: indicates that the policy requirements are not met
-- Warn: indicates that the policy requirements and not met, and the policy is not scored
-- Error: indicates that the policy could not be evaluated
-- Skip: indicates that the policy was not selected based on user inputs or applicability
+- completed: indicates that the policy requirements are implemented
+- partial: indicates that the policy requirements are partially implemented
+- planned: indicates that the policy requirements are not implemented
 </p>
 <hr/>
 <p><em>

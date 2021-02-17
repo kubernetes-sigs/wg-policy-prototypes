@@ -48,15 +48,23 @@ type PolicyReportSummary struct {
 	Skip int `json:"skip"`
 }
 
-// PolicyStatus has one of the following values:
-//   - pass: indicates that the policy requirements are met
-//   - fail: indicates that the policy requirements are not met
-//   - warn: indicates that the policy requirements and not met, and the policy is not scored
-//   - error: indicates that the policy could not be evaluated
-//   - skip: indicates that the policy was not selected based on user inputs or applicability
+// PolicyResult has one of the following values:
+//   - pass: the policy requirements are met
+//   - partial-pass: the policy requirements are met but requires manual assessment
+//   - fail: the policy requirements are not met
+//   - warn: the policy requirements and not met and the policy is not scored
+//   - error: the policy could not be evaluated
+//   - skip: the policy was not selected based on user inputs or applicability
 //
 // +kubebuilder:validation:Enum=pass;fail;warn;error;skip
-type PolicyStatus string
+type PolicyResult string
+
+// PolicyImpact has one of the following values:
+//   - high
+//   - low
+//   - medium
+// +kubebuilder:validation:Enum=high;low;medium
+type PolicyImpact string
 
 // PolicySeverity has one of the following values:
 //   - high
@@ -64,6 +72,13 @@ type PolicyStatus string
 //   - medium
 // +kubebuilder:validation:Enum=high;low;medium
 type PolicySeverity string
+
+// PolicyStatus has one of the following values:
+//   - completed: indicates that the policy requirements are implemented
+//   - partial: indicates that the policy requirements are partially implemented
+//   - planned: indicates that the policy requirements are not implemented
+// +kubebuilder:validation:Enum=completed;partial;planned
+type PolicyStatus string
 
 // PolicyReportResult provides the result for an individual policy
 type PolicyReportResult struct {
@@ -75,22 +90,22 @@ type PolicyReportResult struct {
 	// +optional
 	Rule string `json:"rule,omitempty"`
 
-	// Resources is an optional reference to the resource checked by the policy and rule
+	// Subjects is an optional reference to the checked Kubernetes resources
 	// +optional
-	Resources []*corev1.ObjectReference `json:"resources,omitempty"`
+	Subjects []*corev1.ObjectReference `json:"resources,omitempty"`
 
-	// ResourceSelector is an optional selector for policy results that apply to multiple resources.
+	// SubjectSelector is an optional label selector for checked Kubernetes resources.
 	// For example, a policy result may apply to all pods that match a label.
-	// Either a Resource or a ResourceSelector can be specified. If neither are provided, the
+	// Either a Subject or a SubjectSelector can be specified. If neither are provided, the
 	// result is assumed to be for the policy report scope.
 	// +optional
-	ResourceSelector *metav1.LabelSelector `json:"resourceSelector,omitempty"`
+	SubjectSelector *metav1.LabelSelector `json:"resourceSelector,omitempty"`
 
-	// Message is a short user friendly description of the policy rule
-	Message string `json:"message,omitempty"`
+	// Description is a short user friendly description of the policy rule
+	Description string `json:"message,omitempty"`
 
-	// Status indicates the result of the policy rule check
-	Status PolicyStatus `json:"status,omitempty"`
+	// Result indicates the result of the policy rule check
+	Result PolicyResult `json:"result,omitempty"`
 
 	// Scored indicates if this policy rule is scored
 	Scored bool `json:"scored,omitempty"`
@@ -102,9 +117,17 @@ type PolicyReportResult struct {
 	// +optional
 	Category string `json:"category,omitempty"`
 
-	// Severity indicates policy severity
+	// Impact indicates policy criticality (pre-assessment)
+	// +optional
+	Impact PolicyImpact `json:"impact,omitempty"`
+
+	// Severity indicates policy check result criticality (post-assessment)
 	// +optional
 	Severity PolicySeverity `json:"severity,omitempty"`
+
+	// Status indicates the policy implementation readiness
+	// +optional
+	Status PolicyStatus `json:"status,omitempty"`
 }
 
 // +kubebuilder:object:root=true
