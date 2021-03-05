@@ -105,7 +105,7 @@ type PolicyReportResult struct {
 
 	// LastSeen indicates the last time check was ran
 	// +optional
-	LastSeen string `json:"lastSeen,omitempty"`
+	Timestamp string `json:"timestamp,omitempty"`
 }
 
 // +genclient
