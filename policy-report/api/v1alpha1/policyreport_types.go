@@ -32,7 +32,7 @@ type PolicyReportSummary struct {
 	// +optional
 	Fail int `json:"fail"`
 
-	// Warn provides the count of unscored policies whose requirements were not met
+	// Warn provides the count of non-scored policies whose requirements were not met
 	// +optional
 	Warn int `json:"warn"`
 
@@ -47,45 +47,47 @@ type PolicyReportSummary struct {
 
 // PolicyResult has one of the following values:
 //   - pass: the policy requirements are met
-//   - partial-pass: the policy requirements are met but requires manual assessment
 //   - fail: the policy requirements are not met
-//   - warn: the policy requirements and not met and the policy is not scored
+//   - warn: the policy requirements are not met and the policy is not scored
 //   - error: the policy could not be evaluated
 //   - skip: the policy was not selected based on user inputs or applicability
 //
 // +kubebuilder:validation:Enum=pass;fail;warn;error;skip
 type PolicyResult string
 
-// PolicyImpact has one of the following values:
+// PolicyResultSeverity has one of the following values:
 //   - high
 //   - low
 //   - medium
 // +kubebuilder:validation:Enum=high;low;medium
-type PolicyImpact string
-
-// PolicySeverity has one of the following values:
-//   - high
-//   - low
-//   - medium
-// +kubebuilder:validation:Enum=high;low;medium
-type PolicySeverity string
-
-// PolicyStatus has one of the following values:
-//   - completed: indicates that the policy requirements are implemented
-//   - partial: indicates that the policy requirements are partially implemented
-//   - planned: indicates that the policy requirements are not implemented
-// +kubebuilder:validation:Enum=completed;partial;planned
-type PolicyStatus string
+type PolicyResultSeverity string
 
 // PolicyReportResult provides the result for an individual policy
 type PolicyReportResult struct {
 
-	// Policy is the name of the policy
+	// Policy is the name or identifier of the policy
 	Policy string `json:"policy"`
 
-	// Rule is the name of the policy rule
+	// Rule is the name or identifier of the rule within the policy
 	// +optional
 	Rule string `json:"rule,omitempty"`
+
+	// Category indicates policy category
+	// +optional
+	Category string `json:"category,omitempty"`
+
+	// Severity indicates policy check result criticality
+	// +optional
+	Severity PolicyResultSeverity `json:"severity,omitempty"`
+
+	// Timestamp indicates the time the result was found
+	Timestamp metav1.Timestamp
+
+	// Result indicates the outcome of the policy rule execution
+	Result PolicyResult `json:"result,omitempty"`
+
+	// Scored indicates if this result is scored
+	Scored bool `json:"scored,omitempty"`
 
 	// Subjects is an optional reference to the checked Kubernetes resources
 	// +optional
@@ -98,33 +100,11 @@ type PolicyReportResult struct {
 	// +optional
 	SubjectSelector *metav1.LabelSelector `json:"resourceSelector,omitempty"`
 
-	// Description is a short user friendly description of the policy rule
+	// Description is a short user friendly message for the policy rule
 	Description string `json:"message,omitempty"`
 
-	// Result indicates the result of the policy rule check
-	Result PolicyResult `json:"result,omitempty"`
-
-	// Scored indicates if this policy rule is scored
-	Scored bool `json:"scored,omitempty"`
-
-	// Data provides additional information for the policy rule
-	Data map[string]string `json:"data,omitempty"`
-
-	// Category indicates policy category
-	// +optional
-	Category string `json:"category,omitempty"`
-
-	// Impact indicates policy criticality (pre-assessment)
-	// +optional
-	Impact PolicyImpact `json:"impact,omitempty"`
-
-	// Severity indicates policy check result criticality (post-assessment)
-	// +optional
-	Severity PolicySeverity `json:"severity,omitempty"`
-
-	// Status indicates the policy implementation readiness
-	// +optional
-	Status PolicyStatus `json:"status,omitempty"`
+	// Properties provides additional information for the policy rule
+	Properties map[string]string `json:"properties,omitempty"`
 }
 
 // +genclient
