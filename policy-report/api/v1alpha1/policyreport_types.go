@@ -103,7 +103,7 @@ type PolicyReportResult struct {
 	// +optional
 	Severity PolicySeverity `json:"severity,omitempty"`
 
-	// LastSeen indicates the last time check was ran
+	// Timestamp indicates the time the check was last run
 	// +optional
 	Timestamp string `json:"timestamp,omitempty"`
 }

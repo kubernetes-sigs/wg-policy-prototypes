@@ -219,7 +219,7 @@ spec:
                   - skip
                   type: string
                 timestamp:
-                  description: LastSeen indicates the last time check was ran
+                  description: Timestamp indicates the time the check was last run
                   type: string
               required:
               - policy
