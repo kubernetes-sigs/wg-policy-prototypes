@@ -32,7 +32,7 @@ type PolicyReportSummary struct {
 	// +optional
 	Fail int `json:"fail"`
 
-	// Warn provides the count of unscored policies whose requirements were not met
+	// Warn provides the count of non-scored policies whose requirements were not met
 	// +optional
 	Warn int `json:"warn"`
 
@@ -45,63 +45,66 @@ type PolicyReportSummary struct {
 	Skip int `json:"skip"`
 }
 
-// PolicyStatus has one of the following values:
-//   - pass: indicates that the policy requirements are met
-//   - fail: indicates that the policy requirements are not met
-//   - warn: indicates that the policy requirements and not met, and the policy is not scored
-//   - error: indicates that the policy could not be evaluated
-//   - skip: indicates that the policy was not selected based on user inputs or applicability
+// PolicyResult has one of the following values:
+//   - pass: the policy requirements are met
+//   - fail: the policy requirements are not met
+//   - warn: the policy requirements are not met and the policy is not scored
+//   - error: the policy could not be evaluated
+//   - skip: the policy was not selected based on user inputs or applicability
 //
 // +kubebuilder:validation:Enum=pass;fail;warn;error;skip
-type PolicyStatus string
+type PolicyResult string
 
-// PolicySeverity has one of the following values:
+// PolicyResultSeverity has one of the following values:
 //   - high
 //   - low
 //   - medium
 // +kubebuilder:validation:Enum=high;low;medium
-type PolicySeverity string
+type PolicyResultSeverity string
 
 // PolicyReportResult provides the result for an individual policy
 type PolicyReportResult struct {
 
-	// Policy is the name of the policy
+	// Policy is the name or identifier of the policy
 	Policy string `json:"policy"`
 
-	// Rule is the name of the policy rule
+	// Rule is the name or identifier of the rule within the policy
 	// +optional
 	Rule string `json:"rule,omitempty"`
-
-	// Resources is an optional reference to the resource checked by the policy and rule
-	// +optional
-	Resources []*corev1.ObjectReference `json:"resources,omitempty"`
-
-	// ResourceSelector is an optional selector for policy results that apply to multiple resources.
-	// For example, a policy result may apply to all pods that match a label.
-	// Either a Resource or a ResourceSelector can be specified. If neither are provided, the
-	// result is assumed to be for the policy report scope.
-	// +optional
-	ResourceSelector *metav1.LabelSelector `json:"resourceSelector,omitempty"`
-
-	// Message is a short user friendly description of the policy rule
-	Message string `json:"message,omitempty"`
-
-	// Status indicates the result of the policy rule check
-	Status PolicyStatus `json:"status,omitempty"`
-
-	// Scored indicates if this policy rule is scored
-	Scored bool `json:"scored,omitempty"`
-
-	// Data provides additional information for the policy rule
-	Data map[string]string `json:"data,omitempty"`
 
 	// Category indicates policy category
 	// +optional
 	Category string `json:"category,omitempty"`
 
-	// Severity indicates policy severity
+	// Severity indicates policy check result criticality
 	// +optional
-	Severity PolicySeverity `json:"severity,omitempty"`
+	Severity PolicyResultSeverity `json:"severity,omitempty"`
+
+	// Timestamp indicates the time the result was found
+	Timestamp metav1.Timestamp
+
+	// Result indicates the outcome of the policy rule execution
+	Result PolicyResult `json:"result,omitempty"`
+
+	// Scored indicates if this result is scored
+	Scored bool `json:"scored,omitempty"`
+
+	// Subjects is an optional reference to the checked Kubernetes resources
+	// +optional
+	Subjects []*corev1.ObjectReference `json:"resources,omitempty"`
+
+	// SubjectSelector is an optional label selector for checked Kubernetes resources.
+	// For example, a policy result may apply to all pods that match a label.
+	// Either a Subject or a SubjectSelector can be specified. If neither are provided, the
+	// result is assumed to be for the policy report scope.
+	// +optional
+	SubjectSelector *metav1.LabelSelector `json:"resourceSelector,omitempty"`
+
+	// Description is a short user friendly message for the policy rule
+	Description string `json:"message,omitempty"`
+
+	// Properties provides additional information for the policy rule
+	Properties map[string]string `json:"properties,omitempty"`
 }
 
 // +genclient

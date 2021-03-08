@@ -70,22 +70,23 @@ spec:
               category:
                 description: Category indicates policy category
                 type: string
-              data:
-                additionalProperties:
-                  type: string
-                description: Data provides additional information for the policy rule
-                type: object
               message:
-                description: Message is a short user friendly description of the policy
-                  rule
+                description: Description is a short user friendly message for the
+                  policy rule
                 type: string
               policy:
-                description: Policy is the name of the policy
+                description: Policy is the name or identifier of the policy
                 type: string
+              properties:
+                additionalProperties:
+                  type: string
+                description: Properties provides additional information for the policy
+                  rule
+                type: object
               resourceSelector:
-                description: ResourceSelector is an optional selector for policy results
-                  that apply to multiple resources. For example, a policy result may
-                  apply to all pods that match a label. Either a Resource or a ResourceSelector
+                description: SubjectSelector is an optional label selector for checked
+                  Kubernetes resources. For example, a policy result may apply to
+                  all pods that match a label. Either a Subject or a SubjectSelector
                   can be specified. If neither are provided, the result is assumed
                   to be for the policy report scope.
                 properties:
@@ -131,8 +132,8 @@ spec:
                     type: object
                 type: object
               resources:
-                description: Resources is an optional reference to the resource checked
-                  by the policy and rule
+                description: Subjects is an optional reference to the checked Kubernetes
+                  resources
                 items:
                   description: 'ObjectReference contains enough information to let
                     you inspect or modify the referred object. --- New uses of this
@@ -194,27 +195,28 @@ spec:
                       type: string
                   type: object
                 type: array
-              rule:
-                description: Rule is the name of the policy rule
-                type: string
-              scored:
-                description: Scored indicates if this policy rule is scored
-                type: boolean
-              severity:
-                description: Severity indicates policy severity
-                enum:
-                - high
-                - low
-                - medium
-                type: string
-              status:
-                description: Status indicates the result of the policy rule check
+              result:
+                description: Result indicates the outcome of the policy rule execution
                 enum:
                 - pass
                 - fail
                 - warn
                 - error
                 - skip
+                type: string
+              rule:
+                description: Rule is the name or identifier of the rule within the
+                  policy
+                type: string
+              scored:
+                description: Scored indicates if this result is scored
+                type: boolean
+              severity:
+                description: Severity indicates policy check result criticality
+                enum:
+                - high
+                - low
+                - medium
                 type: string
             required:
             - policy
@@ -317,7 +319,7 @@ spec:
                 for evaluation
               type: integer
             warn:
-              description: Warn provides the count of unscored policies whose requirements
+              description: Warn provides the count of non-scored policies whose requirements
                 were not met
               type: integer
           type: object
