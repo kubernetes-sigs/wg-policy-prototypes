@@ -1,4 +1,4 @@
-apiVersion: policy.kubernetes.io/v1alpha1
+apiVersion: wgpolicyk8s.io/v1alpha1
 kind: PolicyReport
 metadata:
   name: sample-fedramp-compliance-operator
@@ -21,7 +21,7 @@ results:
       Record Events that Modify User/Group Information via open syscall - /etc/group
       Creation of groups through direct edition of /etc/group could be an indicator of malicious activity on a system.
       Auditing these events could serve as evidence of potential system compromise.
-    status: Fail
+    status: fail
     scored: true
     severity: medium
     data:
@@ -32,7 +32,7 @@ results:
       Limit Users' SSH Access
       Specifying which accounts are allowed SSH access into the system reduces the
       possibility of unauthorized access to the system.
-    status: Warn
+    status: warn
     scored: false
     data:
       suite: fedramp-moderate

@@ -1,4 +1,4 @@
-apiVersion: policy.kubernetes.io/v1
+apiVersion: wgpolicyk8s.io/v1alpha1
 kind: PolicyReport
 metadata:
   name: sample-rhacm-policy
@@ -16,7 +16,7 @@ summary:
 results:
 - policy: mustnothaveimagevuln
   message: must not have imagemanifestvulns
-  status: Fail
+  status: fail
   scored: false
   resources:
     - apiVersion: secscan.quay.redhat.com/v1alpha1
