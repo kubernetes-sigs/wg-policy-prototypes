@@ -9,8 +9,6 @@ scope:
   kind: Policy
   name: policy-imagemanifestvuln
   namespace: cluster1
-  category: DE.CM Security Continuous Monitoring'
-  severity: high
 summary:
   pass: 1
   fail: 11
