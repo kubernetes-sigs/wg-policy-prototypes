@@ -22,3 +22,9 @@ results:
       kind: ImageManifestVuln
       name: sha256.8d104847fc2371a983f7cb01c7c0a3ab35b7381d6bf7ce355d9b32a08c0031f0
       namespace: openshift-cluster-version
+  properties:
+    details: 'NonCompliant; violation - imagemanifestvulns exist and should be deleted: [sha256.8d104847fc2371a983f7cb01c7c0a3ab35b7381d6bf7ce355d9b32a08c0031f0] in namespace openshift-cluster-version'
+    standards: NIST-CSF
+    categories: 'DE.CM Security Continuous Monitoring'
+    controls: 'DE.CM-8 Vulnerability scans'
+    severity: high

@@ -24,6 +24,9 @@ results:
     result: fail
     scored: true
     severity: medium
+    properties:
+      suite: fedramp-moderate
+      scan: workers-scan
   - policy: xccdf_org.ssgproject.content_rule_sshd_limit_user_access
     message: |-
       Limit Users' SSH Access
@@ -31,3 +34,6 @@ results:
       possibility of unauthorized access to the system.
     result: warn
     scored: false
+    properties:
+      suite: fedramp-moderate
+      scan: workers-scan
