@@ -17,10 +17,13 @@ summary:
 results:
   - policy: api-server:anonymous-auth
     message: ensure that --anonymous-auth argument is set to false
+    result: warn
     scored: true
   - policy: api-server:basic-auth-file
     message: ensure that --basic-auth-file argument is not set
+    result: fail
     scored: true
   - policy: api-server:token-auth-file
     message: ensure that --token-auth-file argument is not set
+    result: warn
     scored: false

@@ -15,6 +15,7 @@ summary:
 results:
 - policy: mustnothaveimagevuln
   message: must not have imagemanifestvulns
+  result: fail
   scored: false
   resources:
     - apiVersion: secscan.quay.redhat.com/v1alpha1
