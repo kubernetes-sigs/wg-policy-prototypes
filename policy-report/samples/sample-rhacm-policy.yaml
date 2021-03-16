@@ -1,10 +1,9 @@
-apiVersion: policy.kubernetes.io/v1
+apiVersion: wgpolicyk8s.io/v1alpha1
 kind: PolicyReport
 metadata:
   name: sample-rhacm-policy
   labels:
     policy.kubernetes.io/engine: rhacm-configuration-policy
-executionCount: 1
 scope:
   apiVersion: policy.open-cluster-management.io/v1
   kind: Policy
@@ -16,14 +15,14 @@ summary:
 results:
 - policy: mustnothaveimagevuln
   message: must not have imagemanifestvulns
-  status: Fail
+  result: fail
   scored: false
   resources:
     - apiVersion: secscan.quay.redhat.com/v1alpha1
       kind: ImageManifestVuln
       name: sha256.8d104847fc2371a983f7cb01c7c0a3ab35b7381d6bf7ce355d9b32a08c0031f0
       namespace: openshift-cluster-version
-  data:
+  properties:
     details: 'NonCompliant; violation - imagemanifestvulns exist and should be deleted: [sha256.8d104847fc2371a983f7cb01c7c0a3ab35b7381d6bf7ce355d9b32a08c0031f0] in namespace openshift-cluster-version'
     standards: NIST-CSF
     categories: 'DE.CM Security Continuous Monitoring'

@@ -81,7 +81,7 @@ type PolicyReportResult struct {
 	Severity PolicyResultSeverity `json:"severity,omitempty"`
 
 	// Timestamp indicates the time the result was found
-	Timestamp metav1.Timestamp
+	Timestamp metav1.Timestamp `json:"metadata.creationTimestamp,omitempty"`
 
 	// Result indicates the outcome of the policy rule execution
 	Result PolicyResult `json:"result,omitempty"`
