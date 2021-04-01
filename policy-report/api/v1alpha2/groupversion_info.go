@@ -14,22 +14,22 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// Package v1alpha1 contains API Schema definitions for the policy v1alpha1 API group
+// Package v1aplha2 contains API Schema definitions for the policy v1aplha2 API group
 // +kubebuilder:object:generate=true
 // +groupName=wgpolicyk8s.io
-package v1alpha1
+package v1alpha2
 
 import (
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"sigs.k8s.io/controller-runtime/pkg/scheme"
 )
 
-// Package v1alpha1 contains API Schema definitions for the policy v1alpha1 API group
+// Package v1aplha2 contains API Schema definitions for the policy v1aplha2 API group
 // +kubebuilder:object:generate=true
 // +groupName=wgpolicyk8s.io
 var (
 	// SchemeGroupVersion is group version used to register these objects
-	SchemeGroupVersion = schema.GroupVersion{Group: "wgpolicyk8s.io", Version: "v1alpha1"}
+	SchemeGroupVersion = schema.GroupVersion{Group: "wgpolicyk8s.io", Version: "v1alpha2"}
 
 	// SchemeBuilder is used to add go types to the GroupVersionKind scheme
 	SchemeBuilder = &scheme.Builder{GroupVersion: SchemeGroupVersion}

@@ -13,7 +13,7 @@ all: manifests build fmt vet
 # Generate manifests e.g. CRD, RBAC etc.
 manifests: controller-gen
 	$(CONTROLLER_GEN) $(CRD_OPTIONS) paths="./..." output:dir=crd
-	$(CONTROLLER_GEN) object paths=./api/v1alpha1/
+	$(CONTROLLER_GEN) object paths=./api/v1alpha2/
 
 # Run go build against code
 build:
@@ -46,7 +46,7 @@ endif
 
 # generate will create api docs
 generate:
-	gen-crd-api-reference-docs -api-dir ./api/v1alpha1 -config docs/config.json -template-dir docs/template -out-file docs/index.html
+	gen-crd-api-reference-docs -api-dir ./api/v1alpha2 -config docs/config.json -template-dir docs/template -out-file docs/index.html
 	# TODO - Currently gen-crd-api-reference-docs doesn't support kubebuilder for generating docs. https://github.com/ahmetb/gen-crd-api-reference-docs/issues/15
 	# go run github.com/ahmetb/gen-crd-api-reference-docs -api-dir ./api/v1alpha1 -config docs/config.json -template-dir docs/template -out-file docs/index.html
 
