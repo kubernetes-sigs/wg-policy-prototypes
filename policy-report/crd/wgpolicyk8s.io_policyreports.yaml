@@ -157,6 +157,9 @@ spec:
                   - low
                   - medium
                   type: string
+                source:
+                  description: Source is an identifier for the policy engine that manages this report
+                  type: string
                 timestamp:
                   description: Timestamp indicates the time the result was found
                   properties:

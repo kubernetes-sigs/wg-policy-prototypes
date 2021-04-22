@@ -65,6 +65,10 @@ type PolicyResultSeverity string
 // PolicyReportResult provides the result for an individual policy
 type PolicyReportResult struct {
 
+	// Source is an identifier for the policy engine that manages this report
+	// +optional
+	Source string `json:"source"`
+
 	// Policy is the name or identifier of the policy
 	Policy string `json:"policy"`
 
