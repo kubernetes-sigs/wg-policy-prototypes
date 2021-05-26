@@ -1,0 +1,47 @@
+apiVersion: wgpolicyk8s.io/v1alpha2
+kind: PolicyReport
+metadata:
+  name: falco-alerts-policy
+  namespace: my-namespace
+  labels:
+    policy.kubernetes.io/engine: falco-agent
+summary:
+  fail: 1
+results:
+- policy: "Change thread namespace"
+  message: "Falco alert created due to the Change thread namespace rule"
+  result: fail
+  scored: false
+  resources:
+    - apiVersion: v1
+      kind: Pod
+      name: a-pod
+      namespace: my-namespace
+  properties:
+    details: '12:57:37.086240437: Notice Namespace change (setns) by unexpected program (user=root user_loginuid=-1 command=ovnkube --init-node ...'
+    container.id: "0f8d7e2a3296"
+    evt.arg.path: "/bin/directory-created-by-event-generator"
+    proc.cmdline: "event-generator run --loop ^syscall"
+    severity: low
+---
+apiVersion: wgpolicyk8s.io/v1alpha2
+kind: ClusterPolicyReport
+metadata:
+  name: falco-alerts-policy
+  labels:
+    policy.kubernetes.io/engine: falco-agent
+summary:
+  fail: 1
+results:
+- policy: audit
+  message: "audit rule violation from the kubernetes api server"
+  result: fail
+  scored: false
+  properties:
+    details: 'Warning K8s Operation performed by user not in allowed list of users'
+    severity: medium
+    user: username
+    target: kubernetes/endpoints
+    verb: create
+    uri: '/api/v1/namespaces/default/endpoints/kubernetes'
+    resp: '200'
