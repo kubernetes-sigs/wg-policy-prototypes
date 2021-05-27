@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: policyreport
+spec:
+  template:
+    spec:
+      containers:
+      - name: policyreport
+        image: mritunjay394/policyreport
+      restartPolicy: Never
+      serviceAccountName: policyreport
+  backoffLimit: 4
+
