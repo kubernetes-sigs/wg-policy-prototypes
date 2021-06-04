@@ -23,9 +23,9 @@ import (
 	sync "sync"
 	time "time"
 
-	versioned "github.com/mritunjaysharma394/policy-report-prototype/pkg/generated/v1alpha2/clientset/versioned"
-	internalinterfaces "github.com/mritunjaysharma394/policy-report-prototype/pkg/generated/v1alpha2/informers/externalversions/internalinterfaces"
-	wgpolicyk8sio "github.com/mritunjaysharma394/policy-report-prototype/pkg/generated/v1alpha2/informers/externalversions/wgpolicyk8s.io"
+	versioned "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/kube-bench-adapter/pkg/generated/v1alpha2/clientset/versioned"
+	internalinterfaces "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/kube-bench-adapter/pkg/generated/v1alpha2/informers/externalversions/internalinterfaces"
+	wgpolicyk8sio "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/kube-bench-adapter/pkg/generated/v1alpha2/informers/externalversions/wgpolicyk8s.io"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"

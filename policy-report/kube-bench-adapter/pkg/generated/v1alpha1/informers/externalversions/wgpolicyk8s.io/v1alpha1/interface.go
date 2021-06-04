@@ -19,7 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
-	internalinterfaces "github.com/mritunjaysharma394/policy-report-prototype/pkg/generated/v1alpha1/informers/externalversions/internalinterfaces"
+	internalinterfaces "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/kube-bench-adapter/pkg/generated/v1alpha1/informers/externalversions/internalinterfaces"
 )
 
 // Interface provides access to all the informers in this group version.

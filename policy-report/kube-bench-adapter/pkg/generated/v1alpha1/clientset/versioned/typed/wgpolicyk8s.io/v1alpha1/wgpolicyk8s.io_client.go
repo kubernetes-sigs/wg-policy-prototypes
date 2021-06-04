@@ -19,8 +19,8 @@ limitations under the License.
 package v1alpha1
 
 import (
-	v1alpha1 "github.com/mritunjaysharma394/policy-report-prototype/pkg/apis/wgpolicyk8s.io/v1alpha1"
-	"github.com/mritunjaysharma394/policy-report-prototype/pkg/generated/v1alpha1/clientset/versioned/scheme"
+	v1alpha1 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/kube-bench-adapter/pkg/apis/wgpolicyk8s.io/v1alpha1"
+	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/kube-bench-adapter/pkg/generated/v1alpha1/clientset/versioned/scheme"
 	rest "k8s.io/client-go/rest"
 )
 

@@ -8,9 +8,9 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/mritunjaysharma394/policy-report-prototype/pkg/report"
+	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/kube-bench-adapter/pkg/report"
 
-	"github.com/mritunjaysharma394/policy-report-prototype/pkg/kubebench"
+	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/kube-bench-adapter/pkg/kubebench"
 
 	"k8s.io/client-go/util/homedir"
 )

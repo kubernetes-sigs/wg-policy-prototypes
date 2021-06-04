@@ -19,7 +19,7 @@ limitations under the License.
 package fake
 
 import (
-	v1alpha1 "github.com/mritunjaysharma394/policy-report-prototype/pkg/generated/v1alpha1/clientset/versioned/typed/wgpolicyk8s.io/v1alpha1"
+	v1alpha1 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/kube-bench-adapter/pkg/generated/v1alpha1/clientset/versioned/typed/wgpolicyk8s.io/v1alpha1"
 	rest "k8s.io/client-go/rest"
 	testing "k8s.io/client-go/testing"
 )
