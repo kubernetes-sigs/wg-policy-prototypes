@@ -35,12 +35,12 @@ func Write(r *policyreport.PolicyReport, namespace string, kubeconfigPath string
 	policyReport := clientset.Wgpolicyk8sV1alpha2().PolicyReports(namespace)
 
 	// Check for existing Policy Reports
-	result, getErr := policyReport.Get(context.TODO(), r.Name, metav1.GetOptions{})
+	result, getErr := policyReport.Get(context.Background(), r.Name, metav1.GetOptions{})
 	// Create new Policy Report if not found
 	if errors.IsNotFound(getErr) {
 		fmt.Println("creating policy report...")
 
-		result, err = policyReport.Create(context.TODO(), r, metav1.CreateOptions{})
+		result, err = policyReport.Create(context.Background(), r, metav1.CreateOptions{})
 		if err != nil {
 			return nil, err
 		}
@@ -50,7 +50,7 @@ func Write(r *policyreport.PolicyReport, namespace string, kubeconfigPath string
 		fmt.Println("updating policy report...")
 		retryErr := retry.RetryOnConflict(retry.DefaultRetry, func() error {
 
-			getObj, err := policyReport.Get(context.TODO(), r.GetName(), metav1.GetOptions{})
+			getObj, err := policyReport.Get(context.Background(), r.GetName(), metav1.GetOptions{})
 			if errors.IsNotFound(err) {
 				// This doesnt ever happen even if it is already deleted or not found
 				log.Printf("%v not found", r.GetName())
@@ -63,7 +63,7 @@ func Write(r *policyreport.PolicyReport, namespace string, kubeconfigPath string
 
 			r.SetResourceVersion(getObj.GetResourceVersion())
 
-			_, updateErr := policyReport.Update(context.TODO(), r, metav1.UpdateOptions{})
+			_, updateErr := policyReport.Update(context.Background(), r, metav1.UpdateOptions{})
 			return updateErr
 		})
 		if retryErr != nil {

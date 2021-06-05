@@ -49,27 +49,27 @@ func RunJob(kubeconfig string, kubebenchYAML, kubebenchImg, kubebenchVersion, ku
 		return nil, err
 	}
 	var jobName string
-	jobName, err = deployJob(context.TODO(), clientset, kubebenchYAML, kubebenchImg, kubebenchVersion, kubebenchBenchmark, kubebenchTargets)
+	jobName, err = deployJob(context.Background(), clientset, kubebenchYAML, kubebenchImg, kubebenchVersion, kubebenchBenchmark, kubebenchTargets)
 	if err != nil {
 		return nil, err
 	}
 
-	p, err := findPodForJob(context.TODO(), clientset, jobName, timeout)
+	p, err := findPodForJob(context.Background(), clientset, jobName, timeout)
 	if err != nil {
 		return nil, err
 	}
 
-	output, err := getPodLogs(context.TODO(), clientset, jobName, p)
+	output, err := getPodLogs(context.Background(), clientset, jobName, p)
 	if err != nil {
 		return nil, err
 	}
 
-	err = clientset.BatchV1().Jobs(apiv1.NamespaceDefault).Delete(context.TODO(), jobName, metav1.DeleteOptions{})
+	err = clientset.BatchV1().Jobs(apiv1.NamespaceDefault).Delete(context.Background(), jobName, metav1.DeleteOptions{})
 	if err != nil {
 		return nil, err
 	}
 
-	err = clientset.CoreV1().Pods(apiv1.NamespaceDefault).Delete(context.TODO(), p.Name, metav1.DeleteOptions{})
+	err = clientset.CoreV1().Pods(apiv1.NamespaceDefault).Delete(context.Background(), p.Name, metav1.DeleteOptions{})
 	if err != nil {
 		return nil, err
 	}
