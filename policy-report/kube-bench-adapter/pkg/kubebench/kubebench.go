@@ -12,7 +12,6 @@ import (
 	kubebench "github.com/aquasecurity/kube-bench/check"
 	batchv1 "k8s.io/api/batch/v1"
 	apiv1 "k8s.io/api/core/v1"
-	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	yaml "k8s.io/apimachinery/pkg/util/yaml"
 	"k8s.io/client-go/kubernetes"
@@ -148,7 +147,7 @@ func findPodForJob(ctx context.Context, clientset *kubernetes.Clientset, jobName
 }
 
 func getPodLogs(ctx context.Context, clientset *kubernetes.Clientset, jobName string, pod *apiv1.Pod) (string, error) {
-	podLogOpts := corev1.PodLogOptions{}
+	podLogOpts := apiv1.PodLogOptions{}
 	req := clientset.CoreV1().Pods(pod.Namespace).GetLogs(pod.Name, &podLogOpts)
 	podLogs, err := req.Stream(ctx)
 	if err != nil {
