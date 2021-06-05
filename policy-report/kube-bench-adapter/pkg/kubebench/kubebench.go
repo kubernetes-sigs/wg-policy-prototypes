@@ -10,6 +10,7 @@ import (
 	"time"
 
 	kubebench "github.com/aquasecurity/kube-bench/check"
+	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/kube-bench-adapter/pkg/params"
 	batchv1 "k8s.io/api/batch/v1"
 	apiv1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -41,19 +42,19 @@ func getClientSet(kubeconfigPath string) (*kubernetes.Clientset, error) {
 	return clientset, nil
 
 }
-func RunJob(kubeconfig string, kubebenchYAML, kubebenchImg, kubebenchVersion, kubebenchBenchmark, kubebenchTargets string, timeout time.Duration) (*kubebench.OverallControls, error) {
+func RunJob(params *params.KubeBenchArgs) (*kubebench.OverallControls, error) {
 
-	clientset, err := getClientSet(kubeconfig)
+	clientset, err := getClientSet(params.Kubeconfig)
 	if err != nil {
 		return nil, err
 	}
 	var jobName string
-	jobName, err = deployJob(context.Background(), clientset, kubebenchYAML, kubebenchImg, kubebenchVersion, kubebenchBenchmark, kubebenchTargets)
+	jobName, err = deployJob(context.Background(), clientset, params)
 	if err != nil {
 		return nil, err
 	}
 
-	p, err := findPodForJob(context.Background(), clientset, jobName, timeout)
+	p, err := findPodForJob(context.Background(), clientset, jobName, params.Timeout)
 	if err != nil {
 		return nil, err
 	}
@@ -82,9 +83,9 @@ func RunJob(kubeconfig string, kubebenchYAML, kubebenchImg, kubebenchVersion, ku
 
 }
 
-func deployJob(ctx context.Context, clientset *kubernetes.Clientset, kubebenchYAML, kubebenchImg, kubebenchVersion, kubebenchBenchmark, kubebenchTargets string) (string, error) {
+func deployJob(ctx context.Context, clientset *kubernetes.Clientset, params *params.KubeBenchArgs) (string, error) {
 
-	jobYAML, err := embedYAMLs(kubebenchYAML)
+	jobYAML, err := embedYAMLs(params.KubebenchYAML)
 	if err != nil {
 		return "", err
 	}
@@ -95,11 +96,11 @@ func deployJob(ctx context.Context, clientset *kubernetes.Clientset, kubebenchYA
 		return "", err
 	}
 	jobName := job.GetName()
-	job.Spec.Template.Spec.Containers[0].Image = kubebenchImg
+	job.Spec.Template.Spec.Containers[0].Image = params.KubebenchImg
 	job.Spec.Template.Spec.Containers[0].Args = []string{"--json"}
-	job.Spec.Template.Spec.Containers[0].Args = []string{"--version", kubebenchVersion}
-	job.Spec.Template.Spec.Containers[0].Args = []string{"--benchmark", kubebenchBenchmark}
-	job.Spec.Template.Spec.Containers[0].Args = []string{"run", "--targets", kubebenchTargets, "--json"}
+	job.Spec.Template.Spec.Containers[0].Args = []string{"--version", params.KubebenchVersion}
+	job.Spec.Template.Spec.Containers[0].Args = []string{"--benchmark", params.KubebenchBenchmark}
+	job.Spec.Template.Spec.Containers[0].Args = []string{"run", "--targets", params.KubebenchTargets, "--json"}
 	_, err = clientset.BatchV1().Jobs(apiv1.NamespaceDefault).Create(ctx, job, metav1.CreateOptions{})
 
 	return jobName, err
