@@ -25,10 +25,14 @@ Once you've been a reviewer, you can request to become an approver by filing a P
 
 Participation in the Kubernetes community is governed by the [Kubernetes Code of Conduct](code-of-conduct.md).
 
-## Projects
+## Projects - also see [Project Board](https://github.com/kubernetes-sigs/wg-policy-prototypes/projects/1)
 
-* [Gaurdian](guardian/README.md)
 * [Policy Report CRD](policy-report/README.md)
+* [Kubernetes Policy Whitepaper](https://docs.google.com/document/d/1C_YHezrlVllq2gzFiwQhZ0dOAINYLOrHswbubpQLCmQ/edit#)
+
+### Backlog or Retired
+
+* [Guardian](guardian/README.md) - Formal verification of policy
 
 ## Additional Information
 
