@@ -30,11 +30,11 @@ func main() {
 	}
 
 	// write policy report
-	r, err = report.Write(r, params.Params.Namespace, params.Params.Kubeconfig)
+	r, err = report.Write(r, params.Params.Kubeconfig)
 	if err != nil {
 		fmt.Printf("failed to create policy reports: %v \n", err)
 		os.Exit(-1)
 	}
 
-	fmt.Printf("wrote policy report %s/%s \n", r.Namespace, r.Name)
+	fmt.Printf("wrote policy report %s \n", r.Name)
 }

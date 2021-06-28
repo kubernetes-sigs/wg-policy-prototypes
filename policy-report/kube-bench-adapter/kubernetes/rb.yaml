@@ -1,13 +1,12 @@
 apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
+kind: ClusterRoleBinding
 metadata:
-  name: policyreport
-  namespace: default
+  name: clusterpolicyreport
 subjects:
 - kind: ServiceAccount
-  name: policyreport # Name of the ServiceAccount
+  name: clusterpolicyreport # Name of the ServiceAccount
   namespace: default
 roleRef:
-  kind: Role # This must be Role or ClusterRole
-  name: policyreport # This must match the name of the Role or ClusterRole you wish to bind to
+  kind: ClusterRole # This must be Role or ClusterRole
+  name: clusterpolicyreport # This must match the name of the Role or ClusterRole you wish to bind to
   apiGroup: rbac.authorization.k8s.io

@@ -1,8 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
+kind: ClusterRole
 metadata:
-  namespace: default
-  name: policyreport
+  name: clusterpolicyreport
 rules:
 - apiGroups: [""] # "" indicates the core API group
   resources: ["pods","pods/log"]
@@ -11,5 +10,5 @@ rules:
   resources: ["jobs"]
   verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
 - apiGroups: ["wgpolicyk8s.io"]
-  resources: ["policyreports"]
+  resources: ["policyreports", "clusterpolicyreports"]
   verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
