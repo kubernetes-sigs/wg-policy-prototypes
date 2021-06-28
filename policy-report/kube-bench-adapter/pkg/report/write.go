@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	policyreport "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/kube-bench-adapter/pkg/apis/wgpolicyk8s.io/v1alpha2"
+	clusterpolicyreport "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/kube-bench-adapter/pkg/apis/wgpolicyk8s.io/v1alpha2"
 
 	client "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/kube-bench-adapter/pkg/generated/v1alpha2/clientset/versioned"
 	"k8s.io/apimachinery/pkg/api/errors"
@@ -16,7 +16,7 @@ import (
 	"k8s.io/klog"
 )
 
-func Write(r *policyreport.PolicyReport, namespace string, kubeconfigPath string) (*policyreport.PolicyReport, error) {
+func Write(r *clusterpolicyreport.ClusterPolicyReport, kubeconfigPath string) (*clusterpolicyreport.ClusterPolicyReport, error) {
 	var kubeconfig *rest.Config
 
 	cfg, err := rest.InClusterConfig()
@@ -32,13 +32,13 @@ func Write(r *policyreport.PolicyReport, namespace string, kubeconfigPath string
 	if err != nil {
 		return nil, err
 	}
-	policyReport := clientset.Wgpolicyk8sV1alpha2().PolicyReports(namespace)
+	policyReport := clientset.Wgpolicyk8sV1alpha2().ClusterPolicyReports()
 
 	// Check for existing Policy Reports
 	result, getErr := policyReport.Get(context.Background(), r.Name, metav1.GetOptions{})
 	// Create new Policy Report if not found
 	if errors.IsNotFound(getErr) {
-		fmt.Println("creating policy report...")
+		fmt.Println("creating cluster-wide policy report...")
 
 		result, err = policyReport.Create(context.Background(), r, metav1.CreateOptions{})
 		if err != nil {

@@ -7,16 +7,16 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
 	kubebench "github.com/aquasecurity/kube-bench/check"
-	policyreport "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/kube-bench-adapter/pkg/apis/wgpolicyk8s.io/v1alpha2"
+	clusterpolicyreport "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/kube-bench-adapter/pkg/apis/wgpolicyk8s.io/v1alpha2"
 )
 
-func New(cisResults *kubebench.OverallControls, name string, category string) (*policyreport.PolicyReport, error) {
+func New(cisResults *kubebench.OverallControls, name string, category string) (*clusterpolicyreport.ClusterPolicyReport, error) {
 
-	report := &policyreport.PolicyReport{
+	report := &clusterpolicyreport.ClusterPolicyReport{
 		ObjectMeta: metav1.ObjectMeta{
 			Name: name,
 		},
-		Summary: policyreport.PolicyReportSummary{
+		Summary: clusterpolicyreport.PolicyReportSummary{
 			Pass: cisResults.Totals.Pass,
 			Fail: cisResults.Totals.Fail,
 			Warn: cisResults.Totals.Warn,
@@ -36,8 +36,8 @@ func New(cisResults *kubebench.OverallControls, name string, category string) (*
 	return report, nil
 }
 
-func newResult(category string, control *kubebench.Controls, group *kubebench.Group, check *kubebench.Check) *policyreport.PolicyReportResult {
-	return &policyreport.PolicyReportResult{
+func newResult(category string, control *kubebench.Controls, group *kubebench.Group, check *kubebench.Check) *clusterpolicyreport.PolicyReportResult {
+	return &clusterpolicyreport.PolicyReportResult{
 		Policy:      control.Text,
 		Rule:        group.Text,
 		Category:    category,
@@ -60,9 +60,9 @@ func newResult(category string, control *kubebench.Controls, group *kubebench.Gr
 	}
 }
 
-func convertState(s kubebench.State) policyreport.PolicyResult {
+func convertState(s kubebench.State) clusterpolicyreport.PolicyResult {
 
 	str := strings.ToLower(string(s))
 
-	return policyreport.PolicyResult(str)
+	return clusterpolicyreport.PolicyResult(str)
 }
