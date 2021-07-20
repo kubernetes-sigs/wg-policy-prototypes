@@ -8,12 +8,17 @@ See the [proposal](https://docs.google.com/document/d/1nICYLkYS1RE3gJzuHOfHeAC25
 
 ## Installing
 
-Add the CRDs to your cluster:
+Add the PolicyReport CRDs to your cluster (v1alpha2):
 
 ```console
-kubectl create -f https://github.com/kubernetes-sigs/wg-policy-prototypes/raw/master/policy-report/crd/wgpolicyk8s.io_policyreports.yaml
+kubectl create -f https://github.com/kubernetes-sigs/wg-policy-prototypes/raw/master/policy-report/crd/v1alpha2/wgpolicyk8s.io_policyreports.yaml
 ```
 
+Add the ClusterPolicyReport CRDs to your cluster (v1alpha2):
+
+```console
+kubectl create -f https://github.com/kubernetes-sigs/wg-policy-prototypes/raw/master/policy-report/crd/v1alpha2/wgpolicyk8s.io_clusterpolicyreports.yaml
+```
 Create a sample policy report resource:
 
 ```console
