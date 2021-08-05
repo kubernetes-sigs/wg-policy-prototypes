@@ -7,7 +7,7 @@ import(
 	//"strconv"
 	"strings"
 
-	clusterpolicyreport "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/image-vuln-adapter/pkg/apis/wgpolicyk8s.io/v1alpha2"
+	policyreport "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/image-vuln-adapter/pkg/apis/wgpolicyk8s.io/v1alpha2"
 	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/image-vuln-adapter/pkg/apis/imgvulnsecurity/v1alpha1"
 	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/image-vuln-adapter/pkg/kube"
 	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/image-vuln-adapter/pkg/docker"
@@ -835,33 +835,29 @@ func (p *plugin) ParseVulnerabilityReportData(ctx imgvuln.PluginContext, imageRe
 
 const PolicyReportSource string = "Trivy"
 
-func (p *plugin) ParsePolicyReportData(ctx imgvuln.PluginContext, imageRef string, logsReader io.ReadCloser) (clusterpolicyreport.ClusterPolicyReport, error) {
+func (p *plugin) ParsePolicyReportData(ctx imgvuln.PluginContext, imageRef string, logsReader io.ReadCloser) (policyreport.PolicyReport, error) {
 
-	policyreport := clusterpolicyreport.ClusterPolicyReport{
-		ObjectMeta: metav1.ObjectMeta{
-			Name: p.idGenerator.GenerateID(),
-		},
-	}
+	var policyReport policyreport.PolicyReport
 
 	var reports []ScanReport
 	err := json.NewDecoder(logsReader).Decode(&reports)
 	if err != nil {
-		return clusterpolicyreport.ClusterPolicyReport{}, err
+		return policyreport.PolicyReport{}, err
 	}
 
 	for _, report := range reports {
 		for _, sr := range report.Vulnerabilities {
 			r := newResult(sr)
-			policyreport.Results = append(policyreport.Results, r)
+			policyReport.Results = append(policyReport.Results, r)
 		}
 	}
 
-	policyreport.Summary = p.toSummaryPolicy(policyreport.Results)
+	policyReport.Summary = p.toSummaryPolicy(policyReport.Results)
 
-	return policyreport, nil
+	return policyReport, nil
 }
 
-func newResult(result Vulnerability) *clusterpolicyreport.PolicyReportResult {
+func newResult(result Vulnerability) *policyreport.PolicyReportResult {
 	//r := result.References
 	s := GetScoreFromCVSS(result.Cvss)
 	b := false
@@ -869,8 +865,8 @@ func newResult(result Vulnerability) *clusterpolicyreport.PolicyReportResult {
 		b = true
 	}
 	var sev string = string(result.Severity)
-	var r clusterpolicyreport.PolicyResultSeverity = clusterpolicyreport.PolicyResultSeverity(strings.ToLower(sev))
-	policyR := &clusterpolicyreport.PolicyReportResult{
+	var r policyreport.PolicyResultSeverity = policyreport.PolicyResultSeverity(strings.ToLower(sev))
+	policyR := &policyreport.PolicyReportResult{
 		Policy:      result.Title,
 		Source:      PolicyReportSource,
 		Category:    result.PkgName,
@@ -919,8 +915,8 @@ func (p *plugin) toSummary(vulnerabilities []v1alpha1.Vulnerability) v1alpha1.Vu
 	return vs
 }
 
-func (p *plugin) toSummaryPolicy(results []*clusterpolicyreport.PolicyReportResult) clusterpolicyreport.PolicyReportSummary {
-	var rs clusterpolicyreport.PolicyReportSummary
+func (p *plugin) toSummaryPolicy(results []*policyreport.PolicyReportResult) policyreport.PolicyReportSummary {
+	var rs policyreport.PolicyReportSummary
 	for _, v := range results {
 		switch v.Severity {
 		case "low":
