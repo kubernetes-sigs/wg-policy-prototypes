@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	clusterpolicyreport "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/image-vuln-adapter/pkg/apis/wgpolicyk8s.io/v1alpha2"
+	policyreport "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/image-vuln-adapter/pkg/apis/wgpolicyk8s.io/v1alpha2"
 
 	client "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/image-vuln-adapter/pkg/generated/v1alpha2/clientset/versioned"
 	"k8s.io/apimachinery/pkg/api/errors"
@@ -16,7 +16,7 @@ import (
 	"k8s.io/klog"
 )
 
-func Write(r []clusterpolicyreport.ClusterPolicyReport, kubeconfigPath string) error {
+func Write(r []policyreport.PolicyReport, kubeconfigPath string) error {
 
 	var kubeconfig *rest.Config
 
@@ -35,11 +35,11 @@ func Write(r []clusterpolicyreport.ClusterPolicyReport, kubeconfigPath string) e
 		fmt.Println("error: ", err)
 			return nil
 	}
-	policyReport := clientset.Wgpolicyk8sV1alpha2().ClusterPolicyReports()
-
+	
 	for _, report := range r {
-		var r *clusterpolicyreport.ClusterPolicyReport
+		var r *policyreport.PolicyReport
 		r = &report
+		policyReport := clientset.Wgpolicyk8sV1alpha2().PolicyReports(r.Namespace)
 		// Check for existing Policy Reports
 		result, getErr := policyReport.Get(context.Background(), r.Name, metav1.GetOptions{})
 		fmt.Println(result)
