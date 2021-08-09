@@ -4,6 +4,7 @@ import(
 	"encoding/json"
 	"fmt"
 	"io"
+	"time"
 	//"strconv"
 	"strings"
 
@@ -864,9 +865,16 @@ func newResult(result Vulnerability) *policyreport.PolicyReportResult {
 	if s != nil{
 		b = true
 	}
+
 	var sev string = string(result.Severity)
 	var r policyreport.PolicyResultSeverity = policyreport.PolicyResultSeverity(strings.ToLower(sev))
+
+	t := time.Now()
+	tUnix := t.Unix()
+	tUnixNano := int32(t.UnixNano())
+
 	policyR := &policyreport.PolicyReportResult{
+		Timestamp:	 metav1.Timestamp{Nanos: tUnixNano, Seconds: tUnix,},
 		Policy:      result.Title,
 		Source:      PolicyReportSource,
 		Category:    result.PkgName,
@@ -877,7 +885,6 @@ func newResult(result Vulnerability) *policyreport.PolicyReportResult {
 			"FixedVersion":        result.FixedVersion,
 			"PrimaryURL":     result.PrimaryURL,
 			//"References":            strings.Join(r," "),
-			"Score":     fmt.Sprint(s),
 		},
 	}
 	if r == "high" || r == "low" || r == "medium"{
