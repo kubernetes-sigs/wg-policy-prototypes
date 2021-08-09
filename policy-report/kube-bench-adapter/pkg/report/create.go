@@ -10,6 +10,8 @@ import (
 	clusterpolicyreport "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/kube-bench-adapter/pkg/apis/wgpolicyk8s.io/v1alpha2"
 )
 
+const PolicyReportSource string = "Kube Bench"
+
 func New(cisResults *kubebench.OverallControls, name string, category string) (*clusterpolicyreport.ClusterPolicyReport, error) {
 
 	report := &clusterpolicyreport.ClusterPolicyReport{
@@ -40,6 +42,7 @@ func newResult(category string, control *kubebench.Controls, group *kubebench.Gr
 	return &clusterpolicyreport.PolicyReportResult{
 		Policy:      control.Text,
 		Rule:        group.Text,
+		Source:      PolicyReportSource,
 		Category:    category,
 		Result:      convertState(check.State),
 		Scored:      check.Scored,

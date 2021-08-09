@@ -42,7 +42,7 @@ make build
 ./policyreport -name="kube-bench" -kube-bench-targets="master,node" -yaml="job.yaml" -category="CIS Benchmarks"
 
 # Check policyreports created through the custom resource
-kubectl get policyreports
+kubectl get clusterpolicyreports
 ```
 ###### Command Line Arguments
 |      Argument         |  Type   |    Default value         | Allowed value  | Usage                                            |
@@ -67,4 +67,4 @@ kubectl get policyreports
 * Flags `-name`, `-yaml`, `-category` are user configurable and can be changed by changing the variable on the right hand side.
 * Flag `-yaml` input is a string that tells the type of `kube-bench` YAML and the strings are matched internally to the path of the job YAMLs located in `pkg/kubebench/jobs`. The user just need to enter the type of yaml. Example:
 `-yaml=job.yaml`, `-yaml=job-master.yaml`, `-yaml=job-node.yaml`,etc.
-* In order to generate policy report in the form of YAML, we can do `kubectl get policyreports -o yaml > res.yaml` which will generate it as `res.yaml` in this case.
+* In order to generate policy report in the form of YAML, we can do `kubectl get clusterpolicyreports -o yaml > res.yaml` which will generate it as `res.yaml` in this case.
