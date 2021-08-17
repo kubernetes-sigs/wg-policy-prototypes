@@ -60,7 +60,7 @@ func Run(version imgvuln.BuildInfo, args []string, outWriter io.Writer, errWrite
 func initFlags() {
 	pflag.CommandLine.AddGoFlagSet(flag.CommandLine)
 
-	// Hide all klog flags except for -v
+	// Hide all klog flags except for -v 
 	flag.CommandLine.VisitAll(func(f *flag.Flag) {
 		if f.Name != "v" {
 			pflag.Lookup(f.Name).Hidden = true
