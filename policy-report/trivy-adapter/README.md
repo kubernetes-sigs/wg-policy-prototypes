@@ -1,10 +1,10 @@
-# image vulnerability adapter
+# Trivy Adapter
 The image vulnerability adapter runs an image vulnerability scanner tool called [trivy](https://github.com/aquasecurity/trivy) to scan a given kubernetes pod or workload to produces a namespace policy report based on the [Policy Report Custom Resource Definition](https://github.com/kubernetes-sigs/wg-policy-prototypes/tree/master/policy-report)
 
 ## Installing
-Build the imgvuln binary: `make imgvuln`
+Build the trivy-adapter binary: `make imgvuln`
 
-Type `imgvuln` command in your terminal to confirm if the image vulnerability adapter is installed already
+Type `trivy-adapter` command in your terminal to confirm if the image vulnerability adapter is installed already
 
 **Note**:
 * If it brings an error, the build is completed in the bin folder in the project, you just need to move the binary to your `/usr/local/bin` directory 
@@ -26,7 +26,7 @@ kind create cluster --name mycluster --image <kindest/node:stpecify version tag>
 kubectl create -f kubernetes/crd/v1alpha2/wgpolicyk8s.io_policyreports.yaml
 
 # 3. Create a vulnerability report CustomResourceDefinition
-imgvuln init
+trivy-adapter init
 
 # 4. Create a pod of image openzipkin/zipkin:latest called zipkin
 kubectl create deployment zipkin --image openzipkin/zipkin:latest
@@ -40,7 +40,7 @@ kubectl create deployment zipkin --image openzipkin/zipkin:latest
 kubectl get pod --all-namespaces
 
 # 6. Scan default pods
-imgvuln scan policyreports zipkin-uewcde32cs9-ui
+trivy-adapter scan policyreports zipkin-uewcde32cs9-ui
 
 # 7. Check policyreports created through the custom resource
 kubectl get policyreports
