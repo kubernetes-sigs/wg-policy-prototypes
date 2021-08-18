@@ -49,7 +49,7 @@ func (r *Resolver) WithClient(client client.Client) *Resolver {
 
 // GetVulnerabilityPlugin is a factory method that instantiates the vulnerabilityreport.Plugin.
 //
-// imgvuln currently supports Trivy scanner in Standalone and ClientServer
+// trivy-adapter currently supports Trivy scanner in Standalone and ClientServer
 // mode, and Aqua Enterprise scanner.
 //
 // You could add your own scanner by implementing the vulnerabilityreport.Plugin interface.

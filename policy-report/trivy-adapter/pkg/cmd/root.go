@@ -14,7 +14,7 @@ import (
 const (
 	shortMessage = "Trivy adapter security toolkit"
 	longMessage  = `Trivy adapter security toolkit
-imgvuln CLI can be used to find risks, such as vulnerabilities or insecure
+trivy-adapter CLI can be used to find risks, such as vulnerabilities or insecure
 pod descriptors, in Kubernetes workloads. By default, the risk assessment
 reports are stored in the policy report crd.
 $ kubectl create deployment nginx --image nginx:1.16
@@ -27,7 +27,7 @@ func NewRootCmd(buildInfo imgvuln.BuildInfo, args []string, outWriter io.Writer,
 	var cf *genericclioptions.ConfigFlags
 
 	rootCmd := &cobra.Command{
-		Use:           "imgvuln",
+		Use:           "trivy-adapter",
 		Short:         shortMessage,
 		Long:          fmt.Sprintf(longMessage, buildInfo.Executable),
 		SilenceErrors: true,

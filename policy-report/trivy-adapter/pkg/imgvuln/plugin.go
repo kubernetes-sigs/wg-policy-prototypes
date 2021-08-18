@@ -29,7 +29,7 @@ func (c PluginConfig) GetRequiredData(key string) (string, error) {
 	return value, nil
 }
 
-// PluginContext is plugin's execution context within the imgvuln toolkit.
+// PluginContext is plugin's execution context within the trivy-adapter toolkit.
 // The context is used to grant access to other methods so that this plugin
 // can interact with the toolkit.
 type PluginContext interface {
@@ -39,11 +39,11 @@ type PluginContext interface {
 	GetConfig() (PluginConfig, error)
 	// EnsureConfig ensures the PluginConfig, typically when a plugin is initialized.
 	EnsureConfig(config PluginConfig) error
-	// GetNamespace return the name of the K8s Namespace where imgvuln creates Jobs
+	// GetNamespace return the name of the K8s Namespace where trivy-adapter creates Jobs
 	// and other helper objects.aquasecurity
 	GetNamespace() string
 	// GetServiceAccountName return the name of the K8s Service Account used to run workloads
-	// created by imgvuln.
+	// created by trivy-adapter.
 	GetServiceAccountName() string
 }
 
@@ -51,7 +51,7 @@ type PluginContext interface {
 // with the given name.
 // TODO Rename to GetPluginConfigObjectName as this method is used to determine the name of ConfigMaps and Secrets.
 func GetPluginConfigMapName(pluginName string) string {
-	return "imgvuln-" + strings.ToLower(pluginName) + "-config"
+	return "trivy-adapter-" + strings.ToLower(pluginName) + "-config"
 }
 
 type pluginContext struct {
@@ -71,7 +71,7 @@ func (p *pluginContext) EnsureConfig(config PluginConfig) error {
 			Namespace: p.namespace,
 			Name:      GetPluginConfigMapName(p.name),
 			Labels: labels.Set{
-				LabelK8SAppManagedBy: "imgvuln",
+				LabelK8SAppManagedBy: "trivy-adapter",
 			},
 		},
 		Data: config.Data,
@@ -88,7 +88,7 @@ func (p *pluginContext) GetConfig() (PluginConfig, error) {
 
 	err := p.client.Get(context.Background(), types.NamespacedName{
 		Namespace: p.namespace,
-		Name:      fmt.Sprintf("imgvuln-%s-config", strings.ToLower(p.GetName())),
+		Name:      fmt.Sprintf("trivy-adapter-%s-config", strings.ToLower(p.GetName())),
 	}, cm)
 	if err != nil {
 		return PluginConfig{}, err
@@ -96,7 +96,7 @@ func (p *pluginContext) GetConfig() (PluginConfig, error) {
 
 	err = p.client.Get(context.Background(), types.NamespacedName{
 		Namespace: p.namespace,
-		Name:      fmt.Sprintf("imgvuln-%s-config", strings.ToLower(p.GetName())),
+		Name:      fmt.Sprintf("trivy-adapter-%s-config", strings.ToLower(p.GetName())),
 	}, secret)
 
 	var secretData map[string][]byte

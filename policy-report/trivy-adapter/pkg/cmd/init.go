@@ -14,17 +14,17 @@ import (
 func NewInitCmd(buildInfo imgvuln.BuildInfo, cf *genericclioptions.ConfigFlags) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "init",
-		Short: "Create Kubernetes resources used by imgvuln",
-		Long: `Create all the resources used by imgvuln. It will create the following in your
+		Short: "Create Kubernetes resources used by trivy-adapter",
+		Long: `Create all the resources used by trivy-adapter. It will create the following in your
 Kubernetes cluster:
  - RBAC objects:
-   - The "imgvuln" ClusterRole
-   - The "imgvuln" ClusterRoleBinding
- - The "imgvuln" namespace with the following objects:
-   - The "imgvuln" service account
-   - The "imgvuln" ConfigMap
-   - The "imgvuln" secret
-The "imgvuln" ConfigMap and the "imgvuln" secret contain the default
+   - The "trivy-adapter" ClusterRole
+   - The "trivy-adapter" ClusterRoleBinding
+ - The "trivy-adapter" namespace with the following objects:
+   - The "trivy-adapter" service account
+   - The "trivy-adapter" ConfigMap
+   - The "trivy-adapter" secret
+The "trivy-adapter" ConfigMap and the "trivy-adapter" secret contain the default
 config parameters.
 All resources created by this command can be removed from the cluster using
 the "cleanup" command.`,

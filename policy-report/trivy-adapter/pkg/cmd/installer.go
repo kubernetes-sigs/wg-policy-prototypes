@@ -21,8 +21,8 @@ import (
 )
 
 const (
-	clusterRoleImgvuln        = "imgvuln"
-	clusterRoleBindingImgvuln = "imgvuln"
+	clusterRoleImgvuln        = "trivy-adapter"
+	clusterRoleBindingImgvuln = "trivy-adapter"
 )
 
 var (
@@ -30,7 +30,7 @@ var (
 		ObjectMeta: metav1.ObjectMeta{
 			Name: imgvuln.NamespaceName,
 			Labels: labels.Set{
-				"app.kubernetes.io/managed-by": "imgvuln",
+				"app.kubernetes.io/managed-by": "trivy-adapter",
 			},
 		},
 	}
@@ -38,7 +38,7 @@ var (
 		ObjectMeta: metav1.ObjectMeta{
 			Name: imgvuln.ServiceAccountName,
 			Labels: labels.Set{
-				"app.kubernetes.io/managed-by": "imgvuln",
+				"app.kubernetes.io/managed-by": "trivy-adapter",
 			},
 		},
 		AutomountServiceAccountToken: pointer.BoolPtr(false),
@@ -47,7 +47,7 @@ var (
 		ObjectMeta: metav1.ObjectMeta{
 			Name: clusterRoleImgvuln,
 			Labels: labels.Set{
-				"app.kubernetes.io/managed-by": "imgvuln",
+				"app.kubernetes.io/managed-by": "trivy-adapter",
 			},
 		},
 		Rules: []rbacv1.PolicyRule{
@@ -100,7 +100,7 @@ var (
 		ObjectMeta: metav1.ObjectMeta{
 			Name: clusterRoleBindingImgvuln,
 			Labels: labels.Set{
-				"app.kubernetes.io/managed-by": "imgvuln",
+				"app.kubernetes.io/managed-by": "trivy-adapter",
 			},
 		},
 		RoleRef: rbacv1.RoleRef{

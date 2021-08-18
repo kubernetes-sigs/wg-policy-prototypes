@@ -50,7 +50,7 @@ const (
 	keyVulnerabilityReportsScanner = "vulnerabilityReports.scanner"
 )
 
-// ConfigData holds imgvuln configuration settings as a set
+// ConfigData holds trivy-adapter configuration settings as a set
 // of key-value pairs.
 type ConfigData map[string]string
 
