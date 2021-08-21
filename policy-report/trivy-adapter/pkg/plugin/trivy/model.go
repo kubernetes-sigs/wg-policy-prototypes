@@ -1,7 +1,7 @@
 package trivy
 
 import (
-	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/apis/imgvulnsecurity/v1alpha1"
+	"github.com/aquasecurity/starboard/pkg/apis/aquasecurity/v1alpha1"
 )
 
 type ScanReport struct {

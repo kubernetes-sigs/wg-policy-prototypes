@@ -33,6 +33,6 @@ const (
 )
 
 const (
-	AnnotationContainerImages    = "trivy-adapter.container-images"
+	AnnotationContainerImages    = "trivyadapter.container-images"
 	AnnotationScanJobAnnotations = "scanJob.annotations"
 )

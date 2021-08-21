@@ -22,7 +22,7 @@ import (
 	"context"
 	time "time"
 
-	wgpolicyk8siov1alpha2 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/apis/wgpolicyk8s.io/v1alpha2"
+	wgpolicyk8siov1alpha2 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/wgpolicyk8s.io/v1alpha2"
 	versioned "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/generated/v1alpha2/clientset/versioned"
 	internalinterfaces "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/generated/v1alpha2/informers/externalversions/internalinterfaces"
 	v1alpha2 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/generated/v1alpha2/listers/wgpolicyk8s.io/v1alpha2"

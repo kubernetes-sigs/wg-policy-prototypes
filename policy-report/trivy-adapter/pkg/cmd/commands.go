@@ -8,7 +8,7 @@ import (
 	"k8s.io/apimachinery/pkg/api/meta"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/kube"
+	"github.com/aquasecurity/starboard/pkg/kube"
 	"github.com/spf13/cobra"
 	"k8s.io/cli-runtime/pkg/genericclioptions"
 )

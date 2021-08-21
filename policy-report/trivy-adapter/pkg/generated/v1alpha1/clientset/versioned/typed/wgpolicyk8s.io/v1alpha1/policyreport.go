@@ -22,7 +22,7 @@ import (
 	"context"
 	"time"
 
-	v1alpha1 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/apis/wgpolicyk8s.io/v1alpha1"
+	v1alpha1 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/wgpolicyk8s.io/v1alpha1"
 	scheme "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/generated/v1alpha1/clientset/versioned/scheme"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	types "k8s.io/apimachinery/pkg/types"

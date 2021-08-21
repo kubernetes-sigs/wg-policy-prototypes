@@ -21,7 +21,7 @@ package fake
 import (
 	"context"
 
-	v1alpha2 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/apis/wgpolicyk8s.io/v1alpha2"
+	v1alpha2 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/wgpolicyk8s.io/v1alpha2"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
