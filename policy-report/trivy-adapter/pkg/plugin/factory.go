@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/vulnerabilityreport"
-	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/ext"
+	"github.com/aquasecurity/starboard/pkg/ext"
 	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/plugin/trivy"
 	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/imgvuln"
 	"sigs.k8s.io/controller-runtime/pkg/client"

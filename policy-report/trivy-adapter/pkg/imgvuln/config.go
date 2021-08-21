@@ -165,7 +165,7 @@ func (c *configManager) EnsureDefault(ctx context.Context) error {
 				Namespace: c.namespace,
 				Name:      ConfigMapName,
 				Labels: labels.Set{
-					LabelK8SAppManagedBy: "starboard",
+					LabelK8SAppManagedBy: "trivy-adapter",
 				},
 			},
 			Data: GetDefaultConfig(),
@@ -181,7 +181,7 @@ func (c *configManager) EnsureDefault(ctx context.Context) error {
 			Namespace: c.namespace,
 			Name:      SecretName,
 			Labels: labels.Set{
-				LabelK8SAppManagedBy: "starboard",
+				LabelK8SAppManagedBy: "trivy-adapter",
 			},
 		},
 	}
