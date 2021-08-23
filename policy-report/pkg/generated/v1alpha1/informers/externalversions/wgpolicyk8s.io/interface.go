@@ -19,8 +19,8 @@ limitations under the License.
 package wgpolicyk8s
 
 import (
-	internalinterfaces "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/generated/v1alpha1/informers/externalversions/internalinterfaces"
-	v1alpha1 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/generated/v1alpha1/informers/externalversions/wgpolicyk8s.io/v1alpha1"
+	internalinterfaces "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha1/informers/externalversions/internalinterfaces"
+	v1alpha1 "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha1/informers/externalversions/wgpolicyk8s.io/v1alpha1"
 )
 
 // Interface provides access to each of this group's versions.

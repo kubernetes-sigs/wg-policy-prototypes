@@ -21,7 +21,7 @@ package versioned
 import (
 	"fmt"
 
-	wgpolicyk8sv1alpha2 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/generated/v1alpha2/clientset/versioned/typed/wgpolicyk8s.io/v1alpha2"
+	wgpolicyk8sv1alpha2 "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha2/clientset/versioned/typed/wgpolicyk8s.io/v1alpha2"
 	discovery "k8s.io/client-go/discovery"
 	rest "k8s.io/client-go/rest"
 	flowcontrol "k8s.io/client-go/util/flowcontrol"
