@@ -9,8 +9,9 @@ require (
 	k8s.io/apimachinery v0.20.5
 	k8s.io/client-go v11.0.0+incompatible
 	k8s.io/code-generator v0.20.1
-	k8s.io/klog v0.3.3
+	k8s.io/klog v1.0.0
 	sigs.k8s.io/controller-runtime v0.8.3
+	sigs.k8s.io/wg-policy-prototypes v0.0.0-20210823142600-b09c9bb01d4c
 )
 
 replace k8s.io/client-go => k8s.io/client-go v0.20.5

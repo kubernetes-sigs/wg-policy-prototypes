@@ -1,13 +1,13 @@
 package trivy
 
-import(
+import (
 	"encoding/json"
 	"fmt"
 	"io"
 	"time"
 	"strings"
 
-	policyreport "sigs.k8s.io/wg-policy-prototypes/policy-report/api/v1alpha2"
+	policyreport "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/wgpolicyk8s.io/v1alpha2"
 	"github.com/aquasecurity/starboard/pkg/kube"
 	"github.com/aquasecurity/starboard/pkg/docker"
 	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/vulnerabilityreport"
