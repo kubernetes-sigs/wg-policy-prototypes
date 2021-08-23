@@ -21,7 +21,7 @@ package externalversions
 import (
 	"fmt"
 
-	v1alpha2 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/api/wgpolicyk8s.io/v1alpha2"
+	v1alpha2 "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/wgpolicyk8s.io/v1alpha2"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
 )

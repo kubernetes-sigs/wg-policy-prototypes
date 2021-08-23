@@ -19,9 +19,9 @@ limitations under the License.
 package fake
 
 import (
-	clientset "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/generated/v1alpha1/clientset/versioned"
-	wgpolicyk8sv1alpha1 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/generated/v1alpha1/clientset/versioned/typed/wgpolicyk8s.io/v1alpha1"
-	fakewgpolicyk8sv1alpha1 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/generated/v1alpha1/clientset/versioned/typed/wgpolicyk8s.io/v1alpha1/fake"
+	clientset "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha1/clientset/versioned"
+	wgpolicyk8sv1alpha1 "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha1/clientset/versioned/typed/wgpolicyk8s.io/v1alpha1"
+	fakewgpolicyk8sv1alpha1 "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha1/clientset/versioned/typed/wgpolicyk8s.io/v1alpha1/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"

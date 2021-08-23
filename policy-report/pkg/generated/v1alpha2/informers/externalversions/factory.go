@@ -23,9 +23,9 @@ import (
 	sync "sync"
 	time "time"
 
-	versioned "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/generated/v1alpha2/clientset/versioned"
-	internalinterfaces "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/generated/v1alpha2/informers/externalversions/internalinterfaces"
-	wgpolicyk8sio "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/generated/v1alpha2/informers/externalversions/wgpolicyk8s.io"
+	versioned "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha2/clientset/versioned"
+	internalinterfaces "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha2/informers/externalversions/internalinterfaces"
+	wgpolicyk8sio "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha2/informers/externalversions/wgpolicyk8s.io"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"

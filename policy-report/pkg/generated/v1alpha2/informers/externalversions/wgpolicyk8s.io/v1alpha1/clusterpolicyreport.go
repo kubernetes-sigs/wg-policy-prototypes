@@ -22,10 +22,10 @@ import (
 	"context"
 	time "time"
 
-	wgpolicyk8siov1alpha1 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/api/wgpolicyk8s.io/v1alpha1"
-	versioned "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/generated/v1alpha2/clientset/versioned"
-	internalinterfaces "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/generated/v1alpha2/informers/externalversions/internalinterfaces"
-	v1alpha1 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/generated/v1alpha2/listers/wgpolicyk8s.io/v1alpha1"
+	wgpolicyk8siov1alpha1 "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/wgpolicyk8s.io/v1alpha1"
+	versioned "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha2/clientset/versioned"
+	internalinterfaces "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha2/informers/externalversions/internalinterfaces"
+	v1alpha1 "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha2/listers/wgpolicyk8s.io/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"
@@ -61,13 +61,13 @@ func NewFilteredClusterPolicyReportInformer(client versioned.Interface, resyncPe
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.Wgpolicyk8sV1alpha1().ClusterPolicyReports().List(context.TODO(), options)
+				return client.Wgpolicyk8sV1alpha2().ClusterPolicyReports().List(context.TODO(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.Wgpolicyk8sV1alpha1().ClusterPolicyReports().Watch(context.TODO(), options)
+				return client.Wgpolicyk8sV1alpha2().ClusterPolicyReports().Watch(context.TODO(), options)
 			},
 		},
 		&wgpolicyk8siov1alpha1.ClusterPolicyReport{},

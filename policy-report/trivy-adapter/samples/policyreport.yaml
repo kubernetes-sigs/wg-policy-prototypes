@@ -1,0 +1,209 @@
+apiVersion: wgpolicyk8s.io/v1alpha2
+kind: PolicyReport
+metadata:
+  creationTimestamp: "2021-08-09T22:40:15Z"
+  generation: 1
+  labels:
+    imgvuln.container.name: zipkin
+    imgvuln.resource.kind: Pod
+    imgvuln.resource.name: zipkin-6b59cc5ddb-bp9h8
+    imgvuln.resource.namespace: default
+    pod-spec-hash: 8484f4ff7d
+  name: pod-zipkin-6b59cc5ddb-bp9h8-zipkin
+  namespace: default
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: false
+    controller: true
+    kind: Pod
+    name: zipkin-6b59cc5ddb-bp9h8
+    uid: 961887ae-c2bf-46c5-828c-40ceb2e7e303
+  resourceVersion: "1182"
+  uid: cca05128-f612-4200-9a33-59629456db70
+results:
+- category: apk-tools
+  policy: ""
+  properties:
+    FixedVersion: 2.10.6-r0
+    InstalledVersion: 2.10.5-r1
+    PrimaryURL: https://avd.aquasec.com/nvd/cve-2021-30139
+    VulnerabilityID: CVE-2021-30139
+  scored: true
+  severity: high
+  source: Trivy
+  timestamp:
+    nanos: -879126275
+    seconds: 1628548814
+- category: apk-tools
+  policy: ""
+  properties:
+    FixedVersion: 2.10.7-r0
+    InstalledVersion: 2.10.5-r1
+    PrimaryURL: https://avd.aquasec.com/nvd/cve-2021-36159
+    VulnerabilityID: CVE-2021-36159
+  source: Trivy
+  timestamp:
+    nanos: -879115381
+    seconds: 1628548814
+- category: busybox
+  policy: 'busybox: invalid free or segmentation fault via malformed gzip data'
+  properties:
+    FixedVersion: 1.31.1-r20
+    InstalledVersion: 1.31.1-r19
+    PrimaryURL: https://avd.aquasec.com/nvd/cve-2021-28831
+    VulnerabilityID: CVE-2021-28831
+  scored: true
+  severity: high
+  source: Trivy
+  timestamp:
+    nanos: -879109096
+    seconds: 1628548814
+- category: libcrypto1.1
+  policy: 'openssl: integer overflow in CipherUpdate'
+  properties:
+    FixedVersion: 1.1.1j-r0
+    InstalledVersion: 1.1.1i-r0
+    PrimaryURL: https://avd.aquasec.com/nvd/cve-2021-23840
+    VulnerabilityID: CVE-2021-23840
+  scored: true
+  severity: high
+  source: Trivy
+  timestamp:
+    nanos: -879103161
+    seconds: 1628548814
+- category: libcrypto1.1
+  policy: 'openssl: CA certificate check bypass with X509_V_FLAG_X509_STRICT'
+  properties:
+    FixedVersion: 1.1.1k-r0
+    InstalledVersion: 1.1.1i-r0
+    PrimaryURL: https://avd.aquasec.com/nvd/cve-2021-3450
+    VulnerabilityID: CVE-2021-3450
+  scored: true
+  severity: high
+  source: Trivy
+  timestamp:
+    nanos: -879094920
+    seconds: 1628548814
+- category: libcrypto1.1
+  policy: 'openssl: NULL pointer dereference in X509_issuer_and_serial_hash()'
+  properties:
+    FixedVersion: 1.1.1j-r0
+    InstalledVersion: 1.1.1i-r0
+    PrimaryURL: https://avd.aquasec.com/nvd/cve-2021-23841
+    VulnerabilityID: CVE-2021-23841
+  scored: true
+  severity: medium
+  source: Trivy
+  timestamp:
+    nanos: -879087937
+    seconds: 1628548814
+- category: libcrypto1.1
+  policy: 'openssl: NULL pointer dereference in signature_algorithms processing'
+  properties:
+    FixedVersion: 1.1.1k-r0
+    InstalledVersion: 1.1.1i-r0
+    PrimaryURL: https://avd.aquasec.com/nvd/cve-2021-3449
+    VulnerabilityID: CVE-2021-3449
+  scored: true
+  severity: medium
+  source: Trivy
+  timestamp:
+    nanos: -879082141
+    seconds: 1628548814
+- category: libcrypto1.1
+  policy: 'openssl: incorrect SSLv2 rollback protection'
+  properties:
+    FixedVersion: 1.1.1j-r0
+    InstalledVersion: 1.1.1i-r0
+    PrimaryURL: https://avd.aquasec.com/nvd/cve-2021-23839
+    VulnerabilityID: CVE-2021-23839
+  scored: true
+  severity: low
+  source: Trivy
+  timestamp:
+    nanos: -879076415
+    seconds: 1628548814
+- category: libssl1.1
+  policy: 'openssl: integer overflow in CipherUpdate'
+  properties:
+    FixedVersion: 1.1.1j-r0
+    InstalledVersion: 1.1.1i-r0
+    PrimaryURL: https://avd.aquasec.com/nvd/cve-2021-23840
+    VulnerabilityID: CVE-2021-23840
+  scored: true
+  severity: high
+  source: Trivy
+  timestamp:
+    nanos: -879070339
+    seconds: 1628548814
+- category: libssl1.1
+  policy: 'openssl: CA certificate check bypass with X509_V_FLAG_X509_STRICT'
+  properties:
+    FixedVersion: 1.1.1k-r0
+    InstalledVersion: 1.1.1i-r0
+    PrimaryURL: https://avd.aquasec.com/nvd/cve-2021-3450
+    VulnerabilityID: CVE-2021-3450
+  scored: true
+  severity: high
+  source: Trivy
+  timestamp:
+    nanos: -879064333
+    seconds: 1628548814
+- category: libssl1.1
+  policy: 'openssl: NULL pointer dereference in X509_issuer_and_serial_hash()'
+  properties:
+    FixedVersion: 1.1.1j-r0
+    InstalledVersion: 1.1.1i-r0
+    PrimaryURL: https://avd.aquasec.com/nvd/cve-2021-23841
+    VulnerabilityID: CVE-2021-23841
+  scored: true
+  severity: medium
+  source: Trivy
+  timestamp:
+    nanos: -879059096
+    seconds: 1628548814
+- category: libssl1.1
+  policy: 'openssl: NULL pointer dereference in signature_algorithms processing'
+  properties:
+    FixedVersion: 1.1.1k-r0
+    InstalledVersion: 1.1.1i-r0
+    PrimaryURL: https://avd.aquasec.com/nvd/cve-2021-3449
+    VulnerabilityID: CVE-2021-3449
+  scored: true
+  severity: medium
+  source: Trivy
+  timestamp:
+    nanos: -879053789
+    seconds: 1628548814
+- category: libssl1.1
+  policy: 'openssl: incorrect SSLv2 rollback protection'
+  properties:
+    FixedVersion: 1.1.1j-r0
+    InstalledVersion: 1.1.1i-r0
+    PrimaryURL: https://avd.aquasec.com/nvd/cve-2021-23839
+    VulnerabilityID: CVE-2021-23839
+  scored: true
+  severity: low
+  source: Trivy
+  timestamp:
+    nanos: -879048481
+    seconds: 1628548814
+- category: ssl_client
+  policy: 'busybox: invalid free or segmentation fault via malformed gzip data'
+  properties:
+    FixedVersion: 1.31.1-r20
+    InstalledVersion: 1.31.1-r19
+    PrimaryURL: https://avd.aquasec.com/nvd/cve-2021-28831
+    VulnerabilityID: CVE-2021-28831
+  scored: true
+  severity: high
+  source: Trivy
+  timestamp:
+    nanos: -879043174
+    seconds: 1628548814
+summary:
+  error: 2
+  fail: 7
+  pass: 0
+  skip: 1
+  warn: 4
