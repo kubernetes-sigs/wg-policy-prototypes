@@ -2,13 +2,10 @@
 The image vulnerability adapter runs an image vulnerability scanner tool called [trivy](https://github.com/aquasecurity/trivy) to scan a given kubernetes pod or workload to produces a namespace policy report based on the [Policy Report Custom Resource Definition](https://github.com/kubernetes-sigs/wg-policy-prototypes/tree/master/policy-report)
 
 ## Installing
-Build the trivy-adapter binary: `make imgvuln`
+Build the trivy-adapter binary: `make trivy-adapter` and install `make install`
 
 Type `trivy-adapter` command in your terminal to confirm if the image vulnerability adapter is installed already
 
-**Note**:
-* If it brings an error, the build is completed in the bin folder in the project, you just need to move the binary to your `/usr/local/bin` directory 
-* You can remove or delete from your `urs/local/bin` directory.
 
 ## Running
 
