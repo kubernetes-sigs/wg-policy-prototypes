@@ -6,17 +6,26 @@ The falco adapter runs as an output for falcosidekick when enabled, the adapter 
 **Prerequisites**: 
 * To run the Kubernetes cluster locally, tools like [kind](https://kind.sigs.k8s.io/) or [minikube](https://minikube.sigs.k8s.io/docs/start/) can be used. Here are the steps to run the falco adapater with a `kind` cluster.
 ```sh
-1. kind create cluster --config=kind-config.yaml
+kind create cluster --config=kind-config.yaml
 ```
+Check out an example of [kind-config.yaml](https://gist.github.com/anushkamittal20/0e21b237b6ff98773675edf4e58be96a/)
 ```sh
-2. helm repo add falcosecurity https://falcosecurity.github.io/charts
+helm repo add falcosecurity https://falcosecurity.github.io/charts
 
-3. helm repo update 
+helm repo update 
 ```
 ```sh
-4. helm install falco falcosecurity/falco --set falcosidekick.enabled=true --set falcosidekick.policyreport.enabled=true falcosidekick.policyreport.kubeconfig=~/.kube/config falcosidekick.policyreport.failthreshold=3 falcosidekick.policyreport.maxevents=10
+kubectl create -f https://github.com/kubernetes-sigs/wg-policy-prototypes/raw/master/policy-report/crd/v1alpha2/wgpolicyk8s.io_clusterpolicyreports.yaml
+kubectl create -f https://github.com/kubernetes-sigs/wg-policy-prototypes/raw/master/policy-report/crd/v1alpha2/wgpolicyk8s.io_policyreports.yaml
 ```
-4 can be configured according to specifications
+```sh
+helm install falco falcosecurity/falco --set falcosidekick.enabled=true --set falcosidekick.policyreport.enabled=true falcosidekick.policyreport.kubeconfig=~/.kube/config falcosidekick.policyreport.failthreshold=3 falcosidekick.policyreport.maxevents=10
+```
+Above can be configured according to specifications
+```sh
+kubectl port-forward svc/falco-falcosidekick 2801
+```
+5 can be configured according to specifications
 
 ## Understanding the config options
  * Once falcosidekick is enabled in policyreport output we have the following configurations available
@@ -30,16 +39,16 @@ The falco adapter runs as an output for falcosidekick when enabled, the adapter 
 
 ## To get Report summary
 ```sh
-1. kubectl get clusterpolicyreports
+kubectl get clusterpolicyreports
 
-2. kubectl get policyreports --all-namespaces
+kubectl get policyreports --all-namespaces
 ```
 
 ## To get Reports
 ```sh
-1. kubectl get clusterpolicyreports -o yaml 
+kubectl get clusterpolicyreports -o yaml 
 
-2. kubectl get policyreports --all-namespaces -o yaml
+kubectl get policyreports --all-namespaces -o yaml
 
 ```
 To get reports in a separate yaml file you can use ` kubectl get clusterpolicyreports  -o yaml > res.yaml` or `kubectl get policyreports --all-namespaces -o yaml > res.yaml`
