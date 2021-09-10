@@ -1,10 +1,10 @@
 # Falco adapter
-The falco adapter runs as an output for falcosidekick when enabled, the adapter receives falco events (Falco ships with a default set of rules that check the kernel for unusual behavior) and produces N+1 reports (1 cluster-wide policy report and N namespace specific reports) based on the [Policy Report Custom Resource Definition](https://github.com/kubernetes-sigs/wg-policy-prototypes/tree/master/policy-report)
+The Falco Policy Report adapter receives Falco events and produces one or more [Policy Reports]([Policy Report Custom Resource Definition]). It runs as an optional output in [Falcosidekick](https://github.com/falcosecurity/falcosidekick). The adapter produces N+1 reports - 1 cluster-wide policy report and N namespace specific reports based on the [Policy Report Custom Resource Definition](https://github.com/kubernetes-sigs/wg-policy-prototypes/tree/master/policy-report)
 
 ## Running
 
 **Prerequisites**: 
-* To run the Kubernetes cluster locally, tools like [kind](https://kind.sigs.k8s.io/) or [minikube](https://minikube.sigs.k8s.io/docs/start/) can be used. Here are the steps to run the falco adapater with a `kind` cluster.
+* To run the Kubernetes cluster locally, tools like [kind](https://kind.sigs.k8s.io/) or [minikube](https://minikube.sigs.k8s.io/docs/start/) can be used. Here are the steps to run the falco adapter with a `kind` cluster.
 ```sh
 kind create cluster --config=kind-config.yaml
 ```
@@ -26,9 +26,9 @@ Above can be configured according to specifications
 ```sh
 kubectl port-forward svc/falco-falcosidekick 2801
 ```
-5 can be configured according to specifications
 
-## Understanding the config options
+
+## Understanding the Configuration options
  * Once falcosidekick is enabled in policyreport output we have the following configurations available
  ~~~
 1. Enabled = to enable policyreport output to create/update policyreports
@@ -38,21 +38,18 @@ kubectl port-forward svc/falco-falcosidekick 2801
 5. PruneByPriority = while pruning by default the events that came initially will be deleted (FIFO); by enabling this config the events that came initially of low priority are deleted before initial events of higher priority
 ~~~
 
-## To get Report summary
+## Viewing reports
 ```sh
 kubectl get clusterpolicyreports
 
 kubectl get policyreports --all-namespaces
 ```
-
-## To get Reports
 ```sh
 kubectl get clusterpolicyreports -o yaml 
 
 kubectl get policyreports --all-namespaces -o yaml
-
 ```
-To get reports in a separate yaml file you can use ` kubectl get clusterpolicyreports  -o yaml > res.yaml` or `kubectl get policyreports --all-namespaces -o yaml > res.yaml`
+To view reports in a separate yaml file you can use ` kubectl get clusterpolicyreports  -o yaml > res.yaml` or `kubectl get policyreports --all-namespaces -o yaml > res.yaml`
 
 
 
