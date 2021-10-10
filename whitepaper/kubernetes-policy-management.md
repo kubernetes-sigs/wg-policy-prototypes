@@ -65,6 +65,7 @@ The authors wish to thank the following individuals for review and feedback.
 * Abdelrahman Essam
 * Rahul Jadhav 
 
+The authors also wish to thank the chairs and members of the CNCF [TAG Security](https://github.com/cncf/tag-security#readme) and [Kubernetes SIG Security](https://github.com/kubernetes/community/tree/master/sig-security#security-special-interest-group) groups for their collaboration and support.
 
 ## Introduction
 
@@ -428,13 +429,16 @@ In essence, compliant clusters are managed using Kubernetes policies. A policy b
 
 Formal methods of policy and compliance state verification remain work in progress, but are emerging in the cloud native community. 
 
-
 ## Conclusion
 
-As enterprises transform from traditional IT infrastructure to adopting hybrid multi-cloud approaches, they are adopting Kubernetes based container platforms to standardize their operations and management practices and increase agility. 
+As organizations transform from traditional infrastructure to cloud native approaches, they are adopting Kubernetes to standardize their operations and management practices and increase agility. 
 
-While moving faster and at scale, organizations still need to abide by internal standards for security, resiliency, and software engineering and external regulatory compliance requirements, as well as go through multiple audits annually.The cost and time incurred during audits represents an insurmountable cost. Furthermore, SREs who manage container platforms are not necessarily experts in all the security, resiliency, and software engineering controls needed to operate such platforms which tend to evolve rapidly. Securing clusters and workloads can become a complex and cumbersome task.
+While Kubernetes enables organizations to move faster at scale, organizations still need to abide by internal standards for security, resiliency, and software engineering and comply with external regulatory standards, typically requiring multiple audits annually. Furthermore, no single role that uses or manage Kubernetes platforms has expertise in all the areas of security, resiliency, and best practice controls necessary to operate such platforms which tend to evolve rapidly. Securing clusters and workloads can become a complex and cumbersome task.
 
-Despite rapid adoption, Kubernetes remains a rapidly evolving technology which will grow in complexity. The adoption for production deployments in organization remains constrained by concerns around operational complexity in the areas of security, monitoring, data and workload management, and networking.
+Policy based operations addresses this challenge by providing separations of concerns across development, operations, and security roles. Subject matter experts for respective controls can represent recommended practices and guidelines for various configuration controls as policies that are deployed across clusters using cloud-native best practices.  Kubernetes policies are best enforced in the delivery pipeline and in the cluster using admission controls and runtime scans. Violations can be  routed to the Policy Administration Point (PAP), which integrates with incident response systems and the SOC for rapid resolution. 
 
-Policy based operations addresses this challenge by providing separations of concerns across development, operations, and security roles. Subject matter experts for respective controls can represent recommended practices and guidelines for various configuration controls as policies that are deployed across clusters using cloud-native best practices.  Policies are enforced in the delivery pipeline and in the cluster using admission controls and runtime scans. Violations can be auto-remediated by policy engines, or routed to incident management systems and the SOC for rapid resolution. By adopting policy based governance, organizations can realize their goal to be measurably more secure and audit ready, without compromising on agility and self-service.
+By adopting policy based governance, organizations can realize their goal to be measurably more secure and audit ready, without compromising on agility and self-service.
+
+## Roadmap
+
+This document is intended to be a living document that will be updated as Kubernetes evolves. To contribute, or discuss proposals and ideas, join the [Kubernetes Policy Working Group](https://github.com/kubernetes/community/tree/master/wg-policy).
