@@ -35,11 +35,11 @@
 
 ## Authors
 
-* Anca Salier, Senior Technical Staff Member, IBM
-* Ardhna Chetal, Senior Director Executive Cloud Security, TIAA
-* Jayashree Ramanathan, Distinguished Engineer, Red Hat 
-* Jim Bugwadia, Co-founder and CEO, Nirmata
-* Robert Ficcaglia, CTO, Sunstone Secure
+* Anca Salier, IBM
+* Ardhna Chetal, TIAA
+* Jayashree Ramanathan, Red Hat 
+* Jim Bugwadia, Nirmata
+* Robert Ficcaglia, Sunstone Secure
 
 
 ## Acknowledgements
@@ -50,20 +50,20 @@ The authors wish to thank the following individuals for review and feedback.
 * Itay Shakury,  Aqua Security
 * Vishwas Manral, McAfee Enterprise (NanoSec)
 * Rory McCune, Aqua Security
-* Andres Vega
-* Sayantani Saha
+* Andres Vega, VMware
+* Sayantani Saha, IEM-Kolkata
 * Jack Kelly
-* Ash Narkar
-* Kapil Bareja
-* Karim Benzidane
-* Maor Kuriel
-* Herbert Mühlburger
-* Maarten Hoogendoorn
-* Pushkar Joglekar
+* Ash Narkar, Styra
+* Kapil Bareja, Deloitte
+* Karim Benzidane, IBM
+* Maor Kuriel, WhiteSource
+* Herbert Mühlburger, IT-Ziviltechniker
+* Maarten Hoogendoorn, Container Solutions
+* Pushkar Joglekar, VMware
 * Alok Raj
-* Dan Papandrea
+* Dan Papandrea, Sysdig
 * Abdelrahman Essam
-* Rahul Jadhav 
+* Rahul Jadhav, Accuknox
 
 The authors also wish to thank the chairs and members of the CNCF [TAG Security](https://github.com/cncf/tag-security#readme) and [Kubernetes SIG Security](https://github.com/kubernetes/community/tree/master/sig-security#security-special-interest-group) groups for their collaboration and support.
 
@@ -441,4 +441,8 @@ By adopting policy based governance, organizations can realize their goal to be 
 
 ## Roadmap
 
-This document is intended to be a living document that will be updated as Kubernetes evolves. To contribute, or discuss proposals and ideas, join the [Kubernetes Policy Working Group](https://github.com/kubernetes/community/tree/master/wg-policy).
+This document is intended to be a living document that will be updated as Kubernetes evolves. 
+
+To discuss proposals and ideas, or contribute in any other way, join the [Kubernetes Policy Working Group](https://github.com/kubernetes/community/tree/master/wg-policy).
+
+For any suggestions or corrections email the Kubernetes Policy Working Group at [kubernetes-wg-policy@googlegroups.com](mailto:kubernetes-wg-policy@groups.google.com) or reach out on our [slack channel](http://slack.k8s.io/#wg-policy).
