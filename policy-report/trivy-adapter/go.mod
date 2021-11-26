@@ -15,5 +15,5 @@ require (
 	k8s.io/klog v1.0.0
 	k8s.io/utils v0.0.0-20210722164352-7f3ee0f31471
 	sigs.k8s.io/controller-runtime v0.9.5
-	sigs.k8s.io/wg-policy-prototypes v0.0.0-20210727080045-c2437d752a22
+	sigs.k8s.io/wg-policy-prototypes v0.0.0-20210823142600-b09c9bb01d4c
 )
