@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 
-	client "github.com/haardikdharma10/kubearmor-adapter/pkg/generated/v1alpha2/clientset/versioned"
 	"k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/rest"
@@ -13,6 +12,7 @@ import (
 	"k8s.io/client-go/util/retry"
 	"k8s.io/klog"
 	"sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/wgpolicyk8s.io/v1alpha2"
+	client "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha2/clientset/versioned"
 )
 
 func Write(r *v1alpha2.PolicyReport, namespace string, kubeconfigPath string) (*v1alpha2.PolicyReport, error) {
