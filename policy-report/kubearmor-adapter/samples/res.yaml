@@ -1,0 +1,103 @@
+﻿apiVersion: v1
+items:
+- apiVersion: wgpolicyk8s.io/v1alpha2
+  kind: PolicyReport
+  metadata:
+    creationTimestamp: "2021-11-21T12:31:26Z"
+    generation: 3
+    name: kubearmor-policy-report
+    namespace: multiubuntu
+    resourceVersion: "223062"
+    uid: 9e586bbe-587e-4374-8747-0a3e7d6a4f9f
+  results:
+  - category: MatchedPolicy
+    message: block the sleep command
+    policy: ksp-group-1-proc-path-block
+    properties:
+      action: Block
+      cluster_name: Default
+      container_id: 67f0a1cdf83f9899ce2d4d77e9e81b220b49b2a2c29e7007dedac6b611b01c5f
+      container_name: ubuntu-1-container
+      data: syscall=SYS_EXECVE
+      host_name: kubearmor-dev
+      host_pid: "13124"
+      namespace_name: multiubuntu
+      operation: Process
+      pid: "438"
+      pod_name: ubuntu-1-deployment-5d6b975744-rrkhh
+      ppid: "29888"
+      resource: /bin/sleep 1
+      result: Permission denied
+      source: bash
+      tags: ""
+      updated_time: "2021-11-21T12:31:25.930968Z"
+    result: fail
+    severity: medium
+    source: KubeArmor Policy Engine
+    timestamp:
+      nanos: 1637497885
+      seconds: 1637497885
+  - category: MatchedPolicy
+    message: block the sleep command
+    policy: ksp-group-1-proc-path-block
+    properties:
+      action: Block
+      cluster_name: Default
+      container_id: 77339e9d8bb17033ce10534a19a741223fb6d895067ca957cd6fd692436a7f2e
+      container_name: ubuntu-2-container
+      data: syscall=SYS_EXECVE
+      host_name: kubearmor-dev
+      host_pid: "13242"
+      namespace_name: multiubuntu
+      operation: Process
+      pid: "189"
+      pod_name: ubuntu-2-deployment-bc58cf44-sfr9s
+      ppid: "30432"
+      resource: /bin/sleep 1
+      result: Permission denied
+      source: bash
+      tags: ""
+      updated_time: "2021-11-21T12:31:39.562887Z"
+    result: fail
+    severity: medium
+    source: KubeArmor Policy Engine
+    timestamp:
+      nanos: 1637497899
+      seconds: 1637497899
+  - category: MatchedPolicy
+    message: block the sleep command
+    policy: ksp-group-1-proc-path-block
+    properties:
+      action: Block
+      cluster_name: Default
+      container_id: 67f0a1cdf83f9899ce2d4d77e9e81b220b49b2a2c29e7007dedac6b611b01c5f
+      container_name: ubuntu-1-container
+      data: syscall=SYS_EXECVE
+      host_name: kubearmor-dev
+      host_pid: "13423"
+      namespace_name: multiubuntu
+      operation: Process
+      pid: "444"
+      pod_name: ubuntu-1-deployment-5d6b975744-rrkhh
+      ppid: "29888"
+      resource: /bin/sleep 1
+      result: Permission denied
+      source: bash
+      tags: ""
+      updated_time: "2021-11-21T12:31:50.503895Z"
+    result: fail
+    severity: medium
+    source: KubeArmor Policy Engine
+    timestamp:
+      nanos: 1637497910
+      seconds: 1637497910
+  summary:
+    error: 0
+    fail: 3
+    pass: 0
+    skip: 0
+    warn: 0
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
