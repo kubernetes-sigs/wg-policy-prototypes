@@ -1,0 +1,23 @@
+{
+    "Timestamp":1631622914,
+    "UpdatedTime":"2021-09-14T12:35:14.580230Z",
+    "ClusterName":"Default",
+    "HostName":"kubearmor-dev",
+    "NamespaceName":"multiubuntu",
+    "PodName":"ubuntu-1-deployment-5d6b975744-rrkhh",
+    "ContainerID":"67f0a1cdf83f9899ce2d4d77e9e81b220b49b2a2c29e7007dedac6b611b01c5f",
+    "ContainerName":"ubuntu-1-container",
+    "HostPID":32322,
+    "PPID":29888,
+    "PID":100,
+    "PolicyName":"ksp-group-1-proc-path-block",
+    "Severity":"5",
+    "Message":"block the sleep command",
+    "Type":"MatchedPolicy",
+    "Source":"bash",
+    "Operation":"Process",
+    "Resource":"/bin/sleep 1",
+    "Data":"syscall=SYS_EXECVE",
+    "Action":"Block",
+    "Result":"Permission denied"
+}
