@@ -7,13 +7,13 @@ import (
 
 	policyreport "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/wgpolicyk8s.io/v1alpha2"
 
-	client "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha2/clientset/versioned"
 	"k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/client-go/util/retry"
 	"k8s.io/klog"
+	client "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha2/clientset/versioned"
 )
 
 func Write(r []policyreport.PolicyReport, kubeconfigPath string) error {
@@ -33,21 +33,20 @@ func Write(r []policyreport.PolicyReport, kubeconfigPath string) error {
 	clientset, err := client.NewForConfig(kubeconfig)
 	if err != nil {
 		fmt.Println("error: ", err)
-			return nil
+		return nil
 	}
-	
+
 	for _, report := range r {
 		var r *policyreport.PolicyReport
 		r = &report
 		policyReport := clientset.Wgpolicyk8sV1alpha2().PolicyReports(r.Namespace)
 		// Check for existing Policy Reports
-		result, getErr := policyReport.Get(context.Background(), r.Name, metav1.GetOptions{})
-		fmt.Println(result)
+		_, getErr := policyReport.Get(context.Background(), r.Name, metav1.GetOptions{})
 		// Create new Policy Report if not found
 		if errors.IsNotFound(getErr) {
 			fmt.Println("creating policy report...")
 
-			result, err = policyReport.Create(context.Background(), r, metav1.CreateOptions{})
+			_, err = policyReport.Create(context.Background(), r, metav1.CreateOptions{})
 			if err != nil {
 				fmt.Println("error: ", err)
 				return nil

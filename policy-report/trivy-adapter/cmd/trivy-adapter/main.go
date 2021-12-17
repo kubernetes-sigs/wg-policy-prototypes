@@ -6,9 +6,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/params"
 	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/cmd"
 	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/imgvuln"
+	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/params"
 	"k8s.io/klog"
 
 	// Load all known auth plugins

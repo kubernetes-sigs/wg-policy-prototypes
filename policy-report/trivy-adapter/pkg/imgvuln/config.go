@@ -19,7 +19,6 @@ import (
 	"k8s.io/client-go/kubernetes"
 )
 
-
 func NewScheme() *runtime.Scheme {
 	scheme := runtime.NewScheme()
 	_ = corev1.AddToScheme(scheme)
@@ -43,7 +42,7 @@ type BuildInfo struct {
 type Scanner string
 
 const (
-	Trivy    Scanner = "Trivy"
+	Trivy Scanner = "Trivy"
 )
 
 const (

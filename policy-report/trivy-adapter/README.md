@@ -20,7 +20,7 @@ Type `trivy-adapter` command in your terminal to confirm if the image vulnerabil
 kind create cluster --name mycluster --image <kindest/node:stpecify version tag>
 
 # 2. Create a policy report CustomResourceDefinition
-kubectl create -f kubernetes/crd/v1alpha2/wgpolicyk8s.io_policyreports.yaml
+kubectl create -f kubernetes/crd/wgpolicyk8s.io_policyreports.yaml
 
 # 3. Create a vulnerability report CustomResourceDefinition
 trivy-adapter init
