@@ -47,7 +47,8 @@ kubectl get clusterpolicyreports
 ###### Command Line Arguments
 |      Argument         |  Type   |    Default value         | Allowed value  | Usage                                            |
 |:--------------------- |:-------:|-------------------------:|:--------------:|:------------------------------------------------:|
-| -category             | `string`| CIS Benchmarks           |   Any string name valid for category             | category of the policy report                    |   
+| -category             | `string`| CIS Benchmarks           |   Any string name valid for category             | category of the policy report 
+| -namespace            | `string`| default                   |  any string name for required namespace |  specifies namespace where kube-bench job will run
 | -kube-bench-benchmark | `string`|   cis-1.6                    |    cis-1.5, cis-1.6, gke-1.0, eks-1.0, ack-1.0            | specify the benchmark for kube-bench job         |
 | -kube-bench-targets   | `string`(accepts multiple values)| master,node,etcd,policies| 	master, controlplane, node, etcd, policies               | targets for benchmark of kube-bench job          |   
 | -kube-bench-version   | `string`|    1.21                    |   Kubernetes Version like 1.20,1.21,etc             | specify the Kubernetes version for kube-bench job|
