@@ -54,7 +54,7 @@ func RunJob(params *params.KubeBenchArgs) (*kubebench.OverallControls, error) {
 		return nil, err
 	}
 
-	p, err := findPodForJob(context.Background(), clientset, jobName, params.Timeout)
+	p, err := findPodForJob(context.Background(), clientset, params, jobName, params.Timeout)
 	if err != nil {
 		return nil, err
 	}
@@ -64,12 +64,12 @@ func RunJob(params *params.KubeBenchArgs) (*kubebench.OverallControls, error) {
 		return nil, err
 	}
 
-	err = clientset.BatchV1().Jobs(apiv1.NamespaceDefault).Delete(context.Background(), jobName, metav1.DeleteOptions{})
+	err = clientset.BatchV1().Jobs(params.Namespace).Delete(context.Background(), jobName, metav1.DeleteOptions{})
 	if err != nil {
 		return nil, err
 	}
 
-	err = clientset.CoreV1().Pods(apiv1.NamespaceDefault).Delete(context.Background(), p.Name, metav1.DeleteOptions{})
+	err = clientset.CoreV1().Pods(params.Namespace).Delete(context.Background(), p.Name, metav1.DeleteOptions{})
 	if err != nil {
 		return nil, err
 	}
@@ -101,12 +101,12 @@ func deployJob(ctx context.Context, clientset *kubernetes.Clientset, params *par
 	job.Spec.Template.Spec.Containers[0].Args = []string{"--version", params.KubebenchVersion}
 	job.Spec.Template.Spec.Containers[0].Args = []string{"--benchmark", params.KubebenchBenchmark}
 	job.Spec.Template.Spec.Containers[0].Args = []string{"run", "--targets", params.KubebenchTargets, "--json"}
-	_, err = clientset.BatchV1().Jobs(apiv1.NamespaceDefault).Create(ctx, job, metav1.CreateOptions{})
+	_, err = clientset.BatchV1().Jobs(params.Namespace).Create(ctx, job, metav1.CreateOptions{})
 
 	return jobName, err
 }
 
-func findPodForJob(ctx context.Context, clientset *kubernetes.Clientset, jobName string, duration time.Duration) (*apiv1.Pod, error) {
+func findPodForJob(ctx context.Context, clientset *kubernetes.Clientset, params *params.KubeBenchArgs, jobName string, duration time.Duration) (*apiv1.Pod, error) {
 	failedPods := make(map[string]struct{})
 	selector := fmt.Sprintf("job-name=%s", jobName)
 	timeout := time.After(duration)
@@ -117,7 +117,7 @@ func findPodForJob(ctx context.Context, clientset *kubernetes.Clientset, jobName
 		case <-timeout:
 			return nil, fmt.Errorf("podList - timed out: no Pod found for Job %s", jobName)
 		default:
-			pods, err := clientset.CoreV1().Pods(apiv1.NamespaceDefault).List(ctx, metav1.ListOptions{
+			pods, err := clientset.CoreV1().Pods(params.Namespace).List(ctx, metav1.ListOptions{
 				LabelSelector: selector,
 			})
 			if err != nil {
