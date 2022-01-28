@@ -7,6 +7,7 @@ import (
 type KubeBenchArgs struct {
 	Name               string
 	Category           string
+	Namespace          string
 	Kubeconfig         string
 	KubebenchYAML      string
 	KubebenchImg       string
