@@ -3,6 +3,7 @@ package report
 import (
 	"strconv"
 	"strings"
+	"time"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
@@ -47,6 +48,7 @@ func newResult(category string, control *kubebench.Controls, group *kubebench.Gr
 		Result:      convertState(check.State),
 		Scored:      check.Scored,
 		Description: check.Text,
+		Timestamp:   metav1.Timestamp{Seconds: int64(time.Now().Second()), Nanos: int32(time.Now().Nanosecond())},
 		Properties: map[string]string{
 			"index":           check.ID,
 			"audit":           check.Audit,
