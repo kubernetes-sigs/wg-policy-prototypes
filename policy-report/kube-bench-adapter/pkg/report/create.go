@@ -41,7 +41,7 @@ func New(cisResults *kubebench.OverallControls, name string, category string) (*
 
 func newResult(category string, control *kubebench.Controls, group *kubebench.Group, check *kubebench.Check) *clusterpolicyreport.PolicyReportResult {
 	return &clusterpolicyreport.PolicyReportResult{
-		Policy:      control.Text,
+		Policy:      check.ID + "-" + control.Text,
 		Rule:        group.Text,
 		Source:      PolicyReportSource,
 		Category:    category,
