@@ -3,10 +3,10 @@ package plugin
 import (
 	"fmt"
 
-	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/vulnerabilityreport"
 	"github.com/aquasecurity/starboard/pkg/ext"
-	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/plugin/trivy"
 	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/imgvuln"
+	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/plugin/trivy"
+	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/vulnerabilityreport"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 )
 

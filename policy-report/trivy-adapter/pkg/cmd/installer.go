@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/plugin"
 	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/imgvuln"
+	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/plugin"
 	corev1 "k8s.io/api/core/v1"
 	rbacv1 "k8s.io/api/rbac/v1"
 	ext "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"

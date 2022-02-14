@@ -29,7 +29,7 @@ const (
 	LabelVulnerabilityReportScanner = "vulnerabilityReport.scanner"
 
 	LabelK8SAppManagedBy = "app.kubernetes.io/managed-by"
-	Appimgvuln         = "trivy-adapter"
+	Appimgvuln           = "trivy-adapter"
 )
 
 const (

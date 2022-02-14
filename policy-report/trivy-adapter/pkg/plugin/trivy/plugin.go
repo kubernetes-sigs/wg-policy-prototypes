@@ -4,23 +4,24 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"time"
 	"strings"
+	"time"
 
-	policyreport "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/wgpolicyk8s.io/v1alpha2"
-	"github.com/aquasecurity/starboard/pkg/kube"
 	"github.com/aquasecurity/starboard/pkg/docker"
-	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/vulnerabilityreport"
-	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/imgvuln"
 	"github.com/aquasecurity/starboard/pkg/ext"
+	"github.com/aquasecurity/starboard/pkg/kube"
 	"github.com/google/go-containerregistry/pkg/name"
+	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/imgvuln"
+	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/trivy-adapter/pkg/vulnerabilityreport"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/utils/pointer"
+	"sigs.k8s.io/controller-runtime/pkg/client"
+	policyreport "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/wgpolicyk8s.io/v1alpha2"
 )
 
-func main(){
+func main() {
 	fmt.Println("image vulnerability")
 }
 
@@ -774,10 +775,9 @@ func (p *plugin) appendTrivyInsecureEnv(config Config, image string, env []corev
 	return env, nil
 }
 
-
 const PolicyReportSource string = "Trivy"
 
-func (p *plugin) ParsePolicyReportData(ctx imgvuln.PluginContext, imageRef string, logsReader io.ReadCloser) (policyreport.PolicyReport, error) {
+func (p *plugin) ParsePolicyReportData(logsReader io.ReadCloser, pod client.Object) (policyreport.PolicyReport, error) {
 
 	var policyReport policyreport.PolicyReport
 
@@ -789,7 +789,7 @@ func (p *plugin) ParsePolicyReportData(ctx imgvuln.PluginContext, imageRef strin
 
 	for _, report := range reports {
 		for _, sr := range report.Vulnerabilities {
-			r := newResult(sr)
+			r := newResult(sr, pod)
 			policyReport.Results = append(policyReport.Results, r)
 		}
 	}
@@ -799,11 +799,11 @@ func (p *plugin) ParsePolicyReportData(ctx imgvuln.PluginContext, imageRef strin
 	return policyReport, nil
 }
 
-func newResult(result Vulnerability) *policyreport.PolicyReportResult {
+func newResult(result Vulnerability, pod client.Object) *policyreport.PolicyReportResult {
 	//r := result.References
 	s := GetScoreFromCVSS(result.Cvss)
 	b := false
-	if s != nil{
+	if s != nil {
 		b = true
 	}
 
@@ -815,26 +815,46 @@ func newResult(result Vulnerability) *policyreport.PolicyReportResult {
 	tUnixNano := int32(t.UnixNano())
 
 	policyR := &policyreport.PolicyReportResult{
-		Timestamp:	 metav1.Timestamp{Nanos: tUnixNano, Seconds: tUnix,},
-		Policy:      result.Title,
+		Timestamp:   metav1.Timestamp{Nanos: tUnixNano, Seconds: tUnix},
+		Policy:      result.VulnerabilityID,
+		Description: result.Title,
 		Source:      PolicyReportSource,
 		Category:    result.PkgName,
 		Scored:      b,
+		Subjects: []*corev1.ObjectReference{
+			{
+				Kind:       pod.GetObjectKind().GroupVersionKind().Kind,
+				APIVersion: pod.GetObjectKind().GroupVersionKind().Version,
+				Namespace:  pod.GetNamespace(),
+				Name:       pod.GetName(),
+				UID:        pod.GetUID(),
+			},
+		},
 		Properties: map[string]string{
-			"VulnerabilityID":           result.VulnerabilityID,
-			"InstalledVersion":           result.InstalledVersion,
-			"FixedVersion":        result.FixedVersion,
-			"PrimaryURL":     result.PrimaryURL,
-			//"References":            strings.Join(r," "),
+			"InstalledVersion": result.InstalledVersion,
+			"FixedVersion":     result.FixedVersion,
+			"PrimaryURL":       result.PrimaryURL,
 		},
 	}
-	if r == "high" || r == "low" || r == "medium"{
+	if r == "high" || r == "low" || r == "medium" {
 		policyR.Severity = r
 	}
-	
+
+	switch r {
+	case "low":
+		policyR.Result = "warn"
+	case "high":
+		policyR.Result = "error"
+	case "medium":
+		policyR.Result = "fail"
+	case "none":
+		policyR.Result = "pass"
+	default:
+		policyR.Result = "skip"
+	}
+
 	return policyR
 }
-
 
 func (p *plugin) newConfigFrom(ctx imgvuln.PluginContext) (Config, error) {
 	pluginConfig, err := ctx.GetConfig()
@@ -844,18 +864,17 @@ func (p *plugin) newConfigFrom(ctx imgvuln.PluginContext) (Config, error) {
 	return Config{PluginConfig: pluginConfig}, nil
 }
 
-
 func (p *plugin) toSummaryPolicy(results []*policyreport.PolicyReportResult) policyreport.PolicyReportSummary {
 	var rs policyreport.PolicyReportSummary
 	for _, v := range results {
-		switch v.Severity {
-		case "low":
+		switch v.Result {
+		case "error":
 			rs.Error++
-		case "high":
+		case "fail":
 			rs.Fail++
-		case "medium":
+		case "warn":
 			rs.Warn++
-		case "none":
+		case "pass":
 			rs.Pass++
 		default:
 			rs.Skip++
@@ -863,7 +882,6 @@ func (p *plugin) toSummaryPolicy(results []*policyreport.PolicyReportResult) pol
 	}
 	return rs
 }
-
 
 func GetScoreFromCVSS(CVSSs map[string]*CVSS) *float64 {
 	var nvdScore, vendorScore *float64
