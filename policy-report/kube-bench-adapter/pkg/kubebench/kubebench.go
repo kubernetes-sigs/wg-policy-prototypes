@@ -98,9 +98,9 @@ func deployJob(ctx context.Context, clientset *kubernetes.Clientset, params *par
 	jobName := job.GetName()
 	job.Spec.Template.Spec.Containers[0].Image = params.KubebenchImg
 	job.Spec.Template.Spec.Containers[0].Args = []string{"--json"}
-	job.Spec.Template.Spec.Containers[0].Args = []string{"--version", params.KubebenchVersion}
-	job.Spec.Template.Spec.Containers[0].Args = []string{"--benchmark", params.KubebenchBenchmark}
-	job.Spec.Template.Spec.Containers[0].Args = []string{"run", "--targets", params.KubebenchTargets, "--json"}
+	//job.Spec.Template.Spec.Containers[0].Args = []string{"--version", params.KubebenchVersion}
+	//job.Spec.Template.Spec.Containers[0].Args = []string{"--benchmark", params.KubebenchBenchmark}
+	//job.Spec.Template.Spec.Containers[0].Args = []string{"run", "--json"}
 	_, err = clientset.BatchV1().Jobs(params.Namespace).Create(ctx, job, metav1.CreateOptions{})
 
 	return jobName, err

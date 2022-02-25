@@ -21,7 +21,7 @@ func ParseArguments() {
 	flag.StringVar(&Params.KubebenchVersion, "kube-bench-version", "", "specify the Kubernetes version for kube-bench job")
 	flag.StringVar(&Params.KubebenchBenchmark, "kube-bench-benchmark", "", "specify the benchmark for kube-bench job")
 
-	Params.KubebenchImg = *flag.String("kubebenchImg", "aquasec/kube-bench:latest", "kube-bench image used as part of this test")
+	Params.KubebenchImg = *flag.String("kubebenchImg", "aquasec/kube-bench:v0.6.6", "kube-bench image used as part of this test")
 	Params.Timeout = *flag.Duration("timeout", 10*time.Minute, "Test Timeout")
 
 	if home := homedir.HomeDir(); home != "" {
