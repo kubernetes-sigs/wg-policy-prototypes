@@ -28,7 +28,7 @@ Participation in the Kubernetes community is governed by the [Kubernetes Code of
 ## Projects - also see [Project Board](https://github.com/kubernetes-sigs/wg-policy-prototypes/projects/1)
 
 * [Policy Report CRD](policy-report/README.md)
-* [Kubernetes Policy Whitepaper](https://docs.google.com/document/d/1C_YHezrlVllq2gzFiwQhZ0dOAINYLOrHswbubpQLCmQ/edit#)
+* [Kubernetes Policy Management Paper](https://github.com/kubernetes/sig-security/tree/main/sig-security-docs/papers/policy) - [PDF](https://github.com/kubernetes/sig-security/blob/main/sig-security-docs/papers/policy/CNCF_Kubernetes_Policy_Management_WhitePaper_v1.pdf), [markdown](https://github.com/kubernetes/sig-security/blob/main/sig-security-docs/papers/policy/kubernetes-policy-management.md)
 
 ### Backlog or Retired
 
