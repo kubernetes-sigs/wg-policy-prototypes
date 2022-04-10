@@ -22,7 +22,7 @@ kind create cluster --name mycluster --image <kindest/node:stpecify version tag>
 # 2. Create a policy report CustomResourceDefinition
 kubectl create -f kubernetes/crd/wgpolicyk8s.io_policyreports.yaml
 
-# 3. Create a vulnerability report CustomResourceDefinition
+# 3. Create resources in the cluster that trivy-adapter will use.
 trivy-adapter init
 
 # 4. Create a pod of image openzipkin/zipkin:latest called zipkin
