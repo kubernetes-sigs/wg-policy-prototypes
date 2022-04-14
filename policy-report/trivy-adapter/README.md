@@ -22,7 +22,7 @@ kind create cluster --name mycluster --image <kindest/node:stpecify version tag>
 # 2. Create a policy report CustomResourceDefinition
 kubectl create -f kubernetes/crd/wgpolicyk8s.io_policyreports.yaml
 
-# 3. Create a vulnerability report CustomResourceDefinition
+# 3. Create resources in the cluster that trivy-adapter will use.
 trivy-adapter init
 
 # 4. Create a pod of image openzipkin/zipkin:latest called zipkin
@@ -47,6 +47,6 @@ kubectl get policyreports
 ```sh
 kubectl get policyreports pod-zipkin-uewcde32cs9-ui -o yaml
 ```
-#### Road Maps:
+#### Roadmap:
 * CronJob for periodic scan on the pods or workloads to create and update the namespace policy report.
 * Extend scan to a cluster wide scan to scan all workloads and pods to create or update the cluster policy report periodically using CronJob.

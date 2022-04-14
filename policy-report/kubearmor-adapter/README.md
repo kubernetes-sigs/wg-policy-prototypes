@@ -50,7 +50,7 @@ kubectl -n [namespace-name] exec -it [pod-name] -- bash -c "/bin/sleep 1"
 
 Once this command is executed, you'll get the output as below in the terminal window where `main.go` is running:
 
-![image](/assets/create-output.png)
+![image](https://github.com/kubernetes-sigs/wg-policy-prototypes/blob/master/policy-report/kubearmor-adapter/assets/create-output.png)
 
 If you can see the output as above, this means that your first policyreport is created. You can now stop running the main program.
 
