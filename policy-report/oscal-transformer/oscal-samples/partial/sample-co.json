@@ -1,0 +1,147 @@
+{
+  "results": [
+    {
+      "uuid": "e76b7971-42bc-4494-8874-c4752ed2df13",
+      "title": "sample-fedramp-compliance-operator",
+      "description": "openshift-compliance-operator",
+      "start": "2022-04-14T14:40:25+00:00",
+      "props": [
+        {
+          "name": "apiVersion",
+          "value": "wgpolicyk8s.io/v1alpha2"
+        },
+        {
+          "name": "kind",
+          "value": "PolicyReport"
+        },
+        {
+          "name": "metadata.annotations.name",
+          "value": "FedRAMP Moderate Benchmarks"
+        },
+        {
+          "name": "metadata.annotations.category",
+          "value": "OCP4 CoreOS"
+        },
+        {
+          "name": "metadata.annotations.file",
+          "value": "ssg-ocp4-ds.xml"
+        },
+        {
+          "name": "metadata.annotations.version",
+          "value": "v1.5.1 - 02-14-2020"
+        },
+        {
+          "name": "summary.pass",
+          "value": "8"
+        },
+        {
+          "name": "summary.fail",
+          "value": "1"
+        },
+        {
+          "name": "summary.warn",
+          "value": "1"
+        },
+        {
+          "name": "summary.error",
+          "value": "0"
+        },
+        {
+          "name": "summary.skip",
+          "value": "0"
+        }
+      ],
+      "reviewed-controls": {
+        "control-selections": [
+          {}
+        ]
+      },
+      "observations": [
+        {
+          "uuid": "f5b9c83f-9abb-4d48-aac3-2e45c7323cea",
+          "description": "openshift-compliance-operator",
+          "props": [
+            {
+              "name": "results.policy",
+              "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+              "value": "xccdf_org.ssgproject.content_rule_audit_rules_etc_group_open",
+              "class": "scc_rule"
+            },
+            {
+              "name": "results.message",
+              "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+              "value": "Record Events that Modify User/Group Information via open syscall - /etc/group Creation of groups through direct edition of /etc/group could be an indicator of malicious activity on a system. Auditing these events could serve as evidence of potential system compromise.",
+              "class": "scc_description"
+            },
+            {
+              "name": "results.result",
+              "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+              "value": "fail",
+              "class": "scc_result"
+            },
+            {
+              "name": "results.scored",
+              "value": "True"
+            },
+            {
+              "name": "results.severity",
+              "value": "medium"
+            },
+            {
+              "name": "results.properties.suite",
+              "value": "fedramp-moderate"
+            },
+            {
+              "name": "results.properties.scan",
+              "value": "workers-scan"
+            }
+          ],
+          "methods": [
+            "TEST-AUTOMATED"
+          ],
+          "collected": "2022-04-14T14:40:25+00:00"
+        },
+        {
+          "uuid": "b4d552d5-1ec5-4fc0-959b-1bd4ca0ea6f2",
+          "description": "openshift-compliance-operator",
+          "props": [
+            {
+              "name": "results.policy",
+              "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+              "value": "xccdf_org.ssgproject.content_rule_sshd_limit_user_access",
+              "class": "scc_rule"
+            },
+            {
+              "name": "results.message",
+              "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+              "value": "Limit Users' SSH Access Specifying which accounts are allowed SSH access into the system reduces the possibility of unauthorized access to the system.",
+              "class": "scc_description"
+            },
+            {
+              "name": "results.result",
+              "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+              "value": "warn",
+              "class": "scc_result"
+            },
+            {
+              "name": "results.scored",
+              "value": "False"
+            },
+            {
+              "name": "results.properties.suite",
+              "value": "fedramp-moderate"
+            },
+            {
+              "name": "results.properties.scan",
+              "value": "workers-scan"
+            }
+          ],
+          "methods": [
+            "TEST-AUTOMATED"
+          ],
+          "collected": "2022-04-14T14:40:25+00:00"
+        }
+      ]
+    }
+  ]
+}
