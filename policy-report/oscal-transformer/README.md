@@ -19,8 +19,10 @@ Python 3.9.9
 
 #### Exercising the k8s-to-oscal transformer on sample data
 
-Demonstrated here is how to employ the k8s-to-oscal transformer
-to produce OSCAL assessment-results json from k8s yaml samples.
+Shown in the diagram are two paths for transformation of
+k8s yaml to OSCAL json: command line and programmatic.
+The demo below employs the command line to produce
+OSCAL assessment-results json from k8s yaml samples.
 
 ![image](images/k8s-to-oscal.drawio.png)
 

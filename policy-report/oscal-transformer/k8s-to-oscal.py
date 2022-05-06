@@ -264,7 +264,7 @@ class YamlToOscal:
             for yaml_data in yaml_data_list:
                 result = self._get_result(yaml_data)
                 value.__root__.append(result)
-        return value
+        return value.oscal_serialize_json_bytes(pretty=True)
 
 
 def main():
@@ -322,7 +322,10 @@ def main():
                 for yaml_section in yaml.safe_load_all(yaml_file):
                     yaml_data_list.append(yaml_section)
                 results = ytoo.transform(yaml_data_list, args.ar_type, title=ofile.name, href=args.ap_href, ns=args.ns)
-                results.oscal_write(pathlib.Path(ofile))
+                write_file = pathlib.Path(ofile).open('wb')
+                write_file.write(results)
+                write_file.flush()
+                write_file.close()
                 logger.info(f'created: {opath / ofile.name}')
     except yaml.YAMLError as e:
         logger.error(e)
