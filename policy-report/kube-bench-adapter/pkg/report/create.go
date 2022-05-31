@@ -48,7 +48,7 @@ func newResult(category string, control *kubebench.Controls, group *kubebench.Gr
 		Result:      convertState(check.State),
 		Scored:      check.Scored,
 		Description: check.Text,
-		Timestamp:   metav1.Timestamp{Seconds: int64(time.Now().Second()), Nanos: int32(time.Now().Nanosecond())},
+		Timestamp:   metav1.Timestamp{Seconds: time.Now().Unix(), Nanos: int32(time.Now().UnixNano())},
 		Properties: map[string]string{
 			"index":           check.ID,
 			"audit":           check.Audit,
