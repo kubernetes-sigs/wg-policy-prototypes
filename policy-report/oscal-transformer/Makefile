@@ -26,7 +26,7 @@ install:
 		source venv.trestle/bin/activate; \
 		echo "=> install trestle with prereqs"; \
 		python -m pip install -q --upgrade pip setuptools; \
-		python -m pip install -q compliance-trestle; \
+		python -m pip install -q compliance-trestle==1.1.0; \
 		echo "=> create and initialize trestle workspace"; \
 		mkdir trestle.workspace; \
 		cd trestle.workspace; \
