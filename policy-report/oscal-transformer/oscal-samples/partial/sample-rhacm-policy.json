@@ -1,0 +1,137 @@
+{
+  "results": [
+    {
+      "uuid": "3e786d4f-695a-44cc-b459-846ee41f5298",
+      "title": "sample-rhacm-policy",
+      "description": "rhacm-configuration-policy",
+      "start": "2022-04-14T14:40:25+00:00",
+      "props": [
+        {
+          "name": "apiVersion",
+          "value": "wgpolicyk8s.io/v1alpha2"
+        },
+        {
+          "name": "kind",
+          "value": "PolicyReport"
+        },
+        {
+          "name": "summary.pass",
+          "value": "1"
+        },
+        {
+          "name": "summary.fail",
+          "value": "11"
+        }
+      ],
+      "local-definitions": {
+        "inventory-items": [
+          {
+            "uuid": "9045c474-0bc7-45f2-a6bd-6bbf75ee7494",
+            "description": "inventory",
+            "props": [
+              {
+                "name": "scope.apiVersion",
+                "value": "policy.open-cluster-management.io/v1"
+              },
+              {
+                "name": "scope.kind",
+                "value": "Policy"
+              },
+              {
+                "name": "scope.name",
+                "value": "policy-imagemanifestvuln"
+              },
+              {
+                "name": "scope.namespace",
+                "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+                "value": "cluster1",
+                "class": "scc_scope"
+              }
+            ]
+          }
+        ]
+      },
+      "reviewed-controls": {
+        "control-selections": [
+          {}
+        ]
+      },
+      "observations": [
+        {
+          "uuid": "a74d577a-3e63-45b7-95c7-ed2d44b17859",
+          "description": "rhacm-configuration-policy",
+          "props": [
+            {
+              "name": "results.policy",
+              "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+              "value": "mustnothaveimagevuln",
+              "class": "scc_rule"
+            },
+            {
+              "name": "results.message",
+              "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+              "value": "must not have imagemanifestvulns",
+              "class": "scc_description"
+            },
+            {
+              "name": "results.result",
+              "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+              "value": "fail",
+              "class": "scc_result"
+            },
+            {
+              "name": "results.scored",
+              "value": "False"
+            },
+            {
+              "name": "results.resources.apiVersion",
+              "value": "secscan.quay.redhat.com/v1alpha1"
+            },
+            {
+              "name": "results.resources.kind",
+              "value": "ImageManifestVuln"
+            },
+            {
+              "name": "results.resources.name",
+              "value": "sha256.8d104847fc2371a983f7cb01c7c0a3ab35b7381d6bf7ce355d9b32a08c0031f0"
+            },
+            {
+              "name": "results.resources.namespace",
+              "value": "openshift-cluster-version"
+            },
+            {
+              "name": "results.properties.details",
+              "value": "NonCompliant; violation - imagemanifestvulns exist and should be deleted: [sha256.8d104847fc2371a983f7cb01c7c0a3ab35b7381d6bf7ce355d9b32a08c0031f0] in namespace openshift-cluster-version"
+            },
+            {
+              "name": "results.properties.standards",
+              "value": "NIST-CSF"
+            },
+            {
+              "name": "results.properties.categories",
+              "value": "DE.CM Security Continuous Monitoring"
+            },
+            {
+              "name": "results.properties.controls",
+              "value": "DE.CM-8 Vulnerability scans"
+            },
+            {
+              "name": "results.properties.severity",
+              "value": "high"
+            }
+          ],
+          "methods": [
+            "TEST-AUTOMATED"
+          ],
+          "subjects": [
+            {
+              "subject-uuid": "9045c474-0bc7-45f2-a6bd-6bbf75ee7494",
+              "type": "inventory-item"
+            }
+          ],
+          "collected": "2022-04-14T14:40:25+00:00"
+        }
+      ]
+    }
+  ]
+}

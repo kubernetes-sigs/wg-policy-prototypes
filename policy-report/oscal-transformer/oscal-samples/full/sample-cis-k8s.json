@@ -1,0 +1,191 @@
+{
+  "assessment-results": {
+    "uuid": "924682ba-a825-41aa-a7fd-3dafb63c89a1",
+    "metadata": {
+      "title": "sample-cis-k8s.json",
+      "last-modified": "2022-04-14T14:40:45+00:00",
+      "version": "0.37.0",
+      "oscal-version": "1.0.2"
+    },
+    "import-ap": {
+      "href": "https://default-assessment-plan"
+    },
+    "results": [
+      {
+        "uuid": "e44b1dc8-a652-436e-a88d-541133c43482",
+        "title": "sample-cis-bench-api-server",
+        "description": "kube-cis",
+        "start": "2022-04-14T14:40:45+00:00",
+        "props": [
+          {
+            "name": "apiVersion",
+            "value": "wgpolicyk8s.io/v1alpha2"
+          },
+          {
+            "name": "kind",
+            "value": "PolicyReport"
+          },
+          {
+            "name": "metadata.annotations.name",
+            "value": "CIS Kubernetes Benchmarks"
+          },
+          {
+            "name": "metadata.annotations.category",
+            "value": "API Server"
+          },
+          {
+            "name": "metadata.annotations.version",
+            "value": "v1.5.1 - 02-14-2020"
+          },
+          {
+            "name": "summary.pass",
+            "value": "8"
+          },
+          {
+            "name": "summary.fail",
+            "value": "2"
+          },
+          {
+            "name": "summary.warn",
+            "value": "0"
+          },
+          {
+            "name": "summary.error",
+            "value": "0"
+          },
+          {
+            "name": "summary.skip",
+            "value": "0"
+          }
+        ],
+        "reviewed-controls": {
+          "control-selections": [
+            {}
+          ]
+        },
+        "observations": [
+          {
+            "uuid": "b45c5d69-c907-4f33-933c-30e7b4e045aa",
+            "description": "kube-cis",
+            "props": [
+              {
+                "name": "results.policy",
+                "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+                "value": "api-server:anonymous-auth",
+                "class": "scc_rule"
+              },
+              {
+                "name": "results.message",
+                "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+                "value": "ensure that --anonymous-auth argument is set to false",
+                "class": "scc_description"
+              },
+              {
+                "name": "results.result",
+                "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+                "value": "warn",
+                "class": "scc_result"
+              },
+              {
+                "name": "results.scored",
+                "value": "True"
+              },
+              {
+                "name": "results.properties.category",
+                "value": "API Server"
+              },
+              {
+                "name": "results.properties.index",
+                "value": "1.2.2"
+              }
+            ],
+            "methods": [
+              "TEST-AUTOMATED"
+            ],
+            "collected": "2022-04-14T14:40:45+00:00"
+          },
+          {
+            "uuid": "bfd2375b-20f7-4e1d-a4ba-9fe1c0cd03e5",
+            "description": "kube-cis",
+            "props": [
+              {
+                "name": "results.policy",
+                "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+                "value": "api-server:basic-auth-file",
+                "class": "scc_rule"
+              },
+              {
+                "name": "results.message",
+                "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+                "value": "ensure that --basic-auth-file argument is not set",
+                "class": "scc_description"
+              },
+              {
+                "name": "results.result",
+                "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+                "value": "fail",
+                "class": "scc_result"
+              },
+              {
+                "name": "results.scored",
+                "value": "True"
+              },
+              {
+                "name": "results.properties.category",
+                "value": "API Server"
+              },
+              {
+                "name": "results.properties.index",
+                "value": "1.2.2"
+              }
+            ],
+            "methods": [
+              "TEST-AUTOMATED"
+            ],
+            "collected": "2022-04-14T14:40:45+00:00"
+          },
+          {
+            "uuid": "ee537b9b-1e3c-405c-a9c9-0b1d33f4c2b5",
+            "description": "kube-cis",
+            "props": [
+              {
+                "name": "results.policy",
+                "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+                "value": "api-server:token-auth-file",
+                "class": "scc_rule"
+              },
+              {
+                "name": "results.message",
+                "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+                "value": "ensure that --token-auth-file argument is not set",
+                "class": "scc_description"
+              },
+              {
+                "name": "results.result",
+                "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+                "value": "warn",
+                "class": "scc_result"
+              },
+              {
+                "name": "results.scored",
+                "value": "False"
+              },
+              {
+                "name": "results.properties.category",
+                "value": "API Server"
+              },
+              {
+                "name": "results.properties.index",
+                "value": "1.2.2"
+              }
+            ],
+            "methods": [
+              "TEST-AUTOMATED"
+            ],
+            "collected": "2022-04-14T14:40:45+00:00"
+          }
+        ]
+      }
+    ]
+  }
+}

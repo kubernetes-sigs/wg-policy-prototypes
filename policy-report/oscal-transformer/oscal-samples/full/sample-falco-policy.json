@@ -1,0 +1,202 @@
+{
+  "assessment-results": {
+    "uuid": "5ab2ffeb-3591-4c2b-aca5-0b225f364f10",
+    "metadata": {
+      "title": "sample-falco-policy.json",
+      "last-modified": "2022-04-14T14:40:45+00:00",
+      "version": "0.37.0",
+      "oscal-version": "1.0.2"
+    },
+    "import-ap": {
+      "href": "https://default-assessment-plan"
+    },
+    "results": [
+      {
+        "uuid": "17f5b58b-be4a-481b-b067-9d632d558ba5",
+        "title": "falco-alerts-policy",
+        "description": "falco-agent",
+        "start": "2022-04-14T14:40:45+00:00",
+        "props": [
+          {
+            "name": "apiVersion",
+            "value": "wgpolicyk8s.io/v1alpha2"
+          },
+          {
+            "name": "kind",
+            "value": "PolicyReport"
+          },
+          {
+            "name": "metadata.namespace",
+            "value": "my-namespace"
+          },
+          {
+            "name": "summary.fail",
+            "value": "1"
+          }
+        ],
+        "reviewed-controls": {
+          "control-selections": [
+            {}
+          ]
+        },
+        "observations": [
+          {
+            "uuid": "f4baa8bf-f810-4570-8aec-d418bde7e71f",
+            "description": "falco-agent",
+            "props": [
+              {
+                "name": "results.policy",
+                "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+                "value": "Change thread namespace",
+                "class": "scc_rule"
+              },
+              {
+                "name": "results.message",
+                "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+                "value": "Falco alert created due to the Change thread namespace rule",
+                "class": "scc_description"
+              },
+              {
+                "name": "results.result",
+                "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+                "value": "fail",
+                "class": "scc_result"
+              },
+              {
+                "name": "results.scored",
+                "value": "False"
+              },
+              {
+                "name": "results.resources.apiVersion",
+                "value": "v1"
+              },
+              {
+                "name": "results.resources.kind",
+                "value": "Pod"
+              },
+              {
+                "name": "results.resources.name",
+                "value": "a-pod"
+              },
+              {
+                "name": "results.resources.namespace",
+                "value": "my-namespace"
+              },
+              {
+                "name": "results.properties.details",
+                "value": "12:57:37.086240437: Notice Namespace change (setns) by unexpected program (user=root user_loginuid=-1 command=ovnkube --init-node ..."
+              },
+              {
+                "name": "results.properties.container.id",
+                "value": "0f8d7e2a3296"
+              },
+              {
+                "name": "results.properties.evt.arg.path",
+                "value": "/bin/directory-created-by-event-generator"
+              },
+              {
+                "name": "results.properties.proc.cmdline",
+                "value": "event-generator run --loop ^syscall"
+              },
+              {
+                "name": "results.properties.severity",
+                "value": "low"
+              }
+            ],
+            "methods": [
+              "TEST-AUTOMATED"
+            ],
+            "collected": "2022-04-14T14:40:45+00:00"
+          }
+        ]
+      },
+      {
+        "uuid": "d04d9212-1261-4d15-b39a-668ed0e5e5d2",
+        "title": "falco-alerts-policy",
+        "description": "falco-agent",
+        "start": "2022-04-14T14:40:45+00:00",
+        "props": [
+          {
+            "name": "apiVersion",
+            "value": "wgpolicyk8s.io/v1alpha2"
+          },
+          {
+            "name": "kind",
+            "value": "ClusterPolicyReport"
+          },
+          {
+            "name": "summary.fail",
+            "value": "1"
+          }
+        ],
+        "reviewed-controls": {
+          "control-selections": [
+            {}
+          ]
+        },
+        "observations": [
+          {
+            "uuid": "735ad451-9ded-43fb-a097-176b9b17a7c8",
+            "description": "falco-agent",
+            "props": [
+              {
+                "name": "results.policy",
+                "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+                "value": "audit",
+                "class": "scc_rule"
+              },
+              {
+                "name": "results.message",
+                "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+                "value": "audit rule violation from the kubernetes api server",
+                "class": "scc_description"
+              },
+              {
+                "name": "results.result",
+                "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+                "value": "fail",
+                "class": "scc_result"
+              },
+              {
+                "name": "results.scored",
+                "value": "False"
+              },
+              {
+                "name": "results.properties.details",
+                "value": "Warning K8s Operation performed by user not in allowed list of users"
+              },
+              {
+                "name": "results.properties.severity",
+                "value": "medium"
+              },
+              {
+                "name": "results.properties.user",
+                "value": "username"
+              },
+              {
+                "name": "results.properties.target",
+                "value": "kubernetes/endpoints"
+              },
+              {
+                "name": "results.properties.verb",
+                "value": "create"
+              },
+              {
+                "name": "results.properties.uri",
+                "value": "/api/v1/namespaces/default/endpoints/kubernetes"
+              },
+              {
+                "name": "results.properties.resp",
+                "value": "200"
+              }
+            ],
+            "methods": [
+              "TEST-AUTOMATED"
+            ],
+            "collected": "2022-04-14T14:40:45+00:00"
+          }
+        ]
+      }
+    ]
+  }
+}
