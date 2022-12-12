@@ -1,5 +1,5 @@
 # Produce CRDs that work back to Kubernetes 1.11 (no version conversion)
-CRD_OPTIONS ?= "crd:trivialVersions=true"
+CRD_OPTIONS ?= "crd"
 
 # Get the currently used golang install path (in GOPATH/bin, unless GOBIN is set)
 ifeq (,$(shell go env GOBIN))
@@ -12,8 +12,8 @@ all: manifests build fmt vet
 
 # Generate manifests e.g. CRD, RBAC etc.
 manifests: controller-gen
-	$(CONTROLLER_GEN) $(CRD_OPTIONS) paths="./..." output:dir=crd
-	$(CONTROLLER_GEN) object paths=./api/v1alpha2/
+	$(CONTROLLER_GEN) $(CRD_OPTIONS) paths="./..." output:dir=crd/v1beta1
+	$(CONTROLLER_GEN) object paths=./...
 
 # Run go build against code
 build:
@@ -46,7 +46,7 @@ endif
 
 # generate will create api docs
 generate:
-	gen-crd-api-reference-docs -api-dir ./api/v1alpha2 -config docs/config.json -template-dir docs/template -out-file docs/index.html
+	gen-crd-api-reference-docs -api-dir ./api/wgpolicyk8s.io/v1beta1 -config docs/config.json -template-dir docs/template -out-file docs/index.html
 	# TODO - Currently gen-crd-api-reference-docs doesn't support kubebuilder for generating docs. https://github.com/ahmetb/gen-crd-api-reference-docs/issues/15
 	# go run github.com/ahmetb/gen-crd-api-reference-docs -api-dir ./api/v1alpha1 -config docs/config.json -template-dir docs/template -out-file docs/index.html
 
