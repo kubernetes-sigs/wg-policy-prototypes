@@ -61,7 +61,8 @@ type PolicyResult string
 //   - low
 //   - medium
 //   - info
-// +kubebuilder:validation:Enum=critical,high;low;medium,info
+//
+// +kubebuilder:validation:Enum=critical;high;low;medium;info
 type PolicyResultSeverity string
 
 // PolicyReportResult provides the result for an individual policy

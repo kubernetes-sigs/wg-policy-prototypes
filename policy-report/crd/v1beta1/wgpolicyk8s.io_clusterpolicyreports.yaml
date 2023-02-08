@@ -527,9 +527,11 @@ spec:
                 severity:
                   description: Severity indicates policy check result criticality
                   enum:
+                  - critical
                   - high
                   - low
                   - medium
+                  - info
                   type: string
                 source:
                   description: Source is an identifier for the policy engine that
@@ -865,9 +867,11 @@ spec:
                 severity:
                   description: Severity indicates policy check result criticality
                   enum:
+                  - critical
                   - high
                   - low
                   - medium
+                  - info
                   type: string
                 source:
                   description: Source is an identifier for the policy engine that
