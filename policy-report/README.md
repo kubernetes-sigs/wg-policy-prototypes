@@ -6,6 +6,8 @@ See the [proposal](https://docs.google.com/document/d/1nICYLkYS1RE3gJzuHOfHeAC25
 
 [Policy Report CRD API Reference](https://htmlpreview.github.io/?https://github.com/kubernetes-sigs/wg-policy-prototypes/blob/master/policy-report/docs/index.html)
 
+**Note:** v1beta1 APIs is WIP and will have breaking changes.
+
 ## Installing
 
 Add the PolicyReport CRDs to your cluster (v1alpha2):
