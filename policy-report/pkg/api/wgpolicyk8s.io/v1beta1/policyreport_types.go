@@ -100,12 +100,12 @@ type PolicyReportResult struct {
 	// +optional
 	Subjects []*corev1.ObjectReference `json:"resources,omitempty"`
 
-	// SubjectSelector is an optional label selector for checked Kubernetes resources.
+	// ResourceSelector is an optional label selector for checked Kubernetes resources.
 	// For example, a policy result may apply to all pods that match a label.
-	// Either a Subject or a SubjectSelector can be specified. If neither are provided, the
+	// Either a Subject or a ResourceSelector can be specified. If neither are provided, the
 	// result is assumed to be for the policy report scope.
 	// +optional
-	SubjectSelector *metav1.LabelSelector `json:"resourceSelector,omitempty"`
+	ResourceSelector *metav1.LabelSelector `json:"resourceSelector,omitempty"`
 
 	// Description is a short user friendly message for the policy rule
 	Description string `json:"message,omitempty"`

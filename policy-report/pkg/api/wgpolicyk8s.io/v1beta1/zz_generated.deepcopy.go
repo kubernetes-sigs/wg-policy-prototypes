@@ -184,8 +184,8 @@ func (in *PolicyReportResult) DeepCopyInto(out *PolicyReportResult) {
 			}
 		}
 	}
-	if in.SubjectSelector != nil {
-		in, out := &in.SubjectSelector, &out.SubjectSelector
+	if in.ResourceSelector != nil {
+		in, out := &in.ResourceSelector, &out.ResourceSelector
 		*out = new(metav1.LabelSelector)
 		(*in).DeepCopyInto(*out)
 	}

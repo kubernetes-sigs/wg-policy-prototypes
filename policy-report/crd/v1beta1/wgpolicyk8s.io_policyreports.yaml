@@ -734,9 +734,9 @@ spec:
                     policy rule
                   type: object
                 resourceSelector:
-                  description: SubjectSelector is an optional label selector for checked
-                    Kubernetes resources. For example, a policy result may apply to
-                    all pods that match a label. Either a Subject or a SubjectSelector
+                  description: ResourceSelector is an optional label selector for
+                    checked Kubernetes resources. For example, a policy result may
+                    apply to all pods that match a label. Either a Subject or a ResourceSelector
                     can be specified. If neither are provided, the result is assumed
                     to be for the policy report scope.
                   properties:
