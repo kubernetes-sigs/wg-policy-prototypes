@@ -875,7 +875,8 @@ spec:
                   type: string
                 source:
                   description: Source is an identifier for the policy engine that
-                    manages this report
+                    manages this report If the Source is specified at this level,
+                    it will override the Source field set at the PolicyReport level
                   type: string
                 timestamp:
                   description: Timestamp indicates the time the result was found
