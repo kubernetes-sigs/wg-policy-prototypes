@@ -135,9 +135,9 @@ type PolicyReport struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	// Source is an identifier for the policy engine that manages this report
+	// Source is an identifier for the source e.g. a policy engine that manages this report.
 	// Use this field if all the results are produced by a single policy engine.
-	// If multiple policy engines are producing results in a single PolicyReport,
+	// If the results are produced by multiple sources e.g. different engines or scanners,
 	// then use the Source field at the PolicyReportResult level.
 	// +optional
 	Source string `json:"source"`
