@@ -69,6 +69,8 @@ type PolicyResultSeverity string
 type PolicyReportResult struct {
 
 	// Source is an identifier for the policy engine that manages this report
+	// If the Source is specified at this level, it will override the Source
+	// field set at the PolicyReport level
 	// +optional
 	Source string `json:"source"`
 
@@ -132,6 +134,13 @@ type PolicyReportResult struct {
 type PolicyReport struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
+
+	// Source is an identifier for the source e.g. a policy engine that manages this report.
+	// Use this field if all the results are produced by a single policy engine.
+	// If the results are produced by multiple sources e.g. different engines or scanners,
+	// then use the Source field at the PolicyReportResult level.
+	// +optional
+	Source string `json:"source"`
 
 	// Scope is an optional reference to the report scope (e.g. a Deployment, Namespace, or Node)
 	// +optional

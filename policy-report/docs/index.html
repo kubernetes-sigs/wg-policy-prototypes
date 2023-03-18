@@ -167,6 +167,21 @@ Refer to the Kubernetes API documentation for the fields of the
 </tr>
 <tr>
 <td>
+<code>source</code></br>
+<em>
+string
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+Source is an identifier for the source e.g. a policy engine that manages this report.
+Use this field if all the results are produced by a single policy engine.
+If the results are produced by multiple sources e.g. different engines or scanners,
+then use the Source field at the PolicyReportResult level.
+</td>
+</tr>
+<tr>
+<td>
 <code>scope</code></br>
 <em>
 Kubernetes core/v1.ObjectReference
@@ -243,6 +258,8 @@ string
 <td>
 <em>(Optional)</em>
 Source is an identifier for the policy engine that manages this report
+If the Source is specified at this level, it will override the Source
+field set at the PolicyReport level
 </td>
 </tr>
 <tr>
