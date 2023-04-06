@@ -1,0 +1,141 @@
+{
+  "results": [
+    {
+      "uuid": "f3a1827d-cccb-49bc-8ddf-e4bb426891d2",
+      "title": "sample-v1beta1-cr",
+      "description": "sample-v1beta1-cr",
+      "start": "2023-04-06T20:31:58+00:00",
+      "props": [
+        {
+          "name": "apiVersion",
+          "value": "wgpolicyk8s.io/v1beta1"
+        },
+        {
+          "name": "kind",
+          "value": "PolicyReport"
+        },
+        {
+          "name": "metadata.annotations.name",
+          "value": "Sample CR"
+        },
+        {
+          "name": "summary.pass",
+          "value": "1"
+        },
+        {
+          "name": "summary.fail",
+          "value": "0"
+        },
+        {
+          "name": "summary.warn",
+          "value": "0"
+        },
+        {
+          "name": "summary.error",
+          "value": "0"
+        },
+        {
+          "name": "summary.skip",
+          "value": "0"
+        }
+      ],
+      "local-definitions": {
+        "inventory-items": [
+          {
+            "uuid": "2d6994ab-bd4d-4905-8d6e-d37394611e0b",
+            "description": "inventory",
+            "props": [
+              {
+                "name": "results.resources.apiVersion",
+                "value": "v1"
+              },
+              {
+                "name": "results.resources.kind",
+                "value": "Pod"
+              },
+              {
+                "name": "results.resources.name",
+                "value": "kyverno-6d88f6dcdd-k6bc5"
+              },
+              {
+                "name": "results.resources.namespace",
+                "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+                "value": "nirmata",
+                "class": "scc_scope"
+              },
+              {
+                "name": "results.resources.uid",
+                "value": "3407b31a-b0bb-4716-a443-f4aa15662ef2"
+              }
+            ]
+          }
+        ]
+      },
+      "reviewed-controls": {
+        "control-selections": [
+          {}
+        ]
+      },
+      "observations": [
+        {
+          "uuid": "cb5232ca-9032-4bc4-b98c-ff559cb1f374",
+          "description": "sample-v1beta1-cr",
+          "props": [
+            {
+              "name": "results.category",
+              "value": "Pod Security Standards (Baseline)"
+            },
+            {
+              "name": "results.message",
+              "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+              "value": "validation rule 'adding-capabilities' passed.",
+              "class": "scc_description"
+            },
+            {
+              "name": "results.policy",
+              "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+              "value": "disallow-capabilities",
+              "class": "scc_rule"
+            },
+            {
+              "name": "results.result",
+              "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+              "value": "pass",
+              "class": "scc_result"
+            },
+            {
+              "name": "results.rule",
+              "value": "adding-capabilities"
+            },
+            {
+              "name": "results.scored",
+              "value": "True"
+            },
+            {
+              "name": "results.severity",
+              "value": "medium"
+            },
+            {
+              "name": "results.source",
+              "value": "kyverno"
+            },
+            {
+              "name": "results.timestamp",
+              "value": "{'nanos': 0, 'seconds': 1679565894}"
+            }
+          ],
+          "methods": [
+            "TEST-AUTOMATED"
+          ],
+          "subjects": [
+            {
+              "subject-uuid": "2d6994ab-bd4d-4905-8d6e-d37394611e0b",
+              "type": "inventory-item"
+            }
+          ],
+          "collected": "2023-04-06T20:31:58+00:00"
+        }
+      ]
+    }
+  ]
+}

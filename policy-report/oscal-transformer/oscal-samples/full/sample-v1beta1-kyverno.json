@@ -1,8 +1,8 @@
 {
   "assessment-results": {
-    "uuid": "09c0cd03-5974-43f8-8dc1-9f7f9be413bb",
+    "uuid": "de83a44f-2386-41f5-8f91-a3b378d26428",
     "metadata": {
-      "title": "sample-rhacm-policy.json",
+      "title": "sample-v1beta1-kyverno.json",
       "last-modified": "2023-04-06T20:34:20+00:00",
       "version": "1.1.0",
       "oscal-version": "1.0.2"
@@ -12,18 +12,22 @@
     },
     "results": [
       {
-        "uuid": "95ea9ea0-0337-4f24-94fd-83265ad5c9b3",
-        "title": "sample-rhacm-policy",
-        "description": "rhacm-configuration-policy",
+        "uuid": "4b082b90-fd16-4f1c-b5bf-1e140e641d3e",
+        "title": "sample-v1beta1-cr",
+        "description": "sample-v1beta1-cr",
         "start": "2023-04-06T20:34:20+00:00",
         "props": [
           {
             "name": "apiVersion",
-            "value": "wgpolicyk8s.io/v1alpha2"
+            "value": "wgpolicyk8s.io/v1beta1"
           },
           {
             "name": "kind",
             "value": "PolicyReport"
+          },
+          {
+            "name": "metadata.annotations.name",
+            "value": "Sample CR"
           },
           {
             "name": "summary.pass",
@@ -31,32 +35,48 @@
           },
           {
             "name": "summary.fail",
-            "value": "11"
+            "value": "0"
+          },
+          {
+            "name": "summary.warn",
+            "value": "0"
+          },
+          {
+            "name": "summary.error",
+            "value": "0"
+          },
+          {
+            "name": "summary.skip",
+            "value": "0"
           }
         ],
         "local-definitions": {
           "inventory-items": [
             {
-              "uuid": "6bccde04-4007-413b-b0e6-9dd496692072",
+              "uuid": "5be4a2ba-6f1d-4e72-804a-716d19d2640d",
               "description": "inventory",
               "props": [
                 {
                   "name": "results.resources.apiVersion",
-                  "value": "secscan.quay.redhat.com/v1alpha1"
+                  "value": "v1"
                 },
                 {
                   "name": "results.resources.kind",
-                  "value": "ImageManifestVuln"
+                  "value": "Pod"
                 },
                 {
                   "name": "results.resources.name",
-                  "value": "sha256.8d104847fc2371a983f7cb01c7c0a3ab35b7381d6bf7ce355d9b32a08c0031f0"
+                  "value": "kyverno-6d88f6dcdd-k6bc5"
                 },
                 {
                   "name": "results.resources.namespace",
                   "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
-                  "value": "openshift-cluster-version",
+                  "value": "nirmata",
                   "class": "scc_scope"
+                },
+                {
+                  "name": "results.resources.uid",
+                  "value": "3407b31a-b0bb-4716-a443-f4aa15662ef2"
                 }
               ]
             }
@@ -69,50 +89,50 @@
         },
         "observations": [
           {
-            "uuid": "597871ad-781f-4b06-8a21-790564d481aa",
-            "description": "rhacm-configuration-policy",
+            "uuid": "19778720-010b-431f-b69b-c018a5ba59cd",
+            "description": "sample-v1beta1-cr",
             "props": [
               {
-                "name": "results.policy",
-                "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
-                "value": "mustnothaveimagevuln",
-                "class": "scc_rule"
+                "name": "results.category",
+                "value": "Pod Security Standards (Baseline)"
               },
               {
                 "name": "results.message",
                 "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
-                "value": "must not have imagemanifestvulns",
+                "value": "validation rule 'adding-capabilities' passed.",
                 "class": "scc_description"
+              },
+              {
+                "name": "results.policy",
+                "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+                "value": "disallow-capabilities",
+                "class": "scc_rule"
               },
               {
                 "name": "results.result",
                 "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
-                "value": "fail",
+                "value": "pass",
                 "class": "scc_result"
               },
               {
+                "name": "results.rule",
+                "value": "adding-capabilities"
+              },
+              {
                 "name": "results.scored",
-                "value": "False"
+                "value": "True"
               },
               {
-                "name": "results.properties.details",
-                "value": "NonCompliant; violation - imagemanifestvulns exist and should be deleted: [sha256.8d104847fc2371a983f7cb01c7c0a3ab35b7381d6bf7ce355d9b32a08c0031f0] in namespace openshift-cluster-version"
+                "name": "results.severity",
+                "value": "medium"
               },
               {
-                "name": "results.properties.standards",
-                "value": "NIST-CSF"
+                "name": "results.source",
+                "value": "kyverno"
               },
               {
-                "name": "results.properties.categories",
-                "value": "DE.CM Security Continuous Monitoring"
-              },
-              {
-                "name": "results.properties.controls",
-                "value": "DE.CM-8 Vulnerability scans"
-              },
-              {
-                "name": "results.properties.severity",
-                "value": "high"
+                "name": "results.timestamp",
+                "value": "{'nanos': 0, 'seconds': 1679565894}"
               }
             ],
             "methods": [
@@ -120,7 +140,7 @@
             ],
             "subjects": [
               {
-                "subject-uuid": "6bccde04-4007-413b-b0e6-9dd496692072",
+                "subject-uuid": "5be4a2ba-6f1d-4e72-804a-716d19d2640d",
                 "type": "inventory-item"
               }
             ],

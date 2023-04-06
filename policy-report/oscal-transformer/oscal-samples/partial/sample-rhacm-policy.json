@@ -1,10 +1,10 @@
 {
   "results": [
     {
-      "uuid": "3e786d4f-695a-44cc-b459-846ee41f5298",
+      "uuid": "70e4a4d2-57b3-4947-bdf8-bc5c9c777766",
       "title": "sample-rhacm-policy",
       "description": "rhacm-configuration-policy",
-      "start": "2022-04-14T14:40:25+00:00",
+      "start": "2023-04-06T20:31:58+00:00",
       "props": [
         {
           "name": "apiVersion",
@@ -26,25 +26,25 @@
       "local-definitions": {
         "inventory-items": [
           {
-            "uuid": "9045c474-0bc7-45f2-a6bd-6bbf75ee7494",
+            "uuid": "7529e2eb-5208-4d1c-bbc8-5e291c023ffd",
             "description": "inventory",
             "props": [
               {
-                "name": "scope.apiVersion",
-                "value": "policy.open-cluster-management.io/v1"
+                "name": "results.resources.apiVersion",
+                "value": "secscan.quay.redhat.com/v1alpha1"
               },
               {
-                "name": "scope.kind",
-                "value": "Policy"
+                "name": "results.resources.kind",
+                "value": "ImageManifestVuln"
               },
               {
-                "name": "scope.name",
-                "value": "policy-imagemanifestvuln"
+                "name": "results.resources.name",
+                "value": "sha256.8d104847fc2371a983f7cb01c7c0a3ab35b7381d6bf7ce355d9b32a08c0031f0"
               },
               {
-                "name": "scope.namespace",
+                "name": "results.resources.namespace",
                 "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
-                "value": "cluster1",
+                "value": "openshift-cluster-version",
                 "class": "scc_scope"
               }
             ]
@@ -58,7 +58,7 @@
       },
       "observations": [
         {
-          "uuid": "a74d577a-3e63-45b7-95c7-ed2d44b17859",
+          "uuid": "57d63887-ba41-4ec1-a868-68f05f7619ea",
           "description": "rhacm-configuration-policy",
           "props": [
             {
@@ -82,22 +82,6 @@
             {
               "name": "results.scored",
               "value": "False"
-            },
-            {
-              "name": "results.resources.apiVersion",
-              "value": "secscan.quay.redhat.com/v1alpha1"
-            },
-            {
-              "name": "results.resources.kind",
-              "value": "ImageManifestVuln"
-            },
-            {
-              "name": "results.resources.name",
-              "value": "sha256.8d104847fc2371a983f7cb01c7c0a3ab35b7381d6bf7ce355d9b32a08c0031f0"
-            },
-            {
-              "name": "results.resources.namespace",
-              "value": "openshift-cluster-version"
             },
             {
               "name": "results.properties.details",
@@ -125,11 +109,11 @@
           ],
           "subjects": [
             {
-              "subject-uuid": "9045c474-0bc7-45f2-a6bd-6bbf75ee7494",
+              "subject-uuid": "7529e2eb-5208-4d1c-bbc8-5e291c023ffd",
               "type": "inventory-item"
             }
           ],
-          "collected": "2022-04-14T14:40:25+00:00"
+          "collected": "2023-04-06T20:31:58+00:00"
         }
       ]
     }

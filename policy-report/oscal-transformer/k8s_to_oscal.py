@@ -82,12 +82,14 @@ class YamlToOscal:
 
     def _description(self, yaml_data: Dict) -> str:
         """Return description."""
+        # try matadata.labels
         for label in ['wgpolicyk8s.io/engine', 'policy.kubernetes.io/engine']:
             try:
                 return self._get_value(yaml_data, ['metadata', 'labels', label])
             except KeyError:
                 continue
-        return None
+        # use title
+        return self._title(yaml_data)
 
     def _control_selections(self) -> List[ControlSelection]:
         """Return control-selection list."""
@@ -108,31 +110,28 @@ class YamlToOscal:
         """Replace slashes with underscores."""
         return text.replace('/', '_')
 
-    def _get_value(self, yaml_data: Dict, keys: List[str]) -> Any:
-        """Descend yaml layers to get value for order list of keys."""
+    def _get_value(self, yaml_data: Dict, key_sequence: List[str]) -> Any:
+        """Descend yaml layers to get value for sequence of keys."""
         try:
             value = yaml_data
-            for key in keys:
+            for key in key_sequence:
                 value = value[key]
         except KeyError:
             raise KeyError
         return value
 
-    def _add_prop(self, props: List[Property], name: str, yaml_data: Dict, keys: List[str]) -> Property:
+    def _add_prop(
+        self, props: List[Property], yaml_data: Dict, key_sequence: List[str], pname: str, pclass_: str
+    ) -> Property:
         """Add property to list."""
         try:
-            value = self._get_value(yaml_data, keys)
-            prop = Property(name=self._normalize(name), value=self._whitespace(value))
-            props.append(prop)
-            return prop
-        except KeyError:
-            return None
-
-    def _add_prop_with_ns(self, props: List[Property], name: str, yaml_data: Dict, keys: List[str], ns, class_) -> None:
-        """Add property with ns and class to list."""
-        try:
-            value = self._get_value(yaml_data, keys)
-            prop = Property(name=self._normalize(name), value=self._whitespace(value), ns=ns, class_=class_)
+            pvalue = self._get_value(yaml_data, key_sequence)
+            if pclass_:
+                prop = Property(
+                    name=self._normalize(pname), value=self._whitespace(pvalue), ns=self._ns, class_=pclass_
+                )
+            else:
+                prop = Property(name=self._normalize(pname), value=self._whitespace(pvalue))
             props.append(prop)
             return prop
         except KeyError:
@@ -151,23 +150,25 @@ class YamlToOscal:
                 subjects=subjects,
                 collected=timestamp
             )
+            class_map = {'policy': 'scc_rule', 'message': 'scc_description', 'result': 'scc_result'}
+            props_exempt = ['resources']
             for key in result.keys():
+                if key in props_exempt:
+                    continue
                 if key in ['properties']:
                     props = result[key]
                     for prop in props:
-                        self._add_prop(observation.props, 'results.' + key + '.' + prop, props, [prop])
-                elif key in ['resources']:
-                    resources = result[key][0]
-                    for resource in resources:
-                        self._add_prop(observation.props, 'results.' + key + '.' + resource, resources, [resource])
+                        ydata = props
+                        seq = [prop]
+                        pname = f'results.{key}.{prop}'
+                        pclass = ''
+                        self._add_prop(observation.props, ydata, seq, pname, pclass)
                 else:
-                    class_map = {'policy': 'scc_rule', 'result': 'scc_result', 'message': 'scc_description'}
-                    if key in class_map.keys():
-                        self._add_prop_with_ns(
-                            observation.props, 'results.' + key, result, [key], self._ns, class_map[key]
-                        )
-                    else:
-                        self._add_prop(observation.props, 'results.' + key, result, [key])
+                    ydata = result
+                    seq = [key]
+                    pname = f'results.{key}'
+                    pclass = class_map.get(key, '')
+                    self._add_prop(observation.props, ydata, seq, pname, pclass)
             observations.append(observation)
         return observations
 
@@ -188,26 +189,37 @@ class YamlToOscal:
                 'summary.error',
                 'summary.skip',
         ]:
-            self._add_prop(props, key, yaml_data, key.split('.'))
+            ydata = yaml_data
+            seq = key.split('.')
+            pname = key
+            pclass = ''
+            self._add_prop(props, ydata, seq, pname, pclass)
         return props
 
     def _get_local_definitions(self, yaml_data: Dict) -> LocalDefinitions1:
-        """Return local definitions."""
+        """Extract local definitions."""
+        rval = []
         try:
             props = []
-            for key in yaml_data['scope']:
-                compound_key = 'scope.' + key
-                class_map = {'namespace': 'scc_scope'}
-                if key in class_map.keys():
-                    self._add_prop_with_ns(
-                        props, compound_key, yaml_data, compound_key.split('.'), self._ns, class_map[key]
-                    )
-                else:
-                    self._add_prop(props, compound_key, yaml_data, compound_key.split('.'))
+            for result in yaml_data['results']:
+                for resource in result['resources']:
+                    for key in resource.keys():
+                        name = f'results.resources.{key}'
+                        value = resource[key]
+                        prop = Property(
+                            name=self._normalize(name),
+                            value=self._whitespace(value),
+                        )
+                        if key == 'namespace':
+                            prop.ns = self._ns
+                            prop.class_ = 'scc_scope'
+                        props.append(prop)
             inventory_item = InventoryItem(uuid=self._uuid(), description='inventory', props=props)
             rval = LocalDefinitions1()
             rval.inventory_items = [inventory_item]
         except KeyError:
+            rval = []
+        if not rval:
             rval = None
         return rval
 
@@ -306,7 +318,7 @@ def main():
     ipath = pathlib.Path(args.input)
     if not ipath.is_dir():
         text = f'input folder "{args.input}" not found'
-        raise Exception(text)
+        raise RuntimeError(text)
     # create output folder, if necessary
     opath = pathlib.Path(args.output)
     if not opath.is_dir():
@@ -330,7 +342,7 @@ def main():
                 logger.info(f'created: {opath / ofile.name}')
     except yaml.YAMLError as e:
         logger.error(e)
-        raise Exception(f'Exception processing {ipath.name}')
+        raise RuntimeError(f'Exception processing {ipath.name}')
 
 
 if __name__ == '__main__':

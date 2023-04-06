@@ -1,10 +1,10 @@
 {
   "results": [
     {
-      "uuid": "46157bbd-5a12-4197-b273-de565ec78b5f",
+      "uuid": "c7bd923e-0b2f-42cc-8e69-0bee23f03371",
       "title": "falco-alerts-policy",
       "description": "falco-agent",
-      "start": "2022-04-14T14:40:25+00:00",
+      "start": "2023-04-06T20:31:58+00:00",
       "props": [
         {
           "name": "apiVersion",
@@ -23,6 +23,34 @@
           "value": "1"
         }
       ],
+      "local-definitions": {
+        "inventory-items": [
+          {
+            "uuid": "89c6ee03-f700-49a9-be99-aa7e5e167dbc",
+            "description": "inventory",
+            "props": [
+              {
+                "name": "results.resources.apiVersion",
+                "value": "v1"
+              },
+              {
+                "name": "results.resources.kind",
+                "value": "Pod"
+              },
+              {
+                "name": "results.resources.name",
+                "value": "a-pod"
+              },
+              {
+                "name": "results.resources.namespace",
+                "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+                "value": "my-namespace",
+                "class": "scc_scope"
+              }
+            ]
+          }
+        ]
+      },
       "reviewed-controls": {
         "control-selections": [
           {}
@@ -30,7 +58,7 @@
       },
       "observations": [
         {
-          "uuid": "97009160-cdc1-47cf-a22f-95b92e8f7e7b",
+          "uuid": "e933b098-16a4-4640-90df-f06d90cd4112",
           "description": "falco-agent",
           "props": [
             {
@@ -56,22 +84,6 @@
               "value": "False"
             },
             {
-              "name": "results.resources.apiVersion",
-              "value": "v1"
-            },
-            {
-              "name": "results.resources.kind",
-              "value": "Pod"
-            },
-            {
-              "name": "results.resources.name",
-              "value": "a-pod"
-            },
-            {
-              "name": "results.resources.namespace",
-              "value": "my-namespace"
-            },
-            {
               "name": "results.properties.details",
               "value": "12:57:37.086240437: Notice Namespace change (setns) by unexpected program (user=root user_loginuid=-1 command=ovnkube --init-node ..."
             },
@@ -95,15 +107,21 @@
           "methods": [
             "TEST-AUTOMATED"
           ],
-          "collected": "2022-04-14T14:40:25+00:00"
+          "subjects": [
+            {
+              "subject-uuid": "89c6ee03-f700-49a9-be99-aa7e5e167dbc",
+              "type": "inventory-item"
+            }
+          ],
+          "collected": "2023-04-06T20:31:58+00:00"
         }
       ]
     },
     {
-      "uuid": "4ac9a79c-4316-4898-adb3-0d52318ffaa9",
+      "uuid": "e062d79d-4ec8-4003-9115-4956d0166a68",
       "title": "falco-alerts-policy",
       "description": "falco-agent",
-      "start": "2022-04-14T14:40:25+00:00",
+      "start": "2023-04-06T20:31:58+00:00",
       "props": [
         {
           "name": "apiVersion",
@@ -125,7 +143,7 @@
       },
       "observations": [
         {
-          "uuid": "207b2042-94d9-46c9-add6-940c2b897e83",
+          "uuid": "a57ae497-8221-4cad-9617-0432f65c99d9",
           "description": "falco-agent",
           "props": [
             {
@@ -182,7 +200,7 @@
           "methods": [
             "TEST-AUTOMATED"
           ],
-          "collected": "2022-04-14T14:40:25+00:00"
+          "collected": "2023-04-06T20:31:58+00:00"
         }
       ]
     }

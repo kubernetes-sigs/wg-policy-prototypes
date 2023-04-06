@@ -1,10 +1,10 @@
 {
   "assessment-results": {
-    "uuid": "5ab2ffeb-3591-4c2b-aca5-0b225f364f10",
+    "uuid": "91641b7a-571f-4b8f-9349-0dcc27d9aae1",
     "metadata": {
       "title": "sample-falco-policy.json",
-      "last-modified": "2022-04-14T14:40:45+00:00",
-      "version": "0.37.0",
+      "last-modified": "2023-04-06T20:34:20+00:00",
+      "version": "1.1.0",
       "oscal-version": "1.0.2"
     },
     "import-ap": {
@@ -12,10 +12,10 @@
     },
     "results": [
       {
-        "uuid": "17f5b58b-be4a-481b-b067-9d632d558ba5",
+        "uuid": "915383f5-8924-4729-bb1b-e7c56cde6970",
         "title": "falco-alerts-policy",
         "description": "falco-agent",
-        "start": "2022-04-14T14:40:45+00:00",
+        "start": "2023-04-06T20:34:20+00:00",
         "props": [
           {
             "name": "apiVersion",
@@ -34,6 +34,34 @@
             "value": "1"
           }
         ],
+        "local-definitions": {
+          "inventory-items": [
+            {
+              "uuid": "755d5669-4c84-4b90-8524-2f4fb2828772",
+              "description": "inventory",
+              "props": [
+                {
+                  "name": "results.resources.apiVersion",
+                  "value": "v1"
+                },
+                {
+                  "name": "results.resources.kind",
+                  "value": "Pod"
+                },
+                {
+                  "name": "results.resources.name",
+                  "value": "a-pod"
+                },
+                {
+                  "name": "results.resources.namespace",
+                  "ns": "https://kubernetes.github.io/compliance-trestle/schemas/oscal/ar/scc",
+                  "value": "my-namespace",
+                  "class": "scc_scope"
+                }
+              ]
+            }
+          ]
+        },
         "reviewed-controls": {
           "control-selections": [
             {}
@@ -41,7 +69,7 @@
         },
         "observations": [
           {
-            "uuid": "f4baa8bf-f810-4570-8aec-d418bde7e71f",
+            "uuid": "3f2f4460-dd55-4278-bd87-672a2c1528f2",
             "description": "falco-agent",
             "props": [
               {
@@ -67,22 +95,6 @@
                 "value": "False"
               },
               {
-                "name": "results.resources.apiVersion",
-                "value": "v1"
-              },
-              {
-                "name": "results.resources.kind",
-                "value": "Pod"
-              },
-              {
-                "name": "results.resources.name",
-                "value": "a-pod"
-              },
-              {
-                "name": "results.resources.namespace",
-                "value": "my-namespace"
-              },
-              {
                 "name": "results.properties.details",
                 "value": "12:57:37.086240437: Notice Namespace change (setns) by unexpected program (user=root user_loginuid=-1 command=ovnkube --init-node ..."
               },
@@ -106,15 +118,21 @@
             "methods": [
               "TEST-AUTOMATED"
             ],
-            "collected": "2022-04-14T14:40:45+00:00"
+            "subjects": [
+              {
+                "subject-uuid": "755d5669-4c84-4b90-8524-2f4fb2828772",
+                "type": "inventory-item"
+              }
+            ],
+            "collected": "2023-04-06T20:34:20+00:00"
           }
         ]
       },
       {
-        "uuid": "d04d9212-1261-4d15-b39a-668ed0e5e5d2",
+        "uuid": "cbcb0495-2b86-4911-80ec-71350c90444e",
         "title": "falco-alerts-policy",
         "description": "falco-agent",
-        "start": "2022-04-14T14:40:45+00:00",
+        "start": "2023-04-06T20:34:20+00:00",
         "props": [
           {
             "name": "apiVersion",
@@ -136,7 +154,7 @@
         },
         "observations": [
           {
-            "uuid": "735ad451-9ded-43fb-a097-176b9b17a7c8",
+            "uuid": "e09e0b69-2d67-4cdf-a564-1cf54a7a3aaa",
             "description": "falco-agent",
             "props": [
               {
@@ -193,7 +211,7 @@
             "methods": [
               "TEST-AUTOMATED"
             ],
-            "collected": "2022-04-14T14:40:45+00:00"
+            "collected": "2023-04-06T20:34:20+00:00"
           }
         ]
       }
