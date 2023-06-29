@@ -119,7 +119,7 @@ milestone **before the [Enhancement Freeze](https://git.k8s.io/sig-release/relea
 of the targeted release**.
 
 For enhancements that make changes to code or processes/procedures in core
-Kubernetes—i.e., [kubernetes/kubernetes], we require the following Release
+Kubernetesøi.e., [kubernetes/kubernetes], we require the following Release
 Signoff checklist to be completed.
 
 Check these off as they are completed for the Release Team to track. These
@@ -141,7 +141,7 @@ Items marked with (R) are required *prior to targeting to a milestone / release*
 - [ ] (R) Production readiness review approved
 - [ ] "Implementation History" section is up-to-date for milestone
 - [ ] User-facing documentation has been created in [kubernetes/website], for publication to [kubernetes.io]
-- [ ] Supporting documentation—e.g., additional design documents, links to mailing list discussions/SIG meetings, relevant PRs/issues, release notes
+- [ ] Supporting documentationøe.g., additional design documents, links to mailing list discussions/SIG meetings, relevant PRs/issues, release notes
 
 <!--
 **Note:** This checklist is iterative and should be reviewed and updated every time this enhancement is being considered for a milestone.
@@ -304,6 +304,13 @@ extending the production code to implement this enhancement.
 ##### Integration tests
 
 <!--
+Integration tests are contained in k8s.io/kubernetes/test/integration.
+Integration tests allow control of the configuration parameters used to start the binaries under test.
+This is different from e2e tests which do not allow configuration of parameters.
+Doing this allows testing non-default options and multiple different and potentially conflicting command line options.
+-->
+
+<!--
 This question should be filled when targeting a release.
 For Alpha, describe what tests will be added to ensure proper quality of the enhancement.
 
@@ -371,7 +378,7 @@ Below are some examples to consider, in addition to the aforementioned [maturity
 
 - N examples of real-world usage
 - N installs
-- More rigorous forms of testing—e.g., downgrade tests and scalability tests
+- More rigorous forms of testingøe.g., downgrade tests and scalability tests
 - Allowing time for feedback
 
 **Note:** Generally we also wait at least two releases between beta and
@@ -470,7 +477,7 @@ well as the [existing list] of feature gates.
   - Will enabling / disabling the feature require downtime of the control
     plane?
   - Will enabling / disabling the feature require downtime or reprovisioning
-    of a node? (Do not assume `Dynamic Kubelet Config` feature is enabled).
+    of a node?
 
 ###### Does enabling the feature change any default behavior?
 
@@ -636,7 +643,7 @@ optional services that are needed. For example, if this feature depends on
 a cloud provider API, or upon an external software-defined storage or network
 control plane.
 
-For each of these, fill in the following—thinking about running existing user workloads
+For each of these, fill in the followingøthinking about running existing user workloads
 and creating new ones, as well as about cluster-level services (e.g. DNS):
   - [Dependency name]
     - Usage description:
