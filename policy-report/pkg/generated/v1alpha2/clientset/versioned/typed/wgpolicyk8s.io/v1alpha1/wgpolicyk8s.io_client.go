@@ -19,9 +19,9 @@ limitations under the License.
 package v1alpha1
 
 import (
+	rest "k8s.io/client-go/rest"
 	v1alpha1 "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/wgpolicyk8s.io/v1alpha1"
 	"sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha2/clientset/versioned/scheme"
-	rest "k8s.io/client-go/rest"
 )
 
 type Wgpolicyk8sV1alpha1Interface interface {

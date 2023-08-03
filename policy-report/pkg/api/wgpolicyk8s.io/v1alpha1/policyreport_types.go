@@ -75,6 +75,7 @@ type PolicyStatus string
 //   - high
 //   - low
 //   - medium
+//
 // +kubebuilder:validation:Enum=high;low;medium
 type PolicySeverity string
 
