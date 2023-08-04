@@ -95,6 +95,21 @@ Either one of, or none of, but not both of, Scope or ScopeSelector should be spe
 </tr>
 <tr>
 <td>
+<code>configuration</code></br>
+<em>
+<a href="#wgpolicyk8s.io/v1beta1.PolicyReportConfiguration">
+PolicyReportConfiguration
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+Configuration is an optional field which can be used to specify
+a contract between PolicyReport generators and consumers
+</td>
+</tr>
+<tr>
+<td>
 <code>summary</code></br>
 <em>
 <a href="#wgpolicyk8s.io/v1beta1.PolicyReportSummary">
@@ -111,8 +126,8 @@ PolicyReportSummary provides a summary of results
 <td>
 <code>results</code></br>
 <em>
-<a href="#wgpolicyk8s.io/v1beta1.*sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/wgpolicyk8s.io/v1beta1.PolicyReportResult">
-[]*sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/wgpolicyk8s.io/v1beta1.PolicyReportResult
+<a href="#wgpolicyk8s.io/v1beta1.*./pkg/api/wgpolicyk8s.io/v1beta1.PolicyReportResult">
+[]*./pkg/api/wgpolicyk8s.io/v1beta1.PolicyReportResult
 </a>
 </em>
 </td>
@@ -207,6 +222,21 @@ Either one of, or none of, but not both of, Scope or ScopeSelector should be spe
 </tr>
 <tr>
 <td>
+<code>configuration</code></br>
+<em>
+<a href="#wgpolicyk8s.io/v1beta1.PolicyReportConfiguration">
+PolicyReportConfiguration
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+Configuration is an optional field which can be used to specify
+a contract between PolicyReport generators and consumers
+</td>
+</tr>
+<tr>
+<td>
 <code>summary</code></br>
 <em>
 <a href="#wgpolicyk8s.io/v1beta1.PolicyReportSummary">
@@ -223,14 +253,89 @@ PolicyReportSummary provides a summary of results
 <td>
 <code>results</code></br>
 <em>
-<a href="#wgpolicyk8s.io/v1beta1.*sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/wgpolicyk8s.io/v1beta1.PolicyReportResult">
-[]*sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/wgpolicyk8s.io/v1beta1.PolicyReportResult
+<a href="#wgpolicyk8s.io/v1beta1.*./pkg/api/wgpolicyk8s.io/v1beta1.PolicyReportResult">
+[]*./pkg/api/wgpolicyk8s.io/v1beta1.PolicyReportResult
 </a>
 </em>
 </td>
 <td>
 <em>(Optional)</em>
 PolicyReportResult provides result details
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="wgpolicyk8s.io/v1beta1.Limits">Limits
+</h3>
+<p>
+(<em>Appears on:</em>
+<a href="#wgpolicyk8s.io/v1beta1.PolicyReportConfiguration">PolicyReportConfiguration</a>)
+</p>
+<p>
+</p>
+<table class="table table-striped">
+<thead class="thead-dark">
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>maxResults</code></br>
+<em>
+int
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+Maximum number of results in the report
+</td>
+</tr>
+<tr>
+<td>
+<code>statusFilter</code></br>
+<em>
+<a href="#wgpolicyk8s.io/v1beta1.*./pkg/api/wgpolicyk8s.io/v1beta1.StatusFilter">
+[]*./pkg/api/wgpolicyk8s.io/v1beta1.StatusFilter
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+Expected results list
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="wgpolicyk8s.io/v1beta1.PolicyReportConfiguration">PolicyReportConfiguration
+</h3>
+<p>
+(<em>Appears on:</em>
+<a href="#wgpolicyk8s.io/v1beta1.ClusterPolicyReport">ClusterPolicyReport</a>, 
+<a href="#wgpolicyk8s.io/v1beta1.PolicyReport">PolicyReport</a>)
+</p>
+<p>
+</p>
+<table class="table table-striped">
+<thead class="thead-dark">
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>limits</code></br>
+<em>
+<a href="#wgpolicyk8s.io/v1beta1.Limits">
+Limits
+</a>
+</em>
+</td>
+<td>
 </td>
 </tr>
 </tbody>
@@ -504,6 +609,10 @@ PolicyResultSeverity has one of the following values:
 - low
 - medium
 - info
+</p>
+<h3 id="wgpolicyk8s.io/v1beta1.StatusFilter">StatusFilter
+(<code>string</code> alias)</p></h3>
+<p>
 </p>
 <hr/>
 <p><em>
