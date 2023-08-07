@@ -1,0 +1,17 @@
+title: Graduate PolicyReport API
+kep-number: NNNN
+authors:
+  - "anusha94"
+  - "JimBugwadia"
+owning-sig: sig-auth
+participating-sigs:
+  - TBD
+status: provisional
+creation-date: 2023-08-07
+reviewers:
+  - TBD
+approvers:
+  - TBD
+
+# The target maturity stage in the current dev cycle for this KEP.
+stage: beta

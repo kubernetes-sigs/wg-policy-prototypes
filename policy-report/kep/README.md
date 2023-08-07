@@ -3,7 +3,7 @@
 
 To get started with this template:
 
-- [ ] **Pick a hosting SIG.**
+- [ x ] **Pick a hosting SIG.** // sig-auth
   Make sure that the problem space is something the SIG is interested in taking
   up. KEPs should not be checked in without a sponsoring SIG.
 - [ ] **Create an issue in kubernetes/enhancements**
@@ -15,7 +15,7 @@ To get started with this template:
   Copy this template into the owning SIG's directory and name it
   `NNNN-short-descriptive-title`, where `NNNN` is the issue number (with no
   leading-zero padding) assigned to your enhancement above.
-- [ ] **Fill out as much of the kep.yaml file as you can.**
+- [ x ] **Fill out as much of the kep.yaml file as you can.**
   At minimum, you should fill in the "Title", "Authors", "Owning-sig",
   "Status", and date-related fields.
 - [ ] **Fill out this file as best you can.**
@@ -58,7 +58,7 @@ If none of those approvers are still appropriate, then changes to that list
 should be approved by the remaining approvers and/or the owning SIG (or
 SIG Architecture for cross-cutting KEPs).
 -->
-# KEP-NNNN: Your short, descriptive title
+# KEP-NNNN: Graduate PolicyReport API as a Kubernetes SIG API
 
 <!--
 This is the title of your KEP. Keep it short, simple, and descriptive. A good
@@ -119,7 +119,7 @@ milestone **before the [Enhancement Freeze](https://git.k8s.io/sig-release/relea
 of the targeted release**.
 
 For enhancements that make changes to code or processes/procedures in core
-Kubernetes¿i.e., [kubernetes/kubernetes], we require the following Release
+Kubernetesï¿½i.e., [kubernetes/kubernetes], we require the following Release
 Signoff checklist to be completed.
 
 Check these off as they are completed for the Release Team to track. These
@@ -141,7 +141,7 @@ Items marked with (R) are required *prior to targeting to a milestone / release*
 - [ ] (R) Production readiness review approved
 - [ ] "Implementation History" section is up-to-date for milestone
 - [ ] User-facing documentation has been created in [kubernetes/website], for publication to [kubernetes.io]
-- [ ] Supporting documentation¿e.g., additional design documents, links to mailing list discussions/SIG meetings, relevant PRs/issues, release notes
+- [ ] Supporting documentationï¿½e.g., additional design documents, links to mailing list discussions/SIG meetings, relevant PRs/issues, release notes
 
 <!--
 **Note:** This checklist is iterative and should be reviewed and updated every time this enhancement is being considered for a milestone.
@@ -173,6 +173,8 @@ updates.
 [documentation style guide]: https://github.com/kubernetes/community/blob/master/contributors/guide/style-guide.md
 -->
 
+This proposal advocates for the graduation of the PolicyReport API within the Kubernetes ecosystem. The PolicyReport API, developed under the Kubernetes Policy Working Group, is a Custom Resource Definition (CRD) which is used as a common way to provide policy results Kubernetes cluster administrators and users, using native tools. Graduating the PolicyReport API signifies enhanced reliability, improved usability, and reinforces its significance within Kubernetes environments.
+
 ## Motivation
 
 <!--
@@ -184,12 +186,19 @@ demonstrate the interest in a KEP within the wider Kubernetes community.
 [experience reports]: https://github.com/golang/go/wiki/ExperienceReports
 -->
 
+The PolicyReport API is already being used by several notable tools in the Kubernetes community, such as, kube-bench, OPA/Gatekeeper, Kyverno, Policy Reporter, jsPolicy, kubearmor, Trivy, Falco, Red Hat ACM/OCM, multi-tenancy benchmarks (mtb), and possibly more. Despite its considerable usage, the lack of Kubernetes standardization has led to tool-specific forks of the PolicyReport API, introducing localized changes and complexities. To circumvent this, the community aims to establish a unified source of truth, enabling enhancements to the core API itself. Graduating this API is crucial to ensure that all stakeholders reap the
+benefits of a standardized, dependable PolicyReport API.
+
 ### Goals
 
 <!--
 List the specific goals of the KEP. What is it trying to achieve? How will we
 know that this has succeeded?
 -->
+- Meet the Kubernetes API standards
+- Make policy-report as a new project under kubernetes-sigs
+- Provide a migration path for existing users
+- Improved documentation for new and existing users
 
 ### Non-Goals
 
@@ -197,6 +206,8 @@ know that this has succeeded?
 What is out of scope for this KEP? Listing non-goals helps to focus discussion
 and make progress.
 -->
+- Adopt or resolve any local features or issues introduced in tool-specific forks
+- Make the usage of the new SIG API as mandatory for tools already using the current version of the PolicyReport API
 
 ## Proposal
 
@@ -378,7 +389,7 @@ Below are some examples to consider, in addition to the aforementioned [maturity
 
 - N examples of real-world usage
 - N installs
-- More rigorous forms of testing¿e.g., downgrade tests and scalability tests
+- More rigorous forms of testingï¿½e.g., downgrade tests and scalability tests
 - Allowing time for feedback
 
 **Note:** Generally we also wait at least two releases between beta and
@@ -643,7 +654,7 @@ optional services that are needed. For example, if this feature depends on
 a cloud provider API, or upon an external software-defined storage or network
 control plane.
 
-For each of these, fill in the following¿thinking about running existing user workloads
+For each of these, fill in the followingï¿½thinking about running existing user workloads
 and creating new ones, as well as about cluster-level services (e.g. DNS):
   - [Dependency name]
     - Usage description:
