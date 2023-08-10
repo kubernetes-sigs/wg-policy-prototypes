@@ -220,6 +220,11 @@ The "Design Details" section below is for the real
 nitty-gritty.
 -->
 
+In order to make PolicyReport API an official Kubernetes SIG API, we should create a `policy-report` (__name subject to change__) repository under the `kubernetes-sigs` org.
+* Create a new project in kubernetes-sigs by following the guidelines mentioned [here](https://github.com/kubernetes/community/blob/master/github-management/kubernetes-repositories.md#rules-for-new-repositories)
+* Cleanup the [existing policy-report directory](https://github.com/kubernetes-sigs/wg-policy-prototypes/tree/master/policy-report) to contain only the necessary content for migration
+* Notify existing users about the new repository location and share with relevant sigs (`sig-auth`, `sig-security`, `sig-apimachinery`)
+
 ### User Stories (Optional)
 
 <!--
