@@ -279,6 +279,7 @@ proposal will be implemented, this is the place to discuss them.
 * [Sample CRs](https://github.com/kubernetes-sigs/wg-policy-prototypes/tree/master/policy-report/samples)
 
 ### Test Plan
+N/A
 
 <!--
 **Note:** *Not required until targeted at a release.*
@@ -359,6 +360,8 @@ We expect no non-infra related flakes in the last month as a GA graduation crite
 - <test>: <link to test coverage>
 
 ### Graduation Criteria
+We need approvals from the following stakeholders:
+[TBD]
 
 <!--
 **Note:** *Not required until targeted at a release.*
@@ -423,7 +426,7 @@ in back-to-back releases.
 -->
 
 ### Upgrade / Downgrade Strategy
-
+N/A
 <!--
 If applicable, how will the component be upgraded and downgraded? Make sure
 this is in the test plan.
@@ -437,7 +440,7 @@ enhancement:
 -->
 
 ### Version Skew Strategy
-
+N/A
 <!--
 If applicable, how will the component handle version skew with other
 components? What are the guarantees? Make sure this is in the test plan.
@@ -452,7 +455,7 @@ enhancement:
 -->
 
 ## Production Readiness Review Questionnaire
-
+N/A
 <!--
 
 Production readiness reviews are intended to ensure that features merging into
@@ -823,7 +826,7 @@ information to express the idea and why it was not acceptable.
 -->
 
 ## Infrastructure Needed (Optional)
-
+* a new repository called `policy-report` under the `kubernetes-sigs` org
 <!--
 Use this section if you need things from the project/SIG. Examples include a
 new subproject, repos requested, or GitHub details. Listing these here allows a
