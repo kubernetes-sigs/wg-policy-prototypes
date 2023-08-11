@@ -239,7 +239,7 @@ As a Kubernetes admin, I would like to use multiple tools to consistently enforc
 So that I can efficiently manage my Kubernetes environments.
 
 #### Story 2
-As a Kubernetes tools developer, I would like to have a standard API to build tools for Kubernetes policy, governance and compliance. Having a standard API makes the interoperability amongst the tools more reliable, so that I can focus on refining the tools with confidence. 
+As a Kubernetes tools developer, I would like to have a standard API to build tools for Kubernetes policy, governance and compliance. Having a standard API makes the interoperability amongst the tools more reliable, so that I can focus on refining the tools with confidence.
 
 ### Notes/Constraints/Caveats (Optional)
 
@@ -249,6 +249,9 @@ What are some important details that didn't come across above?
 Go in to as much detail as necessary here.
 This might be a good place to talk about core concepts and how they relate.
 -->
+* PolicyReport CRD came into existence with this proposal back in 2020. Refer to [Policy Report Custom Resource Definition](https://docs.google.com/document/d/1nICYLkYS1RE3gJzuHOfHeAC25QIkFZfgymFjgOzMDVw/edit#heading=h.nhx5d35q5eth).
+* Presented to `sig-auth` about the proposal to make PolicyReport an official SIG API on [June 21, 2023](https://docs.google.com/document/d/1woLGRoONE3EBVx-wTb4pvp4CI7tmLZ6lS26VTbosLKM/view#heading=h.ii52a0istwiv). This KEP is the outcome of that presentation.
+* List of projects using the PolicyReport CRD either from `wg-policy-prototypes` or maintain their own fork. See [this comment](https://github.com/kubernetes-sigs/wg-policy-prototypes/issues/112#issuecomment-1453209660).
 
 ### Risks and Mitigations
 
