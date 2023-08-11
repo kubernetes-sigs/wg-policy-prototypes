@@ -235,8 +235,11 @@ bogged down.
 -->
 
 #### Story 1
+As a Kubernetes admin, I would like to use multiple tools to consistently enforce policies, rules and compliance across my Kubernetes clusters, and I would like to have a standard API across this tooling,
+So that I can efficiently manage my Kubernetes environments.
 
 #### Story 2
+As a Kubernetes tools developer, I would like to have a standard API to build tools for Kubernetes policy, governance and compliance. Having a standard API makes the interoperability amongst the tools more reliable, so that I can focus on refining the tools with confidence. 
 
 ### Notes/Constraints/Caveats (Optional)
 
