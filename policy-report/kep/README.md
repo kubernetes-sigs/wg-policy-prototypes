@@ -3,7 +3,7 @@
 
 To get started with this template:
 
-- [ x ] **Pick a hosting SIG.** // sig-auth
+- [ ] **Pick a hosting SIG.** // sig-auth
   Make sure that the problem space is something the SIG is interested in taking
   up. KEPs should not be checked in without a sponsoring SIG.
 - [ ] **Create an issue in kubernetes/enhancements**
@@ -15,7 +15,7 @@ To get started with this template:
   Copy this template into the owning SIG's directory and name it
   `NNNN-short-descriptive-title`, where `NNNN` is the issue number (with no
   leading-zero padding) assigned to your enhancement above.
-- [ x ] **Fill out as much of the kep.yaml file as you can.**
+- [ ] **Fill out as much of the kep.yaml file as you can.**
   At minimum, you should fill in the "Title", "Authors", "Owning-sig",
   "Status", and date-related fields.
 - [ ] **Fill out this file as best you can.**
@@ -275,6 +275,8 @@ change are understandable. This may include API specs (though not always
 required) or even code snippets. If there's any ambiguity about HOW your
 proposal will be implemented, this is the place to discuss them.
 -->
+* [v1beta1 API](https://github.com/kubernetes-sigs/wg-policy-prototypes/tree/master/policy-report/crd/v1beta1)
+* [Sample CRs](https://github.com/kubernetes-sigs/wg-policy-prototypes/tree/master/policy-report/samples)
 
 ### Test Plan
 
