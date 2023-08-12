@@ -4,6 +4,13 @@ metadata:
   name: sample-v1beta1-cr
   annotations:
     name: Sample CR
+configuration:
+  limits:
+    maxResults: 100
+    statusFilter:
+      - pass
+      - fail
+      - skip
 source: kyverno
 summary:
   pass: 1
