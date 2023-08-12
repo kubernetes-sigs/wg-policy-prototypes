@@ -21,15 +21,16 @@ import (
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
 // NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
 
+// StatusFilter is used by PolicyReport generators to write only those reports whose status is specified by the filters
 // +kubebuilder:validation:Enum=pass;fail;warn;error;skip
 type StatusFilter string
 
 type Limits struct {
-	// Maximum number of results in the report
+	// MaxResults is the maximum number of results contained in the report
 	// +optional
 	MaxResults int `json:"maxResults"`
 
-	// Expected results list
+	// StatusFilter indicates that the PolicyReport contains only those reports with statuses specified in this list
 	// +kubebuilder:validation:UniqueItems=true
 	// +optional
 	StatusFilter []*StatusFilter `json:"statusFilter,omitempty"`

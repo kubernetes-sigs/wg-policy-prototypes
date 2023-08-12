@@ -718,11 +718,16 @@ spec:
               limits:
                 properties:
                   maxResults:
-                    description: Maximum number of results in the report
+                    description: MaxResults is the maximum number of results contained
+                      in the report
                     type: integer
                   statusFilter:
-                    description: Expected results list
+                    description: StatusFilter indicates that the PolicyReport contains
+                      only those reports with statuses specified in this list
                     items:
+                      description: StatusFilter is used by PolicyReport generators
+                        to write only those reports whose status is specified by the
+                        filters
                       enum:
                       - pass
                       - fail
