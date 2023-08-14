@@ -23,13 +23,13 @@ import (
 	sync "sync"
 	time "time"
 
-	versioned "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha1/clientset/versioned"
-	internalinterfaces "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha1/informers/externalversions/internalinterfaces"
-	wgpolicyk8sio "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha1/informers/externalversions/wgpolicyk8s.io"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
+	versioned "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha1/clientset/versioned"
+	internalinterfaces "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha1/informers/externalversions/internalinterfaces"
+	wgpolicyk8sio "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha1/informers/externalversions/wgpolicyk8s.io"
 )
 
 // SharedInformerOption defines the functional option type for SharedInformerFactory.

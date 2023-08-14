@@ -53,6 +53,11 @@ type ClusterPolicyReport struct {
 	// +optional
 	ScopeSelector *metav1.LabelSelector `json:"scopeSelector,omitempty"`
 
+	// Configuration is an optional field which can be used to specify
+	// a contract between PolicyReport generators and consumers
+	// +optional
+	Configuration *PolicyReportConfiguration `json:"configuration,omitempty"`
+
 	// PolicyReportSummary provides a summary of results
 	// +optional
 	Summary PolicyReportSummary `json:"summary,omitempty"`

@@ -21,6 +21,25 @@ import (
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
 // NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
 
+// StatusFilter is used by PolicyReport generators to write only those reports whose status is specified by the filters
+// +kubebuilder:validation:Enum=pass;fail;warn;error;skip
+type StatusFilter string
+
+type Limits struct {
+	// MaxResults is the maximum number of results contained in the report
+	// +optional
+	MaxResults int `json:"maxResults"`
+
+	// StatusFilter indicates that the PolicyReport contains only those reports with statuses specified in this list
+	// +kubebuilder:validation:UniqueItems=true
+	// +optional
+	StatusFilter []*StatusFilter `json:"statusFilter,omitempty"`
+}
+
+type PolicyReportConfiguration struct {
+	Limits Limits `json:"limits"`
+}
+
 // PolicyReportSummary provides a status count summary
 type PolicyReportSummary struct {
 
@@ -150,6 +169,11 @@ type PolicyReport struct {
 	// Either one of, or none of, but not both of, Scope or ScopeSelector should be specified.
 	// +optional
 	ScopeSelector *metav1.LabelSelector `json:"scopeSelector,omitempty"`
+
+	// Configuration is an optional field which can be used to specify
+	// a contract between PolicyReport generators and consumers
+	// +optional
+	Configuration *PolicyReportConfiguration `json:"configuration,omitempty"`
 
 	// PolicyReportSummary provides a summary of results
 	// +optional
