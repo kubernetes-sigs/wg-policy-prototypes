@@ -58,7 +58,7 @@ If none of those approvers are still appropriate, then changes to that list
 should be approved by the remaining approvers and/or the owning SIG (or
 SIG Architecture for cross-cutting KEPs).
 -->
-# KEP-NNNN: Graduate PolicyReport API as a Kubernetes SIG API
+# KEP-NNNN: Promote Policy Reports API to a Kubernetes SIG API
 
 <!--
 This is the title of your KEP. Keep it short, simple, and descriptive. A good
@@ -173,7 +173,32 @@ updates.
 [documentation style guide]: https://github.com/kubernetes/community/blob/master/contributors/guide/style-guide.md
 -->
 
-This proposal advocates for the graduation of the PolicyReport API within the Kubernetes ecosystem. The PolicyReport API, developed under the Kubernetes Policy Working Group, is a Custom Resource Definition (CRD) which is used as a common way to provide policy results Kubernetes cluster administrators and users, using native tools. Graduating the PolicyReport API signifies enhanced reliability, improved usability, and reinforces its significance within Kubernetes environments.
+This is a proposal to migrate the [Policy Report API](https://htmlpreview.github.io/?https://github.com/kubernetes-sigs/wg-policy-prototypes/blob/master/policy-report/docs/index.html) to a SIG repository.
+
+The Policy Report API was developed under the Kubernetes Policy Working Group and provides a standardized API that can be used by any policy engine, security scanner, or other security and compliance tool that wants to produce or consume policy results or findings for cluster resources.
+
+The Policy Report API is currently hosted at: https://github.com/kubernetes-sigs/wg-policy-prototypes/tree/master/policy-report and is used by the following projects:
+
+Report producers:
+* [Kyverno](https://kyverno.io/docs/policy-reports/)
+* [jsPolicy](https://github.com/loft-sh/jspolicy/pull/17)
+* [Falco](https://github.com/falcosecurity/falcosidekick/blob/master/outputs/policyreport.go)
+* [Trivy Operator](https://aquasecurity.github.io/trivy-operator/v0.15.1/tutorials/integrations/policy-reporter/)
+* [Tracee Adapter](https://github.com/fjogeleit/tracee-polr-adapter)
+
+Report consumers:
+* [Kyverno Policy Reporter](https://kyverno.github.io/policy-reporter/)
+* [Open Cluster Management](https://open-cluster-management.io/)
+* [Lula](https://github.com/defenseunicorns/lula)
+
+Additionally, the following tools were developed by the Policy WG:
+* [kube-bench-adapter](https://github.com/kubernetes-sigs/wg-policy-prototypes/tree/master/policy-report/kube-bench-adapter)
+* [kubearmor-adapter](https://github.com/kubernetes-sigs/wg-policy-prototypes/tree/master/policy-report/kubearmor-adapter)
+* [Trestle OSCAL Transformer](https://github.com/kubernetes-sigs/wg-policy-prototypes/tree/master/policy-report/oscal-transformer)
+
+Since working groups are temporary and do not own code (see [governance](https://github.com/kubernetes/community/blob/master/committee-steering/governance/wg-governance.md)), we propose moving the Policy Reports API to `github.com/kubernetes-sigs/policy-report-api`.
+
+Promoting the PolicyReport API will further increase adoption and signifies enhanced reliability, improved usability, and reinforces its significance within Kubernetes environments.
 
 ## Motivation
 
@@ -186,8 +211,8 @@ demonstrate the interest in a KEP within the wider Kubernetes community.
 [experience reports]: https://github.com/golang/go/wiki/ExperienceReports
 -->
 
-The PolicyReport API is already being used by several notable tools in the Kubernetes community, such as, kube-bench, OPA/Gatekeeper, Kyverno, Policy Reporter, jsPolicy, kubearmor, Trivy, Falco, Red Hat ACM/OCM, multi-tenancy benchmarks (mtb), and possibly more. Despite its considerable usage, the lack of Kubernetes standardization has led to tool-specific forks of the PolicyReport API, introducing localized changes and complexities. To circumvent this, the community aims to establish a unified source of truth, enabling enhancements to the core API itself. Graduating this API is crucial to ensure that all stakeholders reap the
-benefits of a standardized, dependable PolicyReport API.
+The PolicyReport API is already being used by several tools in the Kubernetes community, as detailed above. Moving the API to a the `github.com/kubernetes-sigs/` GitHub org will provides a permanent home for the API, along with improved visibility.
+
 
 ### Goals
 
@@ -196,9 +221,10 @@ List the specific goals of the KEP. What is it trying to achieve? How will we
 know that this has succeeded?
 -->
 - Meet the Kubernetes API standards
-- Make policy-report as a new project under kubernetes-sigs
+- Make policy-report as a new project under kubernetes-sigs: `github.com/kubernetes-sigs/policy-report-api`
 - Provide a migration path for existing users
 - Improved documentation for new and existing users
+- Improved documentation for producers and consumers
 
 ### Non-Goals
 
@@ -826,7 +852,7 @@ information to express the idea and why it was not acceptable.
 -->
 
 ## Infrastructure Needed (Optional)
-* a new repository called `policy-report` under the `kubernetes-sigs` org
+* a new repository called `policy-report-api` under the `kubernetes-sigs` org
 <!--
 Use this section if you need things from the project/SIG. Examples include a
 new subproject, repos requested, or GitHub details. Listing these here allows a
