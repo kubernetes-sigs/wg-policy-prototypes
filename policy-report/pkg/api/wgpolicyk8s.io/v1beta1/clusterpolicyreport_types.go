@@ -44,6 +44,13 @@ type ClusterPolicyReport struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
+	// Source is an identifier for the source e.g. a policy engine that manages this report.
+	// Use this field if all the results are produced by a single policy engine.
+	// If the results are produced by multiple sources e.g. different engines or scanners,
+	// then use the Source field at the PolicyReportResult level.
+	// +optional
+	Source string `json:"source"`
+
 	// Scope is an optional reference to the report scope (e.g. a Deployment, Namespace, or Node)
 	// +optional
 	Scope *corev1.ObjectReference `json:"scope,omitempty"`
