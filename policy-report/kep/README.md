@@ -190,6 +190,7 @@ Report consumers:
 * [Kyverno Policy Reporter](https://kyverno.github.io/policy-reporter/)
 * [Open Cluster Management](https://open-cluster-management.io/)
 * [Lula](https://github.com/defenseunicorns/lula)
+* [Fairwinds Insights](https://fairwinds.com/insights)
 
 Additionally, the following tools were developed by the Policy WG:
 * [kube-bench-adapter](https://github.com/kubernetes-sigs/wg-policy-prototypes/tree/master/policy-report/kube-bench-adapter)
