@@ -175,18 +175,18 @@ updates.
 
 This is a proposal to migrate the [Policy Report API](https://htmlpreview.github.io/?https://github.com/kubernetes-sigs/wg-policy-prototypes/blob/master/policy-report/docs/index.html) to a SIG repository.
 
-The Policy Report API was developed under the Kubernetes Policy Working Group and provides a standardized API that can be used by any policy engine, security scanner, or other security and compliance tool that wants to produce or consume policy results or findings for cluster resources.
+The Policy Report API was developed under the Kubernetes Policy Working Group (SIG-Auth is a sponsor) and provides an API that can be used by any policy engine, security scanner, or other security and compliance tool that wants to produce, or consume, policy results, security findings, or other reports for cluster resources.
 
 The Policy Report API is currently hosted at: https://github.com/kubernetes-sigs/wg-policy-prototypes/tree/master/policy-report and is used by the following projects:
 
-Report producers:
+**Report producers:**
 * [Kyverno](https://kyverno.io/docs/policy-reports/)
-* [jsPolicy](https://github.com/loft-sh/jspolicy/pull/17)
+* [jsPolicy](https://github.com/loft-sh/jspolicy/)
 * [Falco](https://github.com/falcosecurity/falcosidekick/blob/master/outputs/policyreport.go)
 * [Trivy Operator](https://aquasecurity.github.io/trivy-operator/v0.15.1/tutorials/integrations/policy-reporter/)
 * [Tracee Adapter](https://github.com/fjogeleit/tracee-polr-adapter)
 
-Report consumers:
+**Report consumers:**
 * [Kyverno Policy Reporter](https://kyverno.github.io/policy-reporter/)
 * [Open Cluster Management](https://open-cluster-management.io/)
 * [Lula](https://github.com/defenseunicorns/lula)
@@ -199,7 +199,7 @@ Additionally, the following tools were developed by the Policy WG:
 
 Since working groups are temporary and do not own code (see [governance](https://github.com/kubernetes/community/blob/master/committee-steering/governance/wg-governance.md)), we propose moving the Policy Reports API to `github.com/kubernetes-sigs/policy-report-api`.
 
-Promoting the PolicyReport API will further increase adoption and signifies enhanced reliability, improved usability, and reinforces its significance within Kubernetes environments.
+Promoting the Policy Report API will further increase adoption and signifies enhanced reliability, improved usability, and reinforces its significance within the cloud-native ecosystem.
 
 ## Motivation
 
@@ -212,8 +212,7 @@ demonstrate the interest in a KEP within the wider Kubernetes community.
 [experience reports]: https://github.com/golang/go/wiki/ExperienceReports
 -->
 
-The PolicyReport API is already being used by several tools in the Kubernetes community, as detailed above. Moving the API to a the `github.com/kubernetes-sigs/` GitHub org will provides a permanent home for the API, along with improved visibility.
-
+The Policy Report API is already being used by several projects and tools in the Kubernetes community and CNCF ecosystem, as detailed above. Moving the API to a the `github.com/kubernetes-sigs/` GitHub org will provide a permanent home for the API, along with improved visibility and colloboration.
 
 ### Goals
 
@@ -221,11 +220,9 @@ The PolicyReport API is already being used by several tools in the Kubernetes co
 List the specific goals of the KEP. What is it trying to achieve? How will we
 know that this has succeeded?
 -->
-- Meet the Kubernetes API standards
-- Make policy-report as a new project under kubernetes-sigs: `github.com/kubernetes-sigs/policy-report-api`
-- Provide a migration path for existing users
-- Improved documentation for new and existing users
-- Improved documentation for producers and consumers
+
+- Add `policy-report-api` as a new project under kubernetes-sigs i.e `github.com/kubernetes-sigs/policy-report-api`
+- Provide guidance on building consumers and producers
 
 ### Non-Goals
 
@@ -233,8 +230,7 @@ know that this has succeeded?
 What is out of scope for this KEP? Listing non-goals helps to focus discussion
 and make progress.
 -->
-- Adopt or resolve any local features or issues introduced in tool-specific forks
-- Make the usage of the new SIG API as mandatory for tools already using the current version of the PolicyReport API
+- Report controller, producer, or consumer implementations. The intent is to document the API and allow projects and tools to specify their own
 
 ## Proposal
 
@@ -247,10 +243,11 @@ The "Design Details" section below is for the real
 nitty-gritty.
 -->
 
-In order to make PolicyReport API an official Kubernetes SIG API, we should create a `policy-report` (__name subject to change__) repository under the `kubernetes-sigs` org.
-* Create a new project in kubernetes-sigs by following the guidelines mentioned [here](https://github.com/kubernetes/community/blob/master/github-management/kubernetes-repositories.md#rules-for-new-repositories)
+In order to make Policy Report API an official Kubernetes SIG API, we propose:
+
+* Create a new project `policy-report-api` (__name subject to change__) repository under the `kubernetes-sigs` org following the guidelines mentioned [here](https://github.com/kubernetes/community/blob/master/github-management/kubernetes-repositories.md#rules-for-new-repositories)
 * Cleanup the [existing policy-report directory](https://github.com/kubernetes-sigs/wg-policy-prototypes/tree/master/policy-report) to contain only the necessary content for migration
-* Notify existing users about the new repository location and share with relevant sigs (`sig-auth`, `sig-security`, `sig-apimachinery`)
+* Notify existing projects and tools about the new repository location and share with relevant sigs (`sig-auth`, `sig-security`, `sig-apimachinery`)
 
 ### User Stories (Optional)
 
@@ -262,11 +259,16 @@ bogged down.
 -->
 
 #### Story 1
-As a Kubernetes admin, I would like to use multiple tools to consistently enforce policies, rules and compliance across my Kubernetes clusters, and I would like to have a standard API across this tooling,
-So that I can efficiently manage my Kubernetes environments.
+
+As a Kubernetes administrator, I use multiple CNCF projects and tools for security and compliance and would like to have a standard reporting API across these tools.
 
 #### Story 2
-As a Kubernetes tools developer, I would like to have a standard API to build tools for Kubernetes policy, governance and compliance. Having a standard API makes the interoperability amongst the tools more reliable, so that I can focus on refining the tools with confidence.
+
+As a Kubernetes developer, or a CNCF project developer, I want a standard API to publish reports, so I can leverage common management tools for visibility, governance, and compliance.
+
+#### Story 3
+
+As a Kubernetes management tool developer, I want to use a common API to retrieve policy results, scan results, vulnerability findings, or other reports across my clusters.
 
 ### Notes/Constraints/Caveats (Optional)
 
@@ -276,7 +278,8 @@ What are some important details that didn't come across above?
 Go in to as much detail as necessary here.
 This might be a good place to talk about core concepts and how they relate.
 -->
-* PolicyReport CRD came into existence with this proposal back in 2020. Refer to [Policy Report Custom Resource Definition](https://docs.google.com/document/d/1nICYLkYS1RE3gJzuHOfHeAC25QIkFZfgymFjgOzMDVw/edit#heading=h.nhx5d35q5eth).
+
+* The Policy Report CRD originated with this proposal back in 2020. Refer to [Policy Report Custom Resource Definition](https://docs.google.com/document/d/1nICYLkYS1RE3gJzuHOfHeAC25QIkFZfgymFjgOzMDVw/edit#heading=h.nhx5d35q5eth).
 * Presented to `sig-auth` about the proposal to make PolicyReport an official SIG API on [June 21, 2023](https://docs.google.com/document/d/1woLGRoONE3EBVx-wTb4pvp4CI7tmLZ6lS26VTbosLKM/view#heading=h.ii52a0istwiv). This KEP is the outcome of that presentation.
 * List of projects using the PolicyReport CRD either from `wg-policy-prototypes` or maintain their own fork. See [this comment](https://github.com/kubernetes-sigs/wg-policy-prototypes/issues/112#issuecomment-1453209660).
 
@@ -293,6 +296,16 @@ How will UX be reviewed, and by whom?
 
 Consider including folks who also work outside the SIG or subproject.
 -->
+
+#### load on etcd
+
+Based on the producer and usage, it is possible to create lots of report objects. 
+For example, if a policy engine has 20 policy rules and a namespace has 1000 pods, 
+an implementation may produce 20,000 reports. This can overwhelm etcd.
+
+This risk can be mitigated in a couple of ways:
+1. The implementation can limit the total size and number of reports
+2. An aggregate API service can be used for reports (see: https://github.com/kyverno/KDP/pull/51).
 
 ## Design Details
 
@@ -354,6 +367,7 @@ extending the production code to implement this enhancement.
 - `<package>`: `<date>` - `<test coverage>`
 
 ##### Integration tests
+N/A
 
 <!--
 Integration tests are contained in k8s.io/kubernetes/test/integration.
@@ -373,6 +387,7 @@ https://storage.googleapis.com/k8s-triage/index.html
 - <test>: <link to test coverage>
 
 ##### e2e tests
+N/A
 
 <!--
 This question should be filled when targeting a release.
