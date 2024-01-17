@@ -3,7 +3,7 @@
 
 To get started with this template:
 
-- [ ] **Pick a hosting SIG.**
+- [ ] **Pick a hosting SIG.** // sig-auth
   Make sure that the problem space is something the SIG is interested in taking
   up. KEPs should not be checked in without a sponsoring SIG.
 - [ ] **Create an issue in kubernetes/enhancements**
@@ -58,7 +58,7 @@ If none of those approvers are still appropriate, then changes to that list
 should be approved by the remaining approvers and/or the owning SIG (or
 SIG Architecture for cross-cutting KEPs).
 -->
-# KEP-NNNN: Your short, descriptive title
+# KEP-NNNN: Promote Policy Reports API to a Kubernetes SIG API
 
 <!--
 This is the title of your KEP. Keep it short, simple, and descriptive. A good
@@ -119,7 +119,7 @@ milestone **before the [Enhancement Freeze](https://git.k8s.io/sig-release/relea
 of the targeted release**.
 
 For enhancements that make changes to code or processes/procedures in core
-Kubernetes¿i.e., [kubernetes/kubernetes], we require the following Release
+Kubernetesï¿½i.e., [kubernetes/kubernetes], we require the following Release
 Signoff checklist to be completed.
 
 Check these off as they are completed for the Release Team to track. These
@@ -141,7 +141,7 @@ Items marked with (R) are required *prior to targeting to a milestone / release*
 - [ ] (R) Production readiness review approved
 - [ ] "Implementation History" section is up-to-date for milestone
 - [ ] User-facing documentation has been created in [kubernetes/website], for publication to [kubernetes.io]
-- [ ] Supporting documentation¿e.g., additional design documents, links to mailing list discussions/SIG meetings, relevant PRs/issues, release notes
+- [ ] Supporting documentationï¿½e.g., additional design documents, links to mailing list discussions/SIG meetings, relevant PRs/issues, release notes
 
 <!--
 **Note:** This checklist is iterative and should be reviewed and updated every time this enhancement is being considered for a milestone.
@@ -173,6 +173,34 @@ updates.
 [documentation style guide]: https://github.com/kubernetes/community/blob/master/contributors/guide/style-guide.md
 -->
 
+This is a proposal to migrate the [Policy Report API](https://htmlpreview.github.io/?https://github.com/kubernetes-sigs/wg-policy-prototypes/blob/master/policy-report/docs/index.html) to a SIG repository.
+
+The Policy Report API was developed under the Kubernetes Policy Working Group (SIG-Auth is a sponsor) and provides an API that can be used by any policy engine, security scanner, or other security and compliance tool that wants to produce, or consume, policy results, security findings, or other reports for cluster resources.
+
+The Policy Report API is currently hosted at: https://github.com/kubernetes-sigs/wg-policy-prototypes/tree/master/policy-report and is used by the following projects:
+
+**Report producers:**
+* [Kyverno](https://kyverno.io/docs/policy-reports/)
+* [jsPolicy](https://github.com/loft-sh/jspolicy/)
+* [Falco](https://github.com/falcosecurity/falcosidekick/blob/master/outputs/policyreport.go)
+* [Trivy Operator](https://aquasecurity.github.io/trivy-operator/v0.15.1/tutorials/integrations/policy-reporter/)
+* [Tracee Adapter](https://github.com/fjogeleit/tracee-polr-adapter)
+
+**Report consumers:**
+* [Kyverno Policy Reporter](https://kyverno.github.io/policy-reporter/)
+* [Open Cluster Management](https://open-cluster-management.io/)
+* [Lula](https://github.com/defenseunicorns/lula)
+* [Fairwinds Insights](https://fairwinds.com/insights)
+
+Additionally, the following tools were developed by the Policy WG:
+* [kube-bench-adapter](https://github.com/kubernetes-sigs/wg-policy-prototypes/tree/master/policy-report/kube-bench-adapter)
+* [kubearmor-adapter](https://github.com/kubernetes-sigs/wg-policy-prototypes/tree/master/policy-report/kubearmor-adapter)
+* [Trestle OSCAL Transformer](https://github.com/kubernetes-sigs/wg-policy-prototypes/tree/master/policy-report/oscal-transformer)
+
+Since working groups are temporary and do not own code (see [governance](https://github.com/kubernetes/community/blob/master/committee-steering/governance/wg-governance.md)), we propose moving the Policy Reports API to `github.com/kubernetes-sigs/policy-report-api`.
+
+Promoting the Policy Report API will further increase adoption and signifies enhanced reliability, improved usability, and reinforces its significance within the cloud-native ecosystem.
+
 ## Motivation
 
 <!--
@@ -184,6 +212,8 @@ demonstrate the interest in a KEP within the wider Kubernetes community.
 [experience reports]: https://github.com/golang/go/wiki/ExperienceReports
 -->
 
+The Policy Report API is already being used by several projects and tools in the Kubernetes community and CNCF ecosystem, as detailed above. Moving the API to a the `github.com/kubernetes-sigs/` GitHub org will provide a permanent home for the API, along with improved visibility and colloboration.
+
 ### Goals
 
 <!--
@@ -191,12 +221,16 @@ List the specific goals of the KEP. What is it trying to achieve? How will we
 know that this has succeeded?
 -->
 
+- Add `policy-report-api` as a new project under kubernetes-sigs i.e `github.com/kubernetes-sigs/policy-report-api`
+- Provide guidance on building consumers and producers
+
 ### Non-Goals
 
 <!--
 What is out of scope for this KEP? Listing non-goals helps to focus discussion
 and make progress.
 -->
+- Report controller, producer, or consumer implementations. The intent is to document the API and allow projects and tools to specify their own
 
 ## Proposal
 
@@ -209,6 +243,12 @@ The "Design Details" section below is for the real
 nitty-gritty.
 -->
 
+In order to make Policy Report API an official Kubernetes SIG API, we propose:
+
+* Create a new project `policy-report-api` (__name subject to change__) repository under the `kubernetes-sigs` org following the guidelines mentioned [here](https://github.com/kubernetes/community/blob/master/github-management/kubernetes-repositories.md#rules-for-new-repositories)
+* Cleanup the [existing policy-report directory](https://github.com/kubernetes-sigs/wg-policy-prototypes/tree/master/policy-report) to contain only the necessary content for migration
+* Notify existing projects and tools about the new repository location and share with relevant sigs (`sig-auth`, `sig-security`, `sig-apimachinery`)
+
 ### User Stories (Optional)
 
 <!--
@@ -220,7 +260,15 @@ bogged down.
 
 #### Story 1
 
+As a Kubernetes administrator, I use multiple CNCF projects and tools for security and compliance and would like to have a standard reporting API across these tools.
+
 #### Story 2
+
+As a Kubernetes developer, or a CNCF project developer, I want a standard API to publish reports, so I can leverage common management tools for visibility, governance, and compliance.
+
+#### Story 3
+
+As a Kubernetes management tool developer, I want to use a common API to retrieve policy results, scan results, vulnerability findings, or other reports across my clusters.
 
 ### Notes/Constraints/Caveats (Optional)
 
@@ -230,6 +278,10 @@ What are some important details that didn't come across above?
 Go in to as much detail as necessary here.
 This might be a good place to talk about core concepts and how they relate.
 -->
+
+* The Policy Report CRD originated with this proposal back in 2020. Refer to [Policy Report Custom Resource Definition](https://docs.google.com/document/d/1nICYLkYS1RE3gJzuHOfHeAC25QIkFZfgymFjgOzMDVw/edit#heading=h.nhx5d35q5eth).
+* Presented to `sig-auth` about the proposal to make PolicyReport an official SIG API on [June 21, 2023](https://docs.google.com/document/d/1woLGRoONE3EBVx-wTb4pvp4CI7tmLZ6lS26VTbosLKM/view#heading=h.ii52a0istwiv). This KEP is the outcome of that presentation.
+* List of projects using the PolicyReport CRD either from `wg-policy-prototypes` or maintain their own fork. See [this comment](https://github.com/kubernetes-sigs/wg-policy-prototypes/issues/112#issuecomment-1453209660).
 
 ### Risks and Mitigations
 
@@ -245,6 +297,16 @@ How will UX be reviewed, and by whom?
 Consider including folks who also work outside the SIG or subproject.
 -->
 
+#### load on etcd
+
+Based on the producer and usage, it is possible to create lots of report objects. 
+For example, if a policy engine has 20 policy rules and a namespace has 1000 pods, 
+an implementation may produce 20,000 reports. This can overwhelm etcd.
+
+This risk can be mitigated in a couple of ways:
+1. The implementation can limit the total size and number of reports
+2. An aggregate API service can be used for reports (see: https://github.com/kyverno/KDP/pull/51).
+
 ## Design Details
 
 <!--
@@ -253,8 +315,11 @@ change are understandable. This may include API specs (though not always
 required) or even code snippets. If there's any ambiguity about HOW your
 proposal will be implemented, this is the place to discuss them.
 -->
+* [v1beta1 API](https://github.com/kubernetes-sigs/wg-policy-prototypes/tree/master/policy-report/crd/v1beta1)
+* [Sample CRs](https://github.com/kubernetes-sigs/wg-policy-prototypes/tree/master/policy-report/samples)
 
 ### Test Plan
+N/A
 
 <!--
 **Note:** *Not required until targeted at a release.*
@@ -302,6 +367,7 @@ extending the production code to implement this enhancement.
 - `<package>`: `<date>` - `<test coverage>`
 
 ##### Integration tests
+N/A
 
 <!--
 Integration tests are contained in k8s.io/kubernetes/test/integration.
@@ -321,6 +387,7 @@ https://storage.googleapis.com/k8s-triage/index.html
 - <test>: <link to test coverage>
 
 ##### e2e tests
+N/A
 
 <!--
 This question should be filled when targeting a release.
@@ -335,6 +402,8 @@ We expect no non-infra related flakes in the last month as a GA graduation crite
 - <test>: <link to test coverage>
 
 ### Graduation Criteria
+We need approvals from the following stakeholders:
+[TBD]
 
 <!--
 **Note:** *Not required until targeted at a release.*
@@ -378,7 +447,7 @@ Below are some examples to consider, in addition to the aforementioned [maturity
 
 - N examples of real-world usage
 - N installs
-- More rigorous forms of testing¿e.g., downgrade tests and scalability tests
+- More rigorous forms of testingï¿½e.g., downgrade tests and scalability tests
 - Allowing time for feedback
 
 **Note:** Generally we also wait at least two releases between beta and
@@ -399,7 +468,7 @@ in back-to-back releases.
 -->
 
 ### Upgrade / Downgrade Strategy
-
+N/A
 <!--
 If applicable, how will the component be upgraded and downgraded? Make sure
 this is in the test plan.
@@ -413,7 +482,7 @@ enhancement:
 -->
 
 ### Version Skew Strategy
-
+N/A
 <!--
 If applicable, how will the component handle version skew with other
 components? What are the guarantees? Make sure this is in the test plan.
@@ -428,7 +497,7 @@ enhancement:
 -->
 
 ## Production Readiness Review Questionnaire
-
+N/A
 <!--
 
 Production readiness reviews are intended to ensure that features merging into
@@ -643,7 +712,7 @@ optional services that are needed. For example, if this feature depends on
 a cloud provider API, or upon an external software-defined storage or network
 control plane.
 
-For each of these, fill in the following¿thinking about running existing user workloads
+For each of these, fill in the followingï¿½thinking about running existing user workloads
 and creating new ones, as well as about cluster-level services (e.g. DNS):
   - [Dependency name]
     - Usage description:
@@ -799,7 +868,7 @@ information to express the idea and why it was not acceptable.
 -->
 
 ## Infrastructure Needed (Optional)
-
+* a new repository called `policy-report-api` under the `kubernetes-sigs` org
 <!--
 Use this section if you need things from the project/SIG. Examples include a
 new subproject, repos requested, or GitHub details. Listing these here allows a
