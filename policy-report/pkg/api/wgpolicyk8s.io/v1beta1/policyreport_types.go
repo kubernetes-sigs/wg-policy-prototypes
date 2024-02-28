@@ -31,7 +31,6 @@ type Limits struct {
 	MaxResults int `json:"maxResults"`
 
 	// StatusFilter indicates that the PolicyReport contains only those reports with statuses specified in this list
-	// +kubebuilder:validation:UniqueItems=true
 	// +optional
 	StatusFilter []*StatusFilter `json:"statusFilter,omitempty"`
 }

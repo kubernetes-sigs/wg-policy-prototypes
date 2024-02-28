@@ -131,7 +131,6 @@ spec:
                         are ANDed.
                       type: object
                   type: object
-                  x-kubernetes-map-type: atomic
                 resources:
                   description: Resources is an optional reference to the resource
                     checked by the policy and rule
@@ -195,7 +194,6 @@ spec:
                         description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
                         type: string
                     type: object
-                    x-kubernetes-map-type: atomic
                   type: array
                 rule:
                   description: Rule is the name of the policy rule
@@ -259,7 +257,6 @@ spec:
                 description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
                 type: string
             type: object
-            x-kubernetes-map-type: atomic
           scopeSelector:
             description: ScopeSelector is an optional selector for multiple scopes
               (e.g. Pods). Either one of, or none of, but not both of, Scope or ScopeSelector
@@ -303,7 +300,6 @@ spec:
                   contains only "value". The requirements are ANDed.
                 type: object
             type: object
-            x-kubernetes-map-type: atomic
           summary:
             description: PolicyReportSummary provides a summary of results
             properties:
@@ -447,7 +443,6 @@ spec:
                         are ANDed.
                       type: object
                   type: object
-                  x-kubernetes-map-type: atomic
                 resources:
                   description: Subjects is an optional reference to the checked Kubernetes
                     resources
@@ -511,7 +506,6 @@ spec:
                         description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
                         type: string
                     type: object
-                    x-kubernetes-map-type: atomic
                   type: array
                 result:
                   description: Result indicates the outcome of the policy rule execution
@@ -603,7 +597,6 @@ spec:
                 description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
                 type: string
             type: object
-            x-kubernetes-map-type: atomic
           scopeSelector:
             description: ScopeSelector is an optional selector for multiple scopes
               (e.g. Pods). Either one of, or none of, but not both of, Scope or ScopeSelector
@@ -647,7 +640,6 @@ spec:
                   contains only "value". The requirements are ANDed.
                 type: object
             type: object
-            x-kubernetes-map-type: atomic
           summary:
             description: PolicyReportSummary provides a summary of results
             properties:
@@ -739,7 +731,6 @@ spec:
                       - skip
                       type: string
                     type: array
-                    uniqueItems: true
                 type: object
             required:
             - limits
@@ -821,7 +812,6 @@ spec:
                         are ANDed.
                       type: object
                   type: object
-                  x-kubernetes-map-type: atomic
                 resources:
                   description: Subjects is an optional reference to the checked Kubernetes
                     resources
@@ -885,7 +875,6 @@ spec:
                         description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
                         type: string
                     type: object
-                    x-kubernetes-map-type: atomic
                   type: array
                 result:
                   description: Result indicates the outcome of the policy rule execution
@@ -978,7 +967,6 @@ spec:
                 description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
                 type: string
             type: object
-            x-kubernetes-map-type: atomic
           scopeSelector:
             description: ScopeSelector is an optional selector for multiple scopes
               (e.g. Pods). Either one of, or none of, but not both of, Scope or ScopeSelector
@@ -1022,7 +1010,6 @@ spec:
                   contains only "value". The requirements are ANDed.
                 type: object
             type: object
-            x-kubernetes-map-type: atomic
           source:
             description: Source is an identifier for the source e.g. a policy engine
               that manages this report. Use this field if all the results are produced
