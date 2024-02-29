@@ -13,7 +13,7 @@ all: manifests build fmt vet
 # Generate manifests e.g. CRD, RBAC etc.
 manifests: controller-gen
 	$(CONTROLLER_GEN) $(CRD_OPTIONS) paths="./..." output:dir=crd/v1beta2
-	$(CONTROLLER_GEN) object paths=./pkg/api/reports-x.k8s.io/v1beta2/
+	$(CONTROLLER_GEN) object paths=./pkg/api/reports.x-k8s.io/v1beta2/
 
 # Run go build against code
 build:
