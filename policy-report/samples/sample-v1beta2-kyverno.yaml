@@ -1,0 +1,38 @@
+apiVersion: reports.x-k8s.io/v1beta1
+kind: PolicyReport
+metadata:
+  name: sample-v1beta2-cr
+  annotations:
+    name: Sample CR
+configuration:
+  limits:
+    maxResults: 100
+    statusFilter:
+      - pass
+      - fail
+      - skip
+source: kyverno
+summary:
+  pass: 1
+  fail: 0
+  warn: 0
+  error: 0
+  skip: 0
+results:
+  - category: Pod Security Standards (Baseline)
+    message: validation rule 'adding-capabilities' passed.
+    policy: disallow-capabilities
+    resources:
+    - apiVersion: v1
+      kind: Pod
+      name: kyverno-6d88f6dcdd-k6bc5
+      namespace: nirmata
+      uid: 3407b31a-b0bb-4716-a443-f4aa15662ef2
+    result: pass
+    rule: adding-capabilities
+    scored: true
+    severity: medium
+    source: kyverno
+    timestamp:
+      nanos: 0
+      seconds: 1679565894
