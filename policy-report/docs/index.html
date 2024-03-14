@@ -16,17 +16,17 @@
 </ul>
 </nav>
 <div class="container">
-<h1 id="wgpolicyk8s.io/v1beta1">wgpolicyk8s.io/v1beta1</h1>
+<h1 id="reports.x-k8s.io/v1beta2">reports.x-k8s.io/v1beta2</h1>
 <p>
-Package v1alpha2 contains API Schema definitions for the policy v1alpha2 API group
+Package v1apha1 contains API Schema definitions for the policy v1apha1 API group
 </p>
 <h2>Resource Types</h2>
 <ul><li>
-<a href="#wgpolicyk8s.io/v1beta1.ClusterPolicyReport">ClusterPolicyReport</a>
+<a href="#reports.x-k8s.io/v1beta2.ClusterPolicyReport">ClusterPolicyReport</a>
 </li><li>
-<a href="#wgpolicyk8s.io/v1beta1.PolicyReport">PolicyReport</a>
+<a href="#reports.x-k8s.io/v1beta2.PolicyReport">PolicyReport</a>
 </li></ul>
-<h3 id="wgpolicyk8s.io/v1beta1.ClusterPolicyReport">ClusterPolicyReport
+<h3 id="reports.x-k8s.io/v1beta2.ClusterPolicyReport">ClusterPolicyReport
 </h3>
 <p>
 ClusterPolicyReport is the Schema for the clusterpolicyreports API
@@ -45,7 +45,7 @@ ClusterPolicyReport is the Schema for the clusterpolicyreports API
 string</td>
 <td>
 <code>
-wgpolicyk8s.io/v1beta1
+reports.x-k8s.io/v1beta2
 </code>
 </td>
 </tr>
@@ -112,7 +112,7 @@ Either one of, or none of, but not both of, Scope or ScopeSelector should be spe
 <td>
 <code>configuration</code></br>
 <em>
-<a href="#wgpolicyk8s.io/v1beta1.PolicyReportConfiguration">
+<a href="#reports.x-k8s.io/v1beta2.PolicyReportConfiguration">
 PolicyReportConfiguration
 </a>
 </em>
@@ -127,7 +127,7 @@ a contract between PolicyReport generators and consumers
 <td>
 <code>summary</code></br>
 <em>
-<a href="#wgpolicyk8s.io/v1beta1.PolicyReportSummary">
+<a href="#reports.x-k8s.io/v1beta2.PolicyReportSummary">
 PolicyReportSummary
 </a>
 </em>
@@ -141,8 +141,8 @@ PolicyReportSummary provides a summary of results
 <td>
 <code>results</code></br>
 <em>
-<a href="#wgpolicyk8s.io/v1beta1.*sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/wgpolicyk8s.io/v1beta1.PolicyReportResult">
-[]*sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/wgpolicyk8s.io/v1beta1.PolicyReportResult
+<a href="#reports.x-k8s.io/v1beta2.*sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/reports.x-k8s.io/v1beta2.PolicyReportResult">
+[]*sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/reports.x-k8s.io/v1beta2.PolicyReportResult
 </a>
 </em>
 </td>
@@ -153,7 +153,7 @@ PolicyReportResult provides result details
 </tr>
 </tbody>
 </table>
-<h3 id="wgpolicyk8s.io/v1beta1.PolicyReport">PolicyReport
+<h3 id="reports.x-k8s.io/v1beta2.PolicyReport">PolicyReport
 </h3>
 <p>
 PolicyReport is the Schema for the policyreports API
@@ -172,7 +172,7 @@ PolicyReport is the Schema for the policyreports API
 string</td>
 <td>
 <code>
-wgpolicyk8s.io/v1beta1
+reports.x-k8s.io/v1beta2
 </code>
 </td>
 </tr>
@@ -239,7 +239,7 @@ Either one of, or none of, but not both of, Scope or ScopeSelector should be spe
 <td>
 <code>configuration</code></br>
 <em>
-<a href="#wgpolicyk8s.io/v1beta1.PolicyReportConfiguration">
+<a href="#reports.x-k8s.io/v1beta2.PolicyReportConfiguration">
 PolicyReportConfiguration
 </a>
 </em>
@@ -254,7 +254,7 @@ a contract between PolicyReport generators and consumers
 <td>
 <code>summary</code></br>
 <em>
-<a href="#wgpolicyk8s.io/v1beta1.PolicyReportSummary">
+<a href="#reports.x-k8s.io/v1beta2.PolicyReportSummary">
 PolicyReportSummary
 </a>
 </em>
@@ -268,8 +268,8 @@ PolicyReportSummary provides a summary of results
 <td>
 <code>results</code></br>
 <em>
-<a href="#wgpolicyk8s.io/v1beta1.*sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/wgpolicyk8s.io/v1beta1.PolicyReportResult">
-[]*sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/wgpolicyk8s.io/v1beta1.PolicyReportResult
+<a href="#reports.x-k8s.io/v1beta2.*sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/reports.x-k8s.io/v1beta2.PolicyReportResult">
+[]*sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/reports.x-k8s.io/v1beta2.PolicyReportResult
 </a>
 </em>
 </td>
@@ -280,11 +280,11 @@ PolicyReportResult provides result details
 </tr>
 </tbody>
 </table>
-<h3 id="wgpolicyk8s.io/v1beta1.Limits">Limits
+<h3 id="reports.x-k8s.io/v1beta2.Limits">Limits
 </h3>
 <p>
 (<em>Appears on:</em>
-<a href="#wgpolicyk8s.io/v1beta1.PolicyReportConfiguration">PolicyReportConfiguration</a>)
+<a href="#reports.x-k8s.io/v1beta2.PolicyReportConfiguration">PolicyReportConfiguration</a>)
 </p>
 <p>
 </p>
@@ -312,8 +312,8 @@ MaxResults is the maximum number of results contained in the report
 <td>
 <code>statusFilter</code></br>
 <em>
-<a href="#wgpolicyk8s.io/v1beta1.*sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/wgpolicyk8s.io/v1beta1.StatusFilter">
-[]*sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/wgpolicyk8s.io/v1beta1.StatusFilter
+<a href="#reports.x-k8s.io/v1beta2.*sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/reports.x-k8s.io/v1beta2.StatusFilter">
+[]*sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/reports.x-k8s.io/v1beta2.StatusFilter
 </a>
 </em>
 </td>
@@ -324,12 +324,12 @@ StatusFilter indicates that the PolicyReport contains only those reports with st
 </tr>
 </tbody>
 </table>
-<h3 id="wgpolicyk8s.io/v1beta1.PolicyReportConfiguration">PolicyReportConfiguration
+<h3 id="reports.x-k8s.io/v1beta2.PolicyReportConfiguration">PolicyReportConfiguration
 </h3>
 <p>
 (<em>Appears on:</em>
-<a href="#wgpolicyk8s.io/v1beta1.ClusterPolicyReport">ClusterPolicyReport</a>, 
-<a href="#wgpolicyk8s.io/v1beta1.PolicyReport">PolicyReport</a>)
+<a href="#reports.x-k8s.io/v1beta2.ClusterPolicyReport">ClusterPolicyReport</a>, 
+<a href="#reports.x-k8s.io/v1beta2.PolicyReport">PolicyReport</a>)
 </p>
 <p>
 </p>
@@ -345,7 +345,7 @@ StatusFilter indicates that the PolicyReport contains only those reports with st
 <td>
 <code>limits</code></br>
 <em>
-<a href="#wgpolicyk8s.io/v1beta1.Limits">
+<a href="#reports.x-k8s.io/v1beta2.Limits">
 Limits
 </a>
 </em>
@@ -355,7 +355,7 @@ Limits
 </tr>
 </tbody>
 </table>
-<h3 id="wgpolicyk8s.io/v1beta1.PolicyReportResult">PolicyReportResult
+<h3 id="reports.x-k8s.io/v1beta2.PolicyReportResult">PolicyReportResult
 </h3>
 <p>
 PolicyReportResult provides the result for an individual policy
@@ -421,7 +421,7 @@ Category indicates policy category
 <td>
 <code>severity</code></br>
 <em>
-<a href="#wgpolicyk8s.io/v1beta1.PolicyResultSeverity">
+<a href="#reports.x-k8s.io/v1beta2.PolicyResultSeverity">
 PolicyResultSeverity
 </a>
 </em>
@@ -446,7 +446,7 @@ Timestamp indicates the time the result was found
 <td>
 <code>result</code></br>
 <em>
-<a href="#wgpolicyk8s.io/v1beta1.PolicyResult">
+<a href="#reports.x-k8s.io/v1beta2.PolicyResult">
 PolicyResult
 </a>
 </em>
@@ -517,12 +517,12 @@ Properties provides additional information for the policy rule
 </tr>
 </tbody>
 </table>
-<h3 id="wgpolicyk8s.io/v1beta1.PolicyReportSummary">PolicyReportSummary
+<h3 id="reports.x-k8s.io/v1beta2.PolicyReportSummary">PolicyReportSummary
 </h3>
 <p>
 (<em>Appears on:</em>
-<a href="#wgpolicyk8s.io/v1beta1.ClusterPolicyReport">ClusterPolicyReport</a>, 
-<a href="#wgpolicyk8s.io/v1beta1.PolicyReport">PolicyReport</a>)
+<a href="#reports.x-k8s.io/v1beta2.ClusterPolicyReport">ClusterPolicyReport</a>, 
+<a href="#reports.x-k8s.io/v1beta2.PolicyReport">PolicyReport</a>)
 </p>
 <p>
 PolicyReportSummary provides a status count summary
@@ -597,11 +597,11 @@ Skip indicates the count of policies that were not selected for evaluation
 </tr>
 </tbody>
 </table>
-<h3 id="wgpolicyk8s.io/v1beta1.PolicyResult">PolicyResult
+<h3 id="reports.x-k8s.io/v1beta2.PolicyResult">PolicyResult
 (<code>string</code> alias)</p></h3>
 <p>
 (<em>Appears on:</em>
-<a href="#wgpolicyk8s.io/v1beta1.PolicyReportResult">PolicyReportResult</a>)
+<a href="#reports.x-k8s.io/v1beta2.PolicyReportResult">PolicyReportResult</a>)
 </p>
 <p>
 PolicyResult has one of the following values:
@@ -611,11 +611,11 @@ PolicyResult has one of the following values:
 - error: the policy could not be evaluated
 - skip: the policy was not selected based on user inputs or applicability
 </p>
-<h3 id="wgpolicyk8s.io/v1beta1.PolicyResultSeverity">PolicyResultSeverity
+<h3 id="reports.x-k8s.io/v1beta2.PolicyResultSeverity">PolicyResultSeverity
 (<code>string</code> alias)</p></h3>
 <p>
 (<em>Appears on:</em>
-<a href="#wgpolicyk8s.io/v1beta1.PolicyReportResult">PolicyReportResult</a>)
+<a href="#reports.x-k8s.io/v1beta2.PolicyReportResult">PolicyReportResult</a>)
 </p>
 <p>
 PolicyResultSeverity has one of the following values:
@@ -625,7 +625,7 @@ PolicyResultSeverity has one of the following values:
 - medium
 - info
 </p>
-<h3 id="wgpolicyk8s.io/v1beta1.StatusFilter">StatusFilter
+<h3 id="reports.x-k8s.io/v1beta2.StatusFilter">StatusFilter
 (<code>string</code> alias)</p></h3>
 <p>
 StatusFilter is used by PolicyReport generators to write only those reports whose status is specified by the filters
