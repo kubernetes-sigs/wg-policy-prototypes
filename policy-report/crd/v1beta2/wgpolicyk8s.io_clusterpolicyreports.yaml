@@ -3,8 +3,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.9.0
-  creationTimestamp: null
+    controller-gen.kubebuilder.io/version: v0.14.0
   name: clusterpolicyreports.wgpolicyk8s.io
 spec:
   group: wgpolicyk8s.io
@@ -51,14 +50,19 @@ spec:
           API
         properties:
           apiVersion:
-            description: 'APIVersion defines the versioned schema of this representation
-              of an object. Servers should convert recognized schemas to the latest
-              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
             type: string
           kind:
-            description: 'Kind is a string value representing the REST resource this
-              object represents. Servers may infer this from the endpoint the client
-              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
             type: string
           metadata:
             type: object
@@ -85,35 +89,35 @@ spec:
                   description: Policy is the name of the policy
                   type: string
                 resourceSelector:
-                  description: ResourceSelector is an optional selector for policy
-                    results that apply to multiple resources. For example, a policy
-                    result may apply to all pods that match a label. Either a Resource
-                    or a ResourceSelector can be specified. If neither are provided,
-                    the result is assumed to be for the policy report scope.
+                  description: |-
+                    ResourceSelector is an optional selector for policy results that apply to multiple resources.
+                    For example, a policy result may apply to all pods that match a label.
+                    Either a Resource or a ResourceSelector can be specified. If neither are provided, the
+                    result is assumed to be for the policy report scope.
                   properties:
                     matchExpressions:
                       description: matchExpressions is a list of label selector requirements.
                         The requirements are ANDed.
                       items:
-                        description: A label selector requirement is a selector that
-                          contains values, a key, and an operator that relates the
-                          key and values.
+                        description: |-
+                          A label selector requirement is a selector that contains values, a key, and an operator that
+                          relates the key and values.
                         properties:
                           key:
                             description: key is the label key that the selector applies
                               to.
                             type: string
                           operator:
-                            description: operator represents a key's relationship
-                              to a set of values. Valid operators are In, NotIn, Exists
-                              and DoesNotExist.
+                            description: |-
+                              operator represents a key's relationship to a set of values.
+                              Valid operators are In, NotIn, Exists and DoesNotExist.
                             type: string
                           values:
-                            description: values is an array of string values. If the
-                              operator is In or NotIn, the values array must be non-empty.
-                              If the operator is Exists or DoesNotExist, the values
-                              array must be empty. This array is replaced during a
-                              strategic merge patch.
+                            description: |-
+                              values is an array of string values. If the operator is In or NotIn,
+                              the values array must be non-empty. If the operator is Exists or DoesNotExist,
+                              the values array must be empty. This array is replaced during a strategic
+                              merge patch.
                             items:
                               type: string
                             type: array
@@ -125,76 +129,77 @@ spec:
                     matchLabels:
                       additionalProperties:
                         type: string
-                      description: matchLabels is a map of {key,value} pairs. A single
-                        {key,value} in the matchLabels map is equivalent to an element
-                        of matchExpressions, whose key field is "key", the operator
-                        is "In", and the values array contains only "value". The requirements
-                        are ANDed.
+                      description: |-
+                        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
+                        map is equivalent to an element of matchExpressions, whose key field is "key", the
+                        operator is "In", and the values array contains only "value". The requirements are ANDed.
                       type: object
                   type: object
+                  x-kubernetes-map-type: atomic
                 resources:
                   description: Resources is an optional reference to the resource
                     checked by the policy and rule
                   items:
-                    description: "ObjectReference contains enough information to let
-                      you inspect or modify the referred object. --- New uses of this
-                      type are discouraged because of difficulty describing its usage
-                      when embedded in APIs. 1. Ignored fields.  It includes many
-                      fields which are not generally honored.  For instance, ResourceVersion
-                      and FieldPath are both very rarely valid in actual usage. 2.
-                      Invalid usage help.  It is impossible to add specific help for
-                      individual usage.  In most embedded usages, there are particular
-                      restrictions like, \"must refer only to types A and B\" or \"UID
-                      not honored\" or \"name must be restricted\". Those cannot be
-                      well described when embedded. 3. Inconsistent validation.  Because
-                      the usages are different, the validation rules are different
-                      by usage, which makes it hard for users to predict what will
-                      happen. 4. The fields are both imprecise and overly precise.
-                      \ Kind is not a precise mapping to a URL. This can produce ambiguity
-                      during interpretation and require a REST mapping.  In most cases,
-                      the dependency is on the group,resource tuple and the version
-                      of the actual struct is irrelevant. 5. We cannot easily change
-                      it.  Because this type is embedded in many locations, updates
-                      to this type will affect numerous schemas.  Don't make new APIs
-                      embed an underspecified API type they do not control. \n Instead
-                      of using this type, create a locally provided and used type
-                      that is well-focused on your reference. For example, ServiceReferences
-                      for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533
-                      ."
+                    description: |-
+                      ObjectReference contains enough information to let you inspect or modify the referred object.
+                      ---
+                      New uses of this type are discouraged because of difficulty describing its usage when embedded in APIs.
+                       1. Ignored fields.  It includes many fields which are not generally honored.  For instance, ResourceVersion and FieldPath are both very rarely valid in actual usage.
+                       2. Invalid usage help.  It is impossible to add specific help for individual usage.  In most embedded usages, there are particular
+                          restrictions like, "must refer only to types A and B" or "UID not honored" or "name must be restricted".
+                          Those cannot be well described when embedded.
+                       3. Inconsistent validation.  Because the usages are different, the validation rules are different by usage, which makes it hard for users to predict what will happen.
+                       4. The fields are both imprecise and overly precise.  Kind is not a precise mapping to a URL. This can produce ambiguity
+                          during interpretation and require a REST mapping.  In most cases, the dependency is on the group,resource tuple
+                          and the version of the actual struct is irrelevant.
+                       5. We cannot easily change it.  Because this type is embedded in many locations, updates to this type
+                          will affect numerous schemas.  Don't make new APIs embed an underspecified API type they do not control.
+
+
+                      Instead of using this type, create a locally provided and used type that is well-focused on your reference.
+                      For example, ServiceReferences for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533 .
                     properties:
                       apiVersion:
                         description: API version of the referent.
                         type: string
                       fieldPath:
-                        description: 'If referring to a piece of an object instead
-                          of an entire object, this string should contain a valid
-                          JSON/Go field access statement, such as desiredState.manifest.containers[2].
-                          For example, if the object reference is to a container within
-                          a pod, this would take on a value like: "spec.containers{name}"
-                          (where "name" refers to the name of the container that triggered
-                          the event) or if no container name is specified "spec.containers[2]"
-                          (container with index 2 in this pod). This syntax is chosen
-                          only to have some well-defined way of referencing a part
-                          of an object. TODO: this design is not final and this field
-                          is subject to change in the future.'
+                        description: |-
+                          If referring to a piece of an object instead of an entire object, this string
+                          should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].
+                          For example, if the object reference is to a container within a pod, this would take on a value like:
+                          "spec.containers{name}" (where "name" refers to the name of the container that triggered
+                          the event) or if no container name is specified "spec.containers[2]" (container with
+                          index 2 in this pod). This syntax is chosen only to have some well-defined way of
+                          referencing a part of an object.
+                          TODO: this design is not final and this field is subject to change in the future.
                         type: string
                       kind:
-                        description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                        description: |-
+                          Kind of the referent.
+                          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
                         type: string
                       name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+                        description: |-
+                          Name of the referent.
+                          More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
                         type: string
                       namespace:
-                        description: 'Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/'
+                        description: |-
+                          Namespace of the referent.
+                          More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
                         type: string
                       resourceVersion:
-                        description: 'Specific resourceVersion to which this reference
-                          is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency'
+                        description: |-
+                          Specific resourceVersion to which this reference is made, if any.
+                          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
                         type: string
                       uid:
-                        description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
+                        description: |-
+                          UID of the referent.
+                          More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
                         type: string
                     type: object
+                    x-kubernetes-map-type: atomic
                   type: array
                 rule:
                   description: Rule is the name of the policy rule
@@ -230,60 +235,71 @@ spec:
                 description: API version of the referent.
                 type: string
               fieldPath:
-                description: 'If referring to a piece of an object instead of an entire
-                  object, this string should contain a valid JSON/Go field access
-                  statement, such as desiredState.manifest.containers[2]. For example,
-                  if the object reference is to a container within a pod, this would
-                  take on a value like: "spec.containers{name}" (where "name" refers
-                  to the name of the container that triggered the event) or if no
-                  container name is specified "spec.containers[2]" (container with
-                  index 2 in this pod). This syntax is chosen only to have some well-defined
-                  way of referencing a part of an object. TODO: this design is not
-                  final and this field is subject to change in the future.'
+                description: |-
+                  If referring to a piece of an object instead of an entire object, this string
+                  should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].
+                  For example, if the object reference is to a container within a pod, this would take on a value like:
+                  "spec.containers{name}" (where "name" refers to the name of the container that triggered
+                  the event) or if no container name is specified "spec.containers[2]" (container with
+                  index 2 in this pod). This syntax is chosen only to have some well-defined way of
+                  referencing a part of an object.
+                  TODO: this design is not final and this field is subject to change in the future.
                 type: string
               kind:
-                description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                description: |-
+                  Kind of the referent.
+                  More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
                 type: string
               name:
-                description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+                description: |-
+                  Name of the referent.
+                  More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
                 type: string
               namespace:
-                description: 'Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/'
+                description: |-
+                  Namespace of the referent.
+                  More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
                 type: string
               resourceVersion:
-                description: 'Specific resourceVersion to which this reference is
-                  made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency'
+                description: |-
+                  Specific resourceVersion to which this reference is made, if any.
+                  More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
                 type: string
               uid:
-                description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
+                description: |-
+                  UID of the referent.
+                  More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
                 type: string
             type: object
+            x-kubernetes-map-type: atomic
           scopeSelector:
-            description: ScopeSelector is an optional selector for multiple scopes
-              (e.g. Pods). Either one of, or none of, but not both of, Scope or ScopeSelector
-              should be specified.
+            description: |-
+              ScopeSelector is an optional selector for multiple scopes (e.g. Pods).
+              Either one of, or none of, but not both of, Scope or ScopeSelector should be specified.
             properties:
               matchExpressions:
                 description: matchExpressions is a list of label selector requirements.
                   The requirements are ANDed.
                 items:
-                  description: A label selector requirement is a selector that contains
-                    values, a key, and an operator that relates the key and values.
+                  description: |-
+                    A label selector requirement is a selector that contains values, a key, and an operator that
+                    relates the key and values.
                   properties:
                     key:
                       description: key is the label key that the selector applies
                         to.
                       type: string
                     operator:
-                      description: operator represents a key's relationship to a set
-                        of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+                      description: |-
+                        operator represents a key's relationship to a set of values.
+                        Valid operators are In, NotIn, Exists and DoesNotExist.
                       type: string
                     values:
-                      description: values is an array of string values. If the operator
-                        is In or NotIn, the values array must be non-empty. If the
-                        operator is Exists or DoesNotExist, the values array must
-                        be empty. This array is replaced during a strategic merge
-                        patch.
+                      description: |-
+                        values is an array of string values. If the operator is In or NotIn,
+                        the values array must be non-empty. If the operator is Exists or DoesNotExist,
+                        the values array must be empty. This array is replaced during a strategic
+                        merge patch.
                       items:
                         type: string
                       type: array
@@ -295,12 +311,13 @@ spec:
               matchLabels:
                 additionalProperties:
                   type: string
-                description: matchLabels is a map of {key,value} pairs. A single {key,value}
-                  in the matchLabels map is equivalent to an element of matchExpressions,
-                  whose key field is "key", the operator is "In", and the values array
-                  contains only "value". The requirements are ANDed.
+                description: |-
+                  matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
+                  map is equivalent to an element of matchExpressions, whose key field is "key", the
+                  operator is "In", and the values array contains only "value". The requirements are ANDed.
                 type: object
             type: object
+            x-kubernetes-map-type: atomic
           summary:
             description: PolicyReportSummary provides a summary of results
             properties:
@@ -363,14 +380,19 @@ spec:
           API
         properties:
           apiVersion:
-            description: 'APIVersion defines the versioned schema of this representation
-              of an object. Servers should convert recognized schemas to the latest
-              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
             type: string
           kind:
-            description: 'Kind is a string value representing the REST resource this
-              object represents. Servers may infer this from the endpoint the client
-              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
             type: string
           metadata:
             type: object
@@ -397,35 +419,35 @@ spec:
                     policy rule
                   type: object
                 resourceSelector:
-                  description: SubjectSelector is an optional label selector for checked
-                    Kubernetes resources. For example, a policy result may apply to
-                    all pods that match a label. Either a Subject or a SubjectSelector
-                    can be specified. If neither are provided, the result is assumed
-                    to be for the policy report scope.
+                  description: |-
+                    SubjectSelector is an optional label selector for checked Kubernetes resources.
+                    For example, a policy result may apply to all pods that match a label.
+                    Either a Subject or a SubjectSelector can be specified. If neither are provided, the
+                    result is assumed to be for the policy report scope.
                   properties:
                     matchExpressions:
                       description: matchExpressions is a list of label selector requirements.
                         The requirements are ANDed.
                       items:
-                        description: A label selector requirement is a selector that
-                          contains values, a key, and an operator that relates the
-                          key and values.
+                        description: |-
+                          A label selector requirement is a selector that contains values, a key, and an operator that
+                          relates the key and values.
                         properties:
                           key:
                             description: key is the label key that the selector applies
                               to.
                             type: string
                           operator:
-                            description: operator represents a key's relationship
-                              to a set of values. Valid operators are In, NotIn, Exists
-                              and DoesNotExist.
+                            description: |-
+                              operator represents a key's relationship to a set of values.
+                              Valid operators are In, NotIn, Exists and DoesNotExist.
                             type: string
                           values:
-                            description: values is an array of string values. If the
-                              operator is In or NotIn, the values array must be non-empty.
-                              If the operator is Exists or DoesNotExist, the values
-                              array must be empty. This array is replaced during a
-                              strategic merge patch.
+                            description: |-
+                              values is an array of string values. If the operator is In or NotIn,
+                              the values array must be non-empty. If the operator is Exists or DoesNotExist,
+                              the values array must be empty. This array is replaced during a strategic
+                              merge patch.
                             items:
                               type: string
                             type: array
@@ -437,76 +459,77 @@ spec:
                     matchLabels:
                       additionalProperties:
                         type: string
-                      description: matchLabels is a map of {key,value} pairs. A single
-                        {key,value} in the matchLabels map is equivalent to an element
-                        of matchExpressions, whose key field is "key", the operator
-                        is "In", and the values array contains only "value". The requirements
-                        are ANDed.
+                      description: |-
+                        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
+                        map is equivalent to an element of matchExpressions, whose key field is "key", the
+                        operator is "In", and the values array contains only "value". The requirements are ANDed.
                       type: object
                   type: object
+                  x-kubernetes-map-type: atomic
                 resources:
                   description: Subjects is an optional reference to the checked Kubernetes
                     resources
                   items:
-                    description: "ObjectReference contains enough information to let
-                      you inspect or modify the referred object. --- New uses of this
-                      type are discouraged because of difficulty describing its usage
-                      when embedded in APIs. 1. Ignored fields.  It includes many
-                      fields which are not generally honored.  For instance, ResourceVersion
-                      and FieldPath are both very rarely valid in actual usage. 2.
-                      Invalid usage help.  It is impossible to add specific help for
-                      individual usage.  In most embedded usages, there are particular
-                      restrictions like, \"must refer only to types A and B\" or \"UID
-                      not honored\" or \"name must be restricted\". Those cannot be
-                      well described when embedded. 3. Inconsistent validation.  Because
-                      the usages are different, the validation rules are different
-                      by usage, which makes it hard for users to predict what will
-                      happen. 4. The fields are both imprecise and overly precise.
-                      \ Kind is not a precise mapping to a URL. This can produce ambiguity
-                      during interpretation and require a REST mapping.  In most cases,
-                      the dependency is on the group,resource tuple and the version
-                      of the actual struct is irrelevant. 5. We cannot easily change
-                      it.  Because this type is embedded in many locations, updates
-                      to this type will affect numerous schemas.  Don't make new APIs
-                      embed an underspecified API type they do not control. \n Instead
-                      of using this type, create a locally provided and used type
-                      that is well-focused on your reference. For example, ServiceReferences
-                      for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533
-                      ."
+                    description: |-
+                      ObjectReference contains enough information to let you inspect or modify the referred object.
+                      ---
+                      New uses of this type are discouraged because of difficulty describing its usage when embedded in APIs.
+                       1. Ignored fields.  It includes many fields which are not generally honored.  For instance, ResourceVersion and FieldPath are both very rarely valid in actual usage.
+                       2. Invalid usage help.  It is impossible to add specific help for individual usage.  In most embedded usages, there are particular
+                          restrictions like, "must refer only to types A and B" or "UID not honored" or "name must be restricted".
+                          Those cannot be well described when embedded.
+                       3. Inconsistent validation.  Because the usages are different, the validation rules are different by usage, which makes it hard for users to predict what will happen.
+                       4. The fields are both imprecise and overly precise.  Kind is not a precise mapping to a URL. This can produce ambiguity
+                          during interpretation and require a REST mapping.  In most cases, the dependency is on the group,resource tuple
+                          and the version of the actual struct is irrelevant.
+                       5. We cannot easily change it.  Because this type is embedded in many locations, updates to this type
+                          will affect numerous schemas.  Don't make new APIs embed an underspecified API type they do not control.
+
+
+                      Instead of using this type, create a locally provided and used type that is well-focused on your reference.
+                      For example, ServiceReferences for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533 .
                     properties:
                       apiVersion:
                         description: API version of the referent.
                         type: string
                       fieldPath:
-                        description: 'If referring to a piece of an object instead
-                          of an entire object, this string should contain a valid
-                          JSON/Go field access statement, such as desiredState.manifest.containers[2].
-                          For example, if the object reference is to a container within
-                          a pod, this would take on a value like: "spec.containers{name}"
-                          (where "name" refers to the name of the container that triggered
-                          the event) or if no container name is specified "spec.containers[2]"
-                          (container with index 2 in this pod). This syntax is chosen
-                          only to have some well-defined way of referencing a part
-                          of an object. TODO: this design is not final and this field
-                          is subject to change in the future.'
+                        description: |-
+                          If referring to a piece of an object instead of an entire object, this string
+                          should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].
+                          For example, if the object reference is to a container within a pod, this would take on a value like:
+                          "spec.containers{name}" (where "name" refers to the name of the container that triggered
+                          the event) or if no container name is specified "spec.containers[2]" (container with
+                          index 2 in this pod). This syntax is chosen only to have some well-defined way of
+                          referencing a part of an object.
+                          TODO: this design is not final and this field is subject to change in the future.
                         type: string
                       kind:
-                        description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                        description: |-
+                          Kind of the referent.
+                          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
                         type: string
                       name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+                        description: |-
+                          Name of the referent.
+                          More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
                         type: string
                       namespace:
-                        description: 'Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/'
+                        description: |-
+                          Namespace of the referent.
+                          More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
                         type: string
                       resourceVersion:
-                        description: 'Specific resourceVersion to which this reference
-                          is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency'
+                        description: |-
+                          Specific resourceVersion to which this reference is made, if any.
+                          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
                         type: string
                       uid:
-                        description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
+                        description: |-
+                          UID of the referent.
+                          More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
                         type: string
                     type: object
+                    x-kubernetes-map-type: atomic
                   type: array
                 result:
                   description: Result indicates the outcome of the policy rule execution
@@ -541,15 +564,16 @@ spec:
                   description: Timestamp indicates the time the result was found
                   properties:
                     nanos:
-                      description: Non-negative fractions of a second at nanosecond
-                        resolution. Negative second values with fractions must still
-                        have non-negative nanos values that count forward in time.
-                        Must be from 0 to 999,999,999 inclusive. This field may be
-                        limited in precision depending on context.
+                      description: |-
+                        Non-negative fractions of a second at nanosecond resolution. Negative
+                        second values with fractions must still have non-negative nanos values
+                        that count forward in time. Must be from 0 to 999,999,999
+                        inclusive. This field may be limited in precision depending on context.
                       format: int32
                       type: integer
                     seconds:
-                      description: Represents seconds of UTC time since Unix epoch
+                      description: |-
+                        Represents seconds of UTC time since Unix epoch
                         1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to
                         9999-12-31T23:59:59Z inclusive.
                       format: int64
@@ -570,60 +594,71 @@ spec:
                 description: API version of the referent.
                 type: string
               fieldPath:
-                description: 'If referring to a piece of an object instead of an entire
-                  object, this string should contain a valid JSON/Go field access
-                  statement, such as desiredState.manifest.containers[2]. For example,
-                  if the object reference is to a container within a pod, this would
-                  take on a value like: "spec.containers{name}" (where "name" refers
-                  to the name of the container that triggered the event) or if no
-                  container name is specified "spec.containers[2]" (container with
-                  index 2 in this pod). This syntax is chosen only to have some well-defined
-                  way of referencing a part of an object. TODO: this design is not
-                  final and this field is subject to change in the future.'
+                description: |-
+                  If referring to a piece of an object instead of an entire object, this string
+                  should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].
+                  For example, if the object reference is to a container within a pod, this would take on a value like:
+                  "spec.containers{name}" (where "name" refers to the name of the container that triggered
+                  the event) or if no container name is specified "spec.containers[2]" (container with
+                  index 2 in this pod). This syntax is chosen only to have some well-defined way of
+                  referencing a part of an object.
+                  TODO: this design is not final and this field is subject to change in the future.
                 type: string
               kind:
-                description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                description: |-
+                  Kind of the referent.
+                  More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
                 type: string
               name:
-                description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+                description: |-
+                  Name of the referent.
+                  More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
                 type: string
               namespace:
-                description: 'Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/'
+                description: |-
+                  Namespace of the referent.
+                  More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
                 type: string
               resourceVersion:
-                description: 'Specific resourceVersion to which this reference is
-                  made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency'
+                description: |-
+                  Specific resourceVersion to which this reference is made, if any.
+                  More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
                 type: string
               uid:
-                description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
+                description: |-
+                  UID of the referent.
+                  More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
                 type: string
             type: object
+            x-kubernetes-map-type: atomic
           scopeSelector:
-            description: ScopeSelector is an optional selector for multiple scopes
-              (e.g. Pods). Either one of, or none of, but not both of, Scope or ScopeSelector
-              should be specified.
+            description: |-
+              ScopeSelector is an optional selector for multiple scopes (e.g. Pods).
+              Either one of, or none of, but not both of, Scope or ScopeSelector should be specified.
             properties:
               matchExpressions:
                 description: matchExpressions is a list of label selector requirements.
                   The requirements are ANDed.
                 items:
-                  description: A label selector requirement is a selector that contains
-                    values, a key, and an operator that relates the key and values.
+                  description: |-
+                    A label selector requirement is a selector that contains values, a key, and an operator that
+                    relates the key and values.
                   properties:
                     key:
                       description: key is the label key that the selector applies
                         to.
                       type: string
                     operator:
-                      description: operator represents a key's relationship to a set
-                        of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+                      description: |-
+                        operator represents a key's relationship to a set of values.
+                        Valid operators are In, NotIn, Exists and DoesNotExist.
                       type: string
                     values:
-                      description: values is an array of string values. If the operator
-                        is In or NotIn, the values array must be non-empty. If the
-                        operator is Exists or DoesNotExist, the values array must
-                        be empty. This array is replaced during a strategic merge
-                        patch.
+                      description: |-
+                        values is an array of string values. If the operator is In or NotIn,
+                        the values array must be non-empty. If the operator is Exists or DoesNotExist,
+                        the values array must be empty. This array is replaced during a strategic
+                        merge patch.
                       items:
                         type: string
                       type: array
@@ -635,12 +670,13 @@ spec:
               matchLabels:
                 additionalProperties:
                   type: string
-                description: matchLabels is a map of {key,value} pairs. A single {key,value}
-                  in the matchLabels map is equivalent to an element of matchExpressions,
-                  whose key field is "key", the operator is "In", and the values array
-                  contains only "value". The requirements are ANDed.
+                description: |-
+                  matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
+                  map is equivalent to an element of matchExpressions, whose key field is "key", the
+                  operator is "In", and the values array contains only "value". The requirements are ANDed.
                 type: object
             type: object
+            x-kubernetes-map-type: atomic
           summary:
             description: PolicyReportSummary provides a summary of results
             properties:
@@ -703,12 +739,15 @@ spec:
           API
         properties:
           apiVersion:
-            description: 'APIVersion defines the versioned schema of this representation
-              of an object. Servers should convert recognized schemas to the latest
-              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
             type: string
           configuration:
-            description: Configuration is an optional field which can be used to specify
+            description: |-
+              Configuration is an optional field which can be used to specify
               a contract between PolicyReport generators and consumers
             properties:
               limits:
@@ -737,9 +776,12 @@ spec:
             - limits
             type: object
           kind:
-            description: 'Kind is a string value representing the REST resource this
-              object represents. Servers may infer this from the endpoint the client
-              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
             type: string
           metadata:
             type: object
@@ -766,35 +808,35 @@ spec:
                     policy rule
                   type: object
                 resourceSelector:
-                  description: ResourceSelector is an optional label selector for
-                    checked Kubernetes resources. For example, a policy result may
-                    apply to all pods that match a label. Either a Subject or a ResourceSelector
-                    can be specified. If neither are provided, the result is assumed
-                    to be for the policy report scope.
+                  description: |-
+                    ResourceSelector is an optional label selector for checked Kubernetes resources.
+                    For example, a policy result may apply to all pods that match a label.
+                    Either a Subject or a ResourceSelector can be specified. If neither are provided, the
+                    result is assumed to be for the policy report scope.
                   properties:
                     matchExpressions:
                       description: matchExpressions is a list of label selector requirements.
                         The requirements are ANDed.
                       items:
-                        description: A label selector requirement is a selector that
-                          contains values, a key, and an operator that relates the
-                          key and values.
+                        description: |-
+                          A label selector requirement is a selector that contains values, a key, and an operator that
+                          relates the key and values.
                         properties:
                           key:
                             description: key is the label key that the selector applies
                               to.
                             type: string
                           operator:
-                            description: operator represents a key's relationship
-                              to a set of values. Valid operators are In, NotIn, Exists
-                              and DoesNotExist.
+                            description: |-
+                              operator represents a key's relationship to a set of values.
+                              Valid operators are In, NotIn, Exists and DoesNotExist.
                             type: string
                           values:
-                            description: values is an array of string values. If the
-                              operator is In or NotIn, the values array must be non-empty.
-                              If the operator is Exists or DoesNotExist, the values
-                              array must be empty. This array is replaced during a
-                              strategic merge patch.
+                            description: |-
+                              values is an array of string values. If the operator is In or NotIn,
+                              the values array must be non-empty. If the operator is Exists or DoesNotExist,
+                              the values array must be empty. This array is replaced during a strategic
+                              merge patch.
                             items:
                               type: string
                             type: array
@@ -806,76 +848,77 @@ spec:
                     matchLabels:
                       additionalProperties:
                         type: string
-                      description: matchLabels is a map of {key,value} pairs. A single
-                        {key,value} in the matchLabels map is equivalent to an element
-                        of matchExpressions, whose key field is "key", the operator
-                        is "In", and the values array contains only "value". The requirements
-                        are ANDed.
+                      description: |-
+                        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
+                        map is equivalent to an element of matchExpressions, whose key field is "key", the
+                        operator is "In", and the values array contains only "value". The requirements are ANDed.
                       type: object
                   type: object
+                  x-kubernetes-map-type: atomic
                 resources:
                   description: Subjects is an optional reference to the checked Kubernetes
                     resources
                   items:
-                    description: "ObjectReference contains enough information to let
-                      you inspect or modify the referred object. --- New uses of this
-                      type are discouraged because of difficulty describing its usage
-                      when embedded in APIs. 1. Ignored fields.  It includes many
-                      fields which are not generally honored.  For instance, ResourceVersion
-                      and FieldPath are both very rarely valid in actual usage. 2.
-                      Invalid usage help.  It is impossible to add specific help for
-                      individual usage.  In most embedded usages, there are particular
-                      restrictions like, \"must refer only to types A and B\" or \"UID
-                      not honored\" or \"name must be restricted\". Those cannot be
-                      well described when embedded. 3. Inconsistent validation.  Because
-                      the usages are different, the validation rules are different
-                      by usage, which makes it hard for users to predict what will
-                      happen. 4. The fields are both imprecise and overly precise.
-                      \ Kind is not a precise mapping to a URL. This can produce ambiguity
-                      during interpretation and require a REST mapping.  In most cases,
-                      the dependency is on the group,resource tuple and the version
-                      of the actual struct is irrelevant. 5. We cannot easily change
-                      it.  Because this type is embedded in many locations, updates
-                      to this type will affect numerous schemas.  Don't make new APIs
-                      embed an underspecified API type they do not control. \n Instead
-                      of using this type, create a locally provided and used type
-                      that is well-focused on your reference. For example, ServiceReferences
-                      for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533
-                      ."
+                    description: |-
+                      ObjectReference contains enough information to let you inspect or modify the referred object.
+                      ---
+                      New uses of this type are discouraged because of difficulty describing its usage when embedded in APIs.
+                       1. Ignored fields.  It includes many fields which are not generally honored.  For instance, ResourceVersion and FieldPath are both very rarely valid in actual usage.
+                       2. Invalid usage help.  It is impossible to add specific help for individual usage.  In most embedded usages, there are particular
+                          restrictions like, "must refer only to types A and B" or "UID not honored" or "name must be restricted".
+                          Those cannot be well described when embedded.
+                       3. Inconsistent validation.  Because the usages are different, the validation rules are different by usage, which makes it hard for users to predict what will happen.
+                       4. The fields are both imprecise and overly precise.  Kind is not a precise mapping to a URL. This can produce ambiguity
+                          during interpretation and require a REST mapping.  In most cases, the dependency is on the group,resource tuple
+                          and the version of the actual struct is irrelevant.
+                       5. We cannot easily change it.  Because this type is embedded in many locations, updates to this type
+                          will affect numerous schemas.  Don't make new APIs embed an underspecified API type they do not control.
+
+
+                      Instead of using this type, create a locally provided and used type that is well-focused on your reference.
+                      For example, ServiceReferences for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533 .
                     properties:
                       apiVersion:
                         description: API version of the referent.
                         type: string
                       fieldPath:
-                        description: 'If referring to a piece of an object instead
-                          of an entire object, this string should contain a valid
-                          JSON/Go field access statement, such as desiredState.manifest.containers[2].
-                          For example, if the object reference is to a container within
-                          a pod, this would take on a value like: "spec.containers{name}"
-                          (where "name" refers to the name of the container that triggered
-                          the event) or if no container name is specified "spec.containers[2]"
-                          (container with index 2 in this pod). This syntax is chosen
-                          only to have some well-defined way of referencing a part
-                          of an object. TODO: this design is not final and this field
-                          is subject to change in the future.'
+                        description: |-
+                          If referring to a piece of an object instead of an entire object, this string
+                          should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].
+                          For example, if the object reference is to a container within a pod, this would take on a value like:
+                          "spec.containers{name}" (where "name" refers to the name of the container that triggered
+                          the event) or if no container name is specified "spec.containers[2]" (container with
+                          index 2 in this pod). This syntax is chosen only to have some well-defined way of
+                          referencing a part of an object.
+                          TODO: this design is not final and this field is subject to change in the future.
                         type: string
                       kind:
-                        description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                        description: |-
+                          Kind of the referent.
+                          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
                         type: string
                       name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+                        description: |-
+                          Name of the referent.
+                          More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
                         type: string
                       namespace:
-                        description: 'Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/'
+                        description: |-
+                          Namespace of the referent.
+                          More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
                         type: string
                       resourceVersion:
-                        description: 'Specific resourceVersion to which this reference
-                          is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency'
+                        description: |-
+                          Specific resourceVersion to which this reference is made, if any.
+                          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
                         type: string
                       uid:
-                        description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
+                        description: |-
+                          UID of the referent.
+                          More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
                         type: string
                     type: object
+                    x-kubernetes-map-type: atomic
                   type: array
                 result:
                   description: Result indicates the outcome of the policy rule execution
@@ -903,23 +946,25 @@ spec:
                   - info
                   type: string
                 source:
-                  description: Source is an identifier for the policy engine that
-                    manages this report If the Source is specified at this level,
-                    it will override the Source field set at the PolicyReport level
+                  description: |-
+                    Source is an identifier for the policy engine that manages this report
+                    If the Source is specified at this level, it will override the Source
+                    field set at the PolicyReport level
                   type: string
                 timestamp:
                   description: Timestamp indicates the time the result was found
                   properties:
                     nanos:
-                      description: Non-negative fractions of a second at nanosecond
-                        resolution. Negative second values with fractions must still
-                        have non-negative nanos values that count forward in time.
-                        Must be from 0 to 999,999,999 inclusive. This field may be
-                        limited in precision depending on context.
+                      description: |-
+                        Non-negative fractions of a second at nanosecond resolution. Negative
+                        second values with fractions must still have non-negative nanos values
+                        that count forward in time. Must be from 0 to 999,999,999
+                        inclusive. This field may be limited in precision depending on context.
                       format: int32
                       type: integer
                     seconds:
-                      description: Represents seconds of UTC time since Unix epoch
+                      description: |-
+                        Represents seconds of UTC time since Unix epoch
                         1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to
                         9999-12-31T23:59:59Z inclusive.
                       format: int64
@@ -940,60 +985,71 @@ spec:
                 description: API version of the referent.
                 type: string
               fieldPath:
-                description: 'If referring to a piece of an object instead of an entire
-                  object, this string should contain a valid JSON/Go field access
-                  statement, such as desiredState.manifest.containers[2]. For example,
-                  if the object reference is to a container within a pod, this would
-                  take on a value like: "spec.containers{name}" (where "name" refers
-                  to the name of the container that triggered the event) or if no
-                  container name is specified "spec.containers[2]" (container with
-                  index 2 in this pod). This syntax is chosen only to have some well-defined
-                  way of referencing a part of an object. TODO: this design is not
-                  final and this field is subject to change in the future.'
+                description: |-
+                  If referring to a piece of an object instead of an entire object, this string
+                  should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].
+                  For example, if the object reference is to a container within a pod, this would take on a value like:
+                  "spec.containers{name}" (where "name" refers to the name of the container that triggered
+                  the event) or if no container name is specified "spec.containers[2]" (container with
+                  index 2 in this pod). This syntax is chosen only to have some well-defined way of
+                  referencing a part of an object.
+                  TODO: this design is not final and this field is subject to change in the future.
                 type: string
               kind:
-                description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                description: |-
+                  Kind of the referent.
+                  More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
                 type: string
               name:
-                description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+                description: |-
+                  Name of the referent.
+                  More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
                 type: string
               namespace:
-                description: 'Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/'
+                description: |-
+                  Namespace of the referent.
+                  More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
                 type: string
               resourceVersion:
-                description: 'Specific resourceVersion to which this reference is
-                  made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency'
+                description: |-
+                  Specific resourceVersion to which this reference is made, if any.
+                  More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
                 type: string
               uid:
-                description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
+                description: |-
+                  UID of the referent.
+                  More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
                 type: string
             type: object
+            x-kubernetes-map-type: atomic
           scopeSelector:
-            description: ScopeSelector is an optional selector for multiple scopes
-              (e.g. Pods). Either one of, or none of, but not both of, Scope or ScopeSelector
-              should be specified.
+            description: |-
+              ScopeSelector is an optional selector for multiple scopes (e.g. Pods).
+              Either one of, or none of, but not both of, Scope or ScopeSelector should be specified.
             properties:
               matchExpressions:
                 description: matchExpressions is a list of label selector requirements.
                   The requirements are ANDed.
                 items:
-                  description: A label selector requirement is a selector that contains
-                    values, a key, and an operator that relates the key and values.
+                  description: |-
+                    A label selector requirement is a selector that contains values, a key, and an operator that
+                    relates the key and values.
                   properties:
                     key:
                       description: key is the label key that the selector applies
                         to.
                       type: string
                     operator:
-                      description: operator represents a key's relationship to a set
-                        of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+                      description: |-
+                        operator represents a key's relationship to a set of values.
+                        Valid operators are In, NotIn, Exists and DoesNotExist.
                       type: string
                     values:
-                      description: values is an array of string values. If the operator
-                        is In or NotIn, the values array must be non-empty. If the
-                        operator is Exists or DoesNotExist, the values array must
-                        be empty. This array is replaced during a strategic merge
-                        patch.
+                      description: |-
+                        values is an array of string values. If the operator is In or NotIn,
+                        the values array must be non-empty. If the operator is Exists or DoesNotExist,
+                        the values array must be empty. This array is replaced during a strategic
+                        merge patch.
                       items:
                         type: string
                       type: array
@@ -1005,18 +1061,19 @@ spec:
               matchLabels:
                 additionalProperties:
                   type: string
-                description: matchLabels is a map of {key,value} pairs. A single {key,value}
-                  in the matchLabels map is equivalent to an element of matchExpressions,
-                  whose key field is "key", the operator is "In", and the values array
-                  contains only "value". The requirements are ANDed.
+                description: |-
+                  matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
+                  map is equivalent to an element of matchExpressions, whose key field is "key", the
+                  operator is "In", and the values array contains only "value". The requirements are ANDed.
                 type: object
             type: object
+            x-kubernetes-map-type: atomic
           source:
-            description: Source is an identifier for the source e.g. a policy engine
-              that manages this report. Use this field if all the results are produced
-              by a single policy engine. If the results are produced by multiple sources
-              e.g. different engines or scanners, then use the Source field at the
-              PolicyReportResult level.
+            description: |-
+              Source is an identifier for the source e.g. a policy engine that manages this report.
+              Use this field if all the results are produced by a single policy engine.
+              If the results are produced by multiple sources e.g. different engines or scanners,
+              then use the Source field at the PolicyReportResult level.
             type: string
           summary:
             description: PolicyReportSummary provides a summary of results
