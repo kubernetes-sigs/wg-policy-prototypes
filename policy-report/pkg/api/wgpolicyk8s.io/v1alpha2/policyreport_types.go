@@ -98,7 +98,7 @@ type PolicyReportResult struct {
 
 	// Subjects is an optional reference to the checked Kubernetes resources
 	// +optional
-	Subjects []*corev1.ObjectReference `json:"resources,omitempty"`
+	Subjects []corev1.ObjectReference `json:"resources,omitempty"`
 
 	// SubjectSelector is an optional label selector for checked Kubernetes resources.
 	// For example, a policy result may apply to all pods that match a label.
@@ -147,7 +147,7 @@ type PolicyReport struct {
 
 	// PolicyReportResult provides result details
 	// +optional
-	Results []*PolicyReportResult `json:"results,omitempty"`
+	Results []PolicyReportResult `json:"results,omitempty"`
 }
 
 // PolicyReportList contains a list of PolicyReport
