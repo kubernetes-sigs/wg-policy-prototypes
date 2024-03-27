@@ -33,13 +33,9 @@ func (in *ClusterPolicyReport) DeepCopyInto(out *ClusterPolicyReport) {
 	out.Summary = in.Summary
 	if in.Results != nil {
 		in, out := &in.Results, &out.Results
-		*out = make([]*PolicyReportResult, len(*in))
+		*out = make([]PolicyReportResult, len(*in))
 		for i := range *in {
-			if (*in)[i] != nil {
-				in, out := &(*in)[i], &(*out)[i]
-				*out = new(PolicyReportResult)
-				(*in).DeepCopyInto(*out)
-			}
+			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
 	}
 }
@@ -99,14 +95,8 @@ func (in *Limits) DeepCopyInto(out *Limits) {
 	*out = *in
 	if in.StatusFilter != nil {
 		in, out := &in.StatusFilter, &out.StatusFilter
-		*out = make([]*StatusFilter, len(*in))
-		for i := range *in {
-			if (*in)[i] != nil {
-				in, out := &(*in)[i], &(*out)[i]
-				*out = new(StatusFilter)
-				**out = **in
-			}
-		}
+		*out = make([]StatusFilter, len(*in))
+		copy(*out, *in)
 	}
 }
 
@@ -143,13 +133,9 @@ func (in *PolicyReport) DeepCopyInto(out *PolicyReport) {
 	out.Summary = in.Summary
 	if in.Results != nil {
 		in, out := &in.Results, &out.Results
-		*out = make([]*PolicyReportResult, len(*in))
+		*out = make([]PolicyReportResult, len(*in))
 		for i := range *in {
-			if (*in)[i] != nil {
-				in, out := &(*in)[i], &(*out)[i]
-				*out = new(PolicyReportResult)
-				(*in).DeepCopyInto(*out)
-			}
+			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
 	}
 }
@@ -226,14 +212,8 @@ func (in *PolicyReportResult) DeepCopyInto(out *PolicyReportResult) {
 	out.Timestamp = in.Timestamp
 	if in.Subjects != nil {
 		in, out := &in.Subjects, &out.Subjects
-		*out = make([]*v1.ObjectReference, len(*in))
-		for i := range *in {
-			if (*in)[i] != nil {
-				in, out := &(*in)[i], &(*out)[i]
-				*out = new(v1.ObjectReference)
-				**out = **in
-			}
-		}
+		*out = make([]v1.ObjectReference, len(*in))
+		copy(*out, *in)
 	}
 	if in.ResourceSelector != nil {
 		in, out := &in.ResourceSelector, &out.ResourceSelector

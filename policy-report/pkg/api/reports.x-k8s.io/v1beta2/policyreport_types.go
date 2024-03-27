@@ -32,7 +32,7 @@ type Limits struct {
 
 	// StatusFilter indicates that the PolicyReport contains only those reports with statuses specified in this list
 	// +optional
-	StatusFilter []*StatusFilter `json:"statusFilter,omitempty"`
+	StatusFilter []StatusFilter `json:"statusFilter,omitempty"`
 }
 
 type PolicyReportConfiguration struct {
@@ -118,7 +118,7 @@ type PolicyReportResult struct {
 
 	// Subjects is an optional reference to the checked Kubernetes resources
 	// +optional
-	Subjects []*corev1.ObjectReference `json:"resources,omitempty"`
+	Subjects []corev1.ObjectReference `json:"resources,omitempty"`
 
 	// ResourceSelector is an optional label selector for checked Kubernetes resources.
 	// For example, a policy result may apply to all pods that match a label.
@@ -180,7 +180,7 @@ type PolicyReport struct {
 
 	// PolicyReportResult provides result details
 	// +optional
-	Results []*PolicyReportResult `json:"results,omitempty"`
+	Results []PolicyReportResult `json:"results,omitempty"`
 }
 
 // PolicyReportList contains a list of PolicyReport
