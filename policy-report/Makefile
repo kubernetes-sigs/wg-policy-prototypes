@@ -5,12 +5,22 @@ else
 GOBIN=$(shell go env GOBIN)
 endif
 
-all: manifests build fmt vet
+## Location to install dependencies to
+LOCALBIN ?= $(shell pwd)/bin
+$(LOCALBIN):
+	mkdir -p $(LOCALBIN)
+
+CONTROLLER_TOOLS_VERSION           ?= v0.14.0
+CONTROLLER_GEN                     ?= $(LOCALBIN)/controller-gen-$(CONTROLLER_TOOLS_VERSION)
+GEN_CRD_API_REFERENCE_DOCS         ?= $(LOCALBIN)/crd-ref-docs
+GEN_CRD_API_REFERENCE_DOCS_VERSION ?= latest
+
+all: manifests generate build fmt vet 
 
 # Generate manifests e.g. CRD, RBAC etc.
 manifests: controller-gen
-	$(CONTROLLER_GEN) crd paths="./pkg/api/..." output:dir=crd/v1beta2
-	$(CONTROLLER_GEN) object paths="./pkg/api/..."
+	$(CONTROLLER_GEN) crd paths="./pkg/api/reports.x-k8s.io/v1beta2/..." output:dir=crd/v1beta2
+	$(CONTROLLER_GEN) object paths="./pkg/api/reports.x-k8s.io/..."
 
 # Run go build against code
 build:
@@ -24,25 +34,26 @@ fmt:
 vet:
 	go vet ./...
 
-CONTROLLER_TOOLS_VERSION ?= v0.14.0
-CONTROLLER_GEN ?= $(LOCALBIN)/controller-gen-$(CONTROLLER_TOOLS_VERSION)
-
 .PHONY: controller-gen
 controller-gen: $(CONTROLLER_GEN) ## Download controller-gen locally if necessary.
 $(CONTROLLER_GEN): $(LOCALBIN)
 	$(call go-install-tool,$(CONTROLLER_GEN),sigs.k8s.io/controller-tools/cmd/controller-gen,$(CONTROLLER_TOOLS_VERSION))
 
 # generate will create api docs
-generate:
-	gen-crd-api-reference-docs -api-dir ./pkg/api/reports.x-k8s.io/v1beta2 -config ./docs/config.json -template-dir ./docs/template -out-file ./docs/index.html
-	# gen-crd-api-reference-docs -api-dir ./pkg/api/v1beta1 -config docs/config.json -template-dir docs/template -out-file docs/index.html
-	# TODO - Currently gen-crd-api-reference-docs doesn't support kubebuilder for generating docs. https://github.com/ahmetb/gen-crd-api-reference-docs/issues/15
-	# go run github.com/ahmetb/gen-crd-api-reference-docs -api-dir ./api/v1alpha1 -config docs/config.json -template-dir docs/template -out-file docs/index.html
+generate: $(GEN_CRD_API_REFERENCE_DOCS)
+	$(GEN_CRD_API_REFERENCE_DOCS) --source-path=./pkg/api/reports.x-k8s.io/v1beta2 --config=./docs/config.yaml --renderer=markdown --output-path=./docs/api-docs.md
 
-## Location to install dependencies to
-LOCALBIN ?= $(shell pwd)/bin
-$(LOCALBIN):
-	mkdir -p $(LOCALBIN)
+$(GEN_CRD_API_REFERENCE_DOCS): $(LOCALBIN)
+	$(call go-install-tool,$(GEN_CRD_API_REFERENCE_DOCS),github.com/elastic/crd-ref-docs,$(GEN_CRD_API_REFERENCE_DOCS_VERSION))
+
+.PHONY: codegen-api-docs
+codegen-api-docs: $(PACKAGE_SHIM) $(GEN_CRD_API_REFERENCE_DOCS) $(GENREF) ## Generate API docs
+	@echo Generate api docs... >&2
+	$(GEN_CRD_API_REFERENCE_DOCS) -v=4 \
+		-api-dir pkg/api \
+		-config docs/config.json \
+		-template-dir docs/template \
+		-out-file docs/index.html
 
 # go-install-tool will 'go install' any package with custom target and name of binary, if it doesn't exist
 # $1 - target path with name of binary (ideally with version)
