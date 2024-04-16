@@ -26,7 +26,7 @@ import (
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"
 	cache "k8s.io/client-go/tools/cache"
-	wgpolicyk8siov1alpha1 "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/wgpolicyk8s.io/v1alpha1"
+	wgpolicyk8siov1alpha1 "sigs.k8s.io/wg-policy-prototypes/policy-report/api/wgpolicyk8s.io/v1alpha1"
 	versioned "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha2/clientset/versioned"
 	internalinterfaces "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha2/informers/externalversions/internalinterfaces"
 	v1alpha1 "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha2/listers/wgpolicyk8s.io/v1alpha1"

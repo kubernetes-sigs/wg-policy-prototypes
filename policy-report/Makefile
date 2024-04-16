@@ -15,12 +15,15 @@ CONTROLLER_GEN                     ?= $(LOCALBIN)/controller-gen-$(CONTROLLER_TO
 GEN_CRD_API_REFERENCE_DOCS         ?= $(LOCALBIN)/crd-ref-docs
 GEN_CRD_API_REFERENCE_DOCS_VERSION ?= latest
 
-all: manifests generate build fmt vet 
+all: manifests generate generate-api-docs build fmt vet 
 
-# Generate manifests e.g. CRD, RBAC etc.
-manifests: controller-gen
-	$(CONTROLLER_GEN) crd paths="./pkg/api/reports.x-k8s.io/v1beta2/..." output:dir=crd/v1beta2
-	$(CONTROLLER_GEN) object paths="./pkg/api/reports.x-k8s.io/..."
+.PHONY: manifests
+manifests: controller-gen ## Generate WebhookConfiguration, ClusterRole and CustomResourceDefinition objects.
+	$(CONTROLLER_GEN) rbac:roleName=manager-role crd webhook paths="./api/reports.x-k8s.io/v1beta2" output:crd:artifacts:config=crd/reports.x-k8s.io/v1beta2
+
+.PHONY: generate
+generate: controller-gen ## Generate code containing DeepCopy, DeepCopyInto, and DeepCopyObject method implementations.
+	$(CONTROLLER_GEN) object:headerFile="hack/boilerplate.go.txt" paths="./api/..."
 
 # Run go build against code
 build:
@@ -39,9 +42,9 @@ controller-gen: $(CONTROLLER_GEN) ## Download controller-gen locally if necessar
 $(CONTROLLER_GEN): $(LOCALBIN)
 	$(call go-install-tool,$(CONTROLLER_GEN),sigs.k8s.io/controller-tools/cmd/controller-gen,$(CONTROLLER_TOOLS_VERSION))
 
-# generate will create api docs
-generate: $(GEN_CRD_API_REFERENCE_DOCS)
-	$(GEN_CRD_API_REFERENCE_DOCS) --source-path=./pkg/api/reports.x-k8s.io/v1beta2 --config=./docs/config.yaml --renderer=markdown --output-path=./docs/api-docs.md
+# generate-api-docs will create api docs
+generate-api-docs: $(GEN_CRD_API_REFERENCE_DOCS)
+	$(GEN_CRD_API_REFERENCE_DOCS) --source-path=./api/reports.x-k8s.io/v1beta2 --config=./docs/config.yaml --renderer=markdown --output-path=./docs/api-docs.md
 
 $(GEN_CRD_API_REFERENCE_DOCS): $(LOCALBIN)
 	$(call go-install-tool,$(GEN_CRD_API_REFERENCE_DOCS),github.com/elastic/crd-ref-docs,$(GEN_CRD_API_REFERENCE_DOCS_VERSION))

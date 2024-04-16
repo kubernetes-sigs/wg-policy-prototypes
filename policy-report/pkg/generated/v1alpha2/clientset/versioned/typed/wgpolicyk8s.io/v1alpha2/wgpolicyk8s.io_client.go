@@ -20,7 +20,7 @@ package v1alpha2
 
 import (
 	rest "k8s.io/client-go/rest"
-	v1alpha2 "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/api/wgpolicyk8s.io/v1alpha2"
+	v1alpha2 "sigs.k8s.io/wg-policy-prototypes/policy-report/api/wgpolicyk8s.io/v1alpha2"
 	"sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/generated/v1alpha2/clientset/versioned/scheme"
 )
 
