@@ -1,3 +1,7 @@
+GO_CMD ?= go
+
+PROJECT_DIR := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))
+
 # Get the currently used golang install path (in GOPATH/bin, unless GOBIN is set)
 ifeq (,$(shell go env GOBIN))
 GOBIN=$(shell go env GOPATH)/bin
@@ -11,11 +15,11 @@ $(LOCALBIN):
 	mkdir -p $(LOCALBIN)
 
 CONTROLLER_TOOLS_VERSION           ?= v0.14.0
-CONTROLLER_GEN                     ?= $(LOCALBIN)/controller-gen-$(CONTROLLER_TOOLS_VERSION)
+CONTROLLER_GEN                     ?= $(LOCALBIN)/controller-gen
 GEN_CRD_API_REFERENCE_DOCS         ?= $(LOCALBIN)/crd-ref-docs
 GEN_CRD_API_REFERENCE_DOCS_VERSION ?= latest
 
-all: manifests generate generate-api-docs build fmt vet 
+all: manifests generate generate-api-docs generate-client build fmt vet 
 
 .PHONY: manifests
 manifests: controller-gen ## Generate WebhookConfiguration, ClusterRole and CustomResourceDefinition objects.
@@ -24,6 +28,11 @@ manifests: controller-gen ## Generate WebhookConfiguration, ClusterRole and Cust
 .PHONY: generate
 generate: controller-gen ## Generate code containing DeepCopy, DeepCopyInto, and DeepCopyObject method implementations.
 	$(CONTROLLER_GEN) object:headerFile="hack/boilerplate.go.txt" paths="./api/..."
+
+.PHONY: generate-client
+generate-client:
+	./hack/update-codegen.sh
+
 
 # Run go build against code
 build:
@@ -38,9 +47,26 @@ vet:
 	go vet ./...
 
 .PHONY: controller-gen
-controller-gen: $(CONTROLLER_GEN) ## Download controller-gen locally if necessary.
+controller-gen: $(CONTROLLER_GEN) ## Download controller-gen locally if necessary. If wrong version is installed, it will be overwritten.
 $(CONTROLLER_GEN): $(LOCALBIN)
-	$(call go-install-tool,$(CONTROLLER_GEN),sigs.k8s.io/controller-tools/cmd/controller-gen,$(CONTROLLER_TOOLS_VERSION))
+	test -s $(LOCALBIN)/controller-gen && $(LOCALBIN)/controller-gen --version | grep -q $(CONTROLLER_TOOLS_VERSION) || \
+	GOBIN=$(LOCALBIN) $(GO_CMD) install sigs.k8s.io/controller-tools/cmd/controller-gen@$(CONTROLLER_TOOLS_VERSION)
+
+# Use same code-generator version as k8s.io/api
+CODEGEN_VERSION := v0.30.0-rc.2
+CODEGEN = $(shell pwd)/bin/code-generator
+CODEGEN_ROOT = $(shell $(GO_CMD) env GOMODCACHE)/k8s.io/code-generator@$(CODEGEN_VERSION)
+.PHONY: code-generator
+code-generator:
+	@GOBIN=$(PROJECT_DIR)/bin GO111MODULE=on $(GO_CMD) install k8s.io/code-generator/cmd/client-gen@$(CODEGEN_VERSION)
+	cp -f $(CODEGEN_ROOT)/generate-groups.sh $(PROJECT_DIR)/bin/
+	cp -f $(CODEGEN_ROOT)/generate-internal-groups.sh $(PROJECT_DIR)/bin/
+	cp -f $(CODEGEN_ROOT)/kube_codegen.sh $(PROJECT_DIR)/bin/
+
+.PHONY: generate-client
+generate-client: controller-gen code-generator ## Generate code containing DeepCopy, DeepCopyInto, and DeepCopyObject method implementations and client-go libraries.
+	$(CONTROLLER_GEN) object:headerFile="hack/boilerplate.go.txt" paths="./api/..."
+	./hack/update-codegen.sh $(GO_CMD) $(PROJECT_DIR)/bin
 
 # generate-api-docs will create api docs
 generate-api-docs: $(GEN_CRD_API_REFERENCE_DOCS)
