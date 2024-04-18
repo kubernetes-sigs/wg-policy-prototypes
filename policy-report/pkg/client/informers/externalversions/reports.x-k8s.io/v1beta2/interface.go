@@ -18,7 +18,7 @@ limitations under the License.
 package v1beta2
 
 import (
-	internalinterfaces "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/client/informers/externalversions/internalinterfaces"
+	internalinterfaces "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/client/informers/externalversions/internalinterfaces"
 )
 
 // Interface provides access to all the informers in this group version.

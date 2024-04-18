@@ -21,14 +21,14 @@ import (
 	"context"
 	time "time"
 
-	versioned "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned"
-	internalinterfaces "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/client/informers/externalversions/internalinterfaces"
-	v1alpha1 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/client/listers/wgpolicyk8s.io/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"
 	cache "k8s.io/client-go/tools/cache"
 	wgpolicyk8siov1alpha1 "sigs.k8s.io/wg-policy-prototypes/policy-report/api/wgpolicyk8s.io/v1alpha1"
+	versioned "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned"
+	internalinterfaces "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/client/informers/externalversions/internalinterfaces"
+	v1alpha1 "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/client/listers/wgpolicyk8s.io/v1alpha1"
 )
 
 // ClusterPolicyReportInformer provides access to a shared informer and lister for

@@ -18,8 +18,8 @@ limitations under the License.
 package reports
 
 import (
-	internalinterfaces "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/client/informers/externalversions/internalinterfaces"
-	v1beta2 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/client/informers/externalversions/reports.x-k8s.io/v1beta2"
+	internalinterfaces "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/client/informers/externalversions/internalinterfaces"
+	v1beta2 "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/client/informers/externalversions/reports.x-k8s.io/v1beta2"
 )
 
 // Interface provides access to each of this group's versions.

@@ -18,20 +18,20 @@ limitations under the License.
 package fake
 
 import (
-	clientset "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned"
-	reportsv1beta2 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned/typed/reports.x-k8s.io/v1beta2"
-	fakereportsv1beta2 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned/typed/reports.x-k8s.io/v1beta2/fake"
-	wgpolicyk8sv1alpha1 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned/typed/wgpolicyk8s.io/v1alpha1"
-	fakewgpolicyk8sv1alpha1 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned/typed/wgpolicyk8s.io/v1alpha1/fake"
-	wgpolicyk8sv1alpha2 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned/typed/wgpolicyk8s.io/v1alpha2"
-	fakewgpolicyk8sv1alpha2 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned/typed/wgpolicyk8s.io/v1alpha2/fake"
-	wgpolicyk8sv1beta1 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned/typed/wgpolicyk8s.io/v1beta1"
-	fakewgpolicyk8sv1beta1 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned/typed/wgpolicyk8s.io/v1beta1/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"
 	fakediscovery "k8s.io/client-go/discovery/fake"
 	"k8s.io/client-go/testing"
+	clientset "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned"
+	reportsv1beta2 "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned/typed/reports.x-k8s.io/v1beta2"
+	fakereportsv1beta2 "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned/typed/reports.x-k8s.io/v1beta2/fake"
+	wgpolicyk8sv1alpha1 "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned/typed/wgpolicyk8s.io/v1alpha1"
+	fakewgpolicyk8sv1alpha1 "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned/typed/wgpolicyk8s.io/v1alpha1/fake"
+	wgpolicyk8sv1alpha2 "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned/typed/wgpolicyk8s.io/v1alpha2"
+	fakewgpolicyk8sv1alpha2 "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned/typed/wgpolicyk8s.io/v1alpha2/fake"
+	wgpolicyk8sv1beta1 "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned/typed/wgpolicyk8s.io/v1beta1"
+	fakewgpolicyk8sv1beta1 "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned/typed/wgpolicyk8s.io/v1beta1/fake"
 )
 
 // NewSimpleClientset returns a clientset that will respond with the provided objects.

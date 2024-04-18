@@ -33,6 +33,6 @@ kube::codegen::gen_helpers \
 kube::codegen::gen_client \
     --with-watch \
     --output-dir "${SCRIPT_ROOT}/pkg/client" \
-    --output-pkg "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/client" \
+    --output-pkg "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/client" \
     --boilerplate "${SCRIPT_ROOT}/hack/boilerplate.go.txt" \
     "${SCRIPT_ROOT}/api"

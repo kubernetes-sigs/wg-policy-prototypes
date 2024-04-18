@@ -18,9 +18,9 @@ limitations under the License.
 package fake
 
 import (
-	v1beta1 "github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned/typed/wgpolicyk8s.io/v1beta1"
 	rest "k8s.io/client-go/rest"
 	testing "k8s.io/client-go/testing"
+	v1beta1 "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned/typed/wgpolicyk8s.io/v1beta1"
 )
 
 type FakeWgpolicyk8sV1beta1 struct {

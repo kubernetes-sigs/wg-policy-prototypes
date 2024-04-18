@@ -20,9 +20,9 @@ package v1beta2
 import (
 	"net/http"
 
-	"github.com/kubernetes-sigs/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned/scheme"
 	rest "k8s.io/client-go/rest"
 	v1beta2 "sigs.k8s.io/wg-policy-prototypes/policy-report/api/reports.x-k8s.io/v1beta2"
+	"sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/client/clientset/versioned/scheme"
 )
 
 type ReportsV1beta2Interface interface {

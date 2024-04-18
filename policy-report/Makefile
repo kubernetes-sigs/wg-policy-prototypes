@@ -63,11 +63,6 @@ code-generator:
 	cp -f $(CODEGEN_ROOT)/generate-internal-groups.sh $(PROJECT_DIR)/bin/
 	cp -f $(CODEGEN_ROOT)/kube_codegen.sh $(PROJECT_DIR)/bin/
 
-.PHONY: generate-client
-generate-client: controller-gen code-generator ## Generate code containing DeepCopy, DeepCopyInto, and DeepCopyObject method implementations and client-go libraries.
-	$(CONTROLLER_GEN) object:headerFile="hack/boilerplate.go.txt" paths="./api/..."
-	./hack/update-codegen.sh $(GO_CMD) $(PROJECT_DIR)/bin
-
 # generate-api-docs will create api docs
 generate-api-docs: $(GEN_CRD_API_REFERENCE_DOCS)
 	$(GEN_CRD_API_REFERENCE_DOCS) --source-path=./api/reports.x-k8s.io/v1beta2 --config=./docs/config.yaml --renderer=markdown --output-path=./docs/api-docs.md
