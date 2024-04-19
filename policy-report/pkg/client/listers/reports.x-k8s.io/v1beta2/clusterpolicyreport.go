@@ -21,7 +21,7 @@ import (
 	"k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/client-go/tools/cache"
-	v1beta2 "sigs.k8s.io/wg-policy-prototypes/policy-report/api/reports.x-k8s.io/v1beta2"
+	v1beta2 "sigs.k8s.io/wg-policy-prototypes/policy-report/apis/reports.x-k8s.io/v1beta2"
 )
 
 // ClusterPolicyReportLister helps list ClusterPolicyReports.

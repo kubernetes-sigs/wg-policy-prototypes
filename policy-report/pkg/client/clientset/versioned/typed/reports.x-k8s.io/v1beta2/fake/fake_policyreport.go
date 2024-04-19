@@ -25,7 +25,7 @@ import (
 	types "k8s.io/apimachinery/pkg/types"
 	watch "k8s.io/apimachinery/pkg/watch"
 	testing "k8s.io/client-go/testing"
-	v1beta2 "sigs.k8s.io/wg-policy-prototypes/policy-report/api/reports.x-k8s.io/v1beta2"
+	v1beta2 "sigs.k8s.io/wg-policy-prototypes/policy-report/apis/reports.x-k8s.io/v1beta2"
 )
 
 // FakePolicyReports implements PolicyReportInterface

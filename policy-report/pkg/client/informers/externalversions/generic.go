@@ -22,10 +22,10 @@ import (
 
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
-	v1beta2 "sigs.k8s.io/wg-policy-prototypes/policy-report/api/reports.x-k8s.io/v1beta2"
-	v1alpha1 "sigs.k8s.io/wg-policy-prototypes/policy-report/api/wgpolicyk8s.io/v1alpha1"
-	v1alpha2 "sigs.k8s.io/wg-policy-prototypes/policy-report/api/wgpolicyk8s.io/v1alpha2"
-	v1beta1 "sigs.k8s.io/wg-policy-prototypes/policy-report/api/wgpolicyk8s.io/v1beta1"
+	v1beta2 "sigs.k8s.io/wg-policy-prototypes/policy-report/apis/reports.x-k8s.io/v1beta2"
+	v1alpha1 "sigs.k8s.io/wg-policy-prototypes/policy-report/apis/wgpolicyk8s.io/v1alpha1"
+	v1alpha2 "sigs.k8s.io/wg-policy-prototypes/policy-report/apis/wgpolicyk8s.io/v1alpha2"
+	v1beta1 "sigs.k8s.io/wg-policy-prototypes/policy-report/apis/wgpolicyk8s.io/v1beta1"
 )
 
 // GenericInformer is type of SharedIndexInformer which will locate and delegate to other

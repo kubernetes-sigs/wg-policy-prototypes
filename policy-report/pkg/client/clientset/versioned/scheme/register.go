@@ -23,10 +23,10 @@ import (
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	serializer "k8s.io/apimachinery/pkg/runtime/serializer"
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
-	reportsv1beta2 "sigs.k8s.io/wg-policy-prototypes/policy-report/api/reports.x-k8s.io/v1beta2"
-	wgpolicyk8sv1alpha1 "sigs.k8s.io/wg-policy-prototypes/policy-report/api/wgpolicyk8s.io/v1alpha1"
-	wgpolicyk8sv1alpha2 "sigs.k8s.io/wg-policy-prototypes/policy-report/api/wgpolicyk8s.io/v1alpha2"
-	wgpolicyk8sv1beta1 "sigs.k8s.io/wg-policy-prototypes/policy-report/api/wgpolicyk8s.io/v1beta1"
+	reportsv1beta2 "sigs.k8s.io/wg-policy-prototypes/policy-report/apis/reports.x-k8s.io/v1beta2"
+	wgpolicyk8sv1alpha1 "sigs.k8s.io/wg-policy-prototypes/policy-report/apis/wgpolicyk8s.io/v1alpha1"
+	wgpolicyk8sv1alpha2 "sigs.k8s.io/wg-policy-prototypes/policy-report/apis/wgpolicyk8s.io/v1alpha2"
+	wgpolicyk8sv1beta1 "sigs.k8s.io/wg-policy-prototypes/policy-report/apis/wgpolicyk8s.io/v1beta1"
 )
 
 var Scheme = runtime.NewScheme()

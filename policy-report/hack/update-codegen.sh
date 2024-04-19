@@ -28,11 +28,11 @@ source "${CODEGEN_PKG}/kube_codegen.sh"
 
 kube::codegen::gen_helpers \
     --boilerplate "${SCRIPT_ROOT}/hack/boilerplate.go.txt" \
-    "${SCRIPT_ROOT}/api"
+    "${SCRIPT_ROOT}/apis"
 
 kube::codegen::gen_client \
     --with-watch \
     --output-dir "${SCRIPT_ROOT}/pkg/client" \
     --output-pkg "sigs.k8s.io/wg-policy-prototypes/policy-report/pkg/client" \
     --boilerplate "${SCRIPT_ROOT}/hack/boilerplate.go.txt" \
-    "${SCRIPT_ROOT}/api"
+    "${SCRIPT_ROOT}/apis"

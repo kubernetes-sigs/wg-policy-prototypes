@@ -21,7 +21,7 @@ import (
 	"k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/client-go/tools/cache"
-	v1beta1 "sigs.k8s.io/wg-policy-prototypes/policy-report/api/wgpolicyk8s.io/v1beta1"
+	v1beta1 "sigs.k8s.io/wg-policy-prototypes/policy-report/apis/wgpolicyk8s.io/v1beta1"
 )
 
 // PolicyReportLister helps list PolicyReports.
