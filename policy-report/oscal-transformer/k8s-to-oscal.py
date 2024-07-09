@@ -25,12 +25,12 @@ from typing import Any, Dict, List, Union
 from trestle import __version__ as version
 from trestle.oscal import OSCAL_VERSION
 from trestle.oscal.assessment_results import AssessmentResults
-from trestle.oscal.assessment_results import ControlSelection
 from trestle.oscal.assessment_results import ImportAp
 from trestle.oscal.assessment_results import LocalDefinitions1
 from trestle.oscal.assessment_results import Observation
 from trestle.oscal.assessment_results import Result
-from trestle.oscal.assessment_results import ReviewedControls
+from trestle.oscal.common import ControlSelection
+from trestle.oscal.common import ReviewedControls
 from trestle.oscal.common import InventoryItem
 from trestle.oscal.common import Metadata
 from trestle.oscal.common import Property
@@ -243,7 +243,16 @@ class YamlToOscal:
         subjects = self._get_subjects(result.local_definitions)
         result.observations = self._get_result_observations(yaml_data, subjects)
         return result
-
+    
+    def is_yaml_valid(self, yaml_data_list: List[Dict]) -> bool:
+        """Check if the YAML file has the required keys."""        
+        for yaml_data in yaml_data_list:
+            if ('metadata' in yaml_data and 'labels' in yaml_data['metadata'] and 
+                ('wgpolicyk8s.io/engine' in yaml_data['metadata']['labels'] or 
+                'policy.kubernetes.io/engine' in yaml_data['metadata']['labels'])):
+                return True
+        return False
+    
     def transform(self, yaml_data_list: List[Dict], ar_type: str, title: str, href: str,
                   ns: str) -> Union[Results, AssessmentResults]:
         """Transform yaml to OSCAL json."""
@@ -322,12 +331,14 @@ def main():
             with open(ipath, 'r', encoding='utf-8') as yaml_file:
                 for yaml_section in yaml.safe_load_all(yaml_file):
                     yaml_data_list.append(yaml_section)
-                results = ytoo.transform(yaml_data_list, args.ar_type, title=ofile.name, href=args.ap_href, ns=args.ns)
-                write_file = pathlib.Path(ofile).open('wb')
-                write_file.write(results)
-                write_file.flush()
-                write_file.close()
-                logger.info(f'created: {opath / ofile.name}')
+                # only collect the ymal files that have the required keys
+                if ytoo.is_yaml_valid(yaml_data_list):
+                    results = ytoo.transform(yaml_data_list, args.ar_type, title=ofile.name, href=args.ap_href, ns=args.ns)
+                    write_file = pathlib.Path(ofile).open('wb')
+                    write_file.write(results)
+                    write_file.flush()
+                    write_file.close()
+                    logger.info(f'created: {opath / ofile.name}')
     except yaml.YAMLError as e:
         logger.error(e)
         raise Exception(f'Exception processing {ipath.name}')
