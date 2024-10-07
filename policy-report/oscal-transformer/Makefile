@@ -26,7 +26,7 @@ install:
 		source venv.trestle/bin/activate; \
 		echo "=> install trestle with prereqs"; \
 		python -m pip install -q --upgrade pip setuptools; \
-		python -m pip install -q compliance-trestle==1.1.0; \
+		python -m pip install -q compliance-trestle; \
 		echo "=> create and initialize trestle workspace"; \
 		mkdir trestle.workspace; \
 		cd trestle.workspace; \
@@ -60,6 +60,7 @@ oscal.partial: install
 
 .SILENT: help
 help: install
+	source venv.trestle/bin/activate; \
 	echo ">> python k8s-to-oscal.py -h"; \
 	python k8s-to-oscal.py -h;
 
