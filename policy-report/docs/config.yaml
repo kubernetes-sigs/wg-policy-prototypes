@@ -1,0 +1,15 @@
+processor:
+ ignoreGroupVersions:
+ ignoreTypes:
+ ignoreFields:
+   - "status$"
+   - "TypeMeta$"
+   - "kind$"
+   - "apiVersion$"
+ customMarkers:
+   - name: "hidefromdoc"
+     target: field
+
+render:
+ kubernetesVersion: 1.29
+ knownTypes:
