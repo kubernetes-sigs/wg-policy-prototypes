@@ -1,10 +1,7 @@
 # Kubernetes Policy Report API
 
-**NOTE: The Policy Report API specification is currently in review. See [KEP 4447](https://github.com/kubernetes/enhancements/pull/4448)**
+**NOTE: The Policy Report API is now part of the [OpenReports Project](https://openreports.io/). This repo will be archived.**
 
-The Kubernetes Policy Report API enables uniform reporting of results and findings from policy engines, scanners, or other tooling.
-
-This repository contains the API specification and Custom Resource Definitions (CRDs).
 
 ## Concepts
 
